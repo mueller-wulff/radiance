@@ -3,5 +3,9 @@ log/
 public/system/
 config/database.yml
 public/ckeditor_assets
+<<<<<<< HEAD
 .DS_Store
 .rvmrc
+=======
+radiance.tmproj
+>>>>>>> tmproj ignored
