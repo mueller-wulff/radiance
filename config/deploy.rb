@@ -5,9 +5,9 @@ set :application, "stitch"
 set :domain, "main.rapidrabbit.de"
 # für ein lokales Repo:
 # set :repository, "/pfad/zum/repo-ordner"
-set :repository, "sftp://phm@main.rapidrabbit.de/srv/bzr/rails/radiance/rails3.1"
+set :repository, "git://github.com/mueller-wulff/radiance.git"
 set :deploy_to, "/var/www/#{application}"
-set :scm, :bzr
+set :scm, :git
 set :deploy_via, :copy # default ist :checkout
 set :user, "stitch" # default ist der aktuelle User
 set :use_sudo, false # Verwende kein sudo
@@ -44,3 +44,11 @@ namespace :deploy do
     #NOP
   end
 end
+
+namespace :db do  
+  task :db_config, :except => { :no_release => true }, :role => :app do  
+    run "cp -f /var/www/stitch/database.yml #{release_path}/config/database.yml"  
+  end  
+end  
+  
+after "deploy:finalize_update", "db:db_config"
