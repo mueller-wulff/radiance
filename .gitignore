@@ -3,3 +3,5 @@ log/
 public/system/
 config/database.yml
 public/ckeditor_assets
+.DS_Store
+.rvmrc
