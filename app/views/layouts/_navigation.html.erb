@@ -1,0 +1,21 @@
+<ul id="nav">
+  <% if current_user %>
+    <% if current_user.role.class == Developer &&  current_user.role.admin %>
+     <li> <%= link_to  'Dashboard', root_url, :id => 'dashboard'%> </li>
+     <li> <%= link_to  'Courses', admin_courses_path, :id => 'courses'%> </li>
+     <li> <%= link_to  'Developers',  admin_developers_path, :id => 'editors'%> </li>
+     <li> <%= link_to  'Tutors',  admin_tutors_path, :id => 'tutors'%> </li>
+    <% elsif current_user.role.class == Developer %>
+    	<li> <%= link_to  'Dashboard', root_url, :id => 'dashboard'%> </li>
+    	<li> <%= link_to  'Courses', developer_courses_path, :id => 'courses'%> </li>
+    	<li> <%= link_to  'Modules', developer_stitch_modules_path, :id => 'courses'%> </li>
+    <% elsif current_user.role.class == Tutor %>
+			<li> <%= link_to  'Students', students_path, :id => 'students'%> </li>
+    <% elsif current_user.role.class == Student %>
+
+    <% end %>
+    <li> <%= link_to 'FAQ', faqs_path, :id => 'faq' %> </li>
+  <% else %>
+  	<li> <%= link_to  'Welcome', login_path, :id => 'login'%> </li>
+  <% end %>
+</ul>

@@ -1,0 +1,69 @@
+<div id="main">	
+  <%= render 'layouts/breadcrumb' %>
+
+  <h1 id="page_title"><%= render 'page_title' %><small><%= link_to "Preview Page", developer_stitch_unit_page_path(@page.stitch_unit,@page), :id => "preview_link" %></small></h1>
+
+  <br/>
+  <div class="editView" id="contentElements">
+    <%= render :partial => 'developer/contents/content', :collection => @page.contents %>
+    <% if @page.contents == [] %>
+      <p id="empty_warning">This is an empty Page. To fill it with content, just click an element on the right hand panel.</p>
+    <% end %>
+    <%= hidden_field_tag "page", developer_page_contents_path(@page)%>
+    <%= hidden_field_tag "contents_order_url", developer_page_contents_order_path(@page)%>
+  </div>
+  <%= render 'page_bottom' %> 
+</div>
+<div id="aside" class="moving">
+  <div id="newContentElements">
+    <h3>Add Content Element</h3>
+    <ul class="editmenu">
+      <%=  hidden_field_tag "url", developer_page_contents_path(@page)%>
+      <li class="text newContentElement"><img class="text" src="/images/space.gif" alt="Text" />
+        Text
+        <%=  hidden_field_tag "klass", "RichText"%>
+      </li>
+      <h4>Visualisation and Audio</h4>
+      <li class="video newContentElement"><img class="video" src="/images/space.gif" alt="Video" />
+        Video
+        <%=  hidden_field_tag "klass", "Youtube"%>
+      </li>
+      <li class="text newContentElement"><img class="text" src="/images/space.gif" alt="Slideshare" />
+        Slideshare
+        <%=  hidden_field_tag "klass", "Slideshare"%>
+      </li>
+      <h4>Questions</h4>
+      <li class="question newContentElement"><img class="question" src="/images/space.gif" alt="Question" />
+        Short Question
+        <%=  hidden_field_tag "klass", "SimpleQuestion"%>
+      </li>
+      <li class="question newContentElement"><img class="question" src="/images/space.gif" alt="Question" />
+        Essay Question
+        <%=  hidden_field_tag "klass", "EssayQuestion"%>
+      </li>
+      <li class="question newContentElement"><img class="question" src="/images/space.gif" alt="Question" />
+        Multiple Choice Question
+        <%=  hidden_field_tag "klass", "MultipleQuestion"%>
+      </li>
+			<h4>Group Assignments</h4>
+			<li class="question newContentElement"><img class="question" src="/images/space.gif" alt="Question" />
+        Group Essay
+				<%=  hidden_field_tag "klass", "GroupEssay"%>
+      </li>
+			<li class="question newContentElement"><img class="question" src="/images/space.gif" alt="Question" />
+        Discussion
+				<%=  hidden_field_tag "klass", "DiscussionLink"%>
+      </li>
+    </ul>
+    <p>Click on an Icon to add to Page.</p>
+
+  </div>
+</div>
+<script type="text/javascript">
+  $(document).ready(function(){
+    Stitched.loadPageEditView();
+  });
+</script>
+
+
+

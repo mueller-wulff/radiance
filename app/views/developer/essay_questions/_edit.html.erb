@@ -1,0 +1,8 @@
+<%=  f.fields_for :element do |element_field| %>
+  <p class="input">   
+    <label for="Input">Question Text</label>
+    <%= element_field.text_area :txt, :size => "20x3" %>
+    <label for="Input">Maximum Word Count</label>
+    <%= element_field.text_field :max_length %>
+  </p>
+<% end %>

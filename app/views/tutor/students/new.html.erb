@@ -1,0 +1,22 @@
+<h1>New student</h1>
+
+<%= form_tag :action => 'create' do %>  
+  <% if @profile.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@profile.errors.count, "error") %> prohibited this profile from being saved:</h2>
+
+      <ul>
+        <% @profile.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>  
+ <p class="input">
+    <%= label :email, "Email" %>  
+    <%= text_field :profile, :email %>  
+  </p>  
+  <p class="submit"> 
+    <%= submit_tag "Submit" %>  
+  </p>  
+<% end %> 

@@ -1,0 +1,57 @@
+
+<div id="main">
+  <%= render 'layouts/breadcrumb' %>
+  <h1 id="page_title"><%= @stitch_module.title %></h1>
+  <p>
+    <%= simple_format @stitch_module.description %>
+  </p>
+  <div id="modules">
+    <% @stitch_module.stitch_units.each do |sunit| %>
+      <%= render sunit %>
+    <% end %>
+    <%= hidden_field_tag "url", developer_stitch_module_stitch_units_path(@stitch_module) %>
+    <%= hidden_field_tag "page_move_url", developer_stitch_module_page_move_path(@stitch_module) %>
+    <%= hidden_field_tag "page_copy_url", developer_stitch_module_page_copy_path(@stitch_module) %>
+    <%= hidden_field_tag "unit_order_url", developer_stitch_module_stitch_units_order_path(@stitch_module) %>
+    <% if @open_unit %>
+      <%= hidden_field_tag "open_unit", @open_unit.id %>
+    <% end %>
+  </div>
+</div>
+<% if current_user.role.editable(@stitch_module) %>
+  <div id="aside" class="moving">
+    <h3>Edit Menu</h3>
+    <ul class="editmenu">
+
+      <li class="newunit newElement"><img class="newunit" src="/images/space.gif" alt="new Unit" />
+        new Unit
+        <%=  hidden_field_tag "url", developer_stitch_module_stitch_units_path(@stitch_module)%>
+      </li>
+
+
+      <li id="create_page"class="newPage"><img class="newpage" src="/images/space.gif" alt="new Page" />
+        new Page
+      </li>
+      <hr/>
+      <h3>Help</h3>
+      <p>- Click on a Unit to select it.<p/>
+      <p>- Click on a selected Unit to open/close.<p/>
+      <p>- Drag a Unit to change its Position.</p>
+      <p>- Drag a Page to change its Position.</p>
+    </ul>		
+  </div>
+<% else %>
+  <div id="aside">
+    <h3>Preview Mode</h3>
+  </div>
+<% end %>
+
+<script type="text/javascript">
+  $(document).ready(function(){
+<% if current_user.role.editable(@stitch_module) %>
+      Stitched.loadModuleEditView();
+<% else %>
+      Stitched.loadModulePreView();
+<% end %>
+  });
+</script>

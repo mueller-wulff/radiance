@@ -1,0 +1,37 @@
+<div id="main">
+	<h1>Editing developer</h1>
+
+	<%= form_for(@developer, :url => admin_developer_path(@developer)) do |f| %>
+	<%= render 'form', :f => f %>  
+	<hr/>
+	<h2>Statistics</h2>
+	<label>Last Login: </label><p><%= @developer.profile.last_login_at.strftime("%H:%M %d.%m.%y") if @developer.profile.last_login_at %></p>
+	<label>Number of Logins: </label><p><%= @developer.profile.login_count.to_i %></p>
+	<hr/>
+	<h2>Admin Rights</h2>
+	<%= label :admin, "This Developer is an Admin:" %>
+	<%= f.check_box :admin %>
+
+	<hr/>
+	<h2>Select Modules:</h2>
+	<% @courses.each do |course| %>
+	<ol>
+		<strong><%= course.title %></strong><br/>
+
+		<% course.stitch_modules.each do |stitch_module| %>
+		<li><%= check_box_tag("developer[stitch_module_ids][]", stitch_module.id, @developer.stitch_modules.include?(stitch_module)) %> <%= stitch_module.short_title %></li>
+
+		<% end %>
+	</ol>
+	<% end %>
+
+	<p class="submit"> 
+		<%= submit_tag "Save" %>  
+	</p>
+	<% end %>
+
+	<%= link_to 'Back', admin_developers_path %>
+</div>
+<div id="aside">
+
+</div>

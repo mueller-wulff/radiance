@@ -1,0 +1,7 @@
+<% if @page.next_page %>
+	<% if controller.action_name == 'edit'%>
+		<%= link_to ">>", edit_developer_stitch_unit_page_path(@page.next_page.stitch_unit, @page.next_page ) %>
+	<% else %>
+		<%= link_to ">>", developer_stitch_unit_page_path(@page.next_page.stitch_unit, @page.next_page ) %>
+	<% end %>
+<% end %>

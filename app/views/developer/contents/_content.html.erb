@@ -1,0 +1,7 @@
+<div id="c_<%=  content.id %>" class="element">
+  <%= render content.element, :e => content.element %>
+  <%=  hidden_field_tag "url", edit_developer_page_content_path(content.page,content)%>
+  <div class="delete">
+    <img class="trash" src="/images/space.gif" alt="delete Item" />
+  </div>
+</div>

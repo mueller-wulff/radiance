@@ -1,0 +1,48 @@
+@font-face {
+  font-family: 'Nobile';
+  font-style: normal;
+  font-weight: bold;
+  src: local('Nobile-bold'), local('Nobile'), url('nobile_bold.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'Arvo';
+  font-style: italic;
+  font-weight: normal;
+  src: local('Arvo Italic'), local('Arvo-Italic'), url('Arvo-Italic.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'Nobile';
+  font-style: italic;
+  font-weight: bold;
+  src: local('Nobile'), url('nobile_bold_italic.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'Arvo';
+  font-style: normal;
+  font-weight: normal;
+  src: local('Arvo'), url('Arvo-Regular.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'Nobile';
+  font-style: normal;
+  font-weight: normal;
+  src: local('Nobile'), url('nobile.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'Arvo';
+  font-style: normal;
+  font-weight: bold;
+  src: local('Arvo Bold'), local('Arvo-Bold'), url('Arvo-Bold.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'Arvo';
+  font-style: italic;
+  font-weight: bold;
+  src: local('Arvo Bold Italic'), local('Arvo-BoldItalic'), url('Arvo-BoldItalic.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'Nobile';
+  font-style: italic;
+  font-weight: normal;
+  src: local('Nobile-italic'), url('nobile_italic.ttf') format('truetype');
+}

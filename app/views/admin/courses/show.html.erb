@@ -1,0 +1,61 @@
+<div id="main">
+  <%= render 'layouts/breadcrumb' %>
+
+  <p id="notice"><%= notice %></p>
+  <h1 id="page_title"><%= @course.title %></h1>
+  <p>
+    <%=simple_format @course.description %>
+  </p>
+
+  <hr>
+  <h2>Actions:</h2>
+  <% if @course.deprecatable? && !@course.deprecated %>
+    <p><%= link_to 'mark as deprecated', deprecate_admin_course_path(@course) %></p>
+  <% elsif @course.publishable? && !@course.published %>
+    <p><%= link_to 'publish course', publish_admin_course_path(@course), :confirm => "Are You sure You want to publish this course?" %></p>
+    <p><%= link_to 'create new module', new_admin_course_stitch_module_path(@course)%></p>
+  <% else %>
+    <p><%= link_to 'create new module', new_admin_course_stitch_module_path(@course)%></p>
+  <% end %>
+
+
+
+  <h2>Modules:</h2>
+  <div id="module_list_table">
+    <table  class="userlist" id="module_list">
+      <thead>
+        <tr  id="thead">
+          <td>Title</td>
+          <td>Complete</td>
+          <td>&nbsp;</td>
+        </tr>
+      </thead>
+      <tbody>
+        <% @course.stitch_modules.each do |sm| %>
+          <tr id="module_<%= sm.id  %>"> 
+            <td><%= link_to sm.title, developer_stitch_module_path(sm)%></td>
+            <td><%= "Yes" if sm.complete %><%= "No" unless sm.complete %></td>
+            <td>
+              <% unless @course.published  %>
+                <%= link_to image_tag("space.gif", :alt => "edit Module", :class => "icon useredit"), edit_admin_course_stitch_module_path(@course, sm) %>
+                <% if sm.deletable? %>
+                  <%= link_to image_tag("space.gif", :alt => "delete Module", :class => "icon delete"), admin_course_stitch_module_path(@course, sm), :confirm => 'Are you sure, you want to delete this Module', :method => :delete %>
+                <% end %>
+              <% end %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+    <%= hidden_field_tag "url", admin_course_stitch_modules_path(@course) %>
+    <%= hidden_field_tag "modules_order_url", admin_course_stitch_modules_order_path(@course) %>
+  </div>
+</div>
+<div id="aside">
+
+</div>
+<script type="text/javascript">
+  $(document).ready(function(){
+    Stitched.loadCourseView();
+  });
+</script>

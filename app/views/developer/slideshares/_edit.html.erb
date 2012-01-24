@@ -1,0 +1,5 @@
+<%=  f.fields_for :element do |element_field| %>
+  <p class="input">   
+    <label for="Input">Embed Link</label>
+    <%= element_field.text_area :slide_link, :size => "10x10" %> </p>
+<% end %>

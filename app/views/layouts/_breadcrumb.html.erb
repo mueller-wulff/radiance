@@ -1,0 +1,52 @@
+<ul class="breadcrumb">
+  <% if current_user.role.class == Developer &&  current_user.role.admin %>
+    <% if @page %>
+      <li><%= link_to @page.stitch_module.course.short_title,  admin_course_path(@page.stitch_module.course) %></li>
+      <li><%= link_to @page.stitch_module.short_title, developer_stitch_module_path(@page.stitch_module) %></li>
+      <li><%= link_to @page.stitch_unit.title, developer_stitch_module_open_unit_path(@page.stitch_module, @page.stitch_unit) %></li>
+      <li><%= @page.title %></li>
+    <% elsif @stitch_module %>
+      <li><%= link_to @stitch_module.course.short_title,  admin_course_path(@stitch_module.course) %></li>
+      <% if  @stitch_module.new_record? %>
+        <li>new Module</li>
+      <% else %>
+        <li><%= @stitch_module.short_title %></li>
+      <% end %>
+    <% else %>
+      <li><%= link_to "All Courses", admin_courses_path %></li>
+      <% if  @course.new_record? %>
+        <li>new Course</li>
+      <% else %>
+        <li><%= @course.short_title %></li>
+      <% end %>
+    <% end %>
+  <% elsif current_user.role.class == Developer %>
+    <% if @page %>
+      <li><%= link_to @page.stitch_module.course.short_title,  developer_course_path(@page.stitch_module.course) %></li>
+      <li><%= link_to @page.stitch_module.short_title, developer_stitch_module_path(@page.stitch_module) %></li>
+      <li><%= link_to @page.stitch_unit.title, developer_stitch_module_open_unit_path(@page.stitch_module, @page.stitch_unit) %></li>
+      <li><%= @page.title %></li>
+    <% elsif @stitch_module %>
+      <li><%= link_to @stitch_module.course.short_title,  developer_course_path(@stitch_module.course) %></li>
+      <% if  @stitch_module.new_record? %>
+        <li>new Module</li>
+      <% else %>
+        <li><%= @stitch_module.short_title %></li>
+      <% end %>
+    <% else %>
+      <li><%= link_to "All Courses", developer_courses_path %></li>
+      <% if  @course.new_record? %>
+        <li>new Course</li>
+      <% else %>
+        <li><%= @course.short_title %></li>
+      <% end %>
+    <% end %>
+
+  <% elsif current_user.role.class == Tutor %>
+
+  <% elsif current_user.role.class == Student %>
+
+
+  <% end %>
+
+</ul>

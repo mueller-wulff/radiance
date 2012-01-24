@@ -1,0 +1,20 @@
+<table  class="userlist">
+  <thead>
+    <tr>
+      <td>Course</td>
+      <td>Short Title</td>
+      <td>Title</td>
+      <td>Complete</td>
+    </tr>
+  </thead>
+  <tbody>
+    <% modules.each do |sm| %>
+      <tr>
+        <td><%= link_to sm.course.short_title, developer_course_path(sm.course) %></td>
+        <td><%= link_to sm.short_title, developer_stitch_module_path(sm) %></td>
+        <td><%= sm.title %></td>
+        <td><%= "Yes" if sm.complete %><%= "No" unless sm.complete %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

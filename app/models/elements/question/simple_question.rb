@@ -1,0 +1,2 @@
+class SimpleQuestion < Question
+end

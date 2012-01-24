@@ -1,0 +1,31 @@
+<div id="main">
+  <% "Log in" %>  
+
+  <%= form_for (@profile_session) do |form| %>  
+    <% if @profile_session.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(@profile_session.errors.count, "error") %> prohibited this session from being saved:</h2>
+
+        <ul>
+          <% @profile_session.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+    <p class="input"> 
+      <%= form.label :login, "Login" %>  
+      <%= form.text_field :login %>  
+    </p>  
+    <p class="input"> 
+      <%= form.label :password, "Password" %>  
+      <%= form.password_field :password %>  
+    </p>  
+    <p class="submit">  
+      <%= form.submit "Submit" %>  
+    </p>  
+  <% end %>  
+</div>
+<div id="aside">
+
+</div>

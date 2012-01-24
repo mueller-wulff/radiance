@@ -1,0 +1,26 @@
+<div id="main">
+  <ul class="dropdown unit">
+    <li><a href="#">Selection</a></li>
+    <li class="active"><a href="#">All Courses</a></li>
+    <li><a href="#">Published</a></li>
+    <li><a href="#">Unpublished</a></li>
+    <li><a href="#">Deprecated</a></li>
+  </ul>	
+
+  <h2><%= link_to "Create new Course", new_admin_course_path %></h2>
+  <hr>
+
+  <h1>Published courses</h1>
+  <%= render 'list', :courses => @published %>
+
+  <h1>Deprecated courses</h1>
+  <%= render 'list', :courses => @deprecated %>
+
+
+  <h1>Unpublished courses</h1>
+  <%= render 'list', :courses => @unpublished %>
+
+</div>
+<div id="aside">
+
+</div>

@@ -1,0 +1,26 @@
+<div id="main">
+  <%= render 'layouts/breadcrumb' %>
+
+  <h1 id="page_title"><%= render 'page_title' %> 
+    <% if current_user.role.editable(@stitch_unit.stitch_module) %>
+      <small><%= link_to "Edit Page", edit_developer_stitch_unit_page_path(@page.stitch_unit,@page) %></small>
+    <% end %>
+  </h1>
+
+  <br/>
+  <div class="showView" id="contentElements">
+    <%= render :partial => 'developer/contents/content', :collection => @page.contents %>
+    <%= hidden_field_tag "page", developer_page_contents_path(@page)%>
+  </div>
+
+  <%= render 'page_bottom' %> 
+</div>
+<div id="aside" class="moving">
+
+</div>
+<script type="text/javascript">
+
+</script>
+
+
+

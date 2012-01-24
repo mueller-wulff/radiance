@@ -1,0 +1,7 @@
+<%=  f.fields_for :element do |element_field| %>
+  <p class="input">
+    <label for="Input">Enter Youtube Video ID:</label>
+    <%= element_field.text_area :video_id %>
+  </p>
+  <p><small>just copy and paste complete embed code</small></p>
+<% end %>

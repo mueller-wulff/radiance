@@ -1,0 +1,11 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  value: 1
+  gradable_id: 1
+  gradeable_type: MyString
+
+two:
+  value: 1
+  gradable_id: 1
+  gradeable_type: MyString

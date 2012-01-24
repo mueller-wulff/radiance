@@ -1,0 +1,27 @@
+<table  class="userlist">
+  <thead>
+    <tr>
+      <td>Short Title</td>
+      <td>Title</td>
+      <td>Language</td>
+      <td>&nbsp;</td>
+    </tr>
+  </thead>
+  <tbody>
+    <% courses.each do |course| %>
+      <tr>
+        <td><%= link_to course.short_title, admin_course_path(course) %></td>
+        <td><%= course.title %></td>
+        <td><%= course.language %></td>
+        <td>
+          <% unless course.published  %>
+            <%= link_to image_tag("space.gif", :alt => "edit Course", :class => "icon useredit"), edit_admin_course_path(course) %>
+            <% if course.deletable? %>
+              <%= link_to image_tag("space.gif", :alt => "delete Course", :class => "icon delete"), admin_course_path(course), :confirm => 'Are you sure, you want to delete this Course?', :method => :delete %>
+            <% end %>
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

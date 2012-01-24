@@ -1,0 +1,2 @@
+class MultipleQuestion < Question
+end

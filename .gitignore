@@ -1,0 +1,5 @@
+tmp/
+log/
+public/system/
+config/database.yml
+public/ckeditor_assets

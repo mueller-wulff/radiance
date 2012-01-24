@@ -1,0 +1,10 @@
+<div id="main">
+  <%= render 'layouts/breadcrumb' %>
+  <h1>Editing course</h1>
+  <%= form_for(@course, :url => admin_course_path(@course) ) do |f| %>
+    <%= render 'form', :f => f%>
+  <% end %>
+</div>
+<div id="aside">
+
+</div>

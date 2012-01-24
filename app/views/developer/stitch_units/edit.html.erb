@@ -1,0 +1,18 @@
+<table class="module_table">
+  <thead>
+    <tr class="unit_head">
+      <td class="unit" colspan="2">
+        <%= form_for(@unit, :url => developer_stitch_module_stitch_unit_path(@stitch_module, @unit)) do |f| %>
+          <%= f.text_field :title  %>
+        <% end %>
+      </td>
+      <td class="functions"><img src="/images/space.gif" /><img src="/images/space.gif" /></td>
+    </tr>
+  </thead>
+  <tbody>
+    <% @unit.pages.each do |page| %>
+      <%= render page %>
+    <% end %>
+  </tbody>
+</table>
+<%=  hidden_field_tag "pages_url", developer_stitch_unit_pages_path(@unit)%>

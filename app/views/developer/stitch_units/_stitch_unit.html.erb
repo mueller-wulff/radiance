@@ -1,0 +1,25 @@
+<div class="module" id="unit_<%= stitch_unit.id %>">
+  <table class="module_table">
+    <thead>
+      <tr class="unit_head">
+        <td class="unit" colspan="2"><%= stitch_unit.title %></td>
+        <td class="functions">
+          <% if current_user.role.editable(stitch_unit.stitch_module) %>
+            <%= link_to image_tag("space.gif", :alt => "edit Unit", :class => "icon useredit"), edit_developer_stitch_module_stitch_unit_path(stitch_unit.stitch_module,stitch_unit), :class => "edit_unit" %>
+            <%= link_to image_tag("space.gif", :alt => "copy Unit", :class => "icon duplicate"), developer_course_stitch_unit_copy_path(stitch_unit.stitch_module.course), :class => "copy_unit" %>
+            <%= link_to image_tag("space.gif", :alt => "delete Course", :class => "icon delete"), developer_stitch_module_stitch_unit_path(stitch_unit.stitch_module,stitch_unit), :method => :delete, :confirm => "Are You Sure you want to delete this Unit and all it's Pages?", :remote => true, :class => "delete_unit" %>
+          <% else %>
+            <%= image_tag("space.gif") %><%= image_tag("space.gif") %>
+          <% end %>
+        </td>
+      </tr>
+    </thead>
+    <tbody>
+      <% stitch_unit.pages.each do |page| %>
+        <%= render page %>
+      <% end %>
+    </tbody>
+  </table>
+  <%=  hidden_field_tag "pages_url", developer_stitch_unit_pages_path(stitch_unit)%>
+  <%=  hidden_field_tag "pages_order_url", developer_stitch_unit_pages_order_path(stitch_unit)%>
+</div>

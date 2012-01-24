@@ -1,0 +1,12 @@
+
+<div id="main">
+  <%= render 'layouts/breadcrumb' %>
+  <h1>Edit Module for <%= @course.short_title %></h1>
+  <%= form_for(@stitch_module, :url => admin_course_stitch_module_path(@course, @stitch_module)) do |f| %>
+    <%= render 'form', :f => f %>
+  <% end %>
+</div>
+<div id="aside">
+
+</div>
+

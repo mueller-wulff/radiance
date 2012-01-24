@@ -1,0 +1,1252 @@
+/* @group Reset */
+
+body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,form,fieldset,input,textarea,p,blockquote { 
+    margin:0;
+    padding:0;
+}
+
+#main > table {
+    border-collapse:collapse;
+    border-spacing:0;
+}
+
+fieldset,img { 
+    border:0;
+}
+address,caption,cite,code,dfn,em,strong,th,var {
+    font-style:normal;
+    font-weight:normal;
+}
+ol,ul {
+    list-style:none;
+}
+caption {
+    text-align:left;
+}
+h1,h2,h3,h4,h5,h6 {
+    font-size:100%;
+    font-weight:normal;
+}
+q:before,q:after {
+    content:'';
+}
+abbr,acronym { border:0;
+}
+
+/* @end */
+
+/* @group Global */
+
+strong {
+    font-weight: bold;
+}
+
+body {
+    font-family: Arial, Verdana, Sans, sans-serif;
+    background: #382A23;
+}
+
+#wrapper {
+    width: 960px;
+    overflow: hidden;
+    margin: 0 auto;
+    position: relative;
+    border-bottom-left-radius: 10px;	
+    border-bottom-right-radius: 10px;	
+    -moz-border-radius-bottomleft: 10px;	
+    -moz-border-radius-bottomright: 10px;	
+}
+
+/* @end */
+
+/* @group Top */
+
+#top {
+    padding: 12px 20px 8px 20px;
+    background: none;
+    position: relative;
+    z-index: 0;
+    border-bottom: 2px solid #8ED105;
+    height: 80px;
+    overflow: hidden;
+    color: #fff;
+}
+
+#top a {
+    color: #fff;
+    text-decoration: none;
+}
+
+#top a:hover {
+    border-bottom: 1px solid #8ED105;
+}
+
+#top h2 {
+    font-size: 28px;
+    text-shadow: 0px 2px 2px #333;
+    font-family: "Arvo", Georgia, Times, Serif;
+}
+
+#top ul {
+    position: absolute;
+    top: 75px;
+    right: 5px;
+    font-size: 12px;
+}
+
+#top li {
+    display: inline;
+    margin: 0 0 0 20px;
+    text-shadow: 0px 2px 2px #333;
+    font-family: "Arvo", Georgia, Times, Serif;
+}
+
+#top li:last-child {
+    font-weight: bold;
+}
+
+#top ul.path {
+    position: absolute;
+    top: 18px;
+    text-shadow: 0px 2px 2px #333;
+}
+
+#top ul.path li {
+    display: block;
+    text-align: right;
+}
+
+#top ul.path li:first-child {
+    font-size: 15px;
+}
+
+#top ul.path li {
+    font-size: 12px;
+    font-weight: normal;
+}
+
+
+/* @end */
+
+/* @group Nav */
+
+#nav {
+    position: absolute;
+    top: 66px;
+    left: 20px;
+    width: 900px;
+    z-index: 99;
+    font-size: 14px;
+    font-family: "Arvo", Georgia, Times, Serif;
+}
+
+#nav a {
+    color: #382A23;
+    text-decoration: none;
+}
+
+#nav li {
+    float: left;
+    padding: 8px 0 0 0;
+    height: 24px;
+    margin: 0 2px;
+    background: #F6FFBA;
+    border-radius: 10px 0 0 0;
+    -moz-border-radius: 10px 0 0 0;
+    border: 2px solid #A7DB9E;
+    border-bottom: none;
+}
+
+#nav li a {
+    padding: 0 8px;
+}
+
+#nav li:hover {
+    background: #ABC8E2;
+}
+
+#nav li:hover a {
+    color: #8ed105;
+}
+
+#nav li.active {
+    /*	-moz-box-shadow: 0px -1px 5px #888;
+	-webkit-box-shadow: 0px -1px 5px #888;
+	box-shadow: 0px -1px 5px #888; */
+    background: #fff;
+    margin: 0 3px;
+    border: 2px solid #8ED105;
+    border-bottom: 2px solid #fff;
+}
+
+#nav li.active:hover {
+    background: #fff;
+}
+
+#nav li.active:hover a {
+    color: #8ed105;
+}
+
+#nav li:first-child {
+    margin-left: 0;
+}
+
+#nav li ul {
+    position: absolute;
+    top: 36px;
+    z-index: 9999;
+    left: -9999px;
+    font-size: 12px;
+    /*	border: 2px solid #E1E6FA; */
+    border-radius: 10px;
+    -moz-border-radius: 10px;	
+}
+
+#nav li:hover ul {
+    left: auto;
+    border-radius: 0 0 0 10px;
+    -moz-border-radius: 0 0 0 10px;
+}
+
+#nav li:hover ul a {
+    color: #fff;
+}
+
+#nav li ul li a {
+    padding: 0;
+    margin: 0;
+}
+
+#nav li ul li {
+    border-radius: 0;
+    -moz-border-radius: 0;	
+    border: none;
+    margin: 0;
+    float: none;
+    margin: 0;
+    padding: 3px 10px 0 10px;
+}
+
+#nav li ul li:last-child {
+    border-radius: 0 0 0 10px;
+    -moz-border-radius: 0 0 0 10px;
+}
+
+/* @end */
+
+/* @group Main */
+
+#main {
+    background: #fff;
+    width: 660px;
+    float: left;
+    padding: 30px;
+    border-bottom-left-radius: 10px;	
+    -moz-border-radius-bottomleft: 10px;	
+    color: #382A23;
+    margin-bottom: 20px;
+    position: relative;
+}
+
+h1 {
+    font-size: 26px;
+    margin: 10px 0;
+    font-family: "Arvo", Georgia, Times, Serif;
+    color: #8ED105;
+}
+
+h1.progress {
+    background: url(ajax-loader.gif) no-repeat right;
+}
+
+#main h2 {
+    font-size: 20px;
+    margin: 10px 0;
+    font-family: "Arvo", Georgia, Times, Serif;
+    color: #8ED105;
+}
+
+#main h3 {
+    font-size: 16px;
+    margin: 10px 0;
+    font-family: "Arvo", Georgia, Times, Serif;
+    color: #8ED105;
+}
+
+#main p {
+    font-size: 12px;
+    line-height: 19px;
+    margin-bottom: 9px;
+    font-family: "Nobile", Arial, Verdana, Sans, sans-serif;
+}
+
+#main a {
+    color: #8ED105;
+}
+
+#main img {
+    display: block;
+    margin-bottom: 9px;
+}
+
+.editView .active-element {
+    border: 2px solid #1A8BB2;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+    padding: 0 5px;
+    margin: 10px 0;
+    position: relative;
+}
+
+.editView .element {
+    border: 2px solid #fff;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+    padding: 10px 5px;
+    margin: 10px 0;
+    position: relative;
+}
+
+.editView .element:hover {
+    border: 2px solid #1A8BB2;
+}
+
+#main div.editmode {
+    border: 2px solid #1A8BB2;	
+}
+
+/* @end */
+
+/* @group Aside */
+
+#aside {
+    width: 220px;
+    float: left;
+    background: #F6FFBA;
+    margin: 0;
+    padding: 20px 10px;	
+    font-size: 10px;
+    line-height: 17px;
+    margin-bottom: 20px;	
+    border-bottom-right-radius: 10px;	
+    -moz-border-radius-bottomright: 10px;	
+    font-family: "Nobile", Arial, Verdana, Sans, sans-serif;
+}
+
+#aside a {
+    color: #382A23;
+}
+
+#aside h3 {
+    font-size: 16px;
+    margin: 10px 0;	
+    font-family: "Arvo", Georgia, Times, Serif;
+    color: #8ED105;
+}
+
+#aside ul {
+    list-style-type: disc;
+    margin: 0 0 0 15px;
+    margin: 8px 0 8px 15px;
+}
+
+#aside ol {
+    list-style-type: decimal;
+    margin: 0 0 0 15px;
+    margin: 8px 0 8px 15px;
+}
+
+#aside li {
+    padding: 1px 0;
+}
+
+#aside ul.dropdown {
+    padding: 0;
+    margin: 8px 0;
+    border-top-right-radius: 10px;
+    -moz-border-radius-topright: 10px;	
+}
+
+#aside ul.dropdown li {
+    display: none;
+    list-style-type: none;
+    padding: 3px 5px;
+    background: #fff;
+}
+
+#aside ul.dropdown li:first-child {
+    display: block;
+    background: #A7DB9E;
+    border-top-right-radius: 10px;
+    -moz-border-radius-topright: 10px;	
+    padding: 5px;
+    font-family: "Arvo", Georgia, Times, Serif;
+    font-size: 12px;
+    color: #382A23;
+}
+
+#aside ul.dropdown:hover li {
+    display: block;
+}
+
+/* @end */
+
+/* @group Formularelemente */
+
+#main p.input label,
+#main p.select label,
+#main p.upload label,
+#main ul.dropdown li:first-child {
+    background: #ABC8E2;
+    border-top-right-radius: 10px;
+    -moz-border-radius-topright: 10px;	
+    padding: 5px;
+    font-family: "Arvo", Georgia, Times, Serif;
+    font-size: 12px;
+    padding: 3px 12px;
+    color: #375D81;
+    display: inline-block;
+}
+
+#main p.input input,
+#main p.input textarea {
+    width: 620px;
+    display: block;
+    padding: 10px;
+    border: 1px solid #abc8e2;
+    font-family: "Nobile", Arial, Verdana, Sans, sans-serif;
+    font-size: 11px;
+}
+
+#main p.select select {
+    display: block;
+    font-family: "Nobile", Arial, Verdana, Sans, sans-serif;
+    font-size: 11px;	
+}
+
+#main p.upload input#fileField {
+    display: block;
+    border: 1px solid #abc8e2;
+    font-family: "Nobile", Arial, Verdana, Sans, sans-serif;
+    font-size: 11px;	
+    padding: 8px;
+    width: 350px;
+}
+
+#main p.checkbox label,
+#main p.radio label {
+    margin: 0 15px 0 0;
+}
+
+/* @end */
+
+/* @group Dropdown Units */
+
+#main ul.dropdown.unit {
+    padding: 0;
+    margin: 8px 0;
+    border-radius: 0 0 0 10px;
+    -moz-border-radius: 0 0 0 10px;
+    position: absolute;
+    text-align: right;
+    top: -8px;
+    right: 0;
+    font-family: "Arvo", Georgia, Times, Serif;
+}
+
+#main ul.dropdown.unit li {
+    display: none;
+    list-style-type: none;
+    padding: 5px 10px;
+    background: #13647F;
+    font-size: 11px;
+}
+
+#main ul.dropdown.unit li.active {
+    display: block;
+    background: #13647F;
+    color: #fff;
+    border-radius: 0 0 0 10px;
+    -moz-border-radius: 0 0 0 10px;
+    padding: 5px 10px;
+}
+
+#main ul.dropdown.unit:hover li {
+    display: block;
+    border-radius: 0;
+    -moz-border-radius: 0;
+    padding: 5px 10px;
+}
+
+#main ul.dropdown.unit:hover li.active {
+    padding: 0px 10px 5px 10px;
+}
+
+#main ul.dropdown.unit:hover li:first-child.active {
+    padding: 5px 10px 0 10px;
+}
+
+#main ul.dropdown.unit:hover li.active a {
+    color: #fff;
+}
+
+#main ul.dropdown.unit:hover li:last-child {
+    border-radius: 0 0 0 10px;
+    -moz-border-radius: 0 0 0 10px;	
+}
+
+#main ul.dropdown.unit, #main ul.dropdown.unit a {
+    color: #ABC8E2;
+    text-decoration: none;
+}
+
+/* @end */
+
+/* @group Aside Moving */
+
+#aside.moving {
+    position: fixed;
+    margin-left: 720px;
+}
+
+#aside hr {
+    border: none;
+    border-top: 1px solid #E1E6FA;
+    border-bottom: 1px solid #E1E6FA;
+}
+
+/* @end */
+
+/* @group Edit Menu */
+
+#aside ul.editmenu,
+ul.editmenu {
+    margin: 0;
+}
+
+#aside ul.editmenu li {
+    list-style-type: none;
+    font-size: 12px;
+    margin: 10px 0;
+    cursor: pointer;
+    border: 2px solid #13647F;
+    padding: 4px;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+}
+
+#aside ul.editmenu li:hover {
+    border: 2px solid #e1e6fa;
+    padding: 4px;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+}
+
+ul.editmenu img {
+    background-image: url(icons-dkl.gif);
+    background-repeat: no-repeat;	
+    width: 21px;
+    margin-right: 10px;
+    float: left;
+    position: relative;
+    top: -1px;
+}
+
+.element .delete {
+    position: absolute;
+    top: -22px;
+    right: 0;
+    display: none;
+    cursor: pointer;
+    width: 100%;
+}
+
+.delete:hover,
+.editView .element:hover .delete {
+    display: block;
+}
+
+.save {
+    display: none;
+}
+
+div.editmode {
+	position: relative;
+	top: 10px;
+}
+
+div.editmode .save {
+    position: absolute;
+    top: -12px;
+    right: 0;
+    cursor: pointer;
+    display: block;
+}
+
+.save img.save {
+    background-image: url(icons-hell.gif);
+    background-repeat: no-repeat;
+    width: 21px;
+}
+
+.delete img.trash {
+    background-image: url(icons-hell.gif);
+    background-repeat: no-repeat;
+    width: 21px;
+    margin-left: 638px;
+}
+
+img.newunit {
+    background: 0 0;
+}
+
+img.newpage {
+    background: -21px 0px;
+}
+
+img.trash {
+    background: -42px 0;
+}
+
+img.save {
+    background: -147px 0;
+}
+
+img.video {
+    background: -63px 0;
+}
+
+img.map {
+    background: -84px 0;
+}
+
+img.text {
+    background: -105px 0;
+}
+
+img.question {
+    background: -126px 0;
+}
+
+/* @end */
+
+/* @group Modules Create */
+
+#main div.module h3 {
+    display: block;
+    float: left;
+    width: 110px;
+    margin: 0 20px 0 0;
+    padding: 5px 0 4px 40px;
+    background: url(icon-folder.png) no-repeat 5px 5px;
+    font-size: 18px;
+}
+
+td.unit {
+    background: url(icon-folder.png) no-repeat 5px 2px;	
+    padding: 0 0 0 40px;
+    font-size: 18px;
+    color: #1A8BB2;
+    line-height: 22px;
+    width: 600px;
+}
+
+td.page {
+    background: url(icon-document.png) no-repeat 40px 3px;
+    padding: 0 0 0 70px;
+    font-size: 15px;
+    color: #1A8BB2;
+    font-family: Arial, Verdana, Sans, sans-serif;
+}
+td.page.copy {
+    background: url(icon-document-copy.png) no-repeat 40px 3px;	
+}
+
+.module input {
+    border: 1px solid #1a8bb2;
+    padding: 3px;
+    width: 90%;
+}
+#main div.active-module,
+#main div.module:hover {
+    border: 2px solid #1A8BB2;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;	
+}
+
+div.module {
+    overflow: hidden;
+    border-bottom: 2px solid #1a8bb2;
+    border: 2px solid #fff;
+    padding: 10px;
+    cursor: pointer;
+}
+
+div.module table {
+    margin-bottom: 0;
+    border: none;
+}
+
+td.gewichtung {
+    width: 40px;
+    font-size: 12px;
+}
+
+td.gewichtung input {
+    width: 40px;
+}
+
+td.functions {
+    width: 60px;
+}
+
+.module tr:first-child {
+    background: #fff;
+}
+
+.module tr,
+.module tr:last-child {
+    border: none;
+    border-bottom: none;
+} 
+
+div.module:last-child {
+    border-bottom: none;
+}
+
+#main div.module ol {
+    display: block;
+    float: left;
+    width: 440px;
+    margin-bottom: 4px;
+}
+
+#main div.module li {
+    padding: 8px 8px 8px 30px;
+    font-size: 13px;
+    color: #666;
+    background: url(icon-document.png) no-repeat 5px 7px;
+    border: 2px solid #fff;
+}
+
+#main div.module li:hover {
+    border: 2px solid #1A8BB2;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+}
+
+#main div.module a {
+    text-decoration: none;
+    font-size: 15px;
+    margin-right: 10px;
+}
+
+#main hr {
+    border: none;
+    border-bottom: 2px solid #13647F;
+}
+
+#main li.trenner {
+    padding: 0;
+    margin: 0;
+    line-height: 10px;
+    display: inline;
+    list-style-type: none;
+}
+
+h1 small,
+#main h1 small a {
+    color: #888;
+    font-size: 15px;
+}
+
+/* @end */
+
+/* @group Pages Create */
+
+.breadcrumb {
+    margin-bottom: 20px;
+}
+
+.breadcrumb li {
+    display: inline;
+    font-size: 12px;
+    line-height: 19px;
+    font-family: "Nobile", Arial, Verdana, Sans, sans-serif;
+}
+
+.breadcrumb li:after {
+    content: " > ";
+}
+
+.breadcrumb li:last-child:after {
+    content: "";
+}
+
+div.question {
+    overflow: hidden;
+}
+
+div.question input {
+    display: block;
+    float: left;
+    margin-right: 10px;
+    clear: left;
+    margin-bottom: 10px;
+}
+
+div.question label {
+    font-size: 12px;
+    display: block;
+    float: left;
+    line-height: 19px;
+    font-family: "Nobile", Arial, Verdana, Sans, sans-serif;
+    position: relative;
+    top: -3px;
+}
+
+/* @end */
+
+/* @group Color Autumn */
+/*
+body {
+	background: #30302C;
+}
+
+#top, 
+#top a {
+	color: #fff;
+}
+
+#top {
+	border-bottom: 2px solid #FF6F22;
+}
+
+#top a:hover {
+	border-bottom: 1px solid #FF6F22;
+}
+
+#nav li {
+	border: 2px solid #FF6F22;
+}
+
+#nav li a {
+	color: #fff;
+}
+
+#nav li.active a {
+	color: #FF6F22;
+}
+
+#nav li:hover, 
+#nav li.active:hover a, 
+#nav li.active, 
+#aside ul.dropdown {
+	background: #fff;
+}
+
+#nav li.active {
+	border: 2px solid #FF6F22;
+	border-bottom: 2px solid #fff;
+}
+
+#main {
+	background: #fff;
+}
+
+#main,
+#aside ul.dropdown li:first-child {
+	color: #382A23;
+}
+
+h1,
+#main h2,
+#main h3,
+#main a,
+#aside h3,
+#nav li.active:hover a,
+#nav li:hover a,
+#top a:hover {
+	color: #FF6F22;
+}
+
+#aside,
+#nav li {
+	background: #426E60;
+}
+
+#aside, #aside a {
+	color: #fff;
+}
+
+#aside ul.dropdown li:first-child {
+	background: #A7DB9E;
+	color: #32948A;
+}
+
+#aside ul.dropdown, #aside ul.dropdown a {
+	color: #32948A;
+}
+
+/* @end */ 
+
+/* @group Color Polar */
+
+body {
+    background: #0B3C4C;
+}
+
+#top {
+    color: #fff;
+}
+
+#top {
+    border-bottom: 2px solid #E1E6FA;
+}
+
+#top a {
+    color: #e1e6fa;
+}
+
+#top li a:hover {
+    border-bottom: none;
+    color: #fff;
+}
+
+#nav li {
+    border: 2px solid #E1E6FA;
+}
+
+#nav li a,
+#nav li:hover a {
+    color: #fff;
+}
+
+#nav li.active a {
+    color: #1A8BB2;
+}
+
+
+#nav li.active:hover a, 
+#nav li.active, 
+#aside ul.dropdown {
+    background: #fff;
+}
+
+#nav li.active {
+    border: 2px solid #E1E6FA;
+    border-bottom: 2px solid #fff;
+}
+
+#nav li.active:hover li a {
+    background: none;
+    color: #fff;
+}
+
+#main {
+    background: #fff;
+}
+
+#main {
+    color: #382A23;
+}
+
+h1,
+#main h2,
+#main h3,
+#main a,
+#nav li.active:hover a,
+#top a:hover {
+    color: #1A8BB2;
+}
+
+#aside h3 {
+    color: #ABC8E2;
+
+}
+
+#aside,
+#nav li {
+    background: #13647F;
+}
+
+#aside, #aside a {
+    color: #fff;
+}
+
+#aside ul.dropdown li:first-child {
+    background: #ABC8E2;
+    color: #375D81;
+}
+
+#aside ul.dropdown, #aside ul.dropdown a {
+    color: #375D81;
+}
+
+/* @end */
+
+
+/* @group Icons */
+.icon,
+.icon:hover {
+    width: 11px;
+    height: 13px;
+    display: block;
+    float: left;
+    margin-right: 6px;
+    cursor: pointer;
+    position: relative;
+    top: 4px;
+    visibility: hidden;
+}
+
+.useredit {
+    background: -12px left;
+}
+
+.useredit:hover {
+    background: top left;
+}
+
+.duplicate {
+    background: -24px -12px;
+}
+
+.duplicate:hover {
+    background: top -24px;
+}
+
+.delete {
+    background: -12px -12px;
+}
+
+.delete:hover {
+    background: top -12px;
+}
+
+.icon,
+.icon:hover {
+    background-image: url(iconset.png);
+    background-repeat: no-repeat;
+}
+
+tr:hover .icon {
+    visibility: visible;
+}
+
+/* @end */
+
+
+
+
+/* @group Tabellen */
+
+#main > table,
+#module_list {
+    font-size: 12px;
+    line-height: 15px;
+    width: 100%;
+    margin-bottom: 9px;
+    font-family: Arial, Verdana, Sans, sans-serif;
+}
+
+#main > table thead tr:first-child,
+#module_list thead tr:first-child {
+    background: #ABC8E2;
+    font-family: "Arvo", Georgia, Times, Serif;
+    font-size: 12px;
+    color: #375D81;
+}
+
+#main > table tr,
+#module_list tr {
+    border: 1px solid #abc8e2;
+    border-bottom: none;
+    border-top: none;	
+}
+
+#main > table tr:last-child,
+#module_list tr:last-child {
+    border-bottom: 1px solid #abc8e2;
+}
+
+#main > table thead tr:first-child td,
+#module_list thead tr:first-child td {
+    border: none;
+}
+
+#module_list {
+	border-collapse: collapse;
+	margin: 0;
+	padding: 0;
+}
+
+#main > table td,
+#module_list td {
+    padding: 5px;
+}
+
+#main > table tr:hover,
+#module_list tr:hover {
+    background: #edf6ff;
+}
+
+#main > table thead tr:hover:first-child,
+#module_list thead tr:hover:first-child {
+    background: #abc8e2;
+}
+
+#main > table .module thead tr:hover:first-child {
+    background: #fff;
+}
+#main > table .module tr:hover:first-child {
+    background: #edf6ff;
+}
+#main > table .module tr:first-child {
+    font-size: 11px;
+    line-height: 15px;
+    width: 100%;
+    margin-bottom: 9px;
+    font-family: "Nobile", Arial, Verdana, Sans, sans-serif;
+}
+
+#main > table td h4, 
+#main > table td h3, 
+#main > table td h2 {
+	padding: 10px 0 !important;
+}
+
+#main > table td h1 {
+	padding: 20px 0 !important;
+}
+
+
+/* @end */
+
+/* @group Reset Editor */
+
+.element.editor div,.element.editor dl,.element.editor dt,.element.editor dd,.element.editor ul,.element.editor ol,.element.editor li,.element.editor h1,.element.editor h2,.element.editor h3,.element.editor h4,.element.editor h5,.element.editor h6,.element.editor pre,.element.editor form,.element.editor fieldset,.element.editor input,.element.editor textarea,.element.editor p,.element.editor blockquote { 
+    margin:0;
+    padding:0;
+}
+.element.editor table,
+.element.editor table td,
+.element.editor table tr {
+    border-collapse: inherit;
+    border-spacing: inherit;
+}
+
+.element.editor fieldset,.element.editor img { 
+    border:0;
+}
+
+.element.editor address,.element.editor caption,.element.editor cite,.element.editor code,.element.editor dfn,.element.editor em,.element.editor strong,.element.editor th,.element.editor var {
+    font-style:normal;
+    font-weight:normal;
+}
+.element.editor ol,.element.editor ul {
+    list-style:none;
+}
+.element.editor h2,.element.editor h3,.element.editor h4,.element.editor h5,.element.editor h6 {
+    font-size:100%;
+    font-weight:normal;
+}
+.element.editor q:before,.element.editor q:after {
+    content:'';
+}
+.element.editor abbr,.element.editor acronym { border:0;
+}
+
+.element.editor table {
+	clear: left;
+}
+
+/* @end */
+
+
+
+
+/* @group editor */
+
+#main .editor h1, #main .editor h2, #main .editor h3, #main .editor h4, #main .editor h5, #main .editor h6, #main .editor p, #main .editor li {
+	font-family: Arial, "Trebuchet MS", Sans, sans-serif;	
+	font-weight: bold;
+	color: #000;
+	margin: 10px 0;
+}
+
+#main .editor p, #main .editor li {
+	font-weight: normal;
+	font-size: 12px;
+}
+
+#main .editor div {
+	font-size: 12px;
+}
+
+#main .editor ul {
+	list-style-type: disc;
+	margin: 10px 0 10px 40px;
+}
+
+#main .editor ol {
+	list-style-type: decimal;
+	margin: 10px 0 10px 40px;
+}
+
+#main .editor li {
+	padding: 2px 0;
+}
+
+#main .editor strong {
+	font-weight: bold;
+}
+
+#main .editmode {
+	border: none;
+	margin: 0 0 30px 0;
+	padding: 0;
+}
+
+#main .editor a {
+	color: #0000ee;
+}
+
+#main .editor h4 {
+	font-size: 13px;
+}
+
+#main .editor tr:hover {
+	background: none;
+}
+
+img.center {
+	margin: 10px auto 0 auto;
+}
+
+#main .editor th {
+	font-weight: bold;
+}
+
+#main .editor td,
+#main .editor th {
+	font-size: 12px;
+}
+
+#main .editor th p {
+	font-weight: bold;
+}
+
+#main .editor span.cke_skin_kama {
+	margin: 0 !important;
+	padding: 0 !important;
+	width: 654px !important;
+}
+
+/* @end */
