@@ -52,7 +52,7 @@ class Course < ActiveRecord::Base
     if self.stitch_modules == [] && self.groups == []
       return true
     else
-      errors.add(:base, "cannot delete an non empty course!")
+      errors.add(:base, "cannot delete a non empty course!")
       return false
     end
   end

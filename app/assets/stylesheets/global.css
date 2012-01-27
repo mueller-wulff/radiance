@@ -17,6 +17,7 @@ address,caption,cite,code,dfn,em,strong,th,var {
     font-style:normal;
     font-weight:normal;
 }
+
 ol,ul {
     list-style:none;
 }
@@ -1146,8 +1147,12 @@ tr:hover .icon {
     border:0;
 }
 
-.element.editor address,.element.editor caption,.element.editor cite,.element.editor code,.element.editor dfn,.element.editor em,.element.editor strong,.element.editor th,.element.editor var {
+.element.editor address,.element.editor caption,.element.editor code,.element.editor dfn,.element.editor em,.element.editor strong,.element.editor th {
     font-style:normal;
+    font-weight:normal;
+}
+.element.editor cite, .element.editor var {
+    font-style:italic;
     font-weight:normal;
 }
 .element.editor ol,.element.editor ul {

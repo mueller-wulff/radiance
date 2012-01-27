@@ -1,4 +1,4 @@
-Stitched = ->
+Stitched = -> 
      #dom element names (for easy adjustment)
     
      #PAGE EDIT
