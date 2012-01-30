@@ -25,7 +25,7 @@ class Admin::TutorsController < ApplicationController
   # GET /tutors/new.xml
   def new
     @tutor = Tutor.new
-
+    @profile = @tutor.build_profile
     respond_to do |format|
       format.html # new.html.erb
       format.xml  { render :xml => @tutor }
@@ -41,7 +41,7 @@ class Admin::TutorsController < ApplicationController
   # POST /tutors.xml
   def create
     @tutor = Tutor.new(params[:tutor])
-
+    @profile = @tutor.profile
     respond_to do |format|
       if @tutor.save
         format.html { redirect_to(@tutor, :notice => 'Tutor was successfully created.') }
