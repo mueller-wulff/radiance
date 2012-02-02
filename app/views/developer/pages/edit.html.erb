@@ -1,7 +1,7 @@
 <div id="main">	
   <%= render 'layouts/breadcrumb' %>
 
-  <h1 id="page_title"><%= render 'page_title' %><small><%= link_to "Preview Page", developer_stitch_unit_page_path(@page.stitch_unit,@page), :id => "preview_link" %></small></h1>
+  <h1 id="page_title"><%= render 'page_title' %><small><%= link_to "Preview Page", developer_stitch_unit_page_path(@page.stitch_unit,@page), :id => "preview_link" %></small>  <small> Assignment? <%= check_box_tag 'page_assignment', @page.id, @page.assignment, {'data-href' => make_assignment_developer_stitch_unit_page_path(@page.stitch_unit,@page) ,:class => 'assignment_check'} %></small></h1>
 
   <br/>
   <div class="editView" id="contentElements">
@@ -62,6 +62,7 @@
 <script type="text/javascript">
   $(document).ready(function(){
     Stitched.loadPageEditView();
+		Stitched.changeAssignmentValue();
   });
 </script>
 

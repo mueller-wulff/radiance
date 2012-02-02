@@ -492,7 +492,16 @@ Stitched = ->
              $(this).attr('href', $(this).attr('_cke_saved_href'))
              return
          return
-        
+         
+     changeAssignmentValue = ->
+         $('.assignment_check').click ->
+             url = $(this).data('href')
+             data = 'page_id=' + $('#page_assignment').attr("value") + '&page_assignment=' + $('#page_assignment').is(':checked')
+             sendDataToServer(data, url)
+             return
+         return
+     
+    
      #Page View Functions
      loadCourseView = ->
          makeSortableModules()
@@ -538,7 +547,8 @@ Stitched = ->
      loadCourseView: loadCourseView,
      loadFAQView: loadFAQView,
      linkCKLinks: linkCKLinks,
-     checkForProgressIndicator: checkForProgressIndicator
+     checkForProgressIndicator: checkForProgressIndicator,
+     changeAssignmentValue: changeAssignmentValue
 
 root = exports ? this
 root.Stitched = Stitched()
