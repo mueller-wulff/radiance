@@ -496,7 +496,7 @@ Stitched = ->
      changeAssignmentValue = ->
          $('.assignment_check').click ->
              url = $(this).data('href')
-             data = 'page_id=' + $('#page_assignment').attr("value") + '&page_assignment=' + $('#page_assignment').is(':checked')
+             data = 'page_assignment=' + $('#page_assignment').is(':checked')
              sendDataToServer(data, url)
              return
          return
