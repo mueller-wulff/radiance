@@ -33,10 +33,8 @@ class Content < ActiveRecord::Base
       
       @copy.element.save!
       @copy.save!
-      @copy.update_attribute(:page, new_page)
-      
-      
-      
+      @copy.update_attribute(:page, new_page)      
     end
-  end
+  end  
+  
 end

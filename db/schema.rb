@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120130153531) do
+ActiveRecord::Schema.define(:version => 20120206103832) do
 
   create_table "answers", :id => false, :force => true do |t|
     t.integer  "id",          :null => false
@@ -51,6 +51,7 @@ ActiveRecord::Schema.define(:version => 20120130153531) do
     t.datetime "updated_at"
     t.integer  "position"
     t.datetime "deleted_at"
+    t.float    "weight"
   end
 
   create_table "courses", :id => false, :force => true do |t|
