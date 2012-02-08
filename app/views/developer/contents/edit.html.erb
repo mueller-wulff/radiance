@@ -1,4 +1,4 @@
-<%= form_for(@content, :url => developer_page_content_path(@page,@content)) do |f| %>
+<%= form_for(@content, :url => developer_page_content_path(@page,@content)) do |f| %>	
   <%= render "developer/#{@element.class.name.pluralize.underscore}/edit", :page => @page, :content => @content, :f => f %>
 	<% if @page.assignment %>
 		<p class="input">
