@@ -11,8 +11,9 @@
     	<li> <%= link_to  'Modules', developer_stitch_modules_path, :id => 'courses'%> </li>
     <% elsif current_user.role.class == Tutor %>
 			<li> <%= link_to  'Students', students_path, :id => 'students'%> </li>
+			<li> <%= link_to  'Groups', tutor_groups_path(current_user.role_id), :id => 'groups'%> </li>
     <% elsif current_user.role.class == Student %>
-
+			<li><%= link_to 'Profile', tutor_student_path(current_user), :id => 'students' %>
     <% end %>
     <li> <%= link_to 'FAQ', faqs_path, :id => 'faq' %> </li>
   <% else %>

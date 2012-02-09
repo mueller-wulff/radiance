@@ -14,6 +14,6 @@ class Notifier < ActionMailer::Base
     sent_on       Time.now  
     from          "accounts@stitched.com"
     @user  = user 
-  end
+  end  
   
 end

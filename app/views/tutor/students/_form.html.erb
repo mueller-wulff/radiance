@@ -1,17 +1,33 @@
-<%= form_for(@student) do |f| %>
-  <% if @student.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@student.errors.count, "error") %> prohibited this student from being saved:</h2>
+<% if @student.errors.any? %>
+   <div id="error_explanation">
+     <h2><%= pluralize(@student.errors.count, "error") %> prohibited this student from being saved:</h2>
 
-      <ul>
-      <% @student.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
+     <ul>
+     <% @student.errors.full_messages.each do |msg| %>
+       <li><%= msg %></li>
+     <% end %>
+     </ul>
+   </div>
+ <% end %>
 
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+<%= f.fields_for :profile do |g| %>
+  <p class="input">
+    <%= label :login, "Login" %>  
+    <%= g.text_field :login %>  
+  </p>  
+  <p class="input">
+    <%= label :name, "Name" %>  
+    <%= g.text_field :name %>  
+  </p>  
+  <p class="input">  
+    <%= label :lastname, "Lastname" %>  
+    <%= g.text_field :lastname %>  
+  </p>
+	<p class="input">  
+    <%= label "Avatar" %>  
+    Please create your avatar at <%= link_to "en.gravatar.com" %> 
+  </p>
 <% end %>
+<p class="submit"> 
+  <%= submit_tag "Submit" %>  
+</p>

@@ -13,13 +13,18 @@ Stitched::Application.routes.draw do
   match 'logout', :to => 'Session::ProfileSessions#destroy'
   match 'login', :to => 'Session::ProfileSessions#new'
   
-  resources :students do
-    resources :profiles
+  scope :module => "tutor" do
+    resources :students do      
+      resources :profiles
+    end
+    
+    resources :tutor do
+      resources :groups
+    end
+    
+    resources :notes
+    resources :responses
   end
-
-  resources :groups
-  resources :notes
-  resources :responses
 
   #special route for open units in module show
   match 'developer/stitch_modules/:id(/open_unit/:stitch_unit_id)' => 'developer/stitch_modules#show', :as => "developer_stitch_module_open_unit"

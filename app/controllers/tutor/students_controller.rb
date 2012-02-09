@@ -1,4 +1,5 @@
-class StudentsController < ApplicationController
+class Tutor::StudentsController < ApplicationController
+  before_filter :require_user
   # GET /students
   # GET /students.xml
   def index

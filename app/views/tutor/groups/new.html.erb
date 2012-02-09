@@ -1,5 +1,33 @@
-<h1>New group</h1>
+<div id="main">
+	<h1>New Group</h1>
+	<%= form_for([@tutor, @group], :url => tutor_groups_path) do |f| %>
+	  <% if @group.errors.any? %>
+	    <div id="error_explanation">
+	      <h2><%= pluralize(@group.errors.count, "error") %> prohibited this group from being saved:</h2>
 
-<%= render 'form' %>
+	      <ul>
+	      <% @group.errors.full_messages.each do |msg| %>
+	        <li><%= msg %></li>
+	      <% end %>
+	      </ul>
+	    </div>
+	  <% end %>
 
-<%= link_to 'Back', groups_path %>
+	  <p class="input">
+	    <%= f.label :title %><br />
+	    <%= f.text_field :title %>
+	  </p> 
+	 	<p class="select">
+	    <%= f.label :course %><br />
+	    <%= select_tag "courses", options_from_collection_for_select(@courses, "id", "short_title") %>
+	  </p>
+	  <p class="submit"> 
+	    <%= submit_tag "Submit" %>  
+	  </p>  
+	<% end %>
+	<%= link_to 'Back', tutor_groups_path %>
+</div>
+<div id="aside">
+
+</div>
+
