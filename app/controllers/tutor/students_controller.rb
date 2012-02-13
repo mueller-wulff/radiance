@@ -43,7 +43,6 @@ class Tutor::StudentsController < ApplicationController
   # POST /students
   # POST /students.xml
   def create
-    #TODO enrollment logic
     if Profile.find_by_email(params[:student]["profile_attributes"]["email"]).nil?
       @student = Student.new(params[:student])
       @profile = @student.profile
@@ -52,7 +51,6 @@ class Tutor::StudentsController < ApplicationController
       @profile = Profile.find_by_email(params[:student]["profile_attributes"]["email"])
       @student = @profile.role      
     end
-    #logger.debug ("profile #{@profile.attributes.inspect}")
     respond_to do |format|
       if @student.save
         @student.groups << @group       
