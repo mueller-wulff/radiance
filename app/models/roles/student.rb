@@ -7,7 +7,7 @@ class Student < Role
   has_many :groups, :through => :enrollments
   
   before_destroy :deletable?
-  before_save :enforce_logic
+  #before_save :enforce_logic
   
   def deletable?
     #can only be deleted if not yet activated

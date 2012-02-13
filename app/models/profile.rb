@@ -1,9 +1,15 @@
 class Profile < ActiveRecord::Base
  # validates :login, :presence => true, :uniqueness => true, :length => {:minimum => 3, :maximum => 8}
+  belongs_to :role, :polymorphic => true
   
   validates :name, :presence => true, :unless => :inactive_student
   validates :lastname, :presence => true, :unless => :inactive_student
   validates :role_type, :presence => true
+  validates :email,
+    :presence => true,
+    :uniqueness => true,
+    :format => { :with => /^([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})$/i },
+    :on => :create
   #validates :role_id, :presence => true
   validates_associated :role
    
@@ -15,7 +21,9 @@ class Profile < ActiveRecord::Base
     #for more options check the AuthLogic documentation
   end
   
-  belongs_to :role, :polymorphic => true
+  def self.find_by_login_or_email(login)
+     find_by_login(login) || find_by_email(login)
+  end  
   
   def inactive_student
     role_type == 'Student' && role == nil

@@ -38,6 +38,7 @@ class Tutor::GroupsController < ApplicationController
   # GET /groups/1/edit
   def edit
     @group = @tutor.groups.find(params[:id])
+    @students = @group.students.all
   end
 
   # POST /groups

@@ -1,5 +1,7 @@
 class Tutor::StudentsController < ApplicationController
   before_filter :require_user
+  before_filter :grab_tutor_id
+  before_filter :grab_group_id
   # GET /students
   # GET /students.xml
   def index
@@ -26,8 +28,7 @@ class Tutor::StudentsController < ApplicationController
   # GET /students/new.xml
   def new
     @student = Student.new
-    @profile = Profile.new
-    @profilable = @student
+    @profile = @student.build_profile
     respond_to do |format|
       format.html # new.html.erb
       format.xml  { render :xml => @student }
@@ -42,18 +43,22 @@ class Tutor::StudentsController < ApplicationController
   # POST /students
   # POST /students.xml
   def create
-    @student = Student.new(params[:student])
-    @profilable = @student    
-    pw = ActiveSupport::SecureRandom.hex(10)
-    params[:profile]["password"] = pw
-    params[:profile]["password_confirmation"] = pw   
-    @profile = @profilable.profiles.build(params[:profile]) 
-    #logger.debug ("password #{@profile.attributes.inspect}")
+    #TODO enrollment logic
+    if Profile.find_by_email(params[:student]["profile_attributes"]["email"]).nil?
+      logger.debug("if path")
+      @student = Student.new(params[:student])
+      @profile = @student.profile
+      @profile.login = params[:student]["profile_attributes"]["email"]
+    else
+      logger.debug("else path")
+      @profile = Profile.find_by_email(params[:student]["profile_attributes"]["email"])
+      @student = @profile.role      
+    end
+    #logger.debug ("profile #{@profile.attributes.inspect}")
     respond_to do |format|
-      if @student.save
-        Notifier.send_pw(@profile, pw).deliver
-        logger.debug("email #{Notifier.send_pw(@profile, pw).deliver}")        
-        format.html { redirect_to(@student, :notice => 'Student was successfully created.') }
+      if @student.save 
+        @group.students << @student       
+        format.html { redirect_to(@student, :notice => 'Student was successfully enrolled.') }
         format.xml  { render :xml => @student, :status => :created, :location => @student }
       else
         format.html { render :action => "new" }
@@ -89,5 +94,15 @@ class Tutor::StudentsController < ApplicationController
       format.xml  { head :ok }
     end
   end
-    
+
+  private
+
+    def grab_tutor_id
+      @tutor = Tutor.find(params[:tutor_id])
+    end
+
+    def grab_group_id
+      @group = Group.find(params[:group_id])
+    end
+
 end

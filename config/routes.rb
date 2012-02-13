@@ -19,7 +19,9 @@ Stitched::Application.routes.draw do
     end
     
     resources :tutor do
-      resources :groups
+      resources :groups do
+        resources :students 
+      end
     end
     
     resources :notes

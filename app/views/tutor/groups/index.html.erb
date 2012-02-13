@@ -5,6 +5,7 @@
   	<thead>
   		<tr>
 				<td>Title</td>
+				<td>Course</td>
         <td>&nbsp;</td>
       </tr>
     </thead>
@@ -12,6 +13,7 @@
 			<% @groups.each do |group| %>
 			  <tr>
 					<td><%= group.title %></td>
+					<td><%= group.course.short_title %></td>
 			    <td>
 						<%= link_to image_tag("space.gif", :alt => "edit Group", :class => "icon useredit"), edit_tutor_group_path(@tutor, group) %>
           	<%= link_to image_tag("space.gif", :alt => "delete Group", :class => "icon delete"), tutor_group_path(@tutor, group), :confirm => 'Are you sure, you want to delete this Group?', :method => :delete %>
@@ -21,6 +23,7 @@
 			<tr>
       	<td><%= link_to 'New Group', new_tutor_group_path %></td>
         <td></td>
+				<td></td>
       </tr>
 		</tbody>
 	</table>
