@@ -45,20 +45,18 @@ class Tutor::StudentsController < ApplicationController
   def create
     #TODO enrollment logic
     if Profile.find_by_email(params[:student]["profile_attributes"]["email"]).nil?
-      logger.debug("if path")
       @student = Student.new(params[:student])
       @profile = @student.profile
       @profile.login = params[:student]["profile_attributes"]["email"]
     else
-      logger.debug("else path")
       @profile = Profile.find_by_email(params[:student]["profile_attributes"]["email"])
       @student = @profile.role      
     end
     #logger.debug ("profile #{@profile.attributes.inspect}")
     respond_to do |format|
-      if @student.save 
-        @group.students << @student       
-        format.html { redirect_to(@student, :notice => 'Student was successfully enrolled.') }
+      if @student.save
+        @student.groups << @group       
+        format.html { redirect_to(edit_tutor_group_path(@tutor, @group), :notice => 'Student was successfully enrolled.') }
         format.xml  { render :xml => @student, :status => :created, :location => @student }
       else
         format.html { render :action => "new" }
