@@ -67,7 +67,7 @@ class Tutor::StudentsController < ApplicationController
   # PUT /students/1.xml
   def update
     @student = Student.find(params[:id])
-
+    
     respond_to do |format|
       if @student.update_attributes(params[:student])
         format.html { redirect_to(@student, :notice => 'Student was successfully updated.') }
@@ -88,6 +88,23 @@ class Tutor::StudentsController < ApplicationController
     respond_to do |format|
       format.html { redirect_to(students_url) }
       format.xml  { head :ok }
+    end
+  end
+  
+  def shuffle
+    @student = Student.find(params[:id])    
+  end
+  
+  def update_shuffle
+    @student = Student.find(params[:id]) 
+    new_group = Group.find(params[:metagroup])
+    @student.shuffle_group(@group, new_group)
+    respond_to do |format|
+      if @student.save     
+        format.html { redirect_to(edit_tutor_group_path(@tutor, @group), :notice => 'Student was successfully shuffled.') }
+      else
+        format.html { render :action => "shuffle" }
+      end
     end
   end
 

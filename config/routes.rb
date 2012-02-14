@@ -5,25 +5,30 @@ Stitched::Application.routes.draw do
     resources :unsupported_browsers
     resource :dashboard
   end
-  
+
   scope :module => 'session' do
     resources :password_resets
     resources :profile_sessions
   end
   match 'logout', :to => 'Session::ProfileSessions#destroy'
   match 'login', :to => 'Session::ProfileSessions#new'
-  
+
   scope :module => "tutor" do
-    resources :students do      
+    resources :students do
       resources :profiles
     end
-    
+
     resources :tutor do
       resources :groups do
-        resources :students 
+        resources :students do
+          member do
+            get 'shuffle'
+            put 'update_shuffle'
+          end
+        end
       end
     end
-    
+
     resources :notes
     resources :responses
   end

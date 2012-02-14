@@ -14,6 +14,7 @@ class Student < Role
     !self.activated
   end
   
+  # nicht mit hmt vereinbar
   def enforce_logic
     if self.groups == []
       errors.add(:base, "student must have at least one group")
@@ -35,4 +36,10 @@ class Student < Role
     groups = enrollments.map{|e|e.group}
     groups.map{|g| g.course}
   end
+  
+  def shuffle_group(old_group, new_group)
+    self.groups.delete(old_group)
+    self.groups << new_group    
+  end
+  
 end

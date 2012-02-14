@@ -20,5 +20,5 @@ class Group < ActiveRecord::Base
       return false
     end
   end
-  
+    
 end

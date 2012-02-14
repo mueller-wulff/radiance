@@ -84,7 +84,7 @@ class Tutor::GroupsController < ApplicationController
       format.xml  { head :ok }
     end
   end
-  
+    
   private
   
   def grab_tutor_id
