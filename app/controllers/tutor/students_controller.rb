@@ -1,7 +1,7 @@
 class Tutor::StudentsController < ApplicationController
   before_filter :require_user
-  before_filter :grab_tutor_id
-  before_filter :grab_group_id
+  before_filter :grab_tutor_id, :except => [:edit, :update]
+  before_filter :grab_group_id, :except => [:edit, :update]
   # GET /students
   # GET /students.xml
   def index
@@ -38,6 +38,7 @@ class Tutor::StudentsController < ApplicationController
   # GET /students/1/edit
   def edit
     @student = Student.find(params[:id])
+    @profile = @student.profile
   end
 
   # POST /students
@@ -49,11 +50,12 @@ class Tutor::StudentsController < ApplicationController
       @profile.login = params[:student]["profile_attributes"]["email"]
     else
       @profile = Profile.find_by_email(params[:student]["profile_attributes"]["email"])
-      @student = @profile.role      
+      @student = @profile.role  
     end
     respond_to do |format|
       if @student.save
-        @student.groups << @group       
+        @student.groups << @group
+        @student.send_new_group(@group)       
         format.html { redirect_to(edit_tutor_group_path(@tutor, @group), :notice => 'Student was successfully enrolled.') }
         format.xml  { render :xml => @student, :status => :created, :location => @student }
       else
@@ -67,10 +69,10 @@ class Tutor::StudentsController < ApplicationController
   # PUT /students/1.xml
   def update
     @student = Student.find(params[:id])
-    
+    @student.activate unless @student.activated
     respond_to do |format|
-      if @student.update_attributes(params[:student])
-        format.html { redirect_to(@student, :notice => 'Student was successfully updated.') }
+      if @student.update_attributes(params[:student]) 
+        format.html { redirect_to(root_url, :notice => 'Student was successfully updated.') }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }
@@ -100,7 +102,8 @@ class Tutor::StudentsController < ApplicationController
     new_group = Group.find(params[:metagroup])
     @student.shuffle_group(@group, new_group)
     respond_to do |format|
-      if @student.save     
+      if @student.save        
+        @student.send_new_group(new_group)
         format.html { redirect_to(edit_tutor_group_path(@tutor, @group), :notice => 'Student was successfully shuffled.') }
       else
         format.html { render :action => "shuffle" }

@@ -14,6 +14,15 @@ class Notifier < ActionMailer::Base
     sent_on       Time.now  
     from          "accounts@stitched.com"
     @user  = user 
+  end
+  
+  def new_group(student, group)
+    subject       "Welcome to STITCHed"  
+    recipients    student.profile.email  
+    sent_on       Time.now  
+    from          "accounts@stitched.com"
+    @student  = student
+    @group    = group
   end  
   
 end

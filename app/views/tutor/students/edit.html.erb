@@ -1,6 +1,40 @@
-<h1>Editing student</h1>
+<div id="main">
+	<h1>Editing Profile</h1>
+	<%= form_for(@student, :url => student_path) do |f| %> 
+	  <% if @profile.errors.any? %>
+	    <div id="error_explanation">
+	      <h2><%= pluralize(@profile.errors.count, "error") %> prohibited this profile from being saved:</h2>
 
-<%= render 'form' %>
+	      <ul>
+	        <% @profile.errors.full_messages.each do |msg| %>
+	          <li><%= msg %></li>
+	        <% end %>
+	      </ul>
+	    </div>
+	  <% end %>  
+		<%= f.fields_for :profile do |g| %>
+		  <p class="input">
+		    <%= label :login, "Login" %>  
+		    <%= g.text_field :login %>  
+		  </p>  
+		  <p class="input">
+		    <%= label :name, "Name" %>  
+		    <%= g.text_field :name %>  
+		  </p>  
+		  <p class="input">  
+		    <%= label :lastname, "Lastname" %>  
+		    <%= g.text_field :lastname %>  
+		  </p>
+			<p class="input">  
+		    <%= label_tag "Avatar" %>  
+		    Please create your avatar at <%= link_to "Gravatar", "http://en.gravatar.com", :target => '_blank' %> 
+		  </p>
+			<p class="submit"> 
+			  <%= submit_tag "Save" %>  
+			</p>
+		<% end %>
+	<% end %> 
+</div>
+<div id="aside">
 
-<%= link_to 'Show', @student %> |
-<%= link_to 'Back', students_path %>
+</div>

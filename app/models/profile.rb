@@ -26,7 +26,12 @@ class Profile < ActiveRecord::Base
   end  
   
   def inactive_student
-    role_type == 'Student' && role == nil
+    if role_type == 'Student' 
+      student = Student.find(role_id)
+      return false if student.activated
+      return true
+    end
+    return false
   end
   
   def deliver_password_reset_instructions!  

@@ -26,7 +26,6 @@ class Student < Role
     end
   end
   
-  
   #TODO implement
   def activate
     self.update_attribute(:activated, true)
@@ -40,6 +39,10 @@ class Student < Role
   def shuffle_group(old_group, new_group)
     self.groups.delete(old_group)
     self.groups << new_group    
+  end
+  
+  def send_new_group(group)
+    Notifier.new_group(self, group).deliver
   end
   
 end
