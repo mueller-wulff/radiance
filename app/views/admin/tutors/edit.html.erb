@@ -1,6 +1,11 @@
-<h1>Editing tutor</h1>
+<div id="main">
+  <h1>Editing Tutor</h1>
+  <%= form_for(@tutor, :url => admin_tutors_path) do |f| %>
+    <%= render 'form', :f => f %>  
+  <% end %>
+  <%= link_to 'Back', admin_tutors_path %>
 
-<%= render 'form' %>
+</div>
+<div id="aside">
 
-<%= link_to 'Show', @tutor %> |
-<%= link_to 'Back', tutors_path %>
+</div>

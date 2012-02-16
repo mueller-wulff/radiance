@@ -27,6 +27,10 @@
     <%= g.text_field  :email %>  
   </p> 
 <% end %>
+<p class="select">
+	<%= f.label :course %>
+	<%= select_tag "courses", options_from_collection_for_select(@courses, "id", "short_title") %>
+</p>
 <p class="submit"> 
   <%= submit_tag "Submit" %>  
 </p>

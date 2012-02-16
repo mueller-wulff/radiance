@@ -25,6 +25,7 @@ class Admin::TutorsController < ApplicationController
   # GET /tutors/new.xml
   def new
     @tutor = Tutor.new
+    @courses = Course.all
     @profile = @tutor.build_profile
     respond_to do |format|
       format.html # new.html.erb
@@ -35,13 +36,16 @@ class Admin::TutorsController < ApplicationController
   # GET /tutors/1/edit
   def edit
     @tutor = Tutor.find(params[:id])
+    @profile = @tutor.profile
+    @courses = Course.all
   end
 
   # POST /tutors
   # POST /tutors.xml
   def create
     @tutor = Tutor.new(params[:tutor])
-    @profile = @tutor.profile
+    @tutor.course_id = params[:courses]
+    @profile = @tutor.profile    
     respond_to do |format|
       if @tutor.save
         format.html { redirect_to(admin_tutors_path, :notice => 'Tutor was successfully created.') }

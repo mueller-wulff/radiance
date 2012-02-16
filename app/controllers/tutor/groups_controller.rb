@@ -27,8 +27,6 @@ class Tutor::GroupsController < ApplicationController
   # GET /groups/new.xml
   def new
     @group = @tutor.groups.new
-    @courses = Course.all
-
     respond_to do |format|
       format.html # new.html.erb
       format.xml  { render :xml => @group }
@@ -45,7 +43,7 @@ class Tutor::GroupsController < ApplicationController
   # POST /groups.xml
   def create
     @group = @tutor.groups.new(params[:group])
-    @group.course_id = params[:courses]
+    @group.course = Course.find(@tutor.course_id)
     respond_to do |format|
       if @group.save
         format.html { redirect_to(tutor_groups_url, :notice => 'Group was successfully created.') }

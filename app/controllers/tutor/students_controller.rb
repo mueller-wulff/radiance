@@ -1,7 +1,7 @@
 class Tutor::StudentsController < ApplicationController
   before_filter :require_user
-  before_filter :grab_tutor_id, :except => [:edit, :update]
-  before_filter :grab_group_id, :except => [:edit, :update]
+  before_filter :grab_tutor_id, :except => [:edit, :update, :show]
+  before_filter :grab_group_id, :except => [:edit, :update, :show]
   # GET /students
   # GET /students.xml
   def index
