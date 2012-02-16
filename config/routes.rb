@@ -58,6 +58,7 @@ Stitched::Application.routes.draw do
         member do
           get 'ajax_show'
           get 'ajax_edit'
+          post 'make_assignment'
         end
       end
     end

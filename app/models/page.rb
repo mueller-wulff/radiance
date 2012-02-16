@@ -9,7 +9,7 @@ class Page < ActiveRecord::Base
   has_many :contents, :dependent => :destroy, :order => "position"
 
   before_create :fill_with_default_content
-  
+    
   def fill_with_default_content
     self.title ||= "new Page" 
     unless self.position
@@ -90,6 +90,7 @@ class Page < ActiveRecord::Base
       end
     end
   end
+    
 end
 
  

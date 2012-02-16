@@ -6,6 +6,7 @@ class Content < ActiveRecord::Base
   accepts_nested_attributes_for :element
   acts_as_paranoid :dependent_recovery_window => 1.minute
   
+  validate :check_total_weight, :on => :update
   before_create :set_position
   
   #Paranoid behavoir!
@@ -33,10 +34,15 @@ class Content < ActiveRecord::Base
       
       @copy.element.save!
       @copy.save!
-      @copy.update_attribute(:page, new_page)
-      
-      
-      
+      @copy.update_attribute(:page, new_page)      
     end
   end
+  
+  def check_total_weight
+    total_weight = self.weight
+    @page = self.page
+    page.contents.reject {|c| c == self}.each {|r| total_weight += r.weight.to_f}
+    errors.add(:weight, "total weight is over 100%") if total_weight > 100  
+  end
+    
 end
