@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120206103832) do
+ActiveRecord::Schema.define(:version => 20120217131355) do
 
   create_table "answers", :id => false, :force => true do |t|
     t.integer  "id",          :null => false
@@ -66,6 +66,14 @@ ActiveRecord::Schema.define(:version => 20120206103832) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "courses_tutors", :id => false, :force => true do |t|
+    t.integer "course_id", :null => false
+    t.integer "tutor_id",  :null => false
+  end
+
+  add_index "courses_tutors", ["course_id", "tutor_id"], :name => "index_courses_tutors_on_course_id_and_tutor_id"
+  add_index "courses_tutors", ["tutor_id", "course_id"], :name => "index_courses_tutors_on_tutor_id_and_course_id"
 
   create_table "developers", :id => false, :force => true do |t|
     t.integer  "id",         :null => false
@@ -181,7 +189,6 @@ ActiveRecord::Schema.define(:version => 20120206103832) do
     t.text     "txt"
     t.boolean  "multi",      :default => true
     t.string   "type"
-    t.text     "answers"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "max_length"
@@ -239,7 +246,6 @@ ActiveRecord::Schema.define(:version => 20120206103832) do
 
   create_table "tutors", :id => false, :force => true do |t|
     t.integer  "id",         :null => false
-    t.integer  "course_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

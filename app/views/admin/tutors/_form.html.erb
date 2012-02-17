@@ -28,8 +28,12 @@
   </p> 
 <% end %>
 <p class="select">
-	<%= f.label :course %>
-	<%= select_tag "courses", options_from_collection_for_select(@courses, "id", "short_title") %>
+	<%= f.label :courses %>
+	<ol>		
+		<% @courses.each do |course| %>
+			<li><%= check_box_tag("tutor[course_ids][]", course.id, @tutor.courses.include?(course)) %> <%= course.short_title %></li>
+		<% end %>
+	</ol>
 </p>
 <p class="submit"> 
   <%= submit_tag "Submit" %>  

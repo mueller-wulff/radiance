@@ -44,7 +44,6 @@ class Admin::TutorsController < ApplicationController
   # POST /tutors.xml
   def create
     @tutor = Tutor.new(params[:tutor])
-    @tutor.course_id = params[:courses]
     @profile = @tutor.profile    
     respond_to do |format|
       if @tutor.save
