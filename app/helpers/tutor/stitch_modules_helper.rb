@@ -1,0 +1,2 @@
+module Tutor::StitchModulesHelper
+end

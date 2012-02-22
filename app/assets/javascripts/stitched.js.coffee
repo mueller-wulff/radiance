@@ -537,6 +537,11 @@ Stitched = ->
          bindViewPageLinks()
          return
          
+     loadTutorModuleView = ->
+          hideAllPages()
+          bindOpenUnitLinks()
+          return
+         
      loadFAQView = ->
          bindHeadlineAccordion()
          return
@@ -544,6 +549,7 @@ Stitched = ->
      loadPageEditView: loadPageEditView,
      loadModuleEditView: loadModuleEditView,
      loadModulePreView: loadModulePreView,
+     loadTutorModuleView: loadTutorModuleView,
      loadCourseView: loadCourseView,
      loadFAQView: loadFAQView,
      linkCKLinks: linkCKLinks,

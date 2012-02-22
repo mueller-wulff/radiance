@@ -1,0 +1,18 @@
+<div class="module" id="unit_<%= stitch_unit.id %>">
+  <table class="module_table">
+    <thead>
+      <tr class="unit_head">
+        <td class="unit" colspan="2"><%= stitch_unit.title %></td>
+        <td class="functions">
+          <%= image_tag("space.gif") %><%= image_tag("space.gif") %>
+        </td>
+      </tr>
+    </thead>
+    <tbody>
+      <% stitch_unit.pages.each do |page| %>
+        <%= render page %>
+      <% end %>
+    </tbody>
+  </table>
+	<%=  hidden_field_tag "pages_url", tutor_stitch_unit_pages_path(stitch_unit)%>
+</div>

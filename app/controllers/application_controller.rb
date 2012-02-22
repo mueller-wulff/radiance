@@ -40,6 +40,16 @@ class ApplicationController < ActionController::Base
     end
   end
   
+  def require_tutor
+    unless current_user && current_user.role.class == Tutor
+      #TODO check tutor rights!
+      store_location
+      flash[:notice] = "You must be admin in order to access this page" #admin or developer?
+      redirect_to login_url
+      return false
+    end
+  end
+  
   def require_developer
     unless current_user && current_user.role.class == Developer
       #TODO check developer rights!

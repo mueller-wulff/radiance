@@ -1,6 +1,6 @@
 class Tutor::GroupsController < ApplicationController
   before_filter :require_user
-  before_filter :grab_tutor_id
+  before_filter :grab_tutor
   # GET /groups
   # GET /groups.xml
   def index
@@ -43,7 +43,7 @@ class Tutor::GroupsController < ApplicationController
   # POST /groups.xml
   def create
     @group = @tutor.groups.new(params[:group])
-    @group.course = Course.find(@tutor.course_id)
+    @group.course = Course.find(params[:course])
     respond_to do |format|
       if @group.save
         format.html { redirect_to(tutor_groups_url, :notice => 'Group was successfully created.') }
@@ -85,8 +85,8 @@ class Tutor::GroupsController < ApplicationController
     
   private
   
-  def grab_tutor_id
-    @tutor = Tutor.find(params[:tutor_id])
+  def grab_tutor
+    @tutor = current_user.role
   end
     
 end

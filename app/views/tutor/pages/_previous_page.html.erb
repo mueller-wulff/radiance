@@ -1,0 +1,3 @@
+<% if @page.previous_page %>
+	<%= link_to "<<", tutor_stitch_unit_page_path(@page.previous_page.stitch_unit, @page.previous_page ) %>
+<% end %>

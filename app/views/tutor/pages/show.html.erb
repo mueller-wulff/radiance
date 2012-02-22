@@ -1,0 +1,21 @@
+<div id="main">
+  <%= render 'layouts/breadcrumb' %>
+
+  <h1 id="page_title"><%= render 'page_title' %></h1>
+
+  <br/>
+  <div class="showView" id="contentElements">
+    <%= render :partial => 'tutor/contents/content', :collection => @page.contents %>
+    <%= hidden_field_tag "page", tutor_page_contents_path(@page)%>
+  </div>
+	<%= render 'page_bottom' %> 
+</div>
+<div id="aside">
+
+</div>
+<script type="text/javascript">
+
+</script>
+
+
+

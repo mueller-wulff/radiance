@@ -15,12 +15,12 @@
 					<td><%= image_tag avatar_url(student) %></td>
 					<td><%= student.profile.email %></td>
 			    <td>
-          	<%= link_to image_tag("space.gif", :alt => "delete Student", :class => "icon delete"), student_path(student), :confirm => 'Are you sure, you want to delete this Student?', :method => :delete %>
+          	<%= link_to image_tag("space.gif", :alt => "delete Student", :class => "icon delete"), tutor_student_path(student), :confirm => 'Are you sure, you want to delete this Student?', :method => :delete %>
 					</td>
 			  </tr>
 			<% end %>
 			<tr>
-      	<td><%= link_to 'New Student', new_student_path %></td>
+      	<td><%= link_to 'New Student', new_tutor_student_path %></td>
         <td></td>
 				<td></td>
       </tr>

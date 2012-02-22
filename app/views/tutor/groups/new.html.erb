@@ -1,6 +1,6 @@
 <div id="main">
 	<h1>New Group for Course </h1>
-	<%= form_for([@tutor, @group], :url => tutor_groups_path) do |f| %>
+	<%= form_for([@group], :url => tutor_groups_path) do |f| %>
 	  <% if @group.errors.any? %>
 	    <div id="error_explanation">
 	      <h2><%= pluralize(@group.errors.count, "error") %> prohibited this group from being saved:</h2>
@@ -16,7 +16,11 @@
 	  <p class="input">
 	    <%= f.label :title %><br />
 	    <%= f.text_field :title %>
-	  </p> 	 	
+	  </p> 
+		<p class="select">
+	    <%= f.label :course %><br />
+	    <%= select_tag :course, options_from_collection_for_select(@tutor.courses, "id", "short_title") %>
+	  </p>
 	  <p class="submit"> 
 	    <%= submit_tag "Submit" %>  
 	  </p>  

@@ -1,0 +1,6 @@
+<p class="input">
+  <% unless e.txt == "" %>
+    <label for="Input"><%=raw e.txt.gsub("\n","<br />") %></label>
+  <% end %>
+  <%= text_field_tag :dummy  %>
+</p>
