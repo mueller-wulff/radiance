@@ -1,0 +1,2 @@
+module Student::CoursesHelper
+end

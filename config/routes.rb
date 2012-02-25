@@ -1,5 +1,5 @@
 Stitched::Application.routes.draw do
-  
+    
   scope :module => 'static' do
     resources :faqs
     resources :unsupported_browsers
@@ -14,6 +14,30 @@ Stitched::Application.routes.draw do
   match 'login', :to => 'Session::ProfileSessions#new'
 
   resources :students
+  
+  namespace :student do
+    resources :courses
+    
+    resources :stitch_modules do 
+      resources :stitch_units  do
+        member do
+          get 'ajax_show'
+        end
+      end
+    end
+    
+    resources :stitch_units do
+      resources :pages do
+        member do
+          get 'ajax_show'
+        end
+      end
+    end
+    resources :pages do
+      resources :contents
+    end
+    
+  end
   
   namespace :tutor do
     resources :students do

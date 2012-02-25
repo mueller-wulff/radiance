@@ -1,0 +1,4 @@
+<div id="c_<%=  content.id %>" class="element">
+  <%= render content.element, :e => content.element %>
+  <%=  hidden_field_tag "url", edit_student_page_content_path(content.page,content)%>  
+</div>
