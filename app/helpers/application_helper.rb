@@ -31,6 +31,12 @@ module ApplicationHelper
       end
       html.gsub!(link, target_link)
     end
+    
+    @faq_links = html.scan(/intern:\/\/faq/)
+    @faq_links.each do |link|
+      target_link = faqs_path
+      html.gsub!(link, target_link)      
+    end
 
     html
   end
