@@ -6,7 +6,7 @@ class Content < ActiveRecord::Base
   accepts_nested_attributes_for :element
   acts_as_paranoid :dependent_recovery_window => 1.minute
   
-  validate :check_total_weight, :on => :update
+  #validate :check_total_weight, :on => :update #TODO own validation is needed
   before_create :set_position
   
   #Paranoid behavoir!
