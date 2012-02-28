@@ -3,6 +3,7 @@ class Group < ActiveRecord::Base
   has_many :students, :through => :enrollments
   belongs_to :tutor
   belongs_to :course
+  has_one :deadline, :as => :deadlinable
       
   validates_associated :course, :tutor
   validates :tutor_id, :presence => true

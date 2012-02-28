@@ -1,2 +1,0 @@
-module Tutor::ContentsHelper
-end

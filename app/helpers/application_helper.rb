@@ -46,4 +46,13 @@ module ApplicationHelper
     "http://gravatar.com/avatar/#{gravatar_id}.png?s=48&d=mm"
   end
   
+  def show_deadline(course, student)
+    deadline_group = student.groups.map {|g| g if g.course_id == course.id}
+    deadline_id = Deadline.where(:deadlinable_id => deadline_group)
+    unless deadline_id.empty?
+      deadline = Deadline.find(deadline_id)
+      return deadline.due_date.strftime('%d.%m.%Y - %H:%M')
+    end
+  end
+  
 end

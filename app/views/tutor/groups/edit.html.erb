@@ -1,5 +1,6 @@
 <div id="main">
 	<h1>Students in Group: <%= @group.title %></h1>
+	<h2>Deadline: <%= @group.deadline.due_date.strftime('%d.%m.%Y - %H:%M') unless @group.deadline.nil? %></h2>
 	<table  class="userlist">
   	<thead>
   		<tr>

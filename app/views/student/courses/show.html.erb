@@ -3,6 +3,7 @@
 
   <p id="notice"><%= notice %></p>
   <h1 id="page_title"><%= @course.title %></h1>
+	<h2>Deadline: <%= show_deadline(@course, current_user.role) %>
   <p>
     <%=simple_format @course.description %>
   </p>

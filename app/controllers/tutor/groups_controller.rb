@@ -44,6 +44,7 @@ class Tutor::GroupsController < ApplicationController
   def create
     @group = @tutor.groups.new(params[:group])
     @group.course = Course.find(params[:course])
+    @group.deadline = Deadline.new(params[:deadline])
     respond_to do |format|
       if @group.save
         format.html { redirect_to(tutor_groups_url, :notice => 'Group was successfully created.') }

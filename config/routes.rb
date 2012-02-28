@@ -13,9 +13,8 @@ Stitched::Application.routes.draw do
   match 'logout', :to => 'Session::ProfileSessions#destroy'
   match 'login', :to => 'Session::ProfileSessions#new'
 
-  resources :students
-  
   namespace :student do
+    resources :students
     resources :courses
     
     resources :stitch_modules do 

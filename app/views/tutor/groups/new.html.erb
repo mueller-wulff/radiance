@@ -21,6 +21,12 @@
 	    <%= f.label :course %><br />
 	    <%= select_tag :course, options_from_collection_for_select(@tutor.courses, "id", "short_title") %>
 	  </p>
+		<%= fields_for :deadline do |d| %>
+			<p class="input">
+		    <%= d.label :due_date, "Deadline" %><br />
+		    <%= d.datetime_select :due_date %>
+		  </p>
+		<% end %>
 	  <p class="submit"> 
 	    <%= submit_tag "Submit" %>  
 	  </p>  

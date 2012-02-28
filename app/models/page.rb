@@ -6,7 +6,8 @@ class Page < ActiveRecord::Base
   
   validates :stitch_unit_id, :presence => true
   has_one :stitch_module, :through => :stitch_unit
-  has_many :contents, :dependent => :destroy, :order => "position"
+  has_many :contents, :dependent => :destroy, :order => "position" 
+  has_one :deadline, :as => :deadlinable
 
   before_create :fill_with_default_content
     
