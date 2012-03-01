@@ -23,8 +23,8 @@
 	  </p>
 		<%= fields_for :deadline do |d| %>
 			<p class="input">
-		    <%= d.label :due_date, "Deadline" %><br />
-		    <%= d.datetime_select :due_date %>
+		    <%= d.label :due_date, "Course Deadline" %><br />
+		    <%= d.datetime_select :due_date, :default => Time.now + 6.month %>
 		  </p>
 		<% end %>
 	  <p class="submit"> 

@@ -99,11 +99,16 @@ class Page < ActiveRecord::Base
     deadlines.keys.each {|key| new_deadlines << deadlines[key] if deadlines[key]["new_deadline"] == "1"}
     new_deadlines.each do |d|
       tmp_date = DateTime.new( d["due_date(1i)"].to_i, d["due_date(2i)"].to_i, d["due_date(3i)"].to_i, d["due_date(4i)"].to_i, d["due_date(5i)"].to_i )
-      @deadline = Deadline.new
-      @deadline.due_date = tmp_date
-      @deadline.group_id = d["group_id"]
-      @deadline.deadlinable = page
-      @deadline.save
+      group = Group.find(d["group_id"])
+      group_deadline_id = Deadline.where(:deadlinable_id => group.id, :deadlinable_type => "Group")
+      group_deadline = Deadline.find(group_deadline_id)
+      if tmp_date < group_deadline.due_date
+        @deadline = Deadline.new
+        @deadline.due_date = tmp_date
+        @deadline.group_id = d["group_id"]
+        @deadline.deadlinable = page
+        @deadline.save
+      end
     end
   end
   
