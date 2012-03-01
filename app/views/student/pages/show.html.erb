@@ -2,7 +2,10 @@
   <%= render 'layouts/breadcrumb' %>
 
   <h1 id="page_title"><%= render 'page_title' %></h1>
-
+	<% if @page.assignment %>
+  	<h2>Deadline: <%= show_deadline_page(@page, current_user.role) %></h2>
+	<% end %>
+	
   <br/>
   <div class="showView" id="contentElements">
     <%= render :partial => 'student/contents/content', :collection => @page.contents %>

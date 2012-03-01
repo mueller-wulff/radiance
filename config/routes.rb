@@ -70,6 +70,7 @@ Stitched::Application.routes.draw do
         end
       end
     end
+    
     resources :pages do
       resources :contents
     end

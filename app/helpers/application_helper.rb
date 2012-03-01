@@ -11,23 +11,27 @@ module ApplicationHelper
         else
           target_link = developer_stitch_unit_page_path(target_page.stitch_unit,target_page)
         end
-      else
-        #Student and Tutor stuff
+      elsif current_user.role.class == Tutor
+        target_link = tutor_stitch_unit_page_path(target_page.stitch_unit,target_page)
+      elsif current_user.role.class == Student
+        target_link = student_stitch_unit_page_path(target_page.stitch_unit,target_page)
       end
       html.gsub!(link, target_link)
     end
 
     @biblio_links = html.scan(/intern:\/\/biblio/)
     @biblio_links.each do |link|
-      if current_user.role.class == Developer
-        target_page = @page.stitch_module.last_page
+      target_page = @page.stitch_module.last_page
+      if current_user.role.class == Developer        
         if controller.action_name == 'edit'
           target_link = edit_developer_stitch_unit_page_path(target_page.stitch_unit,target_page)
         else
           target_link = developer_stitch_unit_page_path(target_page.stitch_unit,target_page)
         end
-      else
-        #Student and Tutor stuff
+      elsif current_user.role.class == Tutor
+        target_link = tutor_stitch_unit_page_path(target_page.stitch_unit,target_page)
+      elsif current_user.role.class == Student
+        target_link = student_stitch_unit_page_path(target_page.stitch_unit,target_page)
       end
       html.gsub!(link, target_link)
     end
@@ -46,12 +50,25 @@ module ApplicationHelper
     "http://gravatar.com/avatar/#{gravatar_id}.png?s=48&d=mm"
   end
   
-  def show_deadline(course, student)
+  def show_deadline_course(course, student)
     deadline_group = student.groups.map {|g| g if g.course_id == course.id}
     deadline_id = Deadline.where(:deadlinable_id => deadline_group)
     unless deadline_id.empty?
       deadline = Deadline.find(deadline_id)
       return deadline.due_date.strftime('%d.%m.%Y - %H:%M')
+    end
+  end
+  
+  def show_deadline_page(page, student)
+    unless page.deadlines.empty?
+      deadline_group = student.groups.map {|g| g if g.course_id == page.course.id}
+      deadline_id = Deadline.where(:group_id => deadline_group[0])
+      unless deadline_id.empty?
+        deadline = Deadline.find(deadline_id)
+        return deadline.due_date.strftime('%d.%m.%Y - %H:%M')
+      end
+    else
+      show_deadline_course(page.course, student)
     end
   end
   

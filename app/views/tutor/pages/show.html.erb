@@ -2,7 +2,9 @@
   <%= render 'layouts/breadcrumb' %>
 
   <h1 id="page_title"><%= render 'page_title' %></h1>
-
+	<% if @page.assignment %>
+		<%= link_to "set individual deadlines for this page", edit_tutor_stitch_unit_page_path(@page.stitch_unit, @page) %>
+	<% end %>
   <br/>
   <div class="showView" id="contentElements">
     <%= render :partial => 'tutor/contents/content', :collection => @page.contents %>

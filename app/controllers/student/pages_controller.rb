@@ -11,7 +11,6 @@ class Student::PagesController < ApplicationController
   # GET /pages/1.xml
   def show
     @page = @stitch_unit.pages.find(params[:id])
-
     respond_to do |format|
       format.html # show.html.erb
     end
@@ -19,7 +18,7 @@ class Student::PagesController < ApplicationController
 
   def ajax_show
     @page = @stitch_unit.pages.find(params[:id])
-
+    
     respond_to do |format|
       format.html { render :layout => false}
     end
