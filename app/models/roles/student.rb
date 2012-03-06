@@ -5,6 +5,7 @@ class Student < Role
   has_many :notes
   has_many :enrollments, :dependent => :delete_all
   has_many :groups, :through => :enrollments
+  has_many :answers
   
   before_destroy :deletable?
   #before_save :enforce_logic

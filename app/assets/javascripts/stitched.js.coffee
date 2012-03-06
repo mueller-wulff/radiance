@@ -56,7 +56,7 @@ Stitched = ->
          return                      
  
      createElement = (url,klass,appendDiv,callback) ->
-         progress_indicator = true
+         progress_indicator = true         
          $.ajax
              type: "POST"
              url: url
@@ -464,8 +464,8 @@ Stitched = ->
                          return
                      )
                  return
-         return    
-     
+         return   
+    
      bindDeleteContentLinks = ->
          $('.element .trash').live 'click', ->
              if !edit_mode
@@ -500,7 +500,19 @@ Stitched = ->
              sendDataToServer(data, url)
              return
          return
-     
+         
+     saveStudentAnswer = ->
+          $('.element').live 'click', ->
+              element = $(this)
+              element.addClass("editmode")
+              $(".save").click ->
+                  url = element.find("form").attr('action')
+                  data = element.find("form").serialize()
+                  sendDataToServer(data, url)
+                  element.removeClass("editmode")
+                  return false
+              return
+          return
     
      #Page View Functions
      loadCourseView = ->
@@ -545,6 +557,10 @@ Stitched = ->
      loadFAQView = ->
          bindHeadlineAccordion()
          return
+         
+     loadPageAnswerView = ->
+         saveStudentAnswer()
+         return
      
      loadPageEditView: loadPageEditView,
      loadModuleEditView: loadModuleEditView,
@@ -554,7 +570,8 @@ Stitched = ->
      loadFAQView: loadFAQView,
      linkCKLinks: linkCKLinks,
      checkForProgressIndicator: checkForProgressIndicator,
-     changeAssignmentValue: changeAssignmentValue
+     changeAssignmentValue: changeAssignmentValue,
+     loadPageAnswerView: loadPageAnswerView
 
 root = exports ? this
 root.Stitched = Stitched()

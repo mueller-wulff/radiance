@@ -11,11 +11,11 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120229083028) do
+ActiveRecord::Schema.define(:version => 20120305142405) do
 
   create_table "answers", :id => false, :force => true do |t|
     t.integer  "id",          :null => false
-    t.string   "txt"
+    t.text     "txt"
     t.integer  "student_id"
     t.integer  "question_id"
     t.boolean  "locked"

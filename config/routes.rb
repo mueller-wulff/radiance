@@ -14,7 +14,9 @@ Stitched::Application.routes.draw do
   match 'login', :to => 'Session::ProfileSessions#new'
 
   namespace :student do
-    resources :students
+    resources :students do
+      resources :answers
+    end
     resources :courses
     
     resources :stitch_modules do 
@@ -32,10 +34,11 @@ Stitched::Application.routes.draw do
         end
       end
     end
-    resources :pages do
-      resources :contents
-    end
     
+    resources :pages do
+      resources :contents    
+    end
+        
   end
   
   namespace :tutor do
