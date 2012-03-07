@@ -85,4 +85,12 @@ module ApplicationHelper
     end
   end
   
+  def show_answer(element)
+    unless element.answers.empty?
+      a = Answer.where(:student_id => current_user.role.id, :question_id => element.id)
+      answer = Answer.find(a)
+      return answer.txt.html_safe
+    end
+  end
+  
 end

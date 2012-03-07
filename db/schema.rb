@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120305142405) do
+ActiveRecord::Schema.define(:version => 20120307143834) do
 
   create_table "answers", :id => false, :force => true do |t|
     t.integer  "id",          :null => false
@@ -194,13 +194,14 @@ ActiveRecord::Schema.define(:version => 20120305142405) do
   add_index "profiles", ["perishable_token"], :name => "index_profiles_on_perishable_token"
 
   create_table "questions", :id => false, :force => true do |t|
-    t.integer  "id",                           :null => false
+    t.integer  "id",                             :null => false
     t.text     "txt"
-    t.boolean  "multi",      :default => true
+    t.boolean  "multi",        :default => true
     t.string   "type"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "max_length"
+    t.text     "multianswers"
   end
 
   create_table "responses", :id => false, :force => true do |t|

@@ -9,9 +9,10 @@ class Question < Element
   
   def fill_with_default_content
     self.txt ||= "Please enter a Question"
+    self.multianswers ||= "Answer A\nAnswer B"
   end
   
   def answer_list
-    self.answers.split("\n")
+    self.multianswers.split("\n")
   end
 end

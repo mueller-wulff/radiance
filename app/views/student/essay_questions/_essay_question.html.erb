@@ -2,7 +2,9 @@
   <% unless e.txt == "" %>
     <label for="Input"><%=raw e.txt.gsub("\n","<br />") %></label>
   <% end %>
-  <textarea name="Textarea" id="Textarea" cols="65" rows="10"></textarea>
+  <textarea name="Textarea" id="Textarea" cols="65" rows="10">
+  	<%=raw show_answer(e) %>
+  </textarea>
 </p>
 
 
