@@ -36,7 +36,6 @@ class Developer::ContentsController < ApplicationController
   def create    
     respond_to do |format|
       @new_element = params[:element_type].constantize.create
-        logger.debug("new_element: #{params[:element_type]}")
       if @new_element
         @content = @page.contents.create(:element => @new_element)
         format.html { render :action => "show" }

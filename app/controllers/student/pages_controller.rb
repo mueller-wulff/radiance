@@ -11,7 +11,6 @@ class Student::PagesController < ApplicationController
   # GET /pages/1.xml
   def show
     @page = @stitch_unit.pages.find(params[:id])
-    @answer = Answer.new
     respond_to do |format|
       format.html # show.html.erb
     end

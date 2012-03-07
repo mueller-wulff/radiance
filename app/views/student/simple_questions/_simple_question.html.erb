@@ -1,13 +1,6 @@
-<%= form_for(@answer, :url => student_student_answers_path(current_user.role) ) do |f| -%>
-<%#= fields_for :answer do |a| %>
-	<p class="input">
-		<% unless e.txt == "" %>
-	    <label for="Input"><%=raw e.txt.gsub("\n","<br />") %></label>
-			<%= hidden_field_tag "question_id", e.id %>
-	  <% end %>
-	  <%= f.text_field :txt %>
-	</p>
-<% end -%>
-<div class="save">
-  <img class="save" src="/images/space.gif" alt="save Answer" />
-</div>
+<p class="input">
+  <% unless e.txt == "" %>
+    <label for="Input"><%=raw e.txt.gsub("\n","<br />") %></label>
+  <% end %>
+  <%= text_field_tag :dummy  %>
+</p>

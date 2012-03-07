@@ -76,7 +76,7 @@ Stitched = ->
       
      closeAndSaveEditView = (div, callback) ->
          options =
-             success: (returnValue) ->
+             success: (returnValue) ->                 
                  #destroy all instances...just removing div from dom doesn't work
                  `for (instance in CKEDITOR.instances){
          		        CKEDITOR.instances[instance].destroy();
@@ -103,7 +103,7 @@ Stitched = ->
          div.find("form").trigger("submit")
          div.unbind('mouseenter mouseleave')
          $('body').unbind('mouseup')
-         return
+         return false
  
      switchToEditView = (div,url,callback) ->
          edit_mode = true
@@ -127,7 +127,7 @@ Stitched = ->
                  return
          return
      
-     sendDataToServer =  (data,url,callback) ->     
+     sendDataToServer =  (data,url,callback) -> 
          if(!move_or_copy)
              progress_indicator = true
              $.ajax
@@ -155,7 +155,7 @@ Stitched = ->
      addSaveBtnListener = (div,callback) ->
          $(".save").click ->
              closeAndSaveEditView(div,callback)
-             return
+             return false
          return
          
      bindCopyKey = (event, ui) ->         
@@ -465,6 +465,16 @@ Stitched = ->
                      )
                  return
          return   
+         
+     bindAnswerContentLinks = ->
+         $('.element').live 'click', ->
+              if !edit_mode 
+                  switchToEditView(
+                      $(this),
+                      $(this).find('[name=url]').val()
+                      )
+                  return                  
+         return
     
      bindDeleteContentLinks = ->
          $('.element .trash').live 'click', ->
@@ -500,20 +510,7 @@ Stitched = ->
              sendDataToServer(data, url)
              return
          return
-         
-     saveStudentAnswer = ->
-          $('.element').live 'click', ->
-              element = $(this)
-              element.addClass("editmode")
-              $(".save").click ->
-                  url = element.find("form").attr('action')
-                  data = element.find("form").serialize()
-                  sendDataToServer(data, url)
-                  element.removeClass("editmode")
-                  return false
-              return
-          return
-    
+          
      #Page View Functions
      loadCourseView = ->
          makeSortableModules()
@@ -559,7 +556,8 @@ Stitched = ->
          return
          
      loadPageAnswerView = ->
-         saveStudentAnswer()
+         bindAnswerContentLinks()
+         checkForProgressIndicator()
          return
      
      loadPageEditView: loadPageEditView,

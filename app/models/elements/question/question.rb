@@ -9,7 +9,6 @@ class Question < Element
   
   def fill_with_default_content
     self.txt ||= "Please enter a Question"
-   # self.answers ||= "Answer A\nAnswer B" # attribute doesn't exist no more
   end
   
   def answer_list

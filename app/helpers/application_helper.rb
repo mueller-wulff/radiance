@@ -72,4 +72,17 @@ module ApplicationHelper
     end
   end
   
+  def find_answer(content)
+    element = content.element
+    if content.element_type == "Question"
+      if element.answers.empty?
+        new_student_content_element_answer_path(content, element)
+      else        
+        a = Answer.where(:student_id => current_user.role.id, :question_id => element.id)
+        answer = Answer.find(a)
+        edit_student_content_element_answer_path(content, element, answer)
+      end
+    end
+  end
+  
 end
