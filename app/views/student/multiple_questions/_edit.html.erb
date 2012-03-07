@@ -1,0 +1,16 @@
+<p class="input">   
+  <label for="Input"><%= @element.txt %></label>  
+</p>
+<%=  f.fields_for :answer do |answer_field| %>  
+  <% @element.answer_list.each do |multianswer|  %>
+	  <% if @element.multi %>
+	    <p class="radio">
+	      <%= check_box :multianswer, multianswer %> <%= multianswer %>
+	    </p>
+	  <% else %>
+	    <p class="radio">
+	      <%= radio_button :multianswer, multianswer, "1" %> <%= multianswer %>
+	    </p>
+	  <% end %>
+	<% end %>
+<% end %>

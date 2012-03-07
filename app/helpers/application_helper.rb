@@ -89,6 +89,9 @@ module ApplicationHelper
     unless element.answers.empty?
       a = Answer.where(:student_id => current_user.role.id, :question_id => element.id)
       answer = Answer.find(a)
+      if element.type == "MultipleQuestion"
+        logger.debug("value #{params[:multianswer]}")
+      end
       return answer.txt.html_safe
     end
   end
