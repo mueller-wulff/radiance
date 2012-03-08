@@ -37,6 +37,9 @@ class Student::AnswersController < ApplicationController
 
   def update
     @answer = Answer.find(params[:id])
+    if @element.type == "MultipleQuestion"
+      @answer.save_multiple_answers(params[:multianswer])
+    end
     respond_to do |format|
       if @answer.update_attributes(params[:answer])
         format.html { redirect_to(student_page_content_path(@content.page, @content) ) }
