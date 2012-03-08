@@ -1,10 +1,8 @@
 <p class="input">
   <% unless e.txt == "" %>
     <label for="Input"><%=raw e.txt.gsub("\n","<br />") %></label>
-  <% end %>
-  <textarea name="Textarea" id="Textarea" cols="65" rows="10">
-  	<%=raw strip_tags(show_answer(e) ) %>
-  </textarea>
+  <% end %>  
+  	<%=raw show_answer(e) %>
 </p>
 
 

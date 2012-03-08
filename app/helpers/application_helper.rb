@@ -62,7 +62,7 @@ module ApplicationHelper
   def show_deadline_page(page, student)
     unless page.deadlines.empty?
       deadline_group = student.groups.map {|g| g if g.course_id == page.course.id}
-      deadline_id = Deadline.where(:group_id => deadline_group[0])
+      deadline_id = Deadline.where(:group_id => deadline_group[0], :deadlinable_id => page.id)
       unless deadline_id.empty?
         deadline = Deadline.find(deadline_id)
         return deadline.due_date.strftime('%d.%m.%Y - %H:%M')
@@ -92,7 +92,7 @@ module ApplicationHelper
       if element.type == "MultipleQuestion"
         logger.debug("value #{params[:multianswer]}")
       end
-      return answer.txt.html_safe
+      return answer.txt
     end
   end
   

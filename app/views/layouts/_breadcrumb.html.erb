@@ -57,7 +57,18 @@
     <% end %>
 
   <% elsif current_user.role.class == Student %>
-
+		<% if @page %>
+      <li><%= link_to @page.stitch_module.course.short_title,  student_course_path(@page.stitch_module.course) %></li>
+      <li><%= link_to @page.stitch_module.short_title, student_stitch_module_path(@page.stitch_module) %></li>
+      <li><%= link_to @page.stitch_unit.title, student_stitch_module_stitch_unit_path(@page.stitch_module, @page.stitch_unit) %></li>
+      <li><%= @page.title %></li>
+    <% elsif @stitch_module %>
+      <li><%= link_to @stitch_module.course.short_title,  student_course_path(@stitch_module.course) %></li>
+      <li><%= @stitch_module.short_title %></li>
+    <% else %>
+      <li><%= link_to "All Courses", student_courses_path %></li>
+      <li><%= @course.short_title %></li>
+    <% end %>
 
   <% end %>
 
