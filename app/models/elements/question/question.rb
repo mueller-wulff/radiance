@@ -15,4 +15,9 @@ class Question < Element
   def answer_list
     self.multianswers.split("\n")
   end
+  
+  def page
+    self.content.page
+  end
+  
 end

@@ -3,7 +3,7 @@
 
   <h1 id="page_title"><%= render 'page_title' %></h1>
 	<% if @page.assignment %>
-  	<h2>Deadline: <%= show_deadline_page(@page, current_user.role) %></h2>
+		<h2>Deadline: <div id="deadline"><%= show_deadline_page(@page, current_user.role) %></div></h2>
 	<% end %>
 	
   <br/>

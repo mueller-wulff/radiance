@@ -55,7 +55,7 @@ module ApplicationHelper
     deadline_id = Deadline.where(:deadlinable_id => deadline_group)
     unless deadline_id.empty?
       deadline = Deadline.find(deadline_id)
-      return deadline.due_date.strftime('%d.%m.%Y - %H:%M')
+      return deadline.due_date #.strftime('%d.%m.%Y - %H:%M')
     end
   end
   
@@ -65,7 +65,7 @@ module ApplicationHelper
       deadline_id = Deadline.where(:group_id => deadline_group[0], :deadlinable_id => page.id)
       unless deadline_id.empty?
         deadline = Deadline.find(deadline_id)
-        return deadline.due_date.strftime('%d.%m.%Y - %H:%M')
+        return deadline.due_date #.strftime('%d.%m.%Y - %H:%M')
       end
     else
       show_deadline_course(page.course, student)
