@@ -46,4 +46,10 @@ class Student < Role
     Notifier.new_group(self, group).deliver
   end
   
+  def find_assignment_pages(group)
+    all_assignment_pages = Page.where(:assignment => true)
+    course_assignment_pages = all_assignment_pages.map {|p| p if p.course == group.course }
+    return course_assignment_pages
+  end
+  
 end

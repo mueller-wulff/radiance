@@ -3,14 +3,20 @@
     <label for="Input"><%=raw e.txt.gsub("\n","<br />") %></label>
   </p>
 <% end %>
-<% e.answer_list.each do |answer|  %>
-  <% if e.multi %>
-    <p class="radio">
-      <%= check_box_tag :dummy, answer %> <%= answer %>
-    </p>
-  <% else %>
-    <p class="radio">
-      <%= radio_button_tag :dummy, answer %> <%= answer %>
-    </p>
-  <% end %>
+<% if @student %>
+	<p class="input">
+		<%=raw show_answer(e, @student).gsub("\n","<br />")  %>
+	</p>
+<% else %>
+	<% e.answer_list.each do |answer|  %>
+	  <% if e.multi %>
+	    <p class="radio">
+	      <%= check_box_tag :dummy, answer %> <%= answer %>
+	    </p>
+	  <% else %>
+	    <p class="radio">
+	      <%= radio_button_tag :dummy, answer %> <%= answer %>
+	    </p>
+	  <% end %>
+	<% end %>
 <% end %>

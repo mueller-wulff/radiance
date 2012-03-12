@@ -1,11 +1,17 @@
 class Tutor::PagesController < ApplicationController
   before_filter :require_tutor
 
-  before_filter :get_stitch_unit
+  before_filter :get_stitch_unit, :except => :show_answers
+  before_filter :get_group, :only => :show_answers
 
   def get_stitch_unit
     @stitch_unit = StitchUnit.find(params[:stitch_unit_id])
     @course = @stitch_unit.course
+  end
+  
+  def get_group
+    @group = Group.find(params[:group_id])
+    @student = Student.find(params[:student_id])
   end
   
   # GET /pages/1
@@ -23,6 +29,10 @@ class Tutor::PagesController < ApplicationController
     respond_to do |format|
       format.html { render :layout => false}
     end
+  end
+  
+  def show_answers
+    @page = Page.find(params[:id])
   end
   
   def edit

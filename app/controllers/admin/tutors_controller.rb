@@ -14,7 +14,7 @@ class Admin::TutorsController < ApplicationController
   # GET /tutors/1.xml
   def show
     @tutor = Tutor.find(params[:id])
-
+    @courses = Course.all
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @tutor }
@@ -60,7 +60,8 @@ class Admin::TutorsController < ApplicationController
   # PUT /tutors/1.xml
   def update
     @tutor = Tutor.find(params[:id])
-
+    @profile = @tutor.profile
+    @courses = Course.all
     respond_to do |format|
       if @tutor.update_attributes(params[:tutor])
         format.html { redirect_to(admin_tutors_path, :notice => 'Tutor was successfully updated.') }

@@ -29,6 +29,7 @@ Stitched::Application.routes.draw do
       resources :pages do
         member do
           get 'ajax_show'
+          post 'send_answers'
         end
       end
     end
@@ -55,6 +56,11 @@ Stitched::Application.routes.draw do
         member do
           get 'shuffle'
           put 'update_shuffle'
+        end
+        resources :pages do
+          member do
+            get 'show_answers'
+          end
         end
       end
     end

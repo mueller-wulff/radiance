@@ -3,7 +3,7 @@ class Answer < ActiveRecord::Base
   belongs_to :student
   
   before_save :check_deadline  
-  after_create :set_locked
+  after_create :set_locked_false
   
   def save_multiple_answers(multianswers)
     hash = multianswers.select{|key, value| value == "1"}
@@ -14,9 +14,9 @@ class Answer < ActiveRecord::Base
     end
   end
   
- # protected
+  protected
   
-  def set_locked
+  def set_locked_false
     self.locked = false
     self.save
   end

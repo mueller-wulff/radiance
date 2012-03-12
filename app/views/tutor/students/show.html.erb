@@ -1,0 +1,13 @@
+<div id="main">
+	<h1>
+		Assignments
+	</h1>
+	<ul>
+		<% @assignments.each do |assignment| %>
+			<li><%= link_to assignment.stitch_unit.title, show_answers_tutor_group_student_page_path(@group, @student, assignment) %></li>
+		<% end %>
+	</ul>
+</div>
+<div id="aside">
+
+</div>

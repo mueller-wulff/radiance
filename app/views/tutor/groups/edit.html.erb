@@ -15,6 +15,7 @@
 					<td><%= image_tag avatar_url(student) %></td>
 					<td><%= student.profile.email %></td>
 			    <td>
+						<%= link_to image_tag("space.gif", :title => "rate Assignment", :class => "icon edit"), tutor_group_student_path(@group, student) %>
           	<%= link_to image_tag("space.gif", :title => "shuffle Student in another Group", :class => "icon duplicate"), shuffle_tutor_group_student_path(@group, student) %>
 					</td>
 			  </tr>

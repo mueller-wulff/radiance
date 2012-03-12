@@ -2,5 +2,10 @@
   <% unless e.txt == "" %>
     <label for="Input"><%=raw e.txt.gsub("\n","<br />") %></label>
   <% end %>
-  <%= text_field_tag :dummy  %>
+	<% if @student %>
+		<br />
+		<%= show_answer(e, @student)  %>
+	<% else %>
+  	<%= text_field_tag :dummy  %>
+	<% end %>
 </p>

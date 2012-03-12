@@ -115,7 +115,7 @@ class Page < ActiveRecord::Base
   def course
     self.stitch_unit.course
   end
-    
+      
 end
 
  

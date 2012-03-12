@@ -21,5 +21,11 @@ class Group < ActiveRecord::Base
       return false
     end
   end
+  
+  def self.find_group(page, student)
+    group_id = student.groups.map {|g| g if g.course_id == page.course.id}
+    group = Group.find(group_id[0])
+    return group
+  end
     
 end

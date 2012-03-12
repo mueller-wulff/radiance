@@ -1,7 +1,7 @@
 class Tutor::StudentsController < ApplicationController
   before_filter :require_user
   before_filter :grab_tutor, :except => [:edit, :update, :show]
-  before_filter :grab_group_id, :except => [:edit, :update, :show]
+  before_filter :grab_group_id, :except => [:edit, :update]
   # GET /students
   # GET /students.xml
   def index
@@ -12,6 +12,12 @@ class Tutor::StudentsController < ApplicationController
       format.xml  { render :xml => @students }
     end
   end  
+  
+  def show
+    @student = Student.find(params[:id])
+    @assignments = @student.find_assignment_pages(@group)
+    
+  end
 
   # GET /students/new
   # GET /students/new.xml

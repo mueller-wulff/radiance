@@ -11,6 +11,9 @@
     <%= render :partial => 'student/contents/content', :collection => @page.contents %>
     <%= hidden_field_tag "page", student_page_contents_path(@page)%>
   </div>
+	<div>
+		<%= button_to "Send Answers to Tutor", :action => "send_answers", :confirm => "Are you sure?", :disabled_with => "Sending..." %>
+	</div>
 	<%= render 'page_bottom' %> 
 </div>
 <div id="aside">
