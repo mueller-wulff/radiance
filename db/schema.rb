@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120307143834) do
+ActiveRecord::Schema.define(:version => 20120312105510) do
 
   create_table "answers", :id => false, :force => true do |t|
     t.integer  "id",          :null => false
@@ -21,6 +21,7 @@ ActiveRecord::Schema.define(:version => 20120307143834) do
     t.boolean  "locked"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "score"
   end
 
   create_table "ckeditor_assets", :id => false, :force => true do |t|
@@ -245,6 +246,7 @@ ActiveRecord::Schema.define(:version => 20120307143834) do
     t.datetime "updated_at"
     t.integer  "position"
     t.datetime "deleted_at"
+    t.float    "weight"
   end
 
   create_table "students", :id => false, :force => true do |t|
