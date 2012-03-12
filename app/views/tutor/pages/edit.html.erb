@@ -1,0 +1,28 @@
+<div id="main">
+	<h1>Set Deadlines for Page</h1>
+
+	<%= form_for(@page, :url => tutor_stitch_unit_page_path(@page.stitch_unit, @page)) do |f| %>
+	<hr/>
+	<h2>Groups of Course:</h2>
+	<% @groups.each do |group| %>
+	<ol>
+		<strong><%= group.title %></strong>
+		
+			<p class="checkbox">
+				<%= label :due_date, "Deadline" %><br />
+				<%= datetime_select "deadline[#{group.id}]", :due_date, :default => group.deadline.due_date %> <%= check_box "deadline[#{group.id}]", :new_deadline %> New Deadline?
+			</p>
+			<%= hidden_field_tag "deadline[#{group.id}][group_id]", group.id %>
+	</ol>
+	<% end %>
+
+	<p class="submit"> 
+		<%= submit_tag "Save" %>  
+	</p>
+	<% end %>
+
+	<%= link_to 'Back', tutor_stitch_unit_page_path(@page.stitch_unit, @page) %>
+</div>
+<div id="aside">
+
+</div>

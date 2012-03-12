@@ -1,0 +1,33 @@
+<div id="main">
+  <%= render 'layouts/breadcrumb' %>
+
+  <p id="notice"><%= notice %></p>
+  <h1 id="page_title"><%= @course.title %></h1>
+	<h2>Deadline: <%= show_deadline_course(@course, current_user.role) %>
+  <p>
+    <%=simple_format @course.description %>
+  </p>
+
+  <hr>
+
+  <h2>Modules:</h2>
+  <div id="module_list_table">
+    <table  class="userlist" id="module_list">
+      <thead>
+        <tr  id="thead">
+          <td>Title</td>
+        </tr>
+      </thead>
+      <tbody>
+        <% @course.stitch_modules.each do |sm| %>
+          <tr id="module_<%= sm.id  %>"> 
+            <td><%= link_to sm.title, student_stitch_module_path(sm)%></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
+<div id="aside">
+
+</div>

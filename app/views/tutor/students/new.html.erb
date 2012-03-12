@@ -1,22 +1,30 @@
-<h1>New student</h1>
+<div id="main">
+	<h1>Enroll student</h1>
+	<%= form_for(@student, :url => tutor_group_students_path) do |f| %> 
+	  <% if @profile.errors.any? %>
+	    <div id="error_explanation">
+	      <h2><%= pluralize(@profile.errors.count, "error") %> prohibited this profile from being saved:</h2>
 
-<%= form_tag :action => 'create' do %>  
-  <% if @profile.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@profile.errors.count, "error") %> prohibited this profile from being saved:</h2>
+	      <ul>
+	        <% @profile.errors.full_messages.each do |msg| %>
+	          <li><%= msg %></li>
+	        <% end %>
+	      </ul>
+	    </div>
+	  <% end %>  
+		<%= f.fields_for :profile do |g| %>
+			<p class="input">
+				<%= label :email, "Email" %>  
+			  <%= g.text_field :email %>  
+			</p>  
+			<p class="submit"> 
+			  <%= submit_tag "Enroll" %>  
+			</p>  
+		<% end %>
+	<% end %> 
+	<%= link_to 'Back', edit_tutor_group_path(@tutor, @group) %>
 
-      <ul>
-        <% @profile.errors.full_messages.each do |msg| %>
-          <li><%= msg %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>  
- <p class="input">
-    <%= label :email, "Email" %>  
-    <%= text_field :profile, :email %>  
-  </p>  
-  <p class="submit"> 
-    <%= submit_tag "Submit" %>  
-  </p>  
-<% end %> 
+</div>
+<div id="aside">
+
+</div>

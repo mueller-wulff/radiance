@@ -1,0 +1,11 @@
+<p class="input">
+  <% unless e.txt == "" %>
+    <label for="Input"><%=raw e.txt.gsub("\n","<br />") %></label>
+  <% end %>
+	<% if @student %>
+		<%=raw show_answer(e, @student) %>
+	<% else %>
+  	<textarea name="Textarea" id="Textarea" cols="65" rows="10"></textarea>
+	<% end %>
+</p>
+

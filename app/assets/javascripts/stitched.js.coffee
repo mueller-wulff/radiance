@@ -56,7 +56,7 @@ Stitched = ->
          return                      
  
      createElement = (url,klass,appendDiv,callback) ->
-         progress_indicator = true
+         progress_indicator = true         
          $.ajax
              type: "POST"
              url: url
@@ -76,7 +76,7 @@ Stitched = ->
       
      closeAndSaveEditView = (div, callback) ->
          options =
-             success: (returnValue) ->
+             success: (returnValue) ->                 
                  #destroy all instances...just removing div from dom doesn't work
                  `for (instance in CKEDITOR.instances){
          		        CKEDITOR.instances[instance].destroy();
@@ -103,7 +103,7 @@ Stitched = ->
          div.find("form").trigger("submit")
          div.unbind('mouseenter mouseleave')
          $('body').unbind('mouseup')
-         return
+         return false
  
      switchToEditView = (div,url,callback) ->
          edit_mode = true
@@ -127,7 +127,7 @@ Stitched = ->
                  return
          return
      
-     sendDataToServer =  (data,url,callback) ->     
+     sendDataToServer =  (data,url,callback) -> 
          if(!move_or_copy)
              progress_indicator = true
              $.ajax
@@ -155,7 +155,7 @@ Stitched = ->
      addSaveBtnListener = (div,callback) ->
          $(".save").click ->
              closeAndSaveEditView(div,callback)
-             return
+             return false
          return
          
      bindCopyKey = (event, ui) ->         
@@ -464,8 +464,23 @@ Stitched = ->
                          return
                      )
                  return
-         return    
-     
+         return   
+         
+     bindAnswerContentLinks = ->
+         $('.element').live 'click', ->
+              today = new Date()
+              deadline = new Date( $('#deadline').html() )
+              if deadline > today
+                  if !edit_mode 
+                      switchToEditView(
+                          $(this),
+                          $(this).find('[name=url]').val()
+                          )
+                      return 
+              else
+                  alert "Deadline is reached"
+         return
+    
      bindDeleteContentLinks = ->
          $('.element .trash').live 'click', ->
              if !edit_mode
@@ -492,7 +507,15 @@ Stitched = ->
              $(this).attr('href', $(this).attr('_cke_saved_href'))
              return
          return
-        
+         
+     changeAssignmentValue = ->
+         $('.assignment_check').click ->
+             url = $(this).data('href')
+             data = 'page_assignment=' + $('#page_assignment').is(':checked')
+             sendDataToServer(data, url)
+             return
+         return
+          
      #Page View Functions
      loadCourseView = ->
          makeSortableModules()
@@ -528,17 +551,30 @@ Stitched = ->
          bindViewPageLinks()
          return
          
+     loadTutorModuleView = ->
+          hideAllPages()
+          bindOpenUnitLinks()
+          return
+         
      loadFAQView = ->
          bindHeadlineAccordion()
+         return
+         
+     loadPageAnswerView = ->
+         bindAnswerContentLinks()
+         checkForProgressIndicator()
          return
      
      loadPageEditView: loadPageEditView,
      loadModuleEditView: loadModuleEditView,
      loadModulePreView: loadModulePreView,
+     loadTutorModuleView: loadTutorModuleView,
      loadCourseView: loadCourseView,
      loadFAQView: loadFAQView,
      linkCKLinks: linkCKLinks,
-     checkForProgressIndicator: checkForProgressIndicator
+     checkForProgressIndicator: checkForProgressIndicator,
+     changeAssignmentValue: changeAssignmentValue,
+     loadPageAnswerView: loadPageAnswerView
 
 root = exports ? this
 root.Stitched = Stitched()

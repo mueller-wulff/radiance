@@ -1,0 +1,19 @@
+
+<div id="main">
+  <%= render 'layouts/breadcrumb' %>
+  <h1 id="page_title"><%= @stitch_module.title %></h1>
+  <p>
+    <%= simple_format @stitch_module.description %>
+  </p>
+  <div id="modules">
+    <% @stitch_module.stitch_units.each do |sunit| %>
+      <%= render sunit %>
+    <% end %>
+  </div>
+</div>
+
+<script type="text/javascript">
+  $(document).ready(function(){
+    Stitched.loadTutorModuleView();
+  });
+</script>

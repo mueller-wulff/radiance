@@ -6,10 +6,13 @@ class Page < ActiveRecord::Base
   
   validates :stitch_unit_id, :presence => true
   has_one :stitch_module, :through => :stitch_unit
-  has_many :contents, :dependent => :destroy, :order => "position"
+  has_many :contents, :dependent => :destroy, :order => "position" 
+  has_many :deadlines, :as => :deadlinable
+  
+  accepts_nested_attributes_for :deadlines
 
   before_create :fill_with_default_content
-  
+    
   def fill_with_default_content
     self.title ||= "new Page" 
     unless self.position
@@ -90,6 +93,29 @@ class Page < ActiveRecord::Base
       end
     end
   end
+  
+  def create_page_deadline(deadlines, page)
+    new_deadlines = []
+    deadlines.keys.each {|key| new_deadlines << deadlines[key] if deadlines[key]["new_deadline"] == "1"}
+    new_deadlines.each do |d|
+      tmp_date = DateTime.new( d["due_date(1i)"].to_i, d["due_date(2i)"].to_i, d["due_date(3i)"].to_i, d["due_date(4i)"].to_i, d["due_date(5i)"].to_i )
+      group = Group.find(d["group_id"])
+      group_deadline_id = Deadline.where(:deadlinable_id => group.id, :deadlinable_type => "Group")
+      group_deadline = Deadline.find(group_deadline_id)
+      if tmp_date < group_deadline.due_date
+        @deadline = Deadline.new
+        @deadline.due_date = tmp_date
+        @deadline.group_id = d["group_id"]
+        @deadline.deadlinable = page
+        @deadline.save
+      end
+    end
+  end
+  
+  def course
+    self.stitch_unit.course
+  end
+      
 end
 
  

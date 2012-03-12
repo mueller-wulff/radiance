@@ -1,0 +1,29 @@
+<div id="main">
+  <%= render 'layouts/breadcrumb' %>
+
+  <h1 id="page_title"><%= render 'page_title' %></h1>
+	<% if @page.assignment %>
+		<h2>Deadline: <div id="deadline"><%= show_deadline_page(@page, current_user.role) %></div></h2>
+	<% end %>
+	
+  <br/>
+  <div class="showView" id="contentElements">
+    <%= render :partial => 'student/contents/content', :collection => @page.contents %>
+    <%= hidden_field_tag "page", student_page_contents_path(@page)%>
+  </div>
+	<div>
+		<%= button_to "Send Answers to Tutor", :action => "send_answers", :confirm => "Are you sure?", :disabled_with => "Sending..." %>
+	</div>
+	<%= render 'page_bottom' %> 
+</div>
+<div id="aside">
+
+</div>
+<script type="text/javascript">
+  $(document).ready(function(){
+    Stitched.loadPageAnswerView();
+  });
+</script>
+
+
+

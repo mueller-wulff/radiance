@@ -40,4 +40,9 @@ class StitchUnit < ActiveRecord::Base
     end
     return @copy || false
   end
+  
+  def course
+    self.stitch_module.course
+  end
+  
 end
