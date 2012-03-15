@@ -1,0 +1,6 @@
+<%= form_for @answer, :url => tutor_content_element_student_answer_path(@content, @element, @student, @answer) do |f| %>
+	<%= render "tutor/#{@element.class.name.pluralize.underscore}/edit", :content => @content, :element => @element, :f => f %>
+<% end %>
+<div class="save">
+  <img class="save" src="/images/space.gif" alt="save Item" />
+</div>

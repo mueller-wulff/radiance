@@ -5,7 +5,9 @@
 <% end %>
 <% if @student %>
 	<p class="input">
-		<%=raw show_answer(e, @student).gsub("\n","<br />")  %>
+		<%=raw show_answer(e, @student).txt.gsub("\n","<br />")  %>
+		<br />
+		Achievement: <%= show_answer(e, @student).score  %>
 	</p>
 <% else %>
 	<% e.answer_list.each do |answer|  %>
@@ -18,5 +20,8 @@
 	      <%= radio_button_tag :dummy, answer %> <%= answer %>
 	    </p>
 	  <% end %>
-	<% end %>
+	<% end %>	
 <% end %>
+<p class="score">
+	<label>Score: <%= show_score(e, current_user.role) %></label>
+</p>

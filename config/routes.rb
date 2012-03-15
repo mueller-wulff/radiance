@@ -1,5 +1,7 @@
 Stitched::Application.routes.draw do
-    
+ 
+  get "answers/edit"
+
   scope :module => 'static' do
     resources :faqs
     resources :unsupported_browsers
@@ -86,6 +88,15 @@ Stitched::Application.routes.draw do
     
     resources :pages do
       resources :contents
+    end
+    
+    resources :contents do
+      resources :element do
+        resources :question_scores
+        resources :students do
+          resources :answers
+        end
+      end
     end
     
   end

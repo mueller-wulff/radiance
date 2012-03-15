@@ -2,7 +2,7 @@ class Answer < ActiveRecord::Base
   belongs_to :question
   belongs_to :student
   
-  before_save :check_deadline  
+  before_save :check_deadline
   after_create :set_locked_false
   
   def save_multiple_answers(multianswers)
@@ -14,6 +14,10 @@ class Answer < ActiveRecord::Base
     end
   end
   
+  def check_deadline
+    return false if deadline_reached?(self.question.page, self.student) 
+  end
+  
   protected
   
   def set_locked_false
@@ -21,11 +25,8 @@ class Answer < ActiveRecord::Base
     self.save
   end
   
-  def check_deadline
-    return false if deadline_reached?(self.question.page, self.student)    
-  end
-  
   def deadline_reached?(page, student)
+    return true if self.locked == true
     today = Time.now
     deadline_group = student.groups.map {|g| g if g.course_id == page.course.id}
     if page.deadlines.empty?

@@ -89,7 +89,32 @@ module ApplicationHelper
     unless element.answers.empty?
       a = Answer.where(:student_id => student.id, :question_id => element.id)
       answer = Answer.find(a)
-      return answer.txt
+      return answer
+    end
+  end
+  
+  def show_score(element, user)
+    unless element.question_scores.empty?
+      s = QuestionScore.where(:tutor_id => user.id, :question_id => element.id)
+      score = QuestionScore.find(s)
+      return score.value
+    end
+  end
+  
+  def find_question_score(content, student=nil)
+    element = content.element
+    if content.element_type == "Question"
+      if student
+        a = Answer.where(:student_id => student.id, :question_id => element.id)
+        answer = Answer.find(a)
+        edit_tutor_content_element_student_answer_path(content, element, student, answer)
+      elsif element.question_scores.empty?
+        new_tutor_content_element_question_score_path(content, element)
+      else        
+        qs = QuestionScore.where(:tutor_id => current_user.role.id, :question_id => element.id)
+        question_score = QuestionScore.find(qs)
+        edit_tutor_content_element_question_score_path(content, element, question_score)
+      end
     end
   end
   

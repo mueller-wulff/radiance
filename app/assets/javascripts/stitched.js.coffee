@@ -470,15 +470,15 @@ Stitched = ->
          $('.element').live 'click', ->
               today = new Date()
               deadline = new Date( $('#deadline').html() )
-              if deadline > today
-                  if !edit_mode 
-                      switchToEditView(
-                          $(this),
-                          $(this).find('[name=url]').val()
-                          )
-                      return 
-              else
-                  alert "Deadline is reached"
+             # if deadline > today
+              if !edit_mode 
+                 switchToEditView(
+                    $(this),
+                    $(this).find('[name=url]').val()
+                 )
+                 return 
+             # else
+              #    alert "Deadline is reached"
          return
     
      bindDeleteContentLinks = ->

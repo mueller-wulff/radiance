@@ -3,5 +3,5 @@
 		<label for="Input"><%=raw e.txt.gsub("\n","<br />") %></label>  
 	<% end %>
 	<br />
-	<%=raw show_answer(e, current_user.role).gsub("\n","<br />")  %>
+	<%=raw show_answer(e, current_user.role).txt.gsub("\n","<br />")  %>
 </p>

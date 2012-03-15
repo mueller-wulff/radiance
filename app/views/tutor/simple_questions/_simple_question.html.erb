@@ -4,8 +4,13 @@
   <% end %>
 	<% if @student %>
 		<br />
-		<%= show_answer(e, @student)  %>
+		<%= show_answer(e, @student).txt  %>
+		<br />
+		Achievement: <%= show_answer(e, @student).score  %>
 	<% else %>
-  	<%= text_field_tag :dummy  %>
+  	<%= text_field_tag :dummy  %>		
 	<% end %>
+</p>
+<p class="score">
+	<label>Score: <%= show_score(e, current_user.role) %></label>
 </p>

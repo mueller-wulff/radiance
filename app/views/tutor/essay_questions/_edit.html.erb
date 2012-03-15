@@ -1,0 +1,18 @@
+<p class="input">
+  <% unless @element.txt == "" %>
+    <label for="Input"><%=raw @element.txt.gsub("\n","<br />") %></label>
+  <% end %>
+	<% if @student %>
+		<%=raw show_answer(@element, @student).txt %>
+		<p>
+			<%= fields_for :answer do |answer_field| -%>
+				Achievement: <%= answer_field.text_field :score %>
+			<% end %>
+			Score: <%= show_score(@element, current_user.role) %>
+		</p>
+	<% else %>
+	  <%= fields_for :question_score do |score_field| -%>
+			Score: <%= score_field.text_field :value %>
+		<% end -%>
+	<% end %>
+</p>

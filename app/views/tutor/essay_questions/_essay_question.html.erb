@@ -3,9 +3,13 @@
     <label for="Input"><%=raw e.txt.gsub("\n","<br />") %></label>
   <% end %>
 	<% if @student %>
-		<%=raw show_answer(e, @student) %>
+		<%=raw show_answer(e, @student).txt %>
+		<br />
+		<p>Achievement: <%= show_answer(e, @student).score  %></p>
 	<% else %>
-  	<textarea name="Textarea" id="Textarea" cols="65" rows="10"></textarea>
+  	<textarea name="Textarea" id="Textarea" cols="65" rows="10"></textarea>		
 	<% end %>
 </p>
-
+<p class="score">
+	<label>Score: <%= show_score(e, current_user.role) %></label>
+</p>
