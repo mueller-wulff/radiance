@@ -515,6 +515,20 @@ Stitched = ->
              sendDataToServer(data, url)
              return
          return
+         
+     calculateAssignmentGrade = ->
+         achievement = 0
+         score = 0
+         grade = 0.0
+         $('.achievement').each ->
+             achievement += Number($(this).val() )
+             return
+         $('.score').each ->
+             score += Number($(this).val() )
+         grade = (achievement*100)/score
+         $('.grade').html("<strong>Grade: " + grade + "%</strong>" )
+         $('#grade_hidden').val(grade)
+         return
           
      #Page View Functions
      loadCourseView = ->
@@ -564,6 +578,10 @@ Stitched = ->
          bindAnswerContentLinks()
          checkForProgressIndicator()
          return
+    
+     loadGradeView = ->
+         calculateAssignmentGrade()
+         return
      
      loadPageEditView: loadPageEditView,
      loadModuleEditView: loadModuleEditView,
@@ -574,7 +592,8 @@ Stitched = ->
      linkCKLinks: linkCKLinks,
      checkForProgressIndicator: checkForProgressIndicator,
      changeAssignmentValue: changeAssignmentValue,
-     loadPageAnswerView: loadPageAnswerView
+     loadPageAnswerView: loadPageAnswerView,
+     loadGradeView: loadGradeView
 
 root = exports ? this
 root.Stitched = Stitched()

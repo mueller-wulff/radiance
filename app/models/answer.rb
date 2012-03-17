@@ -15,6 +15,7 @@ class Answer < ActiveRecord::Base
   end
   
   def check_deadline
+    return false if self.locked == true
     return false if deadline_reached?(self.question.page, self.student) 
   end
   
@@ -26,7 +27,6 @@ class Answer < ActiveRecord::Base
   end
   
   def deadline_reached?(page, student)
-    return true if self.locked == true
     today = Time.now
     deadline_group = student.groups.map {|g| g if g.course_id == page.course.id}
     if page.deadlines.empty?

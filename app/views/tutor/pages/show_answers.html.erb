@@ -7,6 +7,10 @@
     <%= render :partial => 'tutor/contents/content', :collection => @page.contents %>
     <%= hidden_field_tag "page", tutor_page_contents_path(@page)%>
   </div>
+	<div class="grade">		
+  </div>
+	<%= button_to "Enter in Coursebook", :action => "update", :confirm => "Are you sure?", :disabled_with => "Sending..." %>
+	<%= hidden_field_tag "grade_hidden" %>
 	<%= render 'page_bottom' %> 
 </div>
 <div id="aside">
@@ -15,5 +19,6 @@
 <script type="text/javascript">
 	$(document).ready(function(){
     Stitched.loadPageAnswerView();
+		Stitched.loadGradeView();
   });
 </script>
