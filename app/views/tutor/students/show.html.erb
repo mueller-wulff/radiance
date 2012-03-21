@@ -5,9 +5,15 @@
 	<ul>
 		<% @stitch_modules.each do |stitch_module| %>
 			<li>
-				<ul><strong><%= stitch_module.short_title %></strong> <%= show_grade(stitch_module, @student, current_user.role).value unless stitch_module.grades.empty? %>
+				<ul><strong><%= stitch_module.short_title %></strong> current Grade: <%= show_grade(stitch_module, @student, current_user.role).value unless stitch_module.grades.empty? %>
 					<% stitch_module.stitch_units.each do |stitch_unit| %>
-						<li><%= link_to stitch_unit.title, find_assignment_page(stitch_unit, @group, @student) if stitch_unit.has_assignment_page? %> <%= show_grade(stitch_unit, @student, current_user.role).value unless stitch_unit.grades.empty? %></li>				
+						<li>
+							<% if stitch_unit.has_assignment_page? %>
+								<%= link_to stitch_unit.title, find_assignment_page(stitch_unit, @group, @student)  %>
+								current Grade: <%= show_grade(stitch_unit, @student, current_user.role).value unless stitch_unit.grades.empty? %>
+								Weight: <%= stitch_unit.weight %>%
+							<% end %>
+						</li>				
 					<% end %>
 				</ul>
 			</li>

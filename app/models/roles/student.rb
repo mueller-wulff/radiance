@@ -37,6 +37,12 @@ class Student < Role
     groups.map{|g| g.course}
   end
   
+  def find_tutor_of_course(course)
+    group = self.groups.where(:course_id => course.id)
+    tutor_group = Group.find(group)
+    return tutor_group.tutor
+  end
+  
   def shuffle_group(old_group, new_group)
     self.groups.delete(old_group)
     self.groups << new_group    

@@ -1,7 +1,5 @@
 Stitched::Application.routes.draw do
  
-  get "answers/edit"
-
   scope :module => 'static' do
     resources :faqs
     resources :unsupported_browsers
@@ -17,7 +15,11 @@ Stitched::Application.routes.draw do
 
   namespace :student do
     resources :students 
-    resources :courses
+    resources :courses do
+      member do
+        get 'show_coursebook'
+      end
+    end
     
     resources :stitch_modules do 
       resources :stitch_units  do

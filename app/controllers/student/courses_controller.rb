@@ -18,6 +18,16 @@ class Student::CoursesController < ApplicationController
     end
   end
   
+  def show_coursebook
+    @course = Course.find(params[:id])
+    @tutor = @student.find_tutor_of_course(@course)
+    @stitch_modules = @course.stitch_modules.all
+    respond_to do |format|
+      format.html # show.html.erb
+      format.xml  { render :xml => @students }
+    end
+  end
+  
   private
   
   def grab_student

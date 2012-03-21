@@ -1,0 +1,25 @@
+<div id="main">
+	<h1>
+		Coursebook for <%= @course.short_title %>
+	</h1>
+	<ul>
+		<% @stitch_modules.each do |stitch_module| %>
+			<li>
+				<ul><strong><%= stitch_module.short_title %></strong> current Grade: <%= show_grade(stitch_module, @student, @tutor).value unless stitch_module.grades.empty? %>
+					<% stitch_module.stitch_units.each do |stitch_unit| %>
+						<li>
+							<% if stitch_unit.has_assignment_page? %>
+								<%= stitch_unit.title %>
+								current Grade: <%= show_grade(stitch_unit, @student, @tutor).value unless stitch_unit.grades.empty? %>
+								Weight: <%= stitch_unit.weight %>%
+							<% end %>
+						</li>				
+					<% end %>
+				</ul>
+			</li>
+		<% end %>
+	</ul>
+</div>
+<div id="aside">
+
+</div>
