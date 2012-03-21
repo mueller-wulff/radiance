@@ -15,8 +15,11 @@ class Tutor::StudentsController < ApplicationController
   
   def show
     @student = Student.find(params[:id])
-    @assignments = @student.find_assignment_pages(@group)
-    
+    @stitch_modules = StitchModule.where(:course_id => @group.course.id)
+    respond_to do |format|
+      format.html # show.html.erb
+      format.xml  { render :xml => @students }
+    end
   end
 
   # GET /students/new
@@ -44,7 +47,8 @@ class Tutor::StudentsController < ApplicationController
     respond_to do |format|
       if @student.save
         @student.groups << @group
-        @student.send_new_group(@group)       
+        @student.send_new_group(@group)
+        @student.create_coursebook(@tutor, @group.course)       
         format.html { redirect_to(edit_tutor_group_path(@tutor, @group), :notice => 'Student was successfully enrolled.') }
         format.xml  { render :xml => @student, :status => :created, :location => @student }
       else

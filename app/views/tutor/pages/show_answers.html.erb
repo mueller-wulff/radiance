@@ -9,8 +9,9 @@
   </div>
 	<div class="grade">		
   </div>
-	<%= button_to "Enter in Coursebook", :action => "update", :confirm => "Are you sure?", :disabled_with => "Sending..." %>
-	<%= hidden_field_tag "grade_hidden" %>
+	<%# unless @grade %>
+		<%= button_to "Enter in Coursebook", tutor_grades_path(:student => @student, :stitch_unit => @page.stitch_unit, :group => @group), :method => :post, :form_class => 'new_grade_form', :id => "new_grade" %>
+	<%# end %>	
 	<%= render 'page_bottom' %> 
 </div>
 <div id="aside">

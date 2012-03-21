@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120312133511) do
+ActiveRecord::Schema.define(:version => 20120320152012) do
 
   create_table "answers", :id => false, :force => true do |t|
     t.integer  "id",          :null => false
@@ -114,10 +114,10 @@ ActiveRecord::Schema.define(:version => 20120312133511) do
   end
 
   create_table "grades", :id => false, :force => true do |t|
-    t.integer  "id",             :null => false
-    t.integer  "value"
+    t.integer  "id",            :null => false
+    t.float    "value"
     t.integer  "gradable_id"
-    t.string   "gradeable_type"
+    t.string   "gradable_type"
     t.integer  "student_id"
     t.integer  "tutor_id"
     t.datetime "created_at"

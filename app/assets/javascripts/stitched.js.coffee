@@ -527,7 +527,12 @@ Stitched = ->
              score += Number($(this).val() )
          grade = (achievement*100)/score
          $('.grade').html("<strong>Grade: " + grade + "%</strong>" )
-         $('#grade_hidden').val(grade)
+         $('#new_grade').click (e) ->
+            url = $('.new_grade_form').attr('action')
+            data = 'grade=' + grade
+            sendDataToServer(data, url)
+            e.preventDefault()
+            return 
          return
           
      #Page View Functions

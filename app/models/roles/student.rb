@@ -45,11 +45,9 @@ class Student < Role
   def send_new_group(group)
     Notifier.new_group(self, group).deliver
   end
-  
-  def find_assignment_pages(group)
-    all_assignment_pages = Page.where(:assignment => true)
-    course_assignment_pages = all_assignment_pages.map {|p| p if p.course == group.course }
-    return course_assignment_pages
+    
+  def create_coursebook(tutor, course)
+    Grade.create(:student => self, :tutor => tutor, :gradable => course)
   end
   
 end

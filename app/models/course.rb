@@ -1,6 +1,6 @@
 class Course < ActiveRecord::Base
   has_many :stitch_modules, :order => "position"
-  has_many :grades, :as => :gradeable
+  has_many :grades, :as => :gradable
   has_many :groups
   has_many :developers
   has_and_belongs_to_many :tutors

@@ -1,7 +1,7 @@
 class StitchModule < ActiveRecord::Base
   has_many :stitch_units, :order => "position"
   has_many :pages, :through => :stitch_units
-  has_many :grades, :as => :gradeable
+  has_many :grades, :as => :gradable
   belongs_to :course
   has_and_belongs_to_many :developers
   before_create :set_position

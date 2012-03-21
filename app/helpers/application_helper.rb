@@ -118,4 +118,21 @@ module ApplicationHelper
     end
   end
   
+  def show_grade(gradable, student, tutor)
+    g = Grade.where(:student_id => student.id, :tutor_id => tutor.id, :gradable_id => gradable.id, :gradable_type => gradable.class.name)
+    grade = Grade.find(g)
+    return grade
+  end
+  
+  def find_assignment_page(stitch_unit, group, student)
+    all_assignment_pages = Page.where(:assignment => true)
+    unit_assignment_page = all_assignment_pages.where(:stitch_unit_id => stitch_unit.id)
+    if unit_assignment_page.empty?
+      return ""
+    else
+      page = Page.find(unit_assignment_page)
+      show_answers_tutor_group_student_page_path(group.id, student.id, page)
+    end
+  end
+  
 end

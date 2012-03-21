@@ -33,6 +33,7 @@ class Tutor::PagesController < ApplicationController
   
   def show_answers
     @page = Page.find(params[:id]) 
+    @grade = Grade.where(:student => @student, :tutor => current_user.role, :gradable => @page.stitch_unit)
     respond_to do |format|
       format.html
     end   

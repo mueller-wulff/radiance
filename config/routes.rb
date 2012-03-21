@@ -53,6 +53,8 @@ Stitched::Application.routes.draw do
       resources :profiles
     end
     
+    resources :grades
+    
     resources :groups do
       resources :students do
         member do
