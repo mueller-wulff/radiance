@@ -2,6 +2,7 @@
 	<h1>
 		Coursebook for <%= @student.profile.login %>
 	</h1>
+	<h2><%= @group.course.short_title %></h2>
 	<ul>
 		<% @stitch_modules.each do |stitch_module| %>
 			<li>

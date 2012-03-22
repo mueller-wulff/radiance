@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120320152012) do
+ActiveRecord::Schema.define(:version => 20120322140835) do
 
   create_table "answers", :id => false, :force => true do |t|
     t.integer  "id",          :null => false
@@ -22,6 +22,7 @@ ActiveRecord::Schema.define(:version => 20120320152012) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "score"
+    t.text     "comment"
   end
 
   create_table "ckeditor_assets", :id => false, :force => true do |t|

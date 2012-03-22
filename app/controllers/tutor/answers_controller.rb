@@ -17,6 +17,7 @@ class Tutor::AnswersController < ApplicationController
   def update
     @answer = Answer.find(params[:id])
     @answer.update_column(:score, params[:answer]["score"])
+    @answer.update_column(:comment, params[:answer]["comment"])
     @answer.update_column(:locked, "true")
     redirect_to tutor_content_element_student_answer_path(@content, @element, @student, @answer)
   end

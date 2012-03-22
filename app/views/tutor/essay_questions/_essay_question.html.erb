@@ -9,6 +9,9 @@
 	<% end %>
 </p>
 <p>
+	<label>Comment: <%=show_answer(e, @student).comment %></label>
+</p>
+<p>
 	<label>Achievement: <%=text_field_tag "achievement-element", show_answer(e, @student).score, {:readonly => true, :class => "achievement" }%></label>
 </p>
 <p>
