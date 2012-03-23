@@ -4,6 +4,7 @@ class Course < ActiveRecord::Base
   has_many :groups
   has_many :developers
   has_and_belongs_to_many :tutors
+  has_many :default_assesments
   
   belongs_to :parent_course, 
     :class_name => "Course",

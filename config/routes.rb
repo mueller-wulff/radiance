@@ -1,5 +1,5 @@
-Stitched::Application.routes.draw do
- 
+Stitched::Application.routes.draw do  
+
   scope :module => 'static' do
     resources :faqs
     resources :unsupported_browsers
@@ -56,7 +56,7 @@ Stitched::Application.routes.draw do
     end
     
     resources :grades
-    
+        
     resources :groups do
       resources :students do
         member do
@@ -73,7 +73,10 @@ Stitched::Application.routes.draw do
 
     resources :notes
     resources :responses
-    resources :courses
+    resources :courses do
+      resources :default_assesments
+    end
+    
     resources :stitch_modules do 
       resources :stitch_units  do
         member do

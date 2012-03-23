@@ -1,0 +1,22 @@
+<div id="main">
+	<h1>Set default Assesment for Course <%= @course.short_title %></h1>
+	<%= form_tag :action => 'create' do %>
+		<% @default_assesments.each_with_index do |default_assesment, index| %>
+	  	<%= fields_for "default_assesments[#{index}]", default_assesment do |f| %>
+				<p class='input'>
+	    		<%= f.label :mark, "#{index+1}"  %>
+					<%= f.hidden_field :mark, :value => "#{index+1}"  %>
+		     	<label>Name</label> <%= f.text_field :name  %>
+				  <label>Lower Treshold</label> <%= f.text_field :lower_treshold %>
+					<label>Upper Treshold</label> <%= f.text_field :upper_treshold %>
+				</p>
+	   	<% end %>
+	 	<% end %>
+	  <%= submit_tag 'Save' %>
+	<% end %>
+	<%= link_to 'Back', tutor_courses_path %>
+
+</div>
+<div id="aside">
+
+</div>

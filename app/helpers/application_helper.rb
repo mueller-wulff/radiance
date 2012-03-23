@@ -135,4 +135,14 @@ module ApplicationHelper
     end
   end
   
+  def find_default_assesment(course, tutor)
+    def_assesment = DefaultAssesment.where(:course_id => course.id, :tutor_id => tutor.id)
+    if def_assesment.empty?
+      new_tutor_course_default_assesment_path(course)
+    else
+      da = DefaultAssesment.find(def_assesment[0].id)
+      tutor_course_default_assesment_path(course, da)
+    end
+  end
+  
 end
