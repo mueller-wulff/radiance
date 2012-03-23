@@ -124,6 +124,12 @@ module ApplicationHelper
     return grade
   end
   
+  def show_national_assesment(value=0)
+    da = DefaultAssesment.where("lower_treshold <= ? AND upper_treshold >= ?", value, value)
+    default_assesment = DefaultAssesment.find(da)
+    return default_assesment.name
+  end
+  
   def find_assignment_page(stitch_unit, group, student)
     all_assignment_pages = Page.where(:assignment => true)
     unit_assignment_page = all_assignment_pages.where(:stitch_unit_id => stitch_unit.id)

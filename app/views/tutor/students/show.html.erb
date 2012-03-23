@@ -3,23 +3,30 @@
 		Coursebook for <%= @student.profile.login %>
 	</h1>
 	<h2><%= @group.course.short_title %></h2>
-	<ul>
 		<% @stitch_modules.each do |stitch_module| %>
-			<li>
-				<ul><strong><%= stitch_module.short_title %></strong> current Grade: <%= show_grade(stitch_module, @student, current_user.role).value unless stitch_module.grades.empty? %>
-					<% stitch_module.stitch_units.each do |stitch_unit| %>
-						<li>
-							<% if stitch_unit.has_assignment_page? %>
-								<%= link_to stitch_unit.title, find_assignment_page(stitch_unit, @group, @student)  %>
-								current Grade: <%= show_grade(stitch_unit, @student, current_user.role).value unless stitch_unit.grades.empty? %>
-								Weight: <%= stitch_unit.weight %>%
-							<% end %>
-						</li>				
-					<% end %>
-				</ul>
-			</li>
+			<h3><%= stitch_module.short_title %> current Grade: <%= show_grade(stitch_module, @student, current_user.role).value unless stitch_module.grades.empty? %> <%= show_national_assesment(show_grade(stitch_module, @student, current_user.role).value) unless stitch_module.grades.empty? %></h3>
+			<table  class="userlist">
+			  <thead>
+			    <tr>
+			      <td>Unit Title</td>
+			      <td>Current Grade</td>
+			      <td>Weight</td>
+			    </tr>
+			  </thead>
+			  <tbody>
+			    <% stitch_module.stitch_units.each do |stitch_unit| %>
+						<% if stitch_unit.has_assignment_page? %>
+			      	<tr>
+				        <td><%= link_to stitch_unit.title, find_assignment_page(stitch_unit, @group, @student)  %></td>
+				        <td><%= show_grade(stitch_unit, @student, current_user.role).value unless stitch_unit.grades.empty? %></td>
+				        <td><%= stitch_unit.weight %>%</td>
+				      </tr>
+						<% end %>
+			    <% end %>
+			  </tbody>
+			</table>						
 		<% end %>
-	</ul>
+	
 </div>
 <div id="aside">
 
