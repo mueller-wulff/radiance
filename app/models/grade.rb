@@ -21,4 +21,20 @@ class Grade < ActiveRecord::Base
     end
   end
   
+  def self.calculate_course_grade(course, student, tutor)
+    value = 0
+    course.stitch_modules.each do |st|
+      module_grade = Grade.where(:gradable_id => st.id, :gradable_type => "StitchModule", :student_id => student, :tutor_id => tutor )
+      unless module_grade.empty?
+        grade = Grade.find(module_grade)
+        value += grade.value
+      end
+    end
+    course_grade_value = value / course.stitch_modules.size
+    course_grade = Grade.where(:gradable_id => course.id, :gradable_type => "Course", :student_id => student, :tutor_id => tutor )
+    grade = Grade.find(course_grade)
+    grade.update_attribute(:value, course_grade_value)
+    grade.save
+  end
+  
 end

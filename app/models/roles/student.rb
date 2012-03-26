@@ -40,7 +40,7 @@ class Student < Role
   def find_tutor_of_course(course)
     group = self.groups.where(:course_id => course.id)
     tutor_group = Group.find(group)
-    return tutor_group.tutor
+    return tutor_group
   end
   
   def shuffle_group(old_group, new_group)

@@ -2,15 +2,22 @@ class Student::PagesController < ApplicationController
   before_filter :require_student
 
   before_filter :get_stitch_unit
+  before_filter :get_student
 
   def get_stitch_unit
     @stitch_unit = StitchUnit.find(params[:stitch_unit_id])
+  end
+  
+  def get_student
+    @student = current_user.role    
   end
   
   # GET /pages/1
   # GET /pages/1.xml
   def show
     @page = @stitch_unit.pages.find(params[:id])
+    @group = Group.find_group(@page, @student)
+    @tutor = @group.tutor
     respond_to do |format|
       format.html # show.html.erb
     end
@@ -26,7 +33,6 @@ class Student::PagesController < ApplicationController
   
   def send_answers
     @page = @stitch_unit.pages.find(params[:id])
-    @student = current_user.role
     @group = Group.find_group(@page, @student)
     Notifier.send_answers(@group, @student, @page).deliver
     redirect_to student_stitch_unit_page_path(@stitch_unit, @page)

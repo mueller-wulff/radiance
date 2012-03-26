@@ -125,19 +125,22 @@ module ApplicationHelper
   end
   
   def show_national_assesment(value=0)
-    da = DefaultAssesment.where("lower_treshold <= ? AND upper_treshold >= ?", value, value)
-    default_assesment = DefaultAssesment.find(da)
-    return default_assesment.name
+    unless value.nil?
+      da = DefaultAssesment.where("lower_treshold <= ? AND upper_treshold >= ?", value, value)
+      default_assesment = DefaultAssesment.find(da)
+      return default_assesment.name
+    end
   end
   
-  def find_assignment_page(stitch_unit, group, student)
+  def find_assignment_page(stitch_unit, group, student, tutor=nil)
     all_assignment_pages = Page.where(:assignment => true)
     unit_assignment_page = all_assignment_pages.where(:stitch_unit_id => stitch_unit.id)
     if unit_assignment_page.empty?
       return ""
     else
       page = Page.find(unit_assignment_page)
-      show_answers_tutor_group_student_page_path(group.id, student.id, page)
+      tutor ? show_answers_tutor_group_student_page_path(group.id, student.id, page) : student_stitch_unit_page_path(stitch_unit, page)
+        
     end
   end
   
@@ -150,5 +153,5 @@ module ApplicationHelper
       tutor_course_default_assesment_path(course, da)
     end
   end
-  
+    
 end

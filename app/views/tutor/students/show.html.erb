@@ -2,7 +2,7 @@
 	<h1>
 		Coursebook for <%= @student.profile.login %>
 	</h1>
-	<h2><%= @group.course.short_title %></h2>
+	<h2><%= @group.course.short_title %> <%= show_grade(@group.course, @student, current_user.role).value unless @group.course.grades.empty? %> <%= show_national_assesment(show_grade(@group.course, @student, current_user.role).value) unless @group.course.grades.empty? %></h2>
 		<% @stitch_modules.each do |stitch_module| %>
 			<h3><%= stitch_module.short_title %> current Grade: <%= show_grade(stitch_module, @student, current_user.role).value unless stitch_module.grades.empty? %> <%= show_national_assesment(show_grade(stitch_module, @student, current_user.role).value) unless stitch_module.grades.empty? %></h3>
 			<table  class="userlist">
@@ -17,7 +17,7 @@
 			    <% stitch_module.stitch_units.each do |stitch_unit| %>
 						<% if stitch_unit.has_assignment_page? %>
 			      	<tr>
-				        <td><%= link_to stitch_unit.title, find_assignment_page(stitch_unit, @group, @student)  %></td>
+				        <td><%= link_to stitch_unit.title, find_assignment_page(stitch_unit, @group, @student, @tutor)  %></td>
 				        <td><%= show_grade(stitch_unit, @student, current_user.role).value unless stitch_unit.grades.empty? %></td>
 				        <td><%= stitch_unit.weight %>%</td>
 				      </tr>

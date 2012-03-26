@@ -20,7 +20,8 @@ class Student::CoursesController < ApplicationController
   
   def show_coursebook
     @course = Course.find(params[:id])
-    @tutor = @student.find_tutor_of_course(@course)
+    @group = @student.find_tutor_of_course(@course)
+    @tutor = @group.tutor
     @stitch_modules = @course.stitch_modules.all
     respond_to do |format|
       format.html # show.html.erb
