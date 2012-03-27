@@ -1,0 +1,8 @@
+<%= raw (filter_local_links e.txt) %>
+<!--""><-->
+<script type="text/javascript">
+  $(document).ready(function(){
+    $('#c_<%= e.content.id %>').closest(".element").addClass("editor");
+	Stitched.linkCKLinks();
+  });
+</script>

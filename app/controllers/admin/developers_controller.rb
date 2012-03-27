@@ -47,6 +47,7 @@ class Admin::DevelopersController < ApplicationController
   def update
     params[:developer][:stitch_module_ids] ||= []
     @developer = Developer.find(params[:id])
+    @profile = @developer.profile
     @courses = Course.all
     respond_to do |format|
       if @developer.update_attributes(params[:developer])

@@ -1,0 +1,18 @@
+<table  class="userlist">
+  <thead>
+    <tr>
+      <td>Short Title</td>
+      <td>Title</td>
+      <td>Language</td>
+    </tr>
+  </thead>
+  <tbody>
+    <% courses.each do |course| %>
+      <tr>
+        <td><%= link_to course.short_title, student_course_path(course) %></td>
+        <td><%= course.title %></td>
+        <td><%= course.language %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

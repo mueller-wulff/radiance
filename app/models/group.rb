@@ -1,9 +1,10 @@
 class Group < ActiveRecord::Base
+  has_many :enrollments
   has_many :students, :through => :enrollments
   belongs_to :tutor
   belongs_to :course
-  has_many :enrollments
-    
+  has_one :deadline, :as => :deadlinable
+      
   validates_associated :course, :tutor
   validates :tutor_id, :presence => true
   validates :course_id, :presence => true
@@ -21,4 +22,10 @@ class Group < ActiveRecord::Base
     end
   end
   
+  def self.find_group(page, student)
+    group_id = student.groups.map {|g| g if g.course_id == page.course.id}
+    group = Group.find(group_id[0])
+    return group
+  end
+    
 end

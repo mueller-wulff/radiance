@@ -16,4 +16,24 @@ class Notifier < ActionMailer::Base
     @user  = user 
   end
   
+  def new_group(student, group)
+    subject       "New Group"  
+    recipients    student.profile.email  
+    sent_on       Time.now  
+    from          "accounts@stitched.com"
+    @student  = student
+    @group    = group
+  end  
+  
+  def send_answers(group, student, page)
+    subject     "Assignment finished"
+    recipients  group.tutor.profile.email
+    sent_on     Time.now
+    from        "accounts@stitched.com"
+    @tutor      = group.tutor
+    @student    = student
+    @page       = page
+    @url        = show_answers_tutor_group_student_page_url(group, student, page)
+  end
+  
 end

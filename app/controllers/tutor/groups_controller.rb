@@ -1,8 +1,10 @@
-class GroupsController < ApplicationController
+class Tutor::GroupsController < ApplicationController
+  before_filter :require_user
+  before_filter :grab_tutor
   # GET /groups
   # GET /groups.xml
   def index
-    @groups = Group.all
+    @groups = @tutor.groups.all
 
     respond_to do |format|
       format.html # index.html.erb
@@ -13,7 +15,7 @@ class GroupsController < ApplicationController
   # GET /groups/1
   # GET /groups/1.xml
   def show
-    @group = Group.find(params[:id])
+    @group = @tutor.groups.find(params[:id])
 
     respond_to do |format|
       format.html # show.html.erb
@@ -24,8 +26,7 @@ class GroupsController < ApplicationController
   # GET /groups/new
   # GET /groups/new.xml
   def new
-    @group = Group.new
-
+    @group = @tutor.groups.new
     respond_to do |format|
       format.html # new.html.erb
       format.xml  { render :xml => @group }
@@ -34,17 +35,19 @@ class GroupsController < ApplicationController
 
   # GET /groups/1/edit
   def edit
-    @group = Group.find(params[:id])
+    @group = @tutor.groups.find(params[:id])
+    @students = @group.students.all
   end
 
   # POST /groups
   # POST /groups.xml
   def create
-    @group = Group.new(params[:group])
-
+    @group = @tutor.groups.new(params[:group])
+    @group.course = Course.find(params[:course])
+    @group.deadline = Deadline.new(params[:deadline])
     respond_to do |format|
       if @group.save
-        format.html { redirect_to(@group, :notice => 'Group was successfully created.') }
+        format.html { redirect_to(tutor_groups_url, :notice => 'Group was successfully created.') }
         format.xml  { render :xml => @group, :status => :created, :location => @group }
       else
         format.html { render :action => "new" }
@@ -56,11 +59,11 @@ class GroupsController < ApplicationController
   # PUT /groups/1
   # PUT /groups/1.xml
   def update
-    @group = Group.find(params[:id])
+    @group = @tutor.groups.find(params[:id])
 
     respond_to do |format|
       if @group.update_attributes(params[:group])
-        format.html { redirect_to(@group, :notice => 'Group was successfully updated.') }
+        format.html { redirect_to(tutor_groups_url, :notice => 'Group was successfully updated.') }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }
@@ -72,12 +75,19 @@ class GroupsController < ApplicationController
   # DELETE /groups/1
   # DELETE /groups/1.xml
   def destroy
-    @group = Group.find(params[:id])
+    @group = @tutor.groups.find(params[:id])
     @group.destroy
 
     respond_to do |format|
-      format.html { redirect_to(groups_url) }
+      format.html { redirect_to(tutor_groups_url) }
       format.xml  { head :ok }
     end
   end
+    
+  private
+  
+  def grab_tutor
+    @tutor = current_user.role
+  end
+    
 end

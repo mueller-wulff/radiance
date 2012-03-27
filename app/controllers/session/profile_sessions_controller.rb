@@ -10,8 +10,12 @@ class Session::ProfileSessionsController < ApplicationController
   def create
     @profile_session = ProfileSession.new(params[:profile_session])  
     if @profile_session.save  
-      flash[:notice] = "Successfully logged in."  
-      redirect_to root_url  
+      flash[:notice] = "Successfully logged in." 
+      if @profile_session.profile.inactive_student 
+        redirect_to edit_student_path(@profile_session.profile.role_id) 
+      else
+        redirect_to root_url  
+      end
     else  
       render :action => 'new'  
     end  

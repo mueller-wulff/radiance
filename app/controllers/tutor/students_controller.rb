@@ -1,4 +1,7 @@
-class StudentsController < ApplicationController
+class Tutor::StudentsController < ApplicationController
+  before_filter :require_user
+  before_filter :grab_tutor, :except => [:edit, :update, :show]
+  before_filter :grab_group_id, :except => [:edit, :update]
   # GET /students
   # GET /students.xml
   def index
@@ -8,70 +11,44 @@ class StudentsController < ApplicationController
       format.html # index.html.erb
       format.xml  { render :xml => @students }
     end
-  end
-
-  # GET /students/1
-  # GET /students/1.xml
+  end  
+  
   def show
     @student = Student.find(params[:id])
-
-    respond_to do |format|
-      format.html # show.html.erb
-      format.xml  { render :xml => @student }
-    end
+    @assignments = @student.find_assignment_pages(@group)
+    
   end
 
   # GET /students/new
   # GET /students/new.xml
   def new
     @student = Student.new
-    @profile = Profile.new
-    @profilable = @student
+    @profile = @student.build_profile
     respond_to do |format|
       format.html # new.html.erb
       format.xml  { render :xml => @student }
     end
   end
 
-  # GET /students/1/edit
-  def edit
-    @student = Student.find(params[:id])
-  end
-
   # POST /students
   # POST /students.xml
   def create
-    @student = Student.new(params[:student])
-    @profilable = @student    
-    pw = ActiveSupport::SecureRandom.hex(10)
-    params[:profile]["password"] = pw
-    params[:profile]["password_confirmation"] = pw   
-    @profile = @profilable.profiles.build(params[:profile]) 
-    #logger.debug ("password #{@profile.attributes.inspect}")
+    if Profile.find_by_email(params[:student]["profile_attributes"]["email"]).nil?
+      @student = Student.new(params[:student])
+      @profile = @student.profile
+      @profile.login = params[:student]["profile_attributes"]["email"]
+    else
+      @profile = Profile.find_by_email(params[:student]["profile_attributes"]["email"])
+      @student = @profile.role  
+    end
     respond_to do |format|
       if @student.save
-        Notifier.send_pw(@profile, pw).deliver
-        logger.debug("email #{Notifier.send_pw(@profile, pw).deliver}")        
-        format.html { redirect_to(@student, :notice => 'Student was successfully created.') }
+        @student.groups << @group
+        @student.send_new_group(@group)       
+        format.html { redirect_to(edit_tutor_group_path(@tutor, @group), :notice => 'Student was successfully enrolled.') }
         format.xml  { render :xml => @student, :status => :created, :location => @student }
       else
         format.html { render :action => "new" }
-        format.xml  { render :xml => @student.errors, :status => :unprocessable_entity }
-      end
-    end
-  end
-
-  # PUT /students/1
-  # PUT /students/1.xml
-  def update
-    @student = Student.find(params[:id])
-
-    respond_to do |format|
-      if @student.update_attributes(params[:student])
-        format.html { redirect_to(@student, :notice => 'Student was successfully updated.') }
-        format.xml  { head :ok }
-      else
-        format.html { render :action => "edit" }
         format.xml  { render :xml => @student.errors, :status => :unprocessable_entity }
       end
     end
@@ -88,5 +65,33 @@ class StudentsController < ApplicationController
       format.xml  { head :ok }
     end
   end
-    
+  
+  def shuffle
+    @student = Student.find(params[:id])    
+  end
+  
+  def update_shuffle
+    @student = Student.find(params[:id]) 
+    new_group = Group.find(params[:metagroup])
+    @student.shuffle_group(@group, new_group)
+    respond_to do |format|
+      if @student.save        
+        @student.send_new_group(new_group)
+        format.html { redirect_to(edit_tutor_group_path(@tutor, @group), :notice => 'Student was successfully shuffled.') }
+      else
+        format.html { render :action => "shuffle" }
+      end
+    end
+  end
+
+  private
+
+    def grab_tutor
+      @tutor = current_user.role
+    end
+
+    def grab_group_id
+      @group = Group.find(params[:group_id])
+    end
+
 end

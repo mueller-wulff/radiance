@@ -2,8 +2,6 @@ class ApplicationController < ActionController::Base
   protect_from_forgery
   helper_method :current_user_session, :current_user
 
-  
-  
   private
   
   def check_browser
@@ -35,6 +33,26 @@ class ApplicationController < ActionController::Base
     if current_user
       store_location
       flash[:notice] = "You must be logged out to access this page"
+      redirect_to login_url
+      return false
+    end
+  end
+  
+  def require_tutor
+    unless current_user && current_user.role.class == Tutor
+      #TODO check tutor rights!
+      store_location
+      flash[:notice] = "You must be logged in to access this page"
+      redirect_to login_url
+      return false
+    end
+  end
+  
+  def require_student
+    unless current_user && current_user.role.class == Student
+      #TODO check tutor rights!
+      store_location
+      flash[:notice] = "You must be logged in to access this page"
       redirect_to login_url
       return false
     end

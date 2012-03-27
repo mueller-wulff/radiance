@@ -1,0 +1,8 @@
+<p class="input">
+  <% unless @element.txt == "" %>
+    <label for="Input"><%=raw @element.txt.gsub("\n","<br />") %></label>
+  <% end %>
+  <%= fields_for :answer do |answer_field| -%>
+		<%= answer_field.cktext_area :txt, :toolbar => 'Easy', :width => 650, :height => 400 %>
+	<% end -%>
+</p>

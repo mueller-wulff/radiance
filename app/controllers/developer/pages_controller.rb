@@ -1,13 +1,13 @@
 class Developer::PagesController < ApplicationController
   before_filter :require_developer
-  
+
   before_filter :get_stitch_unit
-  
+
   def get_stitch_unit
     @stitch_unit = StitchUnit.find(params[:stitch_unit_id])
   end
 
-  
+
 
   # GET /pages/1
   # GET /pages/1.xml
@@ -18,7 +18,7 @@ class Developer::PagesController < ApplicationController
       format.html # show.html.erb
     end
   end
-  
+
   def ajax_show
     @page = @stitch_unit.pages.find(params[:id])
 
@@ -39,7 +39,7 @@ class Developer::PagesController < ApplicationController
       end
     end
   end
-  
+
   # GET /pages/1/edit
   def ajax_edit
     @page = @stitch_unit.pages.find(params[:id])
@@ -75,6 +75,23 @@ class Developer::PagesController < ApplicationController
     end
   end
 
+  def make_assignment
+    @page = @stitch_unit.pages.find(params[:id])
+    if params[:page_assignment] == "true"
+      @page.assignment = true 
+    else
+      @page.assignment = false
+    end
+    respond_to do |format|
+      if @page.save
+        format.html { render :layout => false, :action => "ajax_show" }
+        format.js
+      else
+        format.hmtl { head :error }
+      end
+    end
+  end
+
   # DELETE /pages/1
   # DELETE /pages/1.xml
   def destroy
@@ -84,5 +101,5 @@ class Developer::PagesController < ApplicationController
       format.js { head :ok }
     end
   end
-  
+
 end

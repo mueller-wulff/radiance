@@ -1,5 +1,11 @@
-<%= form_for(@content, :url => developer_page_content_path(@page,@content)) do |f| %>
+<%= form_for(@content, :url => developer_page_content_path(@page,@content)) do |f| %>	
   <%= render "developer/#{@element.class.name.pluralize.underscore}/edit", :page => @page, :content => @content, :f => f %>
+	<% if @page.assignment %>
+		<p class="input">
+			<label for="Input">Weight</label>
+			<%= f.text_field :weight %>
+		</p>
+	<% end %>
 <% end %>
 <div class="save">
   <img class="save" src="/images/space.gif" alt="save Item" />

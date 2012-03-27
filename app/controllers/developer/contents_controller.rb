@@ -33,7 +33,7 @@ class Developer::ContentsController < ApplicationController
 
   # POST /pages
   # POST /pages.xml
-  def create
+  def create    
     respond_to do |format|
       @new_element = params[:element_type].constantize.create
       if @new_element

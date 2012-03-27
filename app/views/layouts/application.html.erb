@@ -26,8 +26,10 @@
           <% end %> 
         </ul>
         <ul class="path"> 
-          <li>Welcome</li> 
-          <li>Developer</li> 
+					<% if current_user %>
+          	<li>Welcome</li> 
+		        <li><%= current_user.role.class %></li> 
+					<% end %>
         </ul>
       </div> 
 

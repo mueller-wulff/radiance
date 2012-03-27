@@ -14,7 +14,7 @@ class Admin::TutorsController < ApplicationController
   # GET /tutors/1.xml
   def show
     @tutor = Tutor.find(params[:id])
-
+    @courses = Course.all
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @tutor }
@@ -25,6 +25,7 @@ class Admin::TutorsController < ApplicationController
   # GET /tutors/new.xml
   def new
     @tutor = Tutor.new
+    @courses = Course.all
     @profile = @tutor.build_profile
     respond_to do |format|
       format.html # new.html.erb
@@ -35,16 +36,18 @@ class Admin::TutorsController < ApplicationController
   # GET /tutors/1/edit
   def edit
     @tutor = Tutor.find(params[:id])
+    @profile = @tutor.profile
+    @courses = Course.all
   end
 
   # POST /tutors
   # POST /tutors.xml
   def create
     @tutor = Tutor.new(params[:tutor])
-    @profile = @tutor.profile
+    @profile = @tutor.profile    
     respond_to do |format|
       if @tutor.save
-        format.html { redirect_to(@tutor, :notice => 'Tutor was successfully created.') }
+        format.html { redirect_to(admin_tutors_path, :notice => 'Tutor was successfully created.') }
         format.xml  { render :xml => @tutor, :status => :created, :location => @tutor }
       else
         format.html { render :action => "new" }
@@ -57,10 +60,11 @@ class Admin::TutorsController < ApplicationController
   # PUT /tutors/1.xml
   def update
     @tutor = Tutor.find(params[:id])
-
+    @profile = @tutor.profile
+    @courses = Course.all
     respond_to do |format|
       if @tutor.update_attributes(params[:tutor])
-        format.html { redirect_to(@tutor, :notice => 'Tutor was successfully updated.') }
+        format.html { redirect_to(admin_tutors_path, :notice => 'Tutor was successfully updated.') }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }
