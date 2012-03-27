@@ -11,8 +11,9 @@ group :assets do
 end
 
 gem 'jquery-rails'
-
+gem 'sqlite3'
 gem 'execjs'
+gem 'awesome_print'
 
 gem 'therubyracer'
 

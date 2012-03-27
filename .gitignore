@@ -6,3 +6,4 @@ public/ckeditor_assets
 .DS_Store
 .rvmrc
 radiance.tmproj
+db/*.sqlite3
