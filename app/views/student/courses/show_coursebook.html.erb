@@ -2,6 +2,7 @@
 	<h1>
 		Coursebook for <%= @course.short_title %>
 	</h1>
+	<h3>Deadline <%= show_deadline_course(@course, @student) %></h3>
 	<% @stitch_modules.each do |stitch_module| %>
 		<h3><%= stitch_module.short_title %> current Grade: <%= show_grade(stitch_module, @student, @tutor).value unless stitch_module.grades.empty? %> <%= show_national_assesment(show_grade(stitch_module, @student, @tutor).value) unless stitch_module.grades.empty? %></h3>
 		<table  class="userlist">

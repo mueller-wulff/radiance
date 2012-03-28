@@ -40,5 +40,12 @@ class StitchModule < ActiveRecord::Base
   def last_page
     self.stitch_units.last.pages.last
   end
+  
+  def has_assignment_page?
+    self.stitch_units.each do |su|
+      return true if su.has_assignment_page?
+    end
+    return false
+  end
 
 end

@@ -9,9 +9,9 @@
   </div>
 	<div class="grade">		
   </div>
-	<% unless @grade %>
+	<%# unless @grade %>
 		<%= button_to "Enter in Coursebook", tutor_grades_path(:student => @student, :stitch_unit => @page.stitch_unit, :group => @group), :method => :post, :form_class => 'new_grade_form', :id => "new_grade" %>
-	<% end %>	
+	<%# end %>	
 	<%= render 'page_bottom' %> 
 </div>
 <div id="aside">
@@ -21,5 +21,6 @@
 	$(document).ready(function(){
     Stitched.loadPageAnswerView();
 		Stitched.loadGradeView();
+		Stitched.loadGradeSaveView();
   });
 </script>

@@ -38,9 +38,8 @@ class Student < Role
   end
   
   def find_tutor_of_course(course)
-    group = self.groups.where(:course_id => course.id)
-    tutor_group = Group.find(group)
-    return tutor_group
+    group = self.groups.where(:course_id => course.id).first
+    return group
   end
   
   def shuffle_group(old_group, new_group)
@@ -53,7 +52,7 @@ class Student < Role
   end
     
   def create_coursebook(tutor, course)
-    Grade.create(:student => self, :tutor => tutor, :gradable => course)
+    Grade.create(:student => self, :tutor => tutor, :gradable => course, :value => 0.0)
   end
   
 end

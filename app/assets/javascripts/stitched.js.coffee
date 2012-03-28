@@ -525,15 +525,27 @@ Stitched = ->
              return
          $('.score').each ->
              score += Number($(this).val() )
+             return
          grade = (achievement*100)/score
-         $('.grade').html("<strong>Grade: " + grade + "%</strong>" )
-         $('#new_grade').click (e) ->
-            url = $('.new_grade_form').attr('action')
-            data = 'grade=' + grade
-            sendDataToServer(data, url)
-            e.preventDefault()
-            return 
-         return
+         $('.grade').html("<strong>Grade: " + grade + "%</strong>" )         
+         return   
+         
+     saveGrade = ->
+         $('#new_grade').click (e) -> 
+             grade = $('.grade').html().match(/[0-9]+/g) 
+             parseGrade = parseFloat(grade.toString().replace(/\,/g, '.'))
+             url = $('.new_grade_form').attr('action') 
+             data = 'grade=' + parseGrade
+             sendDataToServer(data, url)       
+             e.preventDefault()
+             return false
+         $('#edit_grade').click (e) ->
+             url = $('.edit_grade_form').attr('action') 
+             data = nil
+             sendDataToServer(data, url)
+             e.preventDefault()
+             return false        
+         return            
           
      #Page View Functions
      loadCourseView = ->
@@ -587,6 +599,10 @@ Stitched = ->
      loadGradeView = ->
          calculateAssignmentGrade()
          return
+         
+     loadGradeSaveView = ->
+         saveGrade()
+         return
      
      loadPageEditView: loadPageEditView,
      loadModuleEditView: loadModuleEditView,
@@ -598,7 +614,8 @@ Stitched = ->
      checkForProgressIndicator: checkForProgressIndicator,
      changeAssignmentValue: changeAssignmentValue,
      loadPageAnswerView: loadPageAnswerView,
-     loadGradeView: loadGradeView
+     loadGradeView: loadGradeView,
+     loadGradeSaveView: loadGradeSaveView
 
 root = exports ? this
 root.Stitched = Stitched()

@@ -16,8 +16,10 @@ class Tutor::StudentsController < ApplicationController
   def show
     @student = Student.find(params[:id])
     @stitch_modules = StitchModule.where(:course_id => @group.course.id)
+    @course_grade = Grade.where(:gradable_id => @group.course.id, :gradable_type => "Course", :student_id => @student, :tutor_id => @tutor ).first
     respond_to do |format|
       format.html # show.html.erb
+      format.js { head :ok }
       format.xml  { render :xml => @students }
     end
   end

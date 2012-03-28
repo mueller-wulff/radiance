@@ -52,9 +52,8 @@ module ApplicationHelper
   
   def show_deadline_course(course, student)
     deadline_group = student.groups.map {|g| g if g.course_id == course.id}
-    deadline_id = Deadline.where(:deadlinable_id => deadline_group)
-    unless deadline_id.empty?
-      deadline = Deadline.find(deadline_id)
+    deadline = Deadline.where(:deadlinable_id => deadline_group).first
+    unless deadline.nil?
       return deadline.due_date #.strftime('%d.%m.%Y - %H:%M')
     end
   end
@@ -62,9 +61,8 @@ module ApplicationHelper
   def show_deadline_page(page, student)
     unless page.deadlines.empty?
       deadline_group = student.groups.map {|g| g if g.course_id == page.course.id}
-      deadline_id = Deadline.where(:group_id => deadline_group[0], :deadlinable_id => page.id)
-      unless deadline_id.empty?
-        deadline = Deadline.find(deadline_id)
+      deadline = Deadline.where(:group_id => deadline_group[0], :deadlinable_id => page.id).first
+      unless deadline.nil?
         return deadline.due_date #.strftime('%d.%m.%Y - %H:%M')
       end
     else
@@ -78,8 +76,7 @@ module ApplicationHelper
       if element.answers.empty?
         new_student_content_element_answer_path(content, element)
       else        
-        a = Answer.where(:student_id => current_user.role.id, :question_id => element.id)
-        answer = Answer.find(a)
+        answer = Answer.where(:student_id => current_user.role.id, :question_id => element.id).first
         edit_student_content_element_answer_path(content, element, answer)
       end
     end
@@ -87,16 +84,14 @@ module ApplicationHelper
   
   def show_answer(element, student)
     unless element.answers.empty?
-      a = Answer.where(:student_id => student.id, :question_id => element.id)
-      answer = Answer.find(a)
+      answer = Answer.where(:student_id => student.id, :question_id => element.id).first
       return answer
     end
   end
   
   def show_score(element, user)
     unless element.question_scores.empty?
-      s = QuestionScore.where(:tutor_id => user.id, :question_id => element.id)
-      score = QuestionScore.find(s)
+      score = QuestionScore.where(:tutor_id => user.id, :question_id => element.id).first
       return score.value
     end
   end
@@ -105,52 +100,45 @@ module ApplicationHelper
     element = content.element
     if content.element_type == "Question"
       if student
-        a = Answer.where(:student_id => student.id, :question_id => element.id)
-        answer = Answer.find(a)
+        answer = Answer.where(:student_id => student.id, :question_id => element.id).first
         edit_tutor_content_element_student_answer_path(content, element, student, answer)
       elsif element.question_scores.empty?
         new_tutor_content_element_question_score_path(content, element)
       else        
-        qs = QuestionScore.where(:tutor_id => current_user.role.id, :question_id => element.id)
-        question_score = QuestionScore.find(qs)
+        question_score = QuestionScore.where(:tutor_id => current_user.role.id, :question_id => element.id).first
         edit_tutor_content_element_question_score_path(content, element, question_score)
       end
     end
   end
   
   def show_grade(gradable, student, tutor)
-    g = Grade.where(:student_id => student.id, :tutor_id => tutor.id, :gradable_id => gradable.id, :gradable_type => gradable.class.name)
-    grade = Grade.find(g)
+    grade = Grade.where(:student_id => student.id, :tutor_id => tutor.id, :gradable_id => gradable.id, :gradable_type => gradable.class.name).first
     return grade
   end
   
   def show_national_assesment(value=0)
     unless value.nil?
-      da = DefaultAssesment.where("lower_treshold <= ? AND upper_treshold >= ?", value, value)
-      default_assesment = DefaultAssesment.find(da)
+      default_assesment = DefaultAssesment.where("lower_treshold <= ? AND upper_treshold >= ?", value, value).first
       return default_assesment.name
     end
   end
   
   def find_assignment_page(stitch_unit, group, student, tutor=nil)
     all_assignment_pages = Page.where(:assignment => true)
-    unit_assignment_page = all_assignment_pages.where(:stitch_unit_id => stitch_unit.id)
-    if unit_assignment_page.empty?
+    unit_assignment_page = all_assignment_pages.where(:stitch_unit_id => stitch_unit.id).first
+    if unit_assignment_page.nil?
       return ""
     else
-      page = Page.find(unit_assignment_page)
-      tutor ? show_answers_tutor_group_student_page_path(group.id, student.id, page) : student_stitch_unit_page_path(stitch_unit, page)
-        
+      tutor ? show_answers_tutor_group_student_page_path(group.id, student.id, unit_assignment_page) : student_stitch_unit_page_path(stitch_unit, unit_assignment_page)        
     end
   end
   
   def find_default_assesment(course, tutor)
-    def_assesment = DefaultAssesment.where(:course_id => course.id, :tutor_id => tutor.id)
-    if def_assesment.empty?
+    def_assesment = DefaultAssesment.where(:course_id => course.id, :tutor_id => tutor.id).first
+    if def_assesment.nil?
       new_tutor_course_default_assesment_path(course)
     else
-      da = DefaultAssesment.find(def_assesment[0].id)
-      tutor_course_default_assesment_path(course, da)
+      tutor_course_default_assesment_path(course, def_assesment)
     end
   end
     
