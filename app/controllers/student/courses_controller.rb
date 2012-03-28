@@ -12,7 +12,6 @@ class Student::CoursesController < ApplicationController
 
   def show
     @course = Course.find(params[:id])
-
     respond_to do |format|
       format.html # show.html.erb
     end
@@ -23,6 +22,7 @@ class Student::CoursesController < ApplicationController
     @group = @student.find_tutor_of_course(@course)
     @tutor = @group.tutor
     @stitch_modules = @course.stitch_modules.all
+    @course_grade = Grade.where(:gradable_id => @course.id, :gradable_type => "Course", :student_id => @student, :tutor_id => @tutor ).first
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @students }
