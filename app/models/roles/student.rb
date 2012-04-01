@@ -6,6 +6,7 @@ class Student < Role
   has_many :enrollments, :dependent => :delete_all
   has_many :groups, :through => :enrollments
   has_many :answers
+  has_many :group_essay_versions
   
   before_destroy :deletable?
   #before_save :enforce_logic
@@ -37,6 +38,11 @@ class Student < Role
     groups.map{|g| g.course}
   end
   
+  def find_tutor_of_course(course)
+    group = self.groups.where(:course_id => course.id).first
+    return group
+  end
+  
   def shuffle_group(old_group, new_group)
     self.groups.delete(old_group)
     self.groups << new_group    
@@ -45,11 +51,9 @@ class Student < Role
   def send_new_group(group)
     Notifier.new_group(self, group).deliver
   end
-  
-  def find_assignment_pages(group)
-    all_assignment_pages = Page.where(:assignment => true)
-    course_assignment_pages = all_assignment_pages.map {|p| p if p.course == group.course }
-    return course_assignment_pages
+    
+  def create_coursebook(tutor, course)
+    Grade.create(:student => self, :tutor => tutor, :gradable => course, :value => 0.0)
   end
   
 end

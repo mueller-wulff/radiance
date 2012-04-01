@@ -80,6 +80,9 @@ GEM
     multi_json (1.0.3)
     mysql2 (0.3.7)
     orm_adapter (0.0.5)
+    paper_trail (2.6.3)
+      activerecord (~> 3.0)
+      railties (~> 3.0)
     paperclip (2.4.5)
       activerecord (>= 2.3.0)
       activesupport (>= 2.3.2)
@@ -167,6 +170,7 @@ DEPENDENCIES
   jquery-rails
   mongrel (>= 1.2.0.pre2)
   mysql2
+  paper_trail (~> 2)
   paperclip
   pg
   rails (= 3.1.0)

@@ -4,6 +4,7 @@
       <td>Short Title</td>
       <td>Title</td>
       <td>Language</td>
+			<td>&nbsp;</td>
     </tr>
   </thead>
   <tbody>
@@ -12,6 +13,7 @@
         <td><%= link_to course.short_title, tutor_course_path(course) %></td>
         <td><%= course.title %></td>
         <td><%= course.language %></td>
+				<td><%= link_to image_tag("space.gif", :title => "Default Assesment", :class => "icon edit"), find_default_assesment(course, current_user.role) %></td>
       </tr>
     <% end %>
   </tbody>

@@ -4,8 +4,14 @@
   <% end %>
 	<% if @student %>
 		<br />
-		<%= show_answer(e, @student)  %>
+		<%= show_answer(e, @student).txt  %>
 	<% else %>
-  	<%= text_field_tag :dummy  %>
+  	<%= text_field_tag :dummy  %>		
 	<% end %>
+</p>
+<p>
+	<label>Achievement: <%=text_field_tag "achievement-element", show_answer(e, @student).score, {:readonly => true, :class => "achievement" }%></label>
+</p>
+<p>
+	<label>Score: <%=text_field_tag "score-element", show_score(e, current_user.role), {:readonly => true, :class => "score" } %></label>
 </p>

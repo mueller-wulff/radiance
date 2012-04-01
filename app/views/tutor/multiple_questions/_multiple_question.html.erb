@@ -5,7 +5,7 @@
 <% end %>
 <% if @student %>
 	<p class="input">
-		<%=raw show_answer(e, @student).gsub("\n","<br />")  %>
+		<%=raw show_answer(e, @student).txt.gsub("\n","<br />")  %>
 	</p>
 <% else %>
 	<% e.answer_list.each do |answer|  %>
@@ -18,5 +18,11 @@
 	      <%= radio_button_tag :dummy, answer %> <%= answer %>
 	    </p>
 	  <% end %>
-	<% end %>
+	<% end %>	
 <% end %>
+<p>
+	<label>Achievement: <%=text_field_tag "achievement-element", show_answer(e, @student).score, {:readonly => true, :class => "achievement" } unless e.answers.empty? %></label>
+</p>
+<p>
+	<label>Score: <%=text_field_tag "score-element", show_score(e, current_user.role), {:readonly => true, :class => "score" } %></label>
+</p>

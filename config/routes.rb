@@ -1,5 +1,5 @@
-Stitched::Application.routes.draw do
-    
+Stitched::Application.routes.draw do  
+
   scope :module => 'static' do
     resources :faqs
     resources :unsupported_browsers
@@ -15,7 +15,11 @@ Stitched::Application.routes.draw do
 
   namespace :student do
     resources :students 
-    resources :courses
+    resources :courses do
+      member do
+        get 'show_coursebook'
+      end
+    end
     
     resources :stitch_modules do 
       resources :stitch_units  do
@@ -41,6 +45,7 @@ Stitched::Application.routes.draw do
     resources :contents do
       resources :element do
         resources :answers
+        resources :group_essay_answers
       end
     end
         
@@ -51,6 +56,8 @@ Stitched::Application.routes.draw do
       resources :profiles
     end
     
+    resources :grades
+        
     resources :groups do
       resources :students do
         member do
@@ -67,7 +74,10 @@ Stitched::Application.routes.draw do
 
     resources :notes
     resources :responses
-    resources :courses
+    resources :courses do
+      resources :default_assesments
+    end
+    
     resources :stitch_modules do 
       resources :stitch_units  do
         member do
@@ -86,6 +96,15 @@ Stitched::Application.routes.draw do
     
     resources :pages do
       resources :contents
+    end
+    
+    resources :contents do
+      resources :element do
+        resources :question_scores
+        resources :students do
+          resources :answers
+        end
+      end
     end
     
   end

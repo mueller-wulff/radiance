@@ -1,0 +1,29 @@
+<div id="main">
+
+  <h1>Default Assesment of Course <%= @course.short_title %></h1>
+	<table  class="userlist">
+	  <thead>
+	    <tr>
+	      <td>Mark</td>
+	      <td>Name</td>
+	      <td>Lower Treshold</td>
+				<td>Upper Treshold</td>
+	    </tr>
+	  </thead>
+	  <tbody>
+	    <% @default_assesments.each do |da| %>
+	      <tr>
+	        <td><%= da.mark %></td>
+	        <td><%= da.name %></td>
+	        <td><%= da.lower_treshold %></td>
+					<td><%= da.upper_treshold %>
+	      </tr>
+	    <% end %>
+	  </tbody>
+	</table>
+	<%= link_to 'Back', tutor_courses_path %>
+	
+</div>
+<div id="aside">
+
+</div>

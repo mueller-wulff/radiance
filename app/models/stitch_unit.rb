@@ -3,6 +3,8 @@ class StitchUnit < ActiveRecord::Base
   
   belongs_to :stitch_module
   has_many :pages, :dependent => :destroy, :order => "position"
+  has_many :grades, :as => :gradable
+  
   before_create :fill_with_default_content
   
   def fill_with_default_content
@@ -43,6 +45,11 @@ class StitchUnit < ActiveRecord::Base
   
   def course
     self.stitch_module.course
+  end
+  
+  def has_assignment_page?
+    self.pages.map {|p| return true if p.assignment == true}
+    return false
   end
   
 end
