@@ -548,7 +548,17 @@ Stitched = ->
              sendDataToServer(data, url)
              e.preventDefault()
              return false        
-         return            
+         return  
+         
+     switchToOtherVersion = ->
+         $('.version').click (e) -> 
+             direction = $(this).attr('id')
+             switchToEditView(
+                $('.active-element'),
+                $('#'+direction).attr('href')
+                e.preventDefault()
+             )
+             return
           
      #Page View Functions
      loadCourseView = ->
@@ -606,6 +616,10 @@ Stitched = ->
      loadGradeSaveView = ->
          saveGrade()
          return
+         
+     loadVersion = ->
+         switchToOtherVersion()
+         return
      
      loadPageEditView: loadPageEditView,
      loadModuleEditView: loadModuleEditView,
@@ -618,7 +632,8 @@ Stitched = ->
      changeAssignmentValue: changeAssignmentValue,
      loadPageAnswerView: loadPageAnswerView,
      loadGradeView: loadGradeView,
-     loadGradeSaveView: loadGradeSaveView
+     loadGradeSaveView: loadGradeSaveView,
+     loadVersion: loadVersion
 
 root = exports ? this
 root.Stitched = Stitched()

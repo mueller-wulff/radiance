@@ -11,6 +11,13 @@ class Student::GroupEssayAnswersController < ApplicationController
     end
   end
   
+  def show
+    @contents = @page.contents
+    respond_to do |format|
+      format.html
+    end
+  end
+  
   def new
     @group_essay_answer = GroupEssayAnswer.new
   end
@@ -30,7 +37,8 @@ class Student::GroupEssayAnswersController < ApplicationController
   
   def edit
     @group_essay_answer = GroupEssayAnswer.find(params[:id])
-    @group_essay_answer = @group_essay_answer.previous_version if params[:version]
+    @group_essay_answer = @group_essay_answer.previous_version if params[:previous]
+    @group_essay_answer = @group_essay_answer.next_version if params[:next]
   end
 
   def update
