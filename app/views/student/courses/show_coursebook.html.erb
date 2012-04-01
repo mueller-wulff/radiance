@@ -2,11 +2,11 @@
 	<h1>
 		Coursebook for <%= @course.short_title %>
 	</h1>
-	<h2>Grade <%= @course_grade.value unless @course_grade.value.nil? %> <%= show_national_assesment(@course_grade.value) unless @course_grade.value.nil? %></h2>
+	<% if @course_grade %><h2>Grade <%= @course_grade.value unless @course_grade.value.nil? %> <%= show_national_assesment(@course_grade.value) unless @course_grade.value.nil? %></h2><% end %>
 	<h3>Deadline <%= show_deadline_course(@course, @student) %></h3>
 	<% @stitch_modules.each do |stitch_module| %>
 		<% if stitch_module.has_assignment_page? %>
-			<h3><%= stitch_module.short_title %> current Grade: <%= show_grade(stitch_module, @student, @tutor).value unless stitch_module.grades.empty? %> <%= show_national_assesment(show_grade(stitch_module, @student, @tutor).value) unless stitch_module.grades.empty? %></h3>
+			<h3><%= stitch_module.short_title %> current Grade: <%= show_grade(stitch_module, @student, @tutor) %> <%= show_national_assesment(show_grade(stitch_module, @student, @tutor)) %> </h3>
 			<table  class="userlist">
 			  <thead>
 			    <tr>
@@ -20,7 +20,7 @@
 						<% if stitch_unit.has_assignment_page? %>
 			      	<tr>
 				        <td><%= link_to stitch_unit.title, find_assignment_page(stitch_unit, @group, @student)  %></td>
-				        <td><%= show_grade(stitch_unit, @student, @tutor).value unless stitch_unit.grades.empty? %></td>
+				        <td><%= show_grade(stitch_unit, @student, @tutor) %></td>
 				        <td><%= stitch_unit.weight %>%</td>
 				      </tr>
 						<% end %>

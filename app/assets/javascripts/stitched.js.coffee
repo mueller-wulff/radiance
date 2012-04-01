@@ -471,12 +471,15 @@ Stitched = ->
               today = new Date()
               deadline = new Date( $('#deadline').html() )
              # if deadline > today
-              if !edit_mode 
-                 switchToEditView(
-                    $(this),
-                    $(this).find('[name=url]').val()
-                 )
-                 return 
+              if $(this).find('[name=url]').val() != ""
+                  if !edit_mode 
+                     switchToEditView(
+                        $(this),
+                        $(this).find('[name=url]').val()
+                     )
+                     return 
+              else
+                  alert "For this type of content you are not allowed editing."
              # else
               #    alert "Deadline is reached"
          return

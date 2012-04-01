@@ -1,4 +1,4 @@
 <div id="c_<%=  content.id %>" class="element">
   <%= render content.element, :e => content.element %>  
-	<%= hidden_field_tag "url", find_answer(content) %>
+	<%= hidden_field_tag "url", find_answer(content, current_user.role) %>
 </div>

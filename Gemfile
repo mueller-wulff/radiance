@@ -29,6 +29,9 @@ gem 'paperclip'
 
 gem "mongrel", '>= 1.2.0.pre2'
 gem "RedCloth"
+
+gem 'paper_trail', '~> 2'
+
 # Use unicorn as the web server
 # gem 'unicorn'
 

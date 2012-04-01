@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120323094037) do
+ActiveRecord::Schema.define(:version => 20120330112038) do
 
   create_table "answers", :id => false, :force => true do |t|
     t.integer  "id",          :null => false
@@ -132,6 +132,31 @@ ActiveRecord::Schema.define(:version => 20120323094037) do
     t.string   "gradable_type"
     t.integer  "student_id"
     t.integer  "tutor_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "group_essay_answers", :force => true do |t|
+    t.text     "txt"
+    t.integer  "group_id"
+    t.integer  "group_essay_id"
+    t.boolean  "locked",         :default => false
+    t.integer  "score"
+    t.text     "comment"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "group_essay_versions", :force => true do |t|
+    t.text     "txt"
+    t.integer  "student_id"
+    t.integer  "group_essay_id"
+    t.integer  "version_nr"
+    t.boolean  "current"
+    t.boolean  "locked"
+    t.text     "comment"
+    t.integer  "score"
+    t.integer  "group_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -281,6 +306,17 @@ ActiveRecord::Schema.define(:version => 20120323094037) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "versions", :force => true do |t|
+    t.string   "item_type",  :null => false
+    t.integer  "item_id",    :null => false
+    t.string   "event",      :null => false
+    t.string   "whodunnit"
+    t.text     "object"
+    t.datetime "created_at"
+  end
+
+  add_index "versions", ["item_type", "item_id"], :name => "index_versions_on_item_type_and_item_id"
 
   create_table "youtubes", :id => false, :force => true do |t|
     t.integer  "id",         :null => false

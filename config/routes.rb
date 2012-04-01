@@ -45,6 +45,7 @@ Stitched::Application.routes.draw do
     resources :contents do
       resources :element do
         resources :answers
+        resources :group_essay_answers
       end
     end
         
