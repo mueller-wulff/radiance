@@ -147,20 +147,6 @@ ActiveRecord::Schema.define(:version => 20120330112038) do
     t.datetime "updated_at"
   end
 
-  create_table "group_essay_versions", :force => true do |t|
-    t.text     "txt"
-    t.integer  "student_id"
-    t.integer  "group_essay_id"
-    t.integer  "version_nr"
-    t.boolean  "current"
-    t.boolean  "locked"
-    t.text     "comment"
-    t.integer  "score"
-    t.integer  "group_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
   create_table "group_essays", :id => false, :force => true do |t|
     t.integer  "id",         :null => false
     t.integer  "max_length"
