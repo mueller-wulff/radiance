@@ -7,11 +7,20 @@
     <%= render :partial => 'tutor/contents/content', :collection => @page.contents %>
     <%= hidden_field_tag "page", tutor_page_contents_path(@page)%>
   </div>
+	<div class="grade">		
+  </div>
+	<%# unless @grade %>
+		<%= button_to "Enter in Coursebook", tutor_grades_path(:student => @student, :stitch_unit => @page.stitch_unit, :group => @group), :method => :post, :form_class => 'new_grade_form', :id => "new_grade" %>
+	<%# end %>	
 	<%= render 'page_bottom' %> 
 </div>
 <div id="aside">
 
 </div>
 <script type="text/javascript">
-
+	$(document).ready(function(){
+    Stitched.loadPageAnswerView();
+		Stitched.loadGradeView();
+		Stitched.loadGradeSaveView();
+  });
 </script>

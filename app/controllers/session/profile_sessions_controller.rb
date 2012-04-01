@@ -12,7 +12,7 @@ class Session::ProfileSessionsController < ApplicationController
     if @profile_session.save  
       flash[:notice] = "Successfully logged in." 
       if @profile_session.profile.inactive_student 
-        redirect_to edit_student_path(@profile_session.profile.role_id) 
+        redirect_to edit_student_student_path(@profile_session.profile.role_id) 
       else
         redirect_to root_url  
       end

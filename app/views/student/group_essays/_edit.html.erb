@@ -1,0 +1,6 @@
+<p class="input">   
+  <label for="Input"><%= @element.txt %></label>  
+	<%= fields_for :group_essay_answer do |essay_field| -%>
+		<%= essay_field.cktext_area :txt, :toolbar => 'Easy', :width => 650, :height => 400 %>
+	<% end -%>
+</p>

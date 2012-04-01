@@ -3,5 +3,7 @@
     <label for="Input"><%=raw e.txt.gsub("\n","<br />") %></label>
   <% end %>
 	<br />
-  <%= show_answer(e, current_user.role)  %>
+  <%= show_answer(e, current_user.role).txt  %>
+	<br />
+	Assesment: <%= show_answer(e, current_user.role).score %>/<%= show_score(e, @tutor) %>
 </p>
