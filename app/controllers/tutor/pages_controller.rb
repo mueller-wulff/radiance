@@ -2,7 +2,7 @@ class Tutor::PagesController < ApplicationController
   before_filter :require_tutor
 
   before_filter :get_stitch_unit, :except => [:show_answers]
-  before_filter :get_group, :only => :show_answers
+  before_filter :get_group, :only => [:show_answers]
 
   def get_stitch_unit
     @stitch_unit = StitchUnit.find(params[:stitch_unit_id])

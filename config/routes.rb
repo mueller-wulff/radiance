@@ -116,6 +116,10 @@ Stitched::Application.routes.draw do
     resources :courses do
       resource :stitch_unit_copy
     end
+    
+    resources :tutors do
+      resources :profiles
+    end
 
     resources :stitch_modules do
       resource :stitch_units_order
@@ -153,10 +157,7 @@ Stitched::Application.routes.draw do
       end
       resources :stitch_modules
       resource :stitch_modules_order
-    end
-    resources :tutors do
-      resources :profiles
-    end
+    end    
     resources :developers do
       resources :profiles
     end
