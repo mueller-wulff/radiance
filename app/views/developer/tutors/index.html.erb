@@ -17,13 +17,13 @@
           <td><%= tutor.profile.lastname %></td>
           <td><%= tutor.profile.email %></td>
           <td>
-            <%= link_to image_tag("space.gif", :alt => "edit Tutor", :class => "icon useredit"), edit_admin_tutor_path(tutor) %>
-            <%= link_to image_tag("space.gif", :alt => "delete Tutor", :class => "icon delete"), admin_tutor_path(tutor), :confirm => 'Are you sure, you want to delete this Tutor?', :method => :delete %>
+            <%= link_to image_tag("space.gif", :alt => "edit Tutor", :class => "icon useredit"), edit_developer_tutor_path(tutor) %>
+            <%= link_to image_tag("space.gif", :alt => "delete Tutor", :class => "icon delete"), developer_tutor_path(tutor), :confirm => 'Are you sure, you want to delete this Tutor?', :method => :delete %>
           </td>
         </tr>
 			<% end %>
 				<tr>
-        	<td><%= link_to 'Create New Tutor', new_admin_tutor_path %></td>
+        	<td><%= link_to 'Create New Tutor', new_developer_tutor_path %></td>
 	        <td></td>
 	        <td></td>
 	        <td></td>

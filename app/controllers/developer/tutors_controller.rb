@@ -1,4 +1,4 @@
-class Admin::TutorsController < ApplicationController
+class Developer::TutorsController < ApplicationController
   # GET /tutors
   # GET /tutors.xml
   def index
@@ -47,7 +47,7 @@ class Admin::TutorsController < ApplicationController
     @profile = @tutor.profile    
     respond_to do |format|
       if @tutor.save
-        format.html { redirect_to(admin_tutors_path, :notice => 'Tutor was successfully created.') }
+        format.html { redirect_to(developer_tutors_path, :notice => 'Tutor was successfully created.') }
         format.xml  { render :xml => @tutor, :status => :created, :location => @tutor }
       else
         format.html { render :action => "new" }
@@ -64,7 +64,7 @@ class Admin::TutorsController < ApplicationController
     @courses = Course.all
     respond_to do |format|
       if @tutor.update_attributes(params[:tutor])
-        format.html { redirect_to(admin_tutors_path, :notice => 'Tutor was successfully updated.') }
+        format.html { redirect_to(developer_tutors_path, :notice => 'Tutor was successfully updated.') }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }
