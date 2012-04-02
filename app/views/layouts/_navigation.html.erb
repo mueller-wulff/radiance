@@ -4,11 +4,12 @@
      <li> <%= link_to  'Dashboard', root_url, :id => 'dashboard'%> </li>
      <li> <%= link_to  'Courses', admin_courses_path, :id => 'courses'%> </li>
      <li> <%= link_to  'Developers',  admin_developers_path, :id => 'editors'%> </li>
+		 <li> <%= link_to  'Tutors',  developer_tutors_path, :id => 'tutors'%> </li>
     <% elsif current_user.role.class == Developer %>
     	<li> <%= link_to  'Dashboard', root_url, :id => 'dashboard'%> </li>
     	<li> <%= link_to  'Courses', developer_courses_path, :id => 'courses'%> </li>
     	<li> <%= link_to  'Modules', developer_stitch_modules_path, :id => 'courses'%> </li>
-	     <li> <%= link_to  'Tutors',  developer_tutors_path, :id => 'tutors'%> </li>
+	    <li> <%= link_to  'Tutors',  developer_tutors_path, :id => 'tutors'%> </li>
     <% elsif current_user.role.class == Tutor %>
 			<li> <%= link_to  'Courses', tutor_courses_path, :id => 'courses'%> </li>
 			<li> <%= link_to  'Groups', tutor_groups_path, :id => 'groups'%> </li>
