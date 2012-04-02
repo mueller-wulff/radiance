@@ -1,6 +1,7 @@
 class GroupEssay < Element
   set_table_name :group_essays
   has_many :group_essay_answers
+  has_many :question_scores, :as => :scoreable
   
   before_create :fill_with_default_content
   

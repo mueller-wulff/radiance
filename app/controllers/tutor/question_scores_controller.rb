@@ -10,7 +10,7 @@ class Tutor::QuestionScoresController < ApplicationController
   
   def create
     @question_score = QuestionScore.new(params[:question_score])
-    @question_score.question = @element
+    @question_score.scoreable = @element
     @question_score.tutor = current_user.role
     respond_to do |format|
       if @question_score.save

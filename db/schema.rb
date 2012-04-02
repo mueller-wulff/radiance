@@ -219,7 +219,8 @@ ActiveRecord::Schema.define(:version => 20120330112038) do
 
   create_table "question_scores", :force => true do |t|
     t.integer  "tutor_id"
-    t.integer  "question_id"
+    t.integer  "scoreable_id"
+    t.string   "scoreable_type"
     t.integer  "value"
     t.datetime "created_at"
     t.datetime "updated_at"

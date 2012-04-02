@@ -3,7 +3,7 @@
     <label for="Input"><%=raw e.txt.gsub("\n","<br />") %></label>
   </p>
 <% end %>
-<% if @student %>
+<% if @student && @student.give_answer?(@student, e) %>
 	<p class="input">
 		<%=raw show_answer(e, @student).txt.gsub("\n","<br />")  %>
 	</p>

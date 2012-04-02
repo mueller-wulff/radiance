@@ -56,4 +56,9 @@ class Student < Role
     Grade.create(:student => self, :tutor => tutor, :gradable => course, :value => 0.0)
   end
   
+  def give_answer?(student, element)
+    return true if Answer.where(:student_id => student.id, :question_id => element.id).first
+    return false
+  end
+  
 end

@@ -2,7 +2,7 @@ class Question < Element
   set_table_name :questions
   
   has_many :answers
-  has_many :question_scores
+  has_many :question_scores, :as => :scoreable
   
   accepts_nested_attributes_for :answers 
   
