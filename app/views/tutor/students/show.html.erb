@@ -2,7 +2,7 @@
 	<h1>
 		Coursebook for <%= @student.profile.login %>
 	</h1>
-	<h2>Course <%= @group.course.short_title %> <%= @course_grade.value unless @course_grade.value.nil? %> <%= show_national_assesment(@course_grade.value) unless @course_grade.value.nil? %>
+	<h2>Course <%= @group.course.short_title %> <% if @course_grade %><%= @course_grade.value unless @course_grade.value.nil? %> <%= show_national_assesment(@course_grade.value) unless @course_grade.value.nil? %><% end %>
 		<%= button_to "Calculate Course Grade", tutor_grade_path(@course_grade, :student => @student, :group => @group), :method => :put, :form_class => 'edit_grade_form', :id => "edit_grade" %>
 	</h2>
 	<h3>Deadline <%= show_deadline_course(@group.course, @student) %></h3>

@@ -103,6 +103,7 @@ Stitched::Application.routes.draw do
         resources :question_scores
         resources :students do
           resources :answers
+          resources :group_essay_answers
         end
       end
     end

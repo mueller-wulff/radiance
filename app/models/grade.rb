@@ -8,15 +8,19 @@ class Grade < ActiveRecord::Base
   validates_associated :tutor, :student
 
   def update_module_grade(stitch_unit, student, tutor)
-    module_grade = Grade.where(:gradable_id => stitch_unit.stitch_module.id, :gradable_type => "StitchModule", :student_id => student, :tutor_id => tutor).first
-    new_value = self.value * stitch_unit.weight / 100
-    if module_grade.nil?
-      grade = Grade.new(:gradable => stitch_unit.stitch_module, :student => student, :tutor => tutor, :value => new_value)
-      grade.save
+    if stitch_unit.weight
+      module_grade = Grade.where(:gradable_id => stitch_unit.stitch_module.id, :gradable_type => "StitchModule", :student_id => student, :tutor_id => tutor).first
+      new_value = self.value * stitch_unit.weight / 100
+      if module_grade.nil?
+        grade = Grade.new(:gradable => stitch_unit.stitch_module, :student => student, :tutor => tutor, :value => new_value)
+        grade.save
+      else
+        edit_value = module_grade.value + new_value
+        module_grade.update_attribute(:value, edit_value)
+        module_grade.save
+      end
     else
-      edit_value = module_grade.value + new_value
-      module_grade.update_attribute(:value, edit_value)
-      module_grade.save
+      return false
     end
   end
 

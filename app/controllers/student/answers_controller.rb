@@ -18,7 +18,7 @@ class Student::AnswersController < ApplicationController
   def create
     @answer = Answer.new(params[:answer])
     @answer.question = @element
-    @answer.student = current_user.role
+    @answer.student = @student
     if @element.type == "MultipleQuestion"
       @answer.save_multiple_answers(params[:multianswer])
     end
@@ -55,6 +55,7 @@ class Student::AnswersController < ApplicationController
       @content = Content.find(params[:content_id])
       @element = @content.element
       @page = @content.page
+      @student = current_user.role
     end
 
 end

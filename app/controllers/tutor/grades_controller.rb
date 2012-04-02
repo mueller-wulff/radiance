@@ -4,8 +4,8 @@ class Tutor::GradesController < ApplicationController
   before_filter :grab_data
 
   def index
-    @gradable = find_gradable
-    @grades = @gradeable.grades
+    # @gradable = find_gradable
+    #     @grades = @gradeable.grades
   end
 
   def find_gradable

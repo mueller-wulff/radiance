@@ -100,8 +100,7 @@ class Page < ActiveRecord::Base
     new_deadlines.each do |d|
       tmp_date = DateTime.new( d["due_date(1i)"].to_i, d["due_date(2i)"].to_i, d["due_date(3i)"].to_i, d["due_date(4i)"].to_i, d["due_date(5i)"].to_i )
       group = Group.find(d["group_id"])
-      group_deadline_id = Deadline.where(:deadlinable_id => group.id, :deadlinable_type => "Group")
-      group_deadline = Deadline.find(group_deadline_id)
+      group_deadline = Deadline.where(:deadlinable_id => group.id, :deadlinable_type => "Group").first
       if tmp_date < group_deadline.due_date
         @deadline = Deadline.new
         @deadline.due_date = tmp_date

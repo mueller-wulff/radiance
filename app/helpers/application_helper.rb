@@ -112,8 +112,8 @@ module ApplicationHelper
   end
 
   def show_score(element, user)
-    unless element.question_scores.empty?
-      score = QuestionScore.where(:tutor_id => user.id, :scoreable_type => element.class.name, :scoreable_id => element.id).first
+    unless element.question_scores.empty?      
+      score = QuestionScore.where(:tutor_id => user.id, :scoreable_type => element.content.element_type, :scoreable_id => element.id).first
       return score.value
     end
   end
@@ -121,13 +121,17 @@ module ApplicationHelper
   def find_question_score(content, student=nil)
     element = content.element
     if content.element_type == "Question" || content.element_type == "GroupEssay"
-      if student && student.give_answer?(student, element)
+      if student && student.give_answer?(student, element) && content.element_type == "Question"
         answer = Answer.where(:student_id => student.id, :question_id => element.id).first
         edit_tutor_content_element_student_answer_path(content, element, student, answer)
+      elsif student && content.element_type == "GroupEssay"
+        group = student.find_tutor_of_course(element.content.page.course) 
+        group_answer = GroupEssayAnswer.where(:group_id => group.id, :group_essay_id => element.id).first
+        edit_tutor_content_element_student_group_essay_answer_path(content, element, student, group_answer)
       elsif element.question_scores.empty?
         new_tutor_content_element_question_score_path(content, element)
       else
-        question_score = QuestionScore.where(:tutor_id => current_user.role.id, :scoreable_type => element.class.name, :scoreable_id => element.id).first
+        question_score = QuestionScore.where(:tutor_id => current_user.role.id, :scoreable_type => content.element_type, :scoreable_id => element.id).first
         edit_tutor_content_element_question_score_path(content, element, question_score)
       end
     end
