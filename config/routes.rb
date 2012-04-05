@@ -1,4 +1,10 @@
 Stitched::Application.routes.draw do  
+  
+  
+
+  # Chatting routes
+  post "/chat/message" => "chat#message"
+
 
   scope :module => 'static' do
     resources :faqs
