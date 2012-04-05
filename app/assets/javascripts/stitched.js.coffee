@@ -529,7 +529,7 @@ Stitched = ->
          $('.score').each ->
              score += Number($(this).val() )
              return
-         grade = (achievement*100)/score
+         grade = ((achievement*100)/score ).toFixed(1)
          $('.grade').html("<strong>Grade: " + grade + "%</strong>" )         
          return   
          
@@ -539,15 +539,14 @@ Stitched = ->
              parseGrade = parseFloat(grade.toString().replace(/\,/g, '.'))
              url = $('.new_grade_form').attr('action') 
              data = 'grade=' + parseGrade
-             sendDataToServer(data, url)       
-             e.preventDefault()
+             sendDataToServer(data, url)  
              return false
          $('#edit_grade').click (e) ->
              url = $('.edit_grade_form').attr('action') 
              data = nil
              sendDataToServer(data, url)
              e.preventDefault()
-             return false        
+             return        
          return  
          
      switchToOtherVersion = ->

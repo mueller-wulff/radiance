@@ -6,6 +6,10 @@ class Tutor::GradesController < ApplicationController
   def index
     # @gradable = find_gradable
     #     @grades = @gradeable.grades
+    @stitch_unit = StitchUnit.find(params[:stitch_unit])
+    @student = Student.find(params[:student])
+    @group = Group.find(params[:group])
+    redirect_to tutor_group_student_path(@group, @student, :format => 'html')
   end
 
   def find_gradable
@@ -16,6 +20,10 @@ class Tutor::GradesController < ApplicationController
     end
     nil
   end
+  
+  def show
+    redirect_to tutor_group_student_path(@group, @student, :format => 'html')
+  end
 
   # only for grades of type stitch_unit
   def create
@@ -25,10 +33,14 @@ class Tutor::GradesController < ApplicationController
     @stitch_unit = StitchUnit.find(params[:stitch_unit])
     @grade.gradable = @stitch_unit
     @grade.value = params[:grade]
-    if @grade.save
-      @grade.update_module_grade(@stitch_unit, @student, @group.tutor)
-    end
-    redirect_to tutor_group_student_path(@group, @student, :format => 'html')
+    respond_to do |format|
+      if @grade.save
+        @grade.update_module_grade(@stitch_unit, @student, @group.tutor)
+        format.html { redirect_to(tutor_group_student_path(@group, @student, :format => 'html') ) }
+      else
+        format.js { head :error}
+      end
+    end  
   end
 
   # only for calculation of course grade
