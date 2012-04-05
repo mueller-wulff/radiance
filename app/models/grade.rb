@@ -10,7 +10,7 @@ class Grade < ActiveRecord::Base
   def update_module_grade(stitch_unit, student, tutor)
     if stitch_unit.weight
       module_grade = Grade.where(:gradable_id => stitch_unit.stitch_module.id, :gradable_type => "StitchModule", :student_id => student, :tutor_id => tutor).first
-      new_value = self.value * stitch_unit.weight / 100
+      new_value = (self.value * stitch_unit.weight / 100).round(1)
       if module_grade.nil?
         grade = Grade.new(:gradable => stitch_unit.stitch_module, :student => student, :tutor => tutor, :value => new_value)
         grade.save
@@ -34,7 +34,7 @@ class Grade < ActiveRecord::Base
         size += 1
       end
     end
-    course_grade_value = value / size
+    course_grade_value = (value / size).round(1)
     self.update_attribute(:value, course_grade_value)
     self.save
   end
