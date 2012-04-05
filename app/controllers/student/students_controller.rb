@@ -22,6 +22,7 @@ class Student::StudentsController < ApplicationController
   # PUT /students/1.xml
   def update
     @student = Student.find(params[:id])
+    @profile = @student.profile
     @student.activate unless @student.activated
     respond_to do |format|
       if @student.update_attributes(params[:student]) 

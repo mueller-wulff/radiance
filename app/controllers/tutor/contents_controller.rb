@@ -22,5 +22,24 @@ class Tutor::ContentsController < ApplicationController
       format.html
     end
   end
+  
+  def edit
+    @content = @page.contents.find(params[:id])
+    @element = @content.element
+    respond_to do |format|
+      format.html
+    end
+  end
+  
+  def update
+    @content = @page.contents.find(params[:id])
+    respond_to do |format|
+      if @content.update_attributes(params[:content])
+        format.html { render :action => "show" }
+      else
+        format.js { head :error}
+      end
+    end
+  end
 
 end

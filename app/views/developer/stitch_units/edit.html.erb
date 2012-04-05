@@ -4,6 +4,7 @@
       <td class="unit" colspan="2">
         <%= form_for(@unit, :url => developer_stitch_module_stitch_unit_path(@stitch_module, @unit)) do |f| %>
           <%= f.text_field :title  %>
+					Weight: <%= f.text_field :weight %>%
         <% end %>
       </td>
       <td class="functions"><img src="/images/space.gif" /><img src="/images/space.gif" /></td>

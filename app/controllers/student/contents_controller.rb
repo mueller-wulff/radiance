@@ -11,6 +11,7 @@ class Student::ContentsController < ApplicationController
   def show
     @content = @page.contents.find(params[:id])
     @element = @content.element
+    @student = current_user.role
     respond_to do |format|
       format.html
     end

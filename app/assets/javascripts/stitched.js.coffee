@@ -470,15 +470,18 @@ Stitched = ->
          $('.element').live 'click', ->
               today = new Date()
               deadline = new Date( $('#deadline').html() )
-              if deadline > today
+             # if deadline > today
+              if $(this).find('[name=url]').val() != ""
                   if !edit_mode 
-                      switchToEditView(
-                          $(this),
-                          $(this).find('[name=url]').val()
-                          )
-                      return 
+                     switchToEditView(
+                        $(this),
+                        $(this).find('[name=url]').val()
+                     )
+                     return 
               else
-                  alert "Deadline is reached"
+                  alert "For this type of content you are not allowed editing."
+             # else
+              #    alert "Deadline is reached"
          return
     
      bindDeleteContentLinks = ->
@@ -515,6 +518,47 @@ Stitched = ->
              sendDataToServer(data, url)
              return
          return
+         
+     calculateAssignmentGrade = ->
+         achievement = 0
+         score = 0
+         grade = 0.0
+         $('.achievement').each ->
+             achievement += Number($(this).val() )
+             return
+         $('.score').each ->
+             score += Number($(this).val() )
+             return
+         grade = (achievement*100)/score
+         $('.grade').html("<strong>Grade: " + grade + "%</strong>" )         
+         return   
+         
+     saveGrade = ->
+         $('#new_grade').click (e) -> 
+             grade = $('.grade').html().match(/[0-9]+/g) 
+             parseGrade = parseFloat(grade.toString().replace(/\,/g, '.'))
+             url = $('.new_grade_form').attr('action') 
+             data = 'grade=' + parseGrade
+             sendDataToServer(data, url)       
+             e.preventDefault()
+             return false
+         $('#edit_grade').click (e) ->
+             url = $('.edit_grade_form').attr('action') 
+             data = nil
+             sendDataToServer(data, url)
+             e.preventDefault()
+             return false        
+         return  
+         
+     switchToOtherVersion = ->
+         $('.version').click (e) -> 
+             direction = $(this).attr('id')
+             switchToEditView(
+                $('.active-element'),
+                $('#'+direction).attr('href')
+                e.preventDefault()
+             )
+             return
           
      #Page View Functions
      loadCourseView = ->
@@ -564,6 +608,18 @@ Stitched = ->
          bindAnswerContentLinks()
          checkForProgressIndicator()
          return
+    
+     loadGradeView = ->
+         calculateAssignmentGrade()
+         return
+         
+     loadGradeSaveView = ->
+         saveGrade()
+         return
+         
+     loadVersion = ->
+         switchToOtherVersion()
+         return
      
      loadPageEditView: loadPageEditView,
      loadModuleEditView: loadModuleEditView,
@@ -574,7 +630,10 @@ Stitched = ->
      linkCKLinks: linkCKLinks,
      checkForProgressIndicator: checkForProgressIndicator,
      changeAssignmentValue: changeAssignmentValue,
-     loadPageAnswerView: loadPageAnswerView
+     loadPageAnswerView: loadPageAnswerView,
+     loadGradeView: loadGradeView,
+     loadGradeSaveView: loadGradeSaveView,
+     loadVersion: loadVersion
 
 root = exports ? this
 root.Stitched = Stitched()

@@ -4,6 +4,7 @@ class Group < ActiveRecord::Base
   belongs_to :tutor
   belongs_to :course
   has_one :deadline, :as => :deadlinable
+  has_many :group_essay_answers
       
   validates_associated :course, :tutor
   validates :tutor_id, :presence => true

@@ -3,6 +3,8 @@ class Tutor < Role
   
   has_many :groups
   has_and_belongs_to_many :courses
+  has_many :question_scores
+  has_many :default_assesments
   
   def metagroup(group)
     self.groups.map {|g| g if g.course_id == group.course_id}.compact

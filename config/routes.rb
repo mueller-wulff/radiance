@@ -1,5 +1,5 @@
-Stitched::Application.routes.draw do
-    
+Stitched::Application.routes.draw do  
+
   scope :module => 'static' do
     resources :faqs
     resources :unsupported_browsers
@@ -15,7 +15,11 @@ Stitched::Application.routes.draw do
 
   namespace :student do
     resources :students 
-    resources :courses
+    resources :courses do
+      member do
+        get 'show_coursebook'
+      end
+    end
     
     resources :stitch_modules do 
       resources :stitch_units  do
@@ -41,6 +45,7 @@ Stitched::Application.routes.draw do
     resources :contents do
       resources :element do
         resources :answers
+        resources :group_essay_answers
       end
     end
         
@@ -51,6 +56,8 @@ Stitched::Application.routes.draw do
       resources :profiles
     end
     
+    resources :grades
+        
     resources :groups do
       resources :students do
         member do
@@ -67,7 +74,10 @@ Stitched::Application.routes.draw do
 
     resources :notes
     resources :responses
-    resources :courses
+    resources :courses do
+      resources :default_assesments
+    end
+    
     resources :stitch_modules do 
       resources :stitch_units  do
         member do
@@ -88,6 +98,16 @@ Stitched::Application.routes.draw do
       resources :contents
     end
     
+    resources :contents do
+      resources :element do
+        resources :question_scores
+        resources :students do
+          resources :answers
+          resources :group_essay_answers
+        end
+      end
+    end
+    
   end
 
   #special route for open units in module show
@@ -96,6 +116,10 @@ Stitched::Application.routes.draw do
   namespace :developer do
     resources :courses do
       resource :stitch_unit_copy
+    end
+    
+    resources :tutors do
+      resources :profiles
     end
 
     resources :stitch_modules do
@@ -134,10 +158,7 @@ Stitched::Application.routes.draw do
       end
       resources :stitch_modules
       resource :stitch_modules_order
-    end
-    resources :tutors do
-      resources :profiles
-    end
+    end    
     resources :developers do
       resources :profiles
     end

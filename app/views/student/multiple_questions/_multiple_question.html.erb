@@ -1,7 +1,23 @@
 <p class="input">
 	<% unless e.txt == "" %>  
-		<label for="Input"><%=raw e.txt.gsub("\n","<br />") %></label>  
+		<label for="Input"><%=raw e.txt.gsub("\n","<br />") %></label> 		
 	<% end %>
-	<br />
-	<%=raw show_answer(e, current_user.role).gsub("\n","<br />")  %>
+	<% if e.answers.where(:student_id => current_user.role.id).empty? %>
+		<% e.answer_list.each do |multianswer|  %>
+		  <% if e.multi %>
+		    <p class="radio">
+		      <%= check_box :multianswer, multianswer %> <%= multianswer %>
+		    </p>
+		  <% else %>
+		    <p class="radio">
+		      <%= radio_button :multianswer, multianswer, "1" %> <%= multianswer %>
+		    </p>
+		  <% end %>
+		<% end %>
+	<% else %>
+		<br />
+		<%=raw show_answer(e, current_user.role).txt.gsub("\n","<br />") %>
+		<br />
+		Assesment: <%= show_answer(e, current_user.role).score %>/<%= show_score(e, @tutor) %>
+	<% end %>
 </p>

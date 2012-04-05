@@ -1,7 +1,7 @@
 class StitchModule < ActiveRecord::Base
   has_many :stitch_units, :order => "position"
   has_many :pages, :through => :stitch_units
-  has_many :grades, :as => :gradeable
+  has_many :grades, :as => :gradable
   belongs_to :course
   has_and_belongs_to_many :developers
   before_create :set_position
@@ -39,6 +39,13 @@ class StitchModule < ActiveRecord::Base
   
   def last_page
     self.stitch_units.last.pages.last
+  end
+  
+  def has_assignment_page?
+    self.stitch_units.each do |su|
+      return true if su.has_assignment_page?
+    end
+    return false
   end
 
 end

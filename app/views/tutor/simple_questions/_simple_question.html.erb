@@ -2,10 +2,16 @@
   <% unless e.txt == "" %>
     <label for="Input"><%=raw e.txt.gsub("\n","<br />") %></label>
   <% end %>
-	<% if @student %>
+	<% if @student && @student.give_answer?(@student, e) %>
 		<br />
-		<%= show_answer(e, @student)  %>
+		<%= show_answer(e, @student).txt %>
+		<p>
+			<label>Achievement: <%=text_field_tag "achievement-element", show_answer(e, @student).score, {:readonly => true, :class => "achievement" }%></label>
+		</p>
+		<p>
+			<label>Score: <%=text_field_tag "score-element", show_score(e, current_user.role), {:readonly => true, :class => "score" } %></label>
+		</p>
 	<% else %>
-  	<%= text_field_tag :dummy  %>
+  	<%= text_field_tag :dummy  %>		
 	<% end %>
 </p>

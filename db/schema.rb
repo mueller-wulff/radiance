@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120307143834) do
+ActiveRecord::Schema.define(:version => 20120330112038) do
 
   create_table "answers", :id => false, :force => true do |t|
     t.integer  "id",          :null => false
@@ -21,6 +21,8 @@ ActiveRecord::Schema.define(:version => 20120307143834) do
     t.boolean  "locked"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "score"
+    t.text     "comment"
   end
 
   create_table "ckeditor_assets", :id => false, :force => true do |t|
@@ -84,6 +86,17 @@ ActiveRecord::Schema.define(:version => 20120307143834) do
     t.integer  "group_id"
   end
 
+  create_table "default_assesments", :force => true do |t|
+    t.integer  "mark"
+    t.string   "name"
+    t.integer  "lower_treshold"
+    t.integer  "upper_treshold"
+    t.integer  "course_id"
+    t.integer  "tutor_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "developers", :id => false, :force => true do |t|
     t.integer  "id",         :null => false
     t.boolean  "admin"
@@ -113,12 +126,23 @@ ActiveRecord::Schema.define(:version => 20120307143834) do
   end
 
   create_table "grades", :id => false, :force => true do |t|
-    t.integer  "id",             :null => false
-    t.integer  "value"
+    t.integer  "id",            :null => false
+    t.float    "value"
     t.integer  "gradable_id"
-    t.string   "gradeable_type"
+    t.string   "gradable_type"
     t.integer  "student_id"
     t.integer  "tutor_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "group_essay_answers", :force => true do |t|
+    t.text     "txt"
+    t.integer  "group_id"
+    t.integer  "group_essay_id"
+    t.boolean  "locked",         :default => false
+    t.integer  "score"
+    t.text     "comment"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -193,6 +217,15 @@ ActiveRecord::Schema.define(:version => 20120307143834) do
   add_index "profiles", ["email"], :name => "index_profiles_on_email"
   add_index "profiles", ["perishable_token"], :name => "index_profiles_on_perishable_token"
 
+  create_table "question_scores", :force => true do |t|
+    t.integer  "tutor_id"
+    t.integer  "scoreable_id"
+    t.string   "scoreable_type"
+    t.integer  "value"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "questions", :id => false, :force => true do |t|
     t.integer  "id",                             :null => false
     t.text     "txt"
@@ -245,6 +278,7 @@ ActiveRecord::Schema.define(:version => 20120307143834) do
     t.datetime "updated_at"
     t.integer  "position"
     t.datetime "deleted_at"
+    t.float    "weight"
   end
 
   create_table "students", :id => false, :force => true do |t|
@@ -259,6 +293,17 @@ ActiveRecord::Schema.define(:version => 20120307143834) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "versions", :force => true do |t|
+    t.string   "item_type",  :null => false
+    t.integer  "item_id",    :null => false
+    t.string   "event",      :null => false
+    t.string   "whodunnit"
+    t.text     "object"
+    t.datetime "created_at"
+  end
+
+  add_index "versions", ["item_type", "item_id"], :name => "index_versions_on_item_type_and_item_id"
 
   create_table "youtubes", :id => false, :force => true do |t|
     t.integer  "id",         :null => false
