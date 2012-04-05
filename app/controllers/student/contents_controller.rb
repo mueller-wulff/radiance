@@ -12,6 +12,8 @@ class Student::ContentsController < ApplicationController
     @content = @page.contents.find(params[:id])
     @element = @content.element
     @student = current_user.role
+    @group = Group.find_group(@page, @student)
+    @tutor = @group.tutor
     respond_to do |format|
       format.html
     end

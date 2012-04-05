@@ -44,7 +44,8 @@ class Developer::TutorsController < ApplicationController
   # POST /tutors.xml
   def create
     @tutor = Tutor.new(params[:tutor])
-    @profile = @tutor.profile    
+    @profile = @tutor.profile   
+    @courses = Course.all 
     respond_to do |format|
       if @tutor.save
         format.html { redirect_to(developer_tutors_path, :notice => 'Tutor was successfully created.') }
@@ -80,7 +81,7 @@ class Developer::TutorsController < ApplicationController
     @tutor.destroy
 
     respond_to do |format|
-      format.html { redirect_to(tutors_url) }
+      format.html { redirect_to(developer_tutors_path) }
       format.xml  { head :ok }
     end
   end
