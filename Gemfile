@@ -14,10 +14,11 @@ gem 'jquery-rails'
 gem 'sqlite3'
 gem 'execjs'
 gem 'awesome_print'
+gem 'juggernaut'
 
 gem 'therubyracer'
 
-gem 'rails3_acts_as_paranoid'
+# gem 'rails3_acts_as_paranoid'
 
 gem 'rest-client'
 gem 'authlogic', :git => 'git://github.com/binarylogic/authlogic.git'
