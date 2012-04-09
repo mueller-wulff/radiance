@@ -3,7 +3,7 @@
     <div class="sender">
       <%= @message[:sender] %>
     </div>
-    &nbsp; &nbsp; 
+
     <div class="time">
       <%= @message[:time] %>
     </div>
@@ -11,8 +11,6 @@
   </div>
 
   <div class="message-body">
-    <p>
-      <%= @message[:body] %>
-    </p>
+    <%= @message[:body] %>
   </div>
 </div>

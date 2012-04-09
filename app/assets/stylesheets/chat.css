@@ -30,7 +30,9 @@ div.time{
 }
 
 div.message-body{
-  padding:10px
+  padding:10px;
+  font-size:12px;
+  font-weight:normal;
 }
 
 div.clear{ clear:both; }
