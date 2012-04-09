@@ -1,0 +1,40 @@
+div#chat p{
+  margin: 10px 10px 10px 0;
+  font-size: 18px;
+  font-weight:bold; 
+}
+
+
+div.message {
+  width:auto;
+  margin:0 auto;
+  border: 1px solid #ABC8E2;
+  margin-top: 20px;
+}
+
+div.header{
+  width:100%;
+  background-color:#ABC8E2;
+  color:#375D81;
+}
+
+div.sender{
+  float:left;
+  padding:5px;
+  width:400px;
+}
+
+div.time{
+  float:right;
+  padding:5px;
+}
+
+div.message-body{
+  padding:10px
+}
+
+div.clear{ clear:both; }
+
+form#chat-form{
+  margin: 10px 10px 10px 0;
+}
