@@ -14,7 +14,7 @@ jQuery(function($){
     			resizable: false,
     			closeOnEscape: false,
     			title: "Connection"
-    		})   	
+    		});   	
       
       this.socket.on("connect", this.connect);
     	this.socket.on("disconnect", this.disconnect);
@@ -22,8 +22,9 @@ jQuery(function($){
     	this.socket.subscribe("/observer", this.receive);
     },
     onSubmit: function() {
-      $.post('/chat/message', { message: $('#chat-msg').val()} );
-      $('#chat-msg').val('');
+      // $.post('/chat/messages', { body: $('#chat-msg').val()} );
+      // $('#chat-msg').val('');
+      alert('ala ma kota');
       return false;
     },
     connect: function() {
@@ -43,7 +44,8 @@ jQuery(function($){
   };
 
   $(function() {
-      $('#chat-form').submit(this.onSubmit);	
+      $('#chat-form').submit(this.onSubmit);
+      console.log('stuff loaded');
   });
 
   window.chat = Chat.init();
