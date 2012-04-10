@@ -1,28 +1,28 @@
 (function($) {
 
     window.Message = Backbone.Model.extend({
-      defaults : { sender : null, time : null, body : null }
-      // url : function() {
-      //   return this.id ? '/chat/messages/' + this.id : '/chat/messages';
-      // } 
+        defaults : { sender : null, time : null, body : null }
+        // url : function() {
+        //     return this.id ? '/chat/messages/' + this.id : '/chat/messages';
+        // } 
     });
 
     window.MessageView = Backbone.View.extend({
-    	tagName: 'div',
-    	className: 'message',
+    	  tagName: 'div',
+    	  className: 'message',
 
-    	initialize: function(){},
+    	  initialize: function(){},
 
-    	render: function(){
-    		var renderedContent = ich.message(this.model.toJSON());
-    		$(this.el).html(renderedContent);
-    		return this;
-    	}
+    	  render: function(){
+    		    var renderedContent = ich.message(this.model.toJSON());
+    		    $(this.el).html(renderedContent);
+    		    return this;
+    	  }
     });
 
     window.Messages = Backbone.Collection.extend({
-      model: Message,
-      url: "/chat/messages"
+        model: Message,
+        url: "/chat/messages"
     });
 
     window.messagesList = new Messages();
@@ -66,9 +66,9 @@
         },
     
         initialRoute: function(){
-          var $container = $('#chat');
-          $container.empty();
-          $container.append(this.messagesView.render().el);
+            var $container = $('#chat');
+            $container.empty();
+            $container.append(this.messagesView.render().el);
         }
 
     }); 
