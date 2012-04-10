@@ -52,7 +52,7 @@ class Tutor::StudentsController < ApplicationController
         @student.groups << @group
         @student.send_new_group(@group)
         @student.create_coursebook(@tutor, @group.course)       
-        format.html { redirect_to(edit_tutor_group_path(@tutor, @group), :notice => 'Student was successfully enrolled.') }
+        format.html { redirect_to(edit_tutor_group_path(@group), :notice => 'Student was successfully enrolled.') }
         format.xml  { render :xml => @student, :status => :created, :location => @student }
       else
         format.html { render :action => "new" }
