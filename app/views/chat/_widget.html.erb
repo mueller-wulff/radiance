@@ -1,9 +1,11 @@
 <div id="chat">
-  <p>Messages</p>
-  <div class="log">
-  </div>
 
-  <form id='chat-form'>
-    Type in new message: <input type="text" id="chat-msg">
-  </form>
+  <%= render :partial => "chat/templates" %>
+
 </div>
+
+<script type="application/javascript">
+  jQuery(function() {
+    window.messagesList.fetch();
+  });
+</script>
