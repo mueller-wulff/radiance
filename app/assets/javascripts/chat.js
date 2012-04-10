@@ -20,14 +20,6 @@ jQuery(function($){
     	this.socket.on("disconnect", this.disconnect);
     	this.socket.on("reconnect", this.reconnect);
     	this.socket.subscribe("/observer", this.receive);
-
-      $('#chat-form').bind('submit', function(){alert('dupa');})
-
-    },
-    onSubmit: function() {
-      $.post('/chat/messages', { body: $('#chat-msg').val()} );
-      $('#chat-msg').val('');
-      return false;
     },
     connect: function() {
       console.log('connected!');
@@ -44,11 +36,6 @@ jQuery(function($){
       $('#chat .log').append(msg);
     }
   };
-
-  $(function() {
-      $('#chat-form').bind('submit', function(){alert('dupa');})//submit(this.onSubmit);
-      console.log('stuff loaded');
-  });
 
   window.chat = Chat.init();
 });
