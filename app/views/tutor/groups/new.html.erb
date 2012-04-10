@@ -1,5 +1,5 @@
 <div id="main">
-	<h1>New Group for Course </h1>
+	<h1>New Group for Course <%= @course.short_title if @course %></h1>
 	<%= form_for([@group], :url => tutor_groups_path) do |f| %>
 	  <% if @group.errors.any? %>
 	    <div id="error_explanation">
@@ -17,10 +17,18 @@
 	    <%= f.label :title %><br />
 	    <%= f.text_field :title %>
 	  </p> 
-		<p class="select">
-	    <%= f.label :course %><br />
-	    <%= select_tag :course, options_from_collection_for_select(@tutor.courses, "id", "short_title") %>
-	  </p>
+		<% if @course %>
+			<p class="input">
+		    <%= f.label :course %><br />
+				<%= @course.short_title %>
+		    <%= hidden_field_tag :course, @course.id %>
+		  </p>
+		<% else %>
+			<p class="select">
+		    <%= f.label :course %><br />
+		    <%= select_tag :course, options_from_collection_for_select(@tutor.courses, "id", "short_title") %>
+		  </p>
+		<% end %>
 		<%= fields_for :deadline do |d| %>
 			<p class="input">
 		    <%= d.label :due_date, "Course Deadline" %><br />
