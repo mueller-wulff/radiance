@@ -67,4 +67,9 @@ class Course < ActiveRecord::Base
       end
     end
   end
+  
+  def students
+    return self.groups.map{|g| g.students}.flatten
+  end
+  
 end
