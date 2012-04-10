@@ -3,7 +3,7 @@ jQuery(function($){
   
   var Chat = {
     init: function(){
-      this.socket = new Juggernaut;
+      this.socket = new Juggernaut();
       this.offline = $("<div></div>")
     		.html("The connection has been disconnected! <br /> " + 
     		      "Please go back online to use this service.")
@@ -20,11 +20,6 @@ jQuery(function($){
     	this.socket.on("disconnect", this.disconnect);
     	this.socket.on("reconnect", this.reconnect);
     	this.socket.subscribe("/observer", this.receive);
-      $('#chat-form').submit(this.onSubmit);	
-      // $("body").bind("ajaxSend", this.proxy(function(e, xhr){
-      //   xhr.setRequestHeader("X-Session-ID", this.socket.sessionID);
-      // }));
-      //$('#chat-msg').
     },
     onSubmit: function() {
       $.post('/chat/message', { message: $('#chat-msg').val()} );
@@ -46,6 +41,10 @@ jQuery(function($){
       $('#chat .log').append(msg);
     }
   };
+
+  $(function() {
+      $('#chat-form').submit(this.onSubmit);	
+  });
 
   window.chat = Chat.init();
 });
