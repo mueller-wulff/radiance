@@ -1,0 +1,17 @@
+<div id="main">
+  <h1>Editing Deadline for group <%= @deadline.deadlinable.title %></h1>
+  <%= form_for(@deadline, :url => tutor_course_deadline_path(@course, @deadline)) do |f| %>
+    <p class="checkbox">
+			<%= label :due_date, "Deadline" %><br />
+			<%= datetime_select "deadline", :due_date, :default => @deadline.due_date %> 
+		</p>
+		<p class="submit"> 
+		  <%= submit_tag "Submit" %>  
+		</p>
+  <% end %>
+  <%= link_to 'Back', tutor_course_deadlines_path(@course) %>
+
+</div>
+<div id="aside">
+
+</div>
