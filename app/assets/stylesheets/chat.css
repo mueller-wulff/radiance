@@ -1,3 +1,10 @@
+.messages-container {
+  height: 400px;
+  border: 1px solid #ABC8E2;
+  overflow: scroll;
+  overflow-x: visible;
+}
+
 div#chat p{
   margin: 10px 10px 10px 0;
   font-size: 18px;

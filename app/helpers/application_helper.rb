@@ -169,4 +169,8 @@ module ApplicationHelper
     end
   end
 
+  def render_channel(csid)
+    channel = Channel.find_or_create_by_channel_string_id(csid)
+    render :partial => 'chat/channel', :locals => { :channel => channel }
+  end
 end

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120405113012) do
+ActiveRecord::Schema.define(:version => 20120411171408) do
 
   create_table "answers", :force => true do |t|
     t.text     "txt",         :limit => 255
@@ -29,6 +29,8 @@ ActiveRecord::Schema.define(:version => 20120405113012) do
     t.integer  "course_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "token"
+    t.string   "channel_string_id"
   end
 
   create_table "ckeditor_assets", :force => true do |t|
@@ -39,7 +41,7 @@ ActiveRecord::Schema.define(:version => 20120405113012) do
     t.string   "assetable_type",    :limit => 30
     t.string   "type",              :limit => 25
     t.string   "guid",              :limit => 10
-    t.integer  "locale",            :limit => 2,  :default => 0
+    t.integer  "locale",            :limit => 1,  :default => 0
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -300,7 +302,7 @@ ActiveRecord::Schema.define(:version => 20120405113012) do
   add_index "versions", ["item_type", "item_id"], :name => "index_versions_on_item_type_and_item_id"
 
   create_table "youtubes", :force => true do |t|
-    t.text     "video_id"
+    t.text     "video_id",   :limit => 255
     t.datetime "created_at"
     t.datetime "updated_at"
   end

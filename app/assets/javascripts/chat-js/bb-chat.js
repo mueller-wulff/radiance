@@ -1,3 +1,4 @@
+/*
 (function($) {
 
     window.Message = Backbone.Model.extend({
@@ -79,3 +80,4 @@
     });
 
 })(jQuery);
+*/
