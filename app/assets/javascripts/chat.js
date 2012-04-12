@@ -1,17 +1,17 @@
 jQuery(function($){
   //if (typeof Juggernaut == "undefined") return;
-  
-  var Channel = {
-    channelId: null,
-    channelDOM: null,
-    init: function(channelId, chat){
+  var Channel = function(channelId, chat){
       this.channelId = channelId;
       this.channelDOM = $('#' + this.channelId);
       console.log("connecting to channel", this.channelId);
     	chat.getSocket().subscribe(this.channelId, $.proxy(this.receive, this));
       this.channelDOM.find('form').bind('submit', $.proxy(this.submit, this));
       this.scrollToBottom();
-    },
+    }
+  
+  Channel.prototype = {
+    channelId: null,
+    channelDOM: null,
     receive: function(msg) {
       console.log("got a message:");
       console.log(msg);
@@ -53,7 +53,8 @@ jQuery(function($){
       $('.channel').each(function() {
         // TODO: create a real class and instantiate it,
         // now it only supports one chatroom
-        Channel.init(this.id, Chat);
+        // Channel.init(this.id, Chat);
+        new Channel(this.id, Chat);
       })
     },
     getSocket: function() {
