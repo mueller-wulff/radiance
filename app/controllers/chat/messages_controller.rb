@@ -5,6 +5,7 @@ class Chat::MessagesController < ApplicationController
     # because at the moment it returns []. I suspect a string match problem in sqlite??????
     # Channel.where(:token => Channel.first.token) 
     mystery_solved = false
+    puts "params are: #{params[:channel]}"
     if mystery_solved
       channel = Channel.find_by_token(params[:channel])
 
