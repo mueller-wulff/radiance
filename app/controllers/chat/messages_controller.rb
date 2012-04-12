@@ -1,5 +1,9 @@
 class Chat::MessagesController < ApplicationController
   def create
+    if params[:meta]
+      Juggernaut.publish(params[:channel], { :meta => params[:meta], :profile_id => current_user.id, :profile_name => current_user.name })
+      head :ok and return
+    end
     # mystery is solved when you manage to get the following expression to return anything
     # (given that there is already a channel record in the db)
     # because at the moment it returns []. I suspect a string match problem in sqlite??????
@@ -14,7 +18,7 @@ class Chat::MessagesController < ApplicationController
 
       if msg.save
         message_html = render(:partial => 'chat/message', :locals => { :message => msg })
-        Juggernaut.publish(channel.token, message_html.first)
+        Juggernaut.publish(channel.token, { :message => message_html.first })
       end
     else
 
@@ -22,7 +26,7 @@ class Chat::MessagesController < ApplicationController
 
       if msg.save
         message_html = render(:partial => 'chat/message', :locals => { :message => msg })
-        Juggernaut.publish(params[:channel], message_html.first)
+        Juggernaut.publish(params[:channel], { :message => message_html.first })
       end
     end
   
