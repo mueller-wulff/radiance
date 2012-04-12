@@ -69,7 +69,7 @@ class Course < ActiveRecord::Base
   end
   
   def students
-    return self.groups.map{|g| g.students}.flatten
+    return self.groups.map{|g| g.students.where(:activated => true)}.flatten
   end
   
   def all_assignment_pages

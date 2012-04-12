@@ -19,6 +19,7 @@ class Grade < ActiveRecord::Base
         module_grade.update_attribute(:value, edit_value)
         module_grade.save
       end
+      calculate_course_grade(stitch_unit.course, student, tutor)
     else
       return false
     end
@@ -35,8 +36,9 @@ class Grade < ActiveRecord::Base
       end
     end
     course_grade_value = (value / size).round(1)
-    self.update_attribute(:value, course_grade_value)
-    self.save
+    grade = Grade.where(:gradable_id => course.id, :gradable_type => "Course", :student_id => student, :tutor_id => tutor ).first
+    grade.update_attribute(:value, course_grade_value)
+    grade.save
   end
 
 end
