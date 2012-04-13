@@ -1,0 +1,10 @@
+<div id='#chat' %>
+
+  <% channels = ['dupa-1234'] %>
+  <% channels.each do |ch| %>
+    <%= render_channel(ch) %>
+  <%end%>
+
+  <%= render partial:"chat/roster" %>
+
+</div>

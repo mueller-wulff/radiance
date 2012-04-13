@@ -1,16 +1,21 @@
-.messages-container {
+.channel .container {
   height: 400px;
   border: 1px solid #ABC8E2;
   overflow: scroll;
   overflow-x: visible;
 }
 
-div#chat p{
+div.channel p{
   margin: 10px 10px 10px 0;
   font-size: 18px;
   font-weight:bold; 
 }
 
+div.messages {
+  width: 95%;
+  margin-left: 10px;
+  margin-right: 10px;
+}
 
 div.message {
   width:auto;
@@ -44,6 +49,26 @@ div.message-body{
 
 div.clear{ clear:both; }
 
-form#chat-form{
+.channel {
+  width:72%;
+  float:left;
+}
+
+#roster {
+  width: 25%;
+  float:right;
+}
+
+#roster .container{
+  border: 1px solid #ABC8E2; 
+}
+
+#roster p {
+  margin: 10px 10px 10px 0;
+  font-size: 18px;
+  font-weight:bold; 
+}
+
+.channel form{
   margin: 10px 10px 10px 0;
 }

@@ -1,6 +1,6 @@
 <div class="channel" id="<%= channel.token %>">
   <p>Messages</p>
-  <div class="messages-container">
+  <div class="container">
     <div class="messages">
       <% channel.messages.each do |msg| %>
         <%= render :partial => 'chat/message', :locals => { :message => msg } %>
@@ -13,4 +13,3 @@
   </form>
 
 </div>
-

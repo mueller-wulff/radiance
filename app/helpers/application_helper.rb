@@ -173,4 +173,9 @@ module ApplicationHelper
     channel = Channel.find_or_create_by_channel_string_id(csid)
     render :partial => 'chat/channel', :locals => { :channel => channel }
   end
+
+  def render_roster_element()
+    return "Lukasz Lazewski" # TODO FIXME 
+  end
+
 end

@@ -26,12 +26,13 @@
       </tbody>
     </table>
   </div>
-  <%#= render :partial => 'chat/widget' %>
+
+  <%= render :partial => 'chat/chat_window' %>
   <!-- we could here just render another chatroom with all@course-1 in another (jquery) tab on the page,
   and in the students view, we ONLY render the all@course chatroom. If paul needs a chatroom for every module,
   we just call this helper again with a different string. no need to know who's in this room and who is not or a rooster,
   everybody with access to that page where this helper is called can chat and retrieve msgs -->
-  <%= render_channel("tutors@course-#{@course.id}")  %>
+  <%#= render_channel("tutors@course-#{@course.id}")  %>
 </div>
 <div id="aside">
 
