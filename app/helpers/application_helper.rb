@@ -175,7 +175,14 @@ module ApplicationHelper
   end
 
   def roster_elements()
-    ["Lukasz Lazewski", "Malte Muenchert", "Paul", "Group Chat for Course bla"] # TODO FIXME 
+    a = []
+    current_user.role.groups.each do |group|
+      a << group.students.map(&:name)
+    end
+
+    # current user he belongs to multiple groups - gA and gB, s1-gA != s1-gB
+    #   
+    return a
   end
 
 end

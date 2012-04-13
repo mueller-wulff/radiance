@@ -27,6 +27,7 @@ class Tutor::GroupsController < ApplicationController
   # GET /groups/new.xml
   def new
     @group = @tutor.groups.new
+    @course = Course.find(params[:course]) if params[:course]
     respond_to do |format|
       format.html # new.html.erb
       format.xml  { render :xml => @group }

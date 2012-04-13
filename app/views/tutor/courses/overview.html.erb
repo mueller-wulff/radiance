@@ -1,0 +1,37 @@
+<div id="main">
+  <h1 id="page_title"><%= @course.title %></h1>
+  
+  <h2>Overview</h2>
+  <div id="module_list_table">
+    <table  class="userlist" id="module_list">
+      <thead>
+        <tr  id="thead">
+          <td>&nbsp;</td>
+					<td>&nbsp;</td>
+        </tr>
+      </thead>
+      <tbody>
+      	<tr> 
+        	<td><%= link_to "Students", tutor_course_students_path(@course) %></td>
+					<td>managing the students of the course</td>
+        </tr>
+				<tr> 
+        	<td><%= link_to "Deadlines" %></td>
+					<td>shows the deadlines of the course and of the assignments</td>
+        </tr>
+				<tr> 
+        	<td><%= link_to "Assesment" %></td>
+					<td>shows the assesment matrix</td>
+        </tr>
+				<tr> 
+        	<td><%= link_to "Course Content", tutor_course_path(@course) %></td>
+					<td>shows the content (modules, units, pages) of the course </td>
+        </tr>
+      </tbody>
+    </table>		
+  </div>
+	<%= link_to 'Back', tutor_courses_path %>
+</div>
+<div id="aside">
+
+</div>

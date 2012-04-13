@@ -1,12 +1,13 @@
 class Tutor::StudentsController < ApplicationController
   before_filter :require_user
-  before_filter :grab_tutor, :except => [:edit, :update]
-  before_filter :grab_group_id, :except => [:edit, :update]
+  before_filter :grab_tutor, :except => [:edit, :update,]
+  before_filter :grab_group_id, :except => [:edit, :update, :index]
   # GET /students
   # GET /students.xml
   def index
-    @students = Student.all
-
+    @course = Course.find(params[:course_id]) if params[:course_id]
+    @groups = @course.groups.where(:tutor_id => @tutor.id)
+    
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @students }
@@ -51,7 +52,7 @@ class Tutor::StudentsController < ApplicationController
         @student.groups << @group
         @student.send_new_group(@group)
         @student.create_coursebook(@tutor, @group.course)       
-        format.html { redirect_to(edit_tutor_group_path(@tutor, @group), :notice => 'Student was successfully enrolled.') }
+        format.html { redirect_to(edit_tutor_group_path(@group), :notice => 'Student was successfully enrolled.') }
         format.xml  { render :xml => @student, :status => :created, :location => @student }
       else
         format.html { render :action => "new" }
