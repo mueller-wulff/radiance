@@ -72,3 +72,9 @@ div.clear{ clear:both; }
 .channel form{
   margin: 10px 10px 10px 0;
 }
+
+.channel form input{
+  width: 100%; 
+  line-height: 20px;
+  font-size: 20px;
+}
