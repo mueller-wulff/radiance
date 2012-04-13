@@ -177,7 +177,8 @@ module ApplicationHelper
   def roster_elements()
     a = []
     current_user.role.groups.each do |group|
-      a << group.students.map(&:name)
+      a += group.students.map(&:name)
+      a << group.tutor.profile.name
     end
 
     # current user he belongs to multiple groups - gA and gB, s1-gA != s1-gB
