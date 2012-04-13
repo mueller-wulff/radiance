@@ -3,7 +3,7 @@
 
   <div class="container">
     <% roster_elements.each do |el| %>
-      <a href="/chat/channel_for/<%=el[:channel_id]%>">
+      <a href="/chat/channel_for/<%=el[:channel_id]%>" data-remote = "true" data-channel-id = "<%=el[:channel_id]%>" data-replace = "#chat .channel">
         <div class="element <%=el[:type]%>" id="<%=el[:channel_id]%>">
           <%=el[:name]%>
         </div>
