@@ -174,8 +174,8 @@ module ApplicationHelper
     render :partial => 'chat/channel', :locals => { :channel => channel }
   end
 
-  def render_roster_element()
-    return "Lukasz Lazewski" # TODO FIXME 
+  def roster_elements()
+    ["Lukasz Lazewski", "Malte Muenchert", "Paul", "Group Chat for Course bla"] # TODO FIXME 
   end
 
 end

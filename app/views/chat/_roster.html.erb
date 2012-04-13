@@ -2,6 +2,8 @@
   <p>Roster</p>
 
   <div class="container">
-    <%= render_roster_element %>
+    <% roster_elements.each do |el| %>
+      <div class="element" id="channel-id"><%=el%></div>
+    <%end%>
   </div>
 </div>

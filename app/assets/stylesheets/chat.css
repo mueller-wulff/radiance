@@ -63,6 +63,11 @@ div.clear{ clear:both; }
   border: 1px solid #ABC8E2; 
 }
 
+#roster .container .element {
+  border: 1px dotted red;
+  margin: 2px;
+}
+
 #roster p {
   margin: 10px 10px 10px 0;
   font-size: 18px;
