@@ -17,6 +17,19 @@ class Chat::MessagesController < ApplicationController
     head :ok if msg.save
   end
 
+  # this method is called in by AJAX
+  # it renders new channel for 1-on-1 chats
+  def channel_for
+    channel = Channel.find_or_create_by_channel_string_id(params[:channel_id])
+    render :partial => 'chat/channel', :locals => { :channel => channel }  
+  end
+
+
+
+
+
+  # This is BB stuff - lets keep it for now but probably will remove later while cleaning up this code # FIXME later
+  #
   # def index
   #   # not needed
   #   render :json => current_user.messages.to_json

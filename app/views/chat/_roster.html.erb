@@ -3,7 +3,11 @@
 
   <div class="container">
     <% roster_elements.each do |el| %>
-      <div class="element <%=el[:type]%>" id="<%=el[:channel_id]%>"><%=el[:name]%></div>
+      <a href="/chat/channel_for/<%=el[:channel_id]%>">
+        <div class="element <%=el[:type]%>" id="<%=el[:channel_id]%>">
+          <%=el[:name]%>
+        </div>
+      </a>
     <%end%>
   </div>
 </div>

@@ -1,5 +1,7 @@
 Stitched::Application.routes.draw do  
-  
+
+  get "/chat/channel_for/:id" => "chat/messages#channel_for"
+
   # Chatting routes
   namespace :chat do
     resources :messages
