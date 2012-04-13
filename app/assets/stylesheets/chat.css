@@ -74,6 +74,25 @@ div.clear{ clear:both; }
   font-weight:bold; 
 }
 
+#roster .container .group{
+  font-style:italic;
+  color: #999999;
+  text-align:center;  
+}
+
+#roster .container .tutor{
+  font-weight:bold;
+  color: #335588;
+  text-align:center;
+}
+
+#roster .container .student{
+  font-style:italic;
+  font-weight:bold;
+  color: #33AA00;
+  text-align:center;
+}
+
 .channel form{
   margin: 10px 10px 10px 0;
 }
@@ -83,3 +102,6 @@ div.clear{ clear:both; }
   line-height: 20px;
   font-size: 20px;
 }
+
+
+

@@ -174,16 +174,16 @@ module ApplicationHelper
     render :partial => 'chat/channel', :locals => { :channel => channel }
   end
 
+  # we can talk to the whole group
+  # to the group's tutor or student
   def roster_elements()
-    a = []
+    roster = []
     current_user.role.groups.each do |group|
-      a += group.students.map(&:name)
-      a << group.tutor.profile.name
+      roster << { type:"group", name:"(G) #{group.title}", channel_id:"fixme" }                                     
+      roster << { type:"tutor", name:"(T) #{group.tutor.profile.name} #{group.tutor.profile.lastname}", channel_id:"fixme2" }      
+      roster += group.students.map{ |s| { type:"student", name:"#{s.profile.name} #{s.profile.lastname}", channel_id:"fixme3" } }    
     end
-
-    # current user he belongs to multiple groups - gA and gB, s1-gA != s1-gB
-    #   
-    return a
+    return roster
   end
 
 end
