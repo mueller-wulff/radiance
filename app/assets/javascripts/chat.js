@@ -58,7 +58,7 @@ jQuery(function($){
       console.log("stopped typing");
     },
     scrollToBottom: function() {
-      var container = this.channelDOM.find('.messages-container');
+      var container = this.channelDOM.find('.container');
       container.animate({ scrollTop: container.prop("scrollHeight") - container.height() }, 100);
     }
 
