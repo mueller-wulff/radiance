@@ -1,6 +1,7 @@
 jQuery(function($){
   //if (typeof Juggernaut == "undefined") return;
   var Channel = function(channelId, chat){
+      this.visible = false;
       this.channelId = channelId;
       this.channelDOM = $('#' + this.channelId);
       console.log("connecting to channel", this.channelId);
