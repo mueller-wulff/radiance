@@ -21,6 +21,10 @@ class Profile < ActiveRecord::Base
     #for more options check the AuthLogic documentation
   end
   
+  def fullname
+    "#{self.name} #{self.lastname}"
+  end
+  
   def self.find_by_login_or_email(login)
      find_by_login(login) || find_by_email(login)
   end  

@@ -6,7 +6,7 @@
   	<textarea name="Textarea" id="Textarea" cols="65" rows="10"></textarea>
 	<% else %>
 		<%=raw show_answer(e, current_user.role).txt %>
-		<p>Version: last edited <%=raw show_answer(e, current_user.role).updated_at %> by <%= show_whodunnit(show_answer(e, current_user.role)) %></p>
+		<p>Version: last edited <%=raw show_answer(e, current_user.role).updated_at.strftime('%d.%m.%Y - %H:%M') %> by <%= show_whodunnit(show_answer(e, current_user.role)) %></p>
 		<p>
 			Assesment: <%= show_answer(e, current_user.role).score %>/<%#= show_score(e, @tutor) %>
 			<br />

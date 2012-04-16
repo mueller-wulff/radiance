@@ -1,6 +1,6 @@
 <tr class="unit_page" id="page_<%= page.id %>">
   <td class="page"><%= link_to page.title, edit_developer_stitch_unit_page_path(page.stitch_unit,page) ,:class => "edit_page_link"%></td>
-  <td class="gewichtung">- %</td>
+  <td class="gewichtung">&nbsp;</td>
   <td class="functions">
     <% if current_user.role.editable(page.stitch_unit.stitch_module) %>
       <%= link_to image_tag("space.gif", :alt => "edit Page", :class => "icon useredit"), ajax_edit_developer_stitch_unit_page_path(page.stitch_unit,page), :class => "edit_page" %>

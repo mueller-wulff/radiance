@@ -20,19 +20,24 @@ class Tutor::GradesController < ApplicationController
     end
     nil
   end
-  
+
   def show
     redirect_to tutor_group_student_path(@group, @student, :format => 'html')
   end
 
   # only for grades of type stitch_unit
   def create
+    @stitch_unit = StitchUnit.find(params[:stitch_unit])
+    # if @grade = Grade.where(:student_id => @student.id, :tutor_id => @group.tutor.id, :gradable_id => @stitch_unit.id, :gradable_type => "StitchUnit").first
+    #       @grade.value = params[:grade]
+    #       logger.debug("grade: #{@grade.inspect}")
+    #     else
     @grade = Grade.new
     @grade.student = @student
     @grade.tutor = @group.tutor
-    @stitch_unit = StitchUnit.find(params[:stitch_unit])
     @grade.gradable = @stitch_unit
     @grade.value = params[:grade]
+    # end
     respond_to do |format|
       if @grade.save
         @grade.update_module_grade(@stitch_unit, @student, @group.tutor)
@@ -40,7 +45,7 @@ class Tutor::GradesController < ApplicationController
       else
         format.js { head :error}
       end
-    end  
+    end
   end
 
   # only for calculation of course grade

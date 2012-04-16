@@ -101,12 +101,17 @@ class Page < ActiveRecord::Base
       tmp_date = DateTime.new( d["due_date(1i)"].to_i, d["due_date(2i)"].to_i, d["due_date(3i)"].to_i, d["due_date(4i)"].to_i, d["due_date(5i)"].to_i )
       group = Group.find(d["group_id"])
       group_deadline = Deadline.where(:deadlinable_id => group.id, :deadlinable_type => "Group").first
+      page_deadline = Deadline.where(:deadlinable_id => page.id, :deadlinable_type => "Page", :group_id => group.id).first
       if tmp_date < group_deadline.due_date
-        @deadline = Deadline.new
-        @deadline.due_date = tmp_date
-        @deadline.group_id = d["group_id"]
-        @deadline.deadlinable = page
-        @deadline.save
+        if page_deadline.nil?
+          @deadline = Deadline.new
+          @deadline.due_date = tmp_date
+          @deadline.group_id = d["group_id"]
+          @deadline.deadlinable = page
+          @deadline.save
+        else
+          page_deadline.update_attribute(:due_date, tmp_date)
+        end
       end
     end
   end
