@@ -67,14 +67,17 @@ jQuery(function($){
       console.log("stopped typing");
     },
     scrollToBottom: function() {
-      var container = this.channelDOM.find('.container');
-      container.animate({ scrollTop: container.prop("scrollHeight") - container.height() }, 100);
+      setTimeout($.proxy(function(){
+        var container = this.channelDOM.find('.container');
+        container.animate({ scrollTop: container.prop("scrollHeight") - container.height() }, 100);
+      }, this), 100);
     }
 
   };
 
   var Chat = {
     socket: null,
+    channels: [],
     init: function() {
       this.socket = new Juggernaut();
       this.offline = $("<div></div>")
@@ -102,16 +105,24 @@ jQuery(function($){
       });
 
       $('.channel').each(function() {
-        new Channel(this.id, Chat);
+        Chat.channels.push(new Channel(this.id, Chat));
       })
       this.showChannel($('.channel').first().attr('id'));
     },
     showChannel: function(channelId){
-      console.log(channelId);
       $('.tab').removeClass('active');
       $('.channel').hide();
       $('#tab' + channelId).addClass('active');
       $('#' + channelId).show();
+      Chat.findChannel(channelId).scrollToBottom();
+    },
+    findChannel: function(channelId) {
+      console.log('findChannel'+this.channels.length);
+      for(i=0;i<this.channels.length;i++) {
+        if (this.channels[i].channelId == channelId) {
+          return this.channels[i];
+        }
+      }
     },
     getSocket: function() {
       return(this.socket);

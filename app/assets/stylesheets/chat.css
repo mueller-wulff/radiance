@@ -21,7 +21,8 @@ div.message {
   width:auto;
   margin:0 auto;
   border: 1px solid #ABC8E2;
-  margin-top: 20px;
+  margin-top: 5px;
+  margin-bottom: 5px;
 }
 
 div.header{
@@ -32,18 +33,20 @@ div.header{
 
 div.sender{
   float:left;
+  font-size:10px;
   padding:5px;
   width:200px;
 }
 
 div.time{
   float:right;
+  font-size:10px;  
   padding:5px;
 }
 
 div.message-body{
-  padding:10px;
-  font-size:12px;
+  padding:5px;
+  font-size:10px;
   font-weight:normal;
 }
 
@@ -64,7 +67,6 @@ div.clear{ clear:both; }
 }
 
 #roster .container .element {
-  border: 1px dotted red;
   margin: 2px;
 }
 
@@ -72,6 +74,10 @@ div.clear{ clear:both; }
   margin: 10px 10px 10px 0;
   font-size: 18px;
   font-weight:bold; 
+}
+
+#roster .container a{
+  text-decoration:none;
 }
 
 #roster .container .group{
@@ -99,10 +105,11 @@ div.clear{ clear:both; }
 
 .channel form input{
   width: 100%; 
-  line-height: 20px;
-  font-size: 20px;
+  line-height: 12px;
+  font-size: 12px;
+  padding: 5px;
 }
 
-.tab.active { font-weight:bold; background-color:red;  }
+.tab.active { font-weight:bold; background-color:#ABC8E2;}
 
 
