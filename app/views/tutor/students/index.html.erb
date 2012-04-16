@@ -9,6 +9,7 @@
 				<td>Login</td>
 				<td>Name</td>
 				<td>Lastname</td>
+        <td>Active?</td>
         <td>&nbsp;</td>
       </tr>
     </thead>
@@ -21,6 +22,7 @@
 					<td></td>
 					<td></td>
 					<td></td>
+					<td></td>
 				</tr>
 				<% group.students.each do |student| %>
 			  	<tr>
@@ -29,6 +31,7 @@
 						<td><%= student.profile.login %></td>
 						<td><%= student.profile.name %></td>
 						<td><%= student.profile.lastname %></td>
+						<td><%= student.activated %></td>
 				    <td>
 	          	<%= link_to image_tag("space.gif", :title => "rate Assignment", :class => "icon edit"), tutor_group_student_path(group, student) %>
 							<%= link_to image_tag("space.gif", :title => "shuffle Student in another Group", :class => "icon duplicate"), shuffle_tutor_group_student_path(group, student) %>
@@ -39,6 +42,7 @@
 			<tr>
 				<td></td>
 				<td><%= link_to "New Group for Course", new_tutor_group_path(:course => @course) %></td>
+				<td></td>
 				<td></td>
 				<td></td>
 				<td></td>
