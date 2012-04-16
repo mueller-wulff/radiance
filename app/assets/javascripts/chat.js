@@ -1,7 +1,6 @@
 jQuery(function($){
   //if (typeof Juggernaut == "undefined") return;
   var Channel = function(channelId, chat){
-      this.visible = false;
       this.channelId = channelId;
       this.channelDOM = $('#' + this.channelId);
       console.log("connecting to channel", this.channelId);
@@ -26,6 +25,9 @@ jQuery(function($){
         this.scrollToBottom();
       }
     },
+    show: function(){
+      $('.tab').each(function(elem) { elem.hide(); });
+    }
     submit: function(){
       var inp = this.channelDOM.find('.chat-input');
       this.stopTyping();
