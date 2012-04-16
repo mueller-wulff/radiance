@@ -1,8 +1,7 @@
 <div id='chat' %>
   <div id='chat_channels'>
-    <% channels = ['dupa-1234'] %>
-    <% channels.each do |ch| %>
-      <%= render_channel(ch) %>
+    <% roster_elements.each do |ch| %>
+      <%= render_channel(Channel.find_by_token(ch[:channel_id]).channel_string_id) %>
     <%end%>
   </div>
 

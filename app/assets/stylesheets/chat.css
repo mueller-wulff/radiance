@@ -77,20 +77,20 @@ div.clear{ clear:both; }
 #roster .container .group{
   font-style:italic;
   color: #999999;
-  text-align:center;  
+  /* text-align:center;  */
 }
 
 #roster .container .tutor{
   font-weight:bold;
   color: #335588;
-  text-align:center;
+  /* text-align:center;*/
 }
 
 #roster .container .student{
   font-style:italic;
   font-weight:bold;
   color: #33AA00;
-  text-align:center;
+  /* text-align:center;*/
 }
 
 .channel form{
@@ -103,5 +103,6 @@ div.clear{ clear:both; }
   font-size: 20px;
 }
 
+.tab.active { font-weight:bold; background-color:red;  }
 
 

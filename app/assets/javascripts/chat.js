@@ -16,18 +16,16 @@ jQuery(function($){
     typingTimer: null,
     isTyping: false,
     receive: function(msg) {
-      console.log("got a message:");
-      console.log(msg);
       if (msg.meta) {
         this.processMeta(msg);
       } else {
         this.channelDOM.find('.messages').append(msg.message);
         this.scrollToBottom();
+        if (!this.channelDOM.is(":visible")) {
+        this.increaseUnread(); 
+        }
       }
     },
-    show: function(){
-      $('.tab').each(function(elem) { elem.hide(); });
-    }
     submit: function(){
       var inp = this.channelDOM.find('.chat-input');
       this.stopTyping();
@@ -35,6 +33,14 @@ jQuery(function($){
       inp.val('');
       return false;
     },
+
+    increaseUnread: function(){
+      var value = parseInt($('#badge-'+this.channelId).html());
+      value++;
+      $('#badge-'+this.channelId).html(value);
+      $('#badge-'+this.channelId).show();
+    },
+
     processMeta: function(message){
       if (message.meta == 'start_typing') {
         this.channelDOM.find('.messages').append("<div class='typing typing"+ message.profile_id+"'>" +
@@ -86,12 +92,26 @@ jQuery(function($){
       this.socket.on("connect", this.connect);
     	this.socket.on("disconnect", this.disconnect);
     	this.socket.on("reconnect", this.reconnect);
+
+      $('.tab a').click(function(e){
+        var channelId = $(this).attr('data-channel-id')
+        Chat.showChannel(channelId);
+        $('#badge-'+channelId).html(0);
+        $('#badge-'+channelId).hide();
+        return false;
+      });
+
       $('.channel').each(function() {
-        // TODO: create a real class and instantiate it,
-        // now it only supports one chatroom
-        // Channel.init(this.id, Chat);
         new Channel(this.id, Chat);
       })
+      this.showChannel($('.channel').first().attr('id'));
+    },
+    showChannel: function(channelId){
+      console.log(channelId);
+      $('.tab').removeClass('active');
+      $('.channel').hide();
+      $('#tab' + channelId).addClass('active');
+      $('#' + channelId).show();
     },
     getSocket: function() {
       return(this.socket);

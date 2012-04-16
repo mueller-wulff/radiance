@@ -177,13 +177,23 @@ module ApplicationHelper
   # we can talk to the whole group
   # to the group's tutor or student
   def roster_elements()
-    roster = []
+    roster = current_user.role.groups.map { |r| { type:'group', name:"#{r.title}", channel_id:Channel.find_or_create_by_channel_string_id("all@group-#{r.id}").token }  }
+    
     current_user.role.groups.each do |group|
-      roster << { type:"group", name:"(G) #{group.title}", channel_id:"fixme" }                                     
-      roster << { type:"tutor", name:"(T) #{group.tutor.profile.name} #{group.tutor.profile.lastname}", channel_id:"fixme2" }      
-      roster += group.students.map{ |s| { type:"student", name:"#{s.profile.name} #{s.profile.lastname}", channel_id:"fixme3" } }    
+      roster << { type:"tutor", name:"(T) #{group.tutor.profile.name} #{group.tutor.profile.lastname}", channel_id:build_face2face_channel(group.tutor.profile.id, current_user.id).token } if group.tutor.profile != current_user      
+      roster += group.students.map do |s| 
+        if s.profile != current_user
+          { type:"student", name:"#{s.profile.name} #{s.profile.lastname}", channel_id:build_face2face_channel(s.profile.id, current_user.id).token }
+        else
+          nil
+        end
+      end.compact
     end
-    return roster
+    roster
+  end
+
+  def build_face2face_channel(profile_id1, profile_id2)
+    Channel.find_or_create_by_channel_string_id("f2fchat-#{[profile_id1, profile_id2].sort.join('-')}")
   end
 
 end
