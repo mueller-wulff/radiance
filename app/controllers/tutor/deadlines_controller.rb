@@ -3,7 +3,7 @@ class Tutor::DeadlinesController < ApplicationController
   
   def index
     @pages = @course.all_assignment_pages
-    @groups = @course.groups.all
+    @groups = @course.groups.where(:tutor_id => @tutor.id)
   end
   
   def edit
@@ -18,7 +18,8 @@ class Tutor::DeadlinesController < ApplicationController
   end
   
   def grab_course
-    @course = Course.find(params[:course_id])    
+    @course = Course.find(params[:course_id])  
+    @tutor = current_user.role  
   end
 
 end
