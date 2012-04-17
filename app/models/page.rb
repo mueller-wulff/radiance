@@ -94,28 +94,6 @@ class Page < ActiveRecord::Base
     end
   end
   
-  def create_page_deadline(deadlines, page)
-    new_deadlines = []
-    deadlines.keys.each {|key| new_deadlines << deadlines[key] if deadlines[key]["new_deadline"] == "1"}
-    new_deadlines.each do |d|
-      tmp_date = DateTime.new( d["due_date(1i)"].to_i, d["due_date(2i)"].to_i, d["due_date(3i)"].to_i, d["due_date(4i)"].to_i, d["due_date(5i)"].to_i )
-      group = Group.find(d["group_id"])
-      group_deadline = Deadline.where(:deadlinable_id => group.id, :deadlinable_type => "Group").first
-      page_deadline = Deadline.where(:deadlinable_id => page.id, :deadlinable_type => "Page", :group_id => group.id).first
-      if tmp_date < group_deadline.due_date
-        if page_deadline.nil?
-          @deadline = Deadline.new
-          @deadline.due_date = tmp_date
-          @deadline.group_id = d["group_id"]
-          @deadline.deadlinable = page
-          @deadline.save
-        else
-          page_deadline.update_attribute(:due_date, tmp_date)
-        end
-      end
-    end
-  end
-  
   def course
     self.stitch_unit.course
   end

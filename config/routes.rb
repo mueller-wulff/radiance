@@ -45,7 +45,9 @@ Stitched::Application.routes.draw do
     resources :contents do
       resources :element do
         resources :answers
-        resources :group_essay_answers
+        resources :group_essay_answers do
+          get 'versions', :on => :member
+        end
       end
     end
         

@@ -7,6 +7,6 @@ class Deadline < ActiveRecord::Base
     groups = course.groups.all
     groups.map {|g| deadlines << Deadline.where(:group_id => g.id) }
     deadlines.flatten!
-  end  
+  end 
     
 end
