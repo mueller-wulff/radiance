@@ -22,7 +22,7 @@
 	      		<tr> 
 	        		<td><%= page.stitch_unit.title %></td>
 							<td><%= show_deadline_page(page, nil, group)  %></td>
-							<td><%= link_to image_tag("space.gif", :title => "edit page deadline", :class => "icon edit"), edit_tutor_stitch_unit_page_path(page.stitch_unit, page) %></td>
+							<td><%= link_to image_tag("space.gif", :title => "edit page deadline", :class => "icon edit"), find_page_deadline(@course, group, page) %></td>
 		        </tr>
 					<% end %>
 				<% end %>

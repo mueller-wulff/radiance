@@ -3,28 +3,28 @@ class Student::GroupEssayAnswersController < ApplicationController
   before_filter :get_data
 
   layout nil
-  
+
   def index
     @contents = @page.contents
     respond_to do |format|
       format.html
     end
   end
-  
+
   def show
     @contents = @page.contents
     respond_to do |format|
       format.html
     end
   end
-  
+
   def new
     @group_essay_answer = GroupEssayAnswer.new
   end
-  
+
   def create
     @group_essay_answer = GroupEssayAnswer.new(params[:group_essay_answer])
-    @group_essay_answer.group_essay = @element    
+    @group_essay_answer.group_essay = @element
     @group_essay_answer.group = @group
     respond_to do |format|
       if @group_essay_answer.save
@@ -34,11 +34,12 @@ class Student::GroupEssayAnswersController < ApplicationController
       end
     end
   end
-  
+
   def edit
     @group_essay_answer = GroupEssayAnswer.find(params[:id])
     @group_essay_answer = @group_essay_answer.previous_version if params[:previous]
     @group_essay_answer = @group_essay_answer.next_version if params[:next]
+   # @group_essay_answer.save unless @group_essay_answer.next_version == nil
   end
 
   def update
@@ -52,6 +53,12 @@ class Student::GroupEssayAnswersController < ApplicationController
     end
   end
   
+  def versions
+    @group_essay_answer = GroupEssayAnswer.find(params[:id])
+    @versions = @group_essay_answer.versions
+    render :layout => 'application'
+  end
+
   private
 
     def get_data

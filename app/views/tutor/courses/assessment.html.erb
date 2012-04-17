@@ -14,7 +14,7 @@
     <tbody>
 			<% @students.each do |student| %>
 				<tr>
-					<td><%= student.profile.fullname %></td>
+					<td><%= link_to student.profile.fullname, tutor_group_student_path(student.groups.where(:course_id => @course.id).first, student) %></td>
 					<% @stitch_modules.each do |stitch_module| %>
 						<td><%= show_national_assesment(show_grade(stitch_module, student, current_user.role) ) %></td>
 					<% end %>	

@@ -175,5 +175,14 @@ module ApplicationHelper
       tutor_course_default_assesment_path(course, def_assesment)
     end
   end
+  
+  def find_page_deadline(course, group, page)
+    page_deadline = page.deadlines.where(:group_id => group.id).first
+    if page_deadline.nil?
+      new_tutor_course_deadline_path(course, :group_id => group, :page => page, :group_deadline => group.deadline) 
+    else
+      edit_tutor_course_deadline_path(course, page_deadline)
+    end
+  end
 
 end
