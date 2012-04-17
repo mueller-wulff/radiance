@@ -23,6 +23,7 @@
 			<% end %>
 		</tbody>
 	</table>
+	<%= link_to "Default Assesment", find_default_assesment(@course, current_user.role) %><br />
 	<%= link_to 'Back', overview_tutor_course_path(@course) %>
 </div>
 <div id="aside">
