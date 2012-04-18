@@ -1,7 +1,13 @@
 Stitched::Application.routes.draw do  
   
   scope :module => 'static' do
-    resources :faqs
+    resources :faqs do
+      collection do
+       get 'student'
+       get 'tutor'
+       get 'developer' 
+      end
+    end
     resources :unsupported_browsers
     resource :dashboard
   end
