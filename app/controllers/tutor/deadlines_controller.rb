@@ -26,7 +26,7 @@ class Tutor::DeadlinesController < ApplicationController
       if @deadline.save
         format.html {redirect_to(tutor_course_deadlines_path(@course) ) }
       else
-        format.html { render :action => "new" }
+        format.html { render :action => "new", :params => [:group_id => params[:group_id], :page => params[:page], :group_deadline => params[:group_deadline]] }
       end
     end
   end
@@ -34,7 +34,13 @@ class Tutor::DeadlinesController < ApplicationController
   def update
     @deadline = Deadline.find(params[:id])
     tmp_date = DateTime.new( params[:deadline]["due_date(1i)"].to_i, params[:deadline]["due_date(2i)"].to_i, params[:deadline]["due_date(3i)"].to_i, params[:deadline]["due_date(4i)"].to_i, params[:deadline]["due_date(5i)"].to_i )
-    @deadline.update_attribute(:due_date, tmp_date)
+    if @deadline.group_id.nil?
+      @deadline.update_attribute(:due_date, tmp_date)
+    else
+      if @deadline.check_group_deadline(tmp_date)
+        @deadline.update_attribute(:due_date, tmp_date)
+      end
+    end
     redirect_to tutor_course_deadlines_path(@course)
   end
 

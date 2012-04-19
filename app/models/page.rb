@@ -32,7 +32,7 @@ class Page < ActiveRecord::Base
       if sunit == smodule.stitch_units.order(:position).first
         return false
       else
-        prev_unit = smodule.stitch_units.where("position < ?", sunit.position).first
+        prev_unit = smodule.stitch_units.where("position < ?", sunit.position).last
         if prev_unit.pages != []
           prev_unit.pages.last 
         else

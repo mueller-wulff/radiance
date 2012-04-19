@@ -23,8 +23,8 @@
 			<% end %>
 		</tbody>
 	</table>
-	<%= link_to "Default Assesment", find_default_assesment(@course, current_user.role) %><br />
-	<%= link_to 'Back', overview_tutor_course_path(@course) %>
+	<p><%= link_to "Grading System", find_default_assesment(@course, current_user.role) %> (Here you can define your grading system)<br />
+	<%= link_to 'Back', overview_tutor_course_path(@course) %></p>
 </div>
 <div id="aside">
 
