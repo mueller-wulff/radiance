@@ -7,4 +7,8 @@ class Channel < ActiveRecord::Base
     # need a separate channel model
     self.token = "channel#{SecureRandom.hex(12)}"
   end
+
+  def discussion?
+    self.group_id.present?
+  end
 end

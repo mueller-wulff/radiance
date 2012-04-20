@@ -5,6 +5,7 @@ Stitched::Application.routes.draw do
   # Chatting routes
   namespace :chat do
     resources :messages
+  
     post "/chat/message" => "chat#message"
   end
 
@@ -76,6 +77,7 @@ Stitched::Application.routes.draw do
     resources :grades
         
     resources :groups do
+      resources :channels, :module => ""
       resources :students do
         member do
           get 'shuffle'

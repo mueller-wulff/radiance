@@ -1,5 +1,5 @@
 <div id="main">
-	<h1>Students in Group: <%= @group.title %></h1>
+	<h1>Editing Group: <%= @group.title %></h1>
 	<h2>Deadline: <%= @group.deadline.due_date.strftime('%d.%m.%Y - %H:%M') unless @group.deadline.nil? %></h2>
 	<table  class="userlist">
   	<thead>
@@ -22,6 +22,32 @@
 			<% end %>
 			<tr>
       	<td><%= link_to 'Enroll Student', new_tutor_group_student_path(@group) %></td>
+        <td></td>
+				<td></td>
+      </tr>
+		</tbody>
+	</table>
+  <h2>Discussions</h2>
+	<table class="userlist">
+  	<thead>
+  		<tr>
+				<td>Name</td>
+        <td>Number of Posts</td>
+        <td>&nbsp;</td>
+      </tr>
+    </thead>
+    <tbody>
+			<% @channels.each do |channels| %>
+			  <tr>
+					<td><%= channel.name %></td>
+			    <td>
+						<%= link_to image_tag("space.gif", :title => "Edit", :class => "icon edit"), tutor_group_channel_path(channel) %>
+          	<%= link_to image_tag("space.gif", :title => "Delete", :class => "icon delete"), tutor_group_channel_path(@group, student) %>
+					</td>
+			  </tr>
+			<% end %>
+			<tr>
+      	<td><%= link_to 'New Discussion', new_tutor_group_channel_path %></td>
         <td></td>
 				<td></td>
       </tr>

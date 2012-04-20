@@ -1,4 +1,14 @@
 module ApplicationHelper
+  def errors_for(instance_of_model)
+   if instance_of_model.errors.any? 
+     content_tag(:div,
+      content_tag(:h2, pluralize(instance_of_model.errors.count, "error") + "prohibited this profile from being saved:") +
+      content_tag(:ul, instance_of_model.post.errors.full_messages.map do |msg|
+        raw(content_tag(:li, msg))
+      end.join(''), :id => "error_explanation"))
+    end
+  end
+
   def filter_local_links(html)
 
     #replace local page links

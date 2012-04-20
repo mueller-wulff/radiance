@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120411171408) do
+ActiveRecord::Schema.define(:version => 20120420121425) do
 
   create_table "answers", :force => true do |t|
     t.text     "txt",         :limit => 255
@@ -31,6 +31,8 @@ ActiveRecord::Schema.define(:version => 20120411171408) do
     t.datetime "updated_at"
     t.string   "token"
     t.string   "channel_string_id"
+    t.integer  "group_id"
+    t.boolean  "closed"
   end
 
   create_table "ckeditor_assets", :force => true do |t|
