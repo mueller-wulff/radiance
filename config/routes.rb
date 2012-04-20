@@ -77,7 +77,7 @@ Stitched::Application.routes.draw do
     resources :grades
         
     resources :groups do
-      resources :channels, :module => ""
+      resources :channels#, :path => "chat/channels"
       resources :students do
         member do
           get 'shuffle'
