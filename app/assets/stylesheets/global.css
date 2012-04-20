@@ -653,7 +653,13 @@ td.unit {
     font-size: 18px;
     color: #1A8BB2;
     line-height: 22px;
-    width: 600px;
+    width: 550px;
+}
+
+td.unit.less {
+    background: none;
+    font-size: 12px;
+    width: 50px;
 }
 
 td.page {
@@ -1179,14 +1185,14 @@ tr:hover .icon {
 
 /* @group editor */
 
-#main .editor h1, #main .editor h2, #main .editor h3, #main .editor h4, #main .editor h5, #main .editor h6, #main .editor p, #main .editor li {
+#main .editor h1, #main .editor h2, #main .editor h3, #main .editor h4, #main .editor h5, #main .editor h6, #main .editor p, #main .editor li, #error_explanation h2, #error_explanation li {
 	font-family: Arial, "Trebuchet MS", Sans, sans-serif;	
 	font-weight: bold;
 	color: #000;
 	margin: 10px 0;
 }
 
-#main .editor p, #main .editor li {
+#main .editor p, #main .editor li, #error_explanation li {
 	font-weight: normal;
 	font-size: 12px;
 }
@@ -1252,6 +1258,10 @@ img.center {
 	margin: 0 !important;
 	padding: 0 !important;
 	width: 654px !important;
+}
+
+#error_explanation h2 {
+    color: #F00;
 }
 
 /* @end */

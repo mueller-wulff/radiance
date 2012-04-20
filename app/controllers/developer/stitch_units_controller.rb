@@ -14,7 +14,6 @@ class Developer::StitchUnitsController < ApplicationController
   # GET /stitch_units/1.xml
   def show
     @unit = @stitch_module.stitch_units.find(params[:id])
-
     respond_to do |format|
       format.html # show.html.erb
     end
@@ -59,7 +58,7 @@ class Developer::StitchUnitsController < ApplicationController
       if @unit.update_attributes(params[:stitch_unit])
         format.html { render :action => "show" }
       else
-        format.html { head :error }
+        format.html { render :action => "edit" }
       end
     end
   end
