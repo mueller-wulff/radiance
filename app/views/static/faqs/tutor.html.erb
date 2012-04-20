@@ -1,0 +1,78 @@
+<div id="main">
+  <h1>Welcome to the FAQ Section</h1>
+  <p>Here you can find answers to all your questions. if something is missing please send us an email so we can update this page.</p>
+ <%= raw textilize %q{
+
+  
+h2. I Structure: Course, module and all that
+  
+h3. What is a Course?
+
+<div>
+		General:
+		A course is the highest functional element in this software. It is defined by the level of education and the language it adresses.
+		So for every language and level a new course will be created, i.e. the STITCH project will produce more than 12 courses.
+		Courses can be cloned for easy translation or creating shorter versions of themselves.
+		A course can hold an unlimited number of modules. 
+		Courses can only be created, edited with respect to their structure or deleted by an admin.
+				
+</div>
+
+h3. What is a Module?
+
+<div>
+		A Module is the second layer of organisational structure of this software. It can hold an infinite number of units and can only be
+		created, edited or deleted by an admin. Modules can be compared to the chapters of a book: Each course consists of an introductory module and several thematic modules. 
+		The content has been developed by the partners of STITCH.
+
+</div>	
+
+h3. What is a Unit?
+
+<div>	
+		Units are the third layer of organisational structure and can compared with the subchapters of a book. 
+		Each unit (except for the units in the Module "Introduction to the course" and the last unit in each module) ends with an assignment. 
+		The weighing of the assignments in a module has been given by the developers of the content. 
+		Your duty as tutor is the assessment of the assignment. The first unit of each module gives an introduction of the module's topic and organisational questions. 
+		The last unit is devoted to summing up and referencing. 
+</div>	
+
+h3. What is a Page?
+
+<div>	
+		Pages are the basic building blocks employed in this software. They fill all the units, modules and courses with content and life.
+		They may contain written text with illustrations, videos, audio material, links and questions. 
+		The last page of each unit (except for the units of the introductory module and the last unit in each module) contains an assignment. 
+		These pages contain questions. 
+		The answers to these questions- and only answers from "Assignment pages" - contribute to the assessment of a student. 
+		Questions on other pages help students as self test and help to organize group work. 
+		The last page of each module (except for the introductory module) contains the bibliography of the module.		
+</div>
+
+h3. What is a tutor?
+
+<div>
+		If you are reading this, you are one of them.
+		You accompany and support groups of students during their work on the course.
+		You are resposible for
+		- organizing participating students (enrollment, definition of working groups, controlling deadlines)
+		- setting deadlines for the complete course and the individual assignments which are part of each unit
+		- adapting our percentage based grading individually to your national grading system
+		- assessing the students' assignments and entering your assessments into the platforms grading system
+		- communicating with the complete group, smaller working groups or individual participants of your course.
+		
+</div>
+
+
+  }%>
+           
+</div>
+<div id="aside">
+
+</div>
+
+<script type="text/javascript">
+  $(document).ready(function(){
+    Stitched.loadFAQView();
+  });
+</script>

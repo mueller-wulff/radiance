@@ -1,0 +1,31 @@
+<div id="main">
+	<h1>Assessment</h1>
+
+	<table  class="userlist">
+  	<thead>
+  		<tr>
+				<td>Name</td>
+				<% @stitch_modules.each do |stitch_module| %>
+        	<td><%= stitch_module.short_title %></td>
+				<% end %>
+				<td>Total Assessment</td>
+      </tr>
+    </thead>
+    <tbody>
+			<% @students.each do |student| %>
+				<tr>
+					<td><%= link_to student.profile.fullname, tutor_group_student_path(student.groups.where(:course_id => @course.id).first, student) %></td>
+					<% @stitch_modules.each do |stitch_module| %>
+						<td><%= show_national_assesment(show_grade(stitch_module, student, current_user.role) ) %></td>
+					<% end %>	
+					<td><%= show_national_assesment(show_grade(@course, student, current_user.role) ) %></td>
+				</tr>
+			<% end %>
+		</tbody>
+	</table>
+	<p><%= link_to "Grading System", find_default_assesment(@course, current_user.role) %> (Here you can define your grading system)<br />
+	<%= link_to 'Back', overview_tutor_course_path(@course) %></p>
+</div>
+<div id="aside">
+
+</div>

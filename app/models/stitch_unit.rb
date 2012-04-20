@@ -6,6 +6,7 @@ class StitchUnit < ActiveRecord::Base
   has_many :grades, :as => :gradable
   
   before_create :fill_with_default_content
+  validate :check_weight, :on => :update
   
   def fill_with_default_content
     self.title ||= "new Unit"
@@ -18,6 +19,16 @@ class StitchUnit < ActiveRecord::Base
     end
   end
   
+  def check_weight
+    weight = self.weight
+    stitch_module = self.stitch_module
+    stitch_module.stitch_units.map {|s| weight += s.weight unless s == self || s.weight.nil? }
+    if weight > 100
+      errors.add(:weight, "total weight can not be more than 100%")
+      return false
+    end
+    return true
+  end  
   
   def order_pages( order )
     transaction do

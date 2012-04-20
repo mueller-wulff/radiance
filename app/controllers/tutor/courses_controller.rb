@@ -25,4 +25,14 @@ class Tutor::CoursesController < ApplicationController
     end
   end
   
+  def assessment
+    @course = Course.find(params[:id])
+    @students = @course.students
+    @stitch_modules = @course.stitch_modules
+
+    respond_to do |format|
+      format.html # show.html.erb
+    end
+  end
+  
 end

@@ -1,5 +1,49 @@
 <div id="main">
-	<h1>Set default Assesment for Course <%= @course.short_title %></h1>
+	<h1>Set the grading System for Course <%= @course.short_title %></h1>
+	<p>
+		Please change the grading system according to your national convention.<br />
+		The underlying assessment system is based on percentages. Therefore you are asked to describe your national grading system by:<br />
+		- the name of the respective grade and<br />
+		- the upper and lower threshold values in percent.<br /><br />
+
+		The following table shows a German grading denomination as example:<br />
+	</p>
+	<table>
+		<thead>
+			<tr>
+				<td>Name</td>
+				<td>Lower threshold value (from ... %)</td>
+				<td>Upper threshold value (to ... %)</td>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>insufficient (failed) (5)</td>
+				<td>0</td>
+				<td>49</td>
+			</tr>
+			<tr>
+				<td>sufficient (4)</td>
+				<td>50</td>
+				<td>65</td>
+			</tr>
+			<tr>
+				<td>satisfactory (3)</td>
+				<td>66</td>
+				<td>81</td>
+			</tr>
+			<tr>
+				<td>good (2)</td>
+				<td>82</td>
+				<td>97</td>
+			</tr>
+			<tr>
+				<td>very good, excellent (1)</td>
+				<td>98</td>
+				<td>100</td>
+			</tr>
+		</tbody>
+	</table>
 	<%= form_tag :action => 'create' do %>
 		<% @default_assesments.each_with_index do |default_assesment, index| %>
 	  	<%= fields_for "default_assesments[#{index}]", default_assesment do |f| %>
@@ -7,14 +51,14 @@
 	    		<%= f.label :mark, "#{index+1}"  %>
 					<%= f.hidden_field :mark, :value => "#{index+1}"  %>
 		     	<label>Name</label> <%= f.text_field :name  %>
-				  <label>Lower Treshold</label> <%= f.text_field :lower_treshold %>
-					<label>Upper Treshold</label> <%= f.text_field :upper_treshold %>
+				  <label>Lower Threshold</label> <%= f.text_field :lower_treshold %>
+					<label>Upper Threshold</label> <%= f.text_field :upper_treshold %>
 				</p>
 	   	<% end %>
 	 	<% end %>
 	  <%= submit_tag 'Save' %>
 	<% end %>
-	<%= link_to 'Back', tutor_courses_path %>
+	<%= link_to 'Back', :back %>
 
 </div>
 <div id="aside">

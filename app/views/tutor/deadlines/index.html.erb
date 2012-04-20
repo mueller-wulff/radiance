@@ -1,0 +1,35 @@
+<div id="main">
+  <h1 id="page_title"><%= @course.title %></h1>
+  
+  <h2>Deadlines</h2>
+  
+    <table  class="userlist" id="module_list">
+      <thead>
+        <tr id="thead">
+          <td>Deadline for</td>
+					<td>Duedate</td>
+					<td>&nbsp;</td>
+        </tr>
+      </thead>
+      <tbody>
+				<% @groups.each do |group| %>
+      		<tr> 
+        		<td><strong><%= group.title %></strong></td>
+						<td><%= group.deadline.due_date.strftime('%d.%m.%Y - %H:%M') unless group.deadline.nil? %></td>
+						<td><%= link_to image_tag("space.gif", :title => "edit group deadline", :class => "icon edit"), edit_tutor_course_deadline_path(@course, group.deadline) if group.deadline %></td>
+	        </tr>				
+					<% @pages.each do |page| %>
+	      		<tr> 
+	        		<td><%= page.stitch_unit.title %></td>
+							<td><%= show_deadline_page(page, nil, group)  %></td>
+							<td><%= link_to image_tag("space.gif", :title => "edit page deadline", :class => "icon edit"), find_page_deadline(@course, group, page) %></td>
+		        </tr>
+					<% end %>
+				<% end %>
+      </tbody>
+    </table>	
+	<%= link_to 'Back', overview_tutor_course_path(@course) %>
+</div>
+<div id="aside">
+
+</div>

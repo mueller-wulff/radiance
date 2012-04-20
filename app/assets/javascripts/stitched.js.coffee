@@ -478,8 +478,6 @@ Stitched = ->
                         $(this).find('[name=url]').val()
                      )
                      return 
-              else
-                  alert "For this type of content you are not allowed editing."
              # else
               #    alert "Deadline is reached"
          return

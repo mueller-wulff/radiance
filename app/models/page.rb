@@ -32,7 +32,7 @@ class Page < ActiveRecord::Base
       if sunit == smodule.stitch_units.order(:position).first
         return false
       else
-        prev_unit = smodule.stitch_units.where("position < ?", sunit.position).first
+        prev_unit = smodule.stitch_units.where("position < ?", sunit.position).last
         if prev_unit.pages != []
           prev_unit.pages.last 
         else
@@ -90,23 +90,6 @@ class Page < ActiveRecord::Base
       order.each_with_index do |content_id,index|
         content = self.contents.find(content_id)
         content.update_attribute(:position, index + 1)
-      end
-    end
-  end
-  
-  def create_page_deadline(deadlines, page)
-    new_deadlines = []
-    deadlines.keys.each {|key| new_deadlines << deadlines[key] if deadlines[key]["new_deadline"] == "1"}
-    new_deadlines.each do |d|
-      tmp_date = DateTime.new( d["due_date(1i)"].to_i, d["due_date(2i)"].to_i, d["due_date(3i)"].to_i, d["due_date(4i)"].to_i, d["due_date(5i)"].to_i )
-      group = Group.find(d["group_id"])
-      group_deadline = Deadline.where(:deadlinable_id => group.id, :deadlinable_type => "Group").first
-      if tmp_date < group_deadline.due_date
-        @deadline = Deadline.new
-        @deadline.due_date = tmp_date
-        @deadline.group_id = d["group_id"]
-        @deadline.deadlinable = page
-        @deadline.save
       end
     end
   end

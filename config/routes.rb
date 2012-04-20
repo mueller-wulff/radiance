@@ -9,7 +9,13 @@ Stitched::Application.routes.draw do
   end
 
   scope :module => 'static' do
-    resources :faqs
+    resources :faqs do
+      collection do
+       get 'student'
+       get 'tutor'
+       get 'developer' 
+      end
+    end
     resources :unsupported_browsers
     resource :dashboard
   end
@@ -53,7 +59,9 @@ Stitched::Application.routes.draw do
     resources :contents do
       resources :element do
         resources :answers
-        resources :group_essay_answers
+        resources :group_essay_answers do
+          get 'versions', :on => :member
+        end
       end
     end
         
@@ -87,7 +95,9 @@ Stitched::Application.routes.draw do
       resources :students
       member do
         get 'overview'
-      end
+        get 'assessment'
+      end                
+      resources :deadlines
       resources :default_assesments
     end
     

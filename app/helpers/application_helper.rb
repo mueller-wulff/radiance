@@ -50,24 +50,31 @@ module ApplicationHelper
     "http://gravatar.com/avatar/#{gravatar_id}.png?s=48&d=mm"
   end
 
-  def show_deadline_course(course, student)
-    deadline_group = student.groups.map {|g| g if g.course_id == course.id}
-    deadline = Deadline.where(:deadlinable_id => deadline_group).first
+  def show_deadline_course(course, student=nil, group=nil)
+    if student
+      deadline_group = student.groups.map {|g| g if g.course_id == course.id}
+      deadline = Deadline.where(:deadlinable_id => deadline_group).first
+    elsif group
+      deadline = Deadline.where(:deadlinable_id => group.id).first
+    end
     unless deadline.nil?
-      return deadline.due_date #.strftime('%d.%m.%Y - %H:%M')
+      return deadline.due_date.strftime('%d.%m.%Y - %H:%M')
     end
   end
 
-  def show_deadline_page(page, student)
+  def show_deadline_page(page, student=nil, group=nil)
     unless page.deadlines.empty?
-      deadline_group = student.groups.map {|g| g if g.course_id == page.course.id}
-      deadline = Deadline.where(:group_id => deadline_group[0], :deadlinable_id => page.id).first
-      unless deadline.nil?
-        return deadline.due_date #.strftime('%d.%m.%Y - %H:%M')
+      if student
+        deadline_group = student.groups.map {|g| g if g.course_id == page.course.id}
+        deadline = Deadline.where(:group_id => deadline_group[0], :deadlinable_id => page.id).first
+      elsif group
+        deadline = Deadline.where(:group_id => group.id, :deadlinable_id => page.id).first
       end
-    else
-      show_deadline_course(page.course, student)
+      unless deadline.nil?
+        return deadline.due_date.strftime('%d.%m.%Y - %H:%M')
+      end
     end
+    show_deadline_course(page.course, student, group)    
   end
 
   def find_answer(content, student)
@@ -166,6 +173,15 @@ module ApplicationHelper
       new_tutor_course_default_assesment_path(course)
     else
       tutor_course_default_assesment_path(course, def_assesment)
+    end
+  end
+  
+  def find_page_deadline(course, group, page)
+    page_deadline = page.deadlines.where(:group_id => group.id).first
+    if page_deadline.nil?
+      new_tutor_course_deadline_path(course, :group_id => group, :page => page, :group_deadline => group.deadline) 
+    else
+      edit_tutor_course_deadline_path(course, page_deadline)
     end
   end
 
