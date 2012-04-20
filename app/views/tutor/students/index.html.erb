@@ -35,6 +35,7 @@
 				    <td>
 	          	<%= link_to image_tag("space.gif", :title => "rate Assignment", :class => "icon edit"), tutor_group_student_path(group, student) %>
 							<%= link_to image_tag("space.gif", :title => "shuffle Student in another Group", :class => "icon duplicate"), shuffle_tutor_group_student_path(group, student) %>
+							<%= link_to image_tag("space.gif", :title => "remove Student", :class => "icon delete"), tutor_student_path(student) if student.deletable? %>
 						</td>
 				  </tr>
 				<% end %>
