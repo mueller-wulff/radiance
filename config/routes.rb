@@ -53,6 +53,7 @@ Stitched::Application.routes.draw do
         resources :answers
         resources :group_essay_answers do
           get 'versions', :on => :member
+          put 'revert_to', :on => :member
         end
       end
     end
