@@ -34,6 +34,7 @@ class Student::PagesController < ApplicationController
   def send_answers
     @page = @stitch_unit.pages.find(params[:id])
     @group = Group.find_group(@page, @student)
+    Answer.lock_answers(@student, @page)
     Notifier.send_answers(@group, @student, @page).deliver
     redirect_to student_stitch_unit_page_path(@stitch_unit, @page)
   end

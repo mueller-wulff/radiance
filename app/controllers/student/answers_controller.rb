@@ -41,8 +41,12 @@ class Student::AnswersController < ApplicationController
       @answer.save_multiple_answers(params[:multianswer])
     end
     respond_to do |format|
-      if @answer.update_attributes(params[:answer])
-        format.html { redirect_to(student_page_content_path(@content.page, @content) ) }
+      if @answer.locked == false
+        if @answer.update_attributes(params[:answer])
+          format.html { redirect_to(student_page_content_path(@content.page, @content) ) }
+        else
+          format.js { head :error}
+        end
       else
         format.js { head :error}
       end

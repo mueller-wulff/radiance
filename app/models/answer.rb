@@ -15,8 +15,17 @@ class Answer < ActiveRecord::Base
   end
   
   def check_deadline
-    return false if self.locked == true
     return false if deadline_reached?(self.question.page, self.student) 
+  end
+  
+  def self.lock_answers(student, page)
+    questions = page.contents.where(:element_type => "Question")
+    questions.each do |q|
+      question = Question.find(q.element_id)
+      answer = question.answers.where(:student_id => student.id).first
+      answer.locked = true
+      answer.save
+    end
   end
   
   protected

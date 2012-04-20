@@ -2,6 +2,7 @@
   <%= render 'layouts/breadcrumb' %>
 
   <h1 id="page_title"><%= render 'page_title' %></h1>
+	<h3>Assignment of: <%= @student.profile.fullname %></h3>
 	<br/>
   <div class="showView" id="contentElements">
     <%= render :partial => 'tutor/contents/content', :collection => @page.contents %>

@@ -1306,4 +1306,8 @@ img.center {
     color: #F00;
 }
 
+#answer_comment {
+    margin-left: 5px;
+}
+
 /* @end */
