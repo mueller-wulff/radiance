@@ -37,12 +37,13 @@
       </tr>
     </thead>
     <tbody>
-			<% @channels.each do |channels| %>
+			<% @channels.each do |channel| %>
 			  <tr>
 					<td><%= channel.name %></td>
 			    <td>
-						<%= link_to image_tag("space.gif", :title => "Edit", :class => "icon edit"), tutor_group_channel_path(channel) %>
-          	<%= link_to image_tag("space.gif", :title => "Delete", :class => "icon delete"), tutor_group_channel_path(@group, student) %>
+            <%= link_to image_tag("space.gif", :title => "Edit", :class => "icon edit"), edit_tutor_group_channel_path(@group, channel) %>
+            <%= link_to image_tag("space.gif", :title => "Delete", :class => "icon delete"),  tutor_group_channel_path(@group, channel),
+            :confirm => 'Are you sure?', :method => :delete%>
 					</td>
 			  </tr>
 			<% end %>

@@ -1,0 +1,20 @@
+<div id="main">
+	<h1>Create Discussion</h1>
+  <%= form_for(@channel, :url => tutor_group_channels_path, :method => "POST") do |c| %> 
+    <%= errors_for(@channel) %>
+
+  	<p class="input">
+			<%= label :name, "Name" %>  
+      <%= c.text_field :name %>  
+      <%= c.hidden_field :group_id %>
+		</p>  
+		<p class="submit"> 
+		  <%= submit_tag "Create" %>  
+		</p>  
+	<% end %> 
+	<%= link_to 'Back', edit_tutor_group_path(@channel.group)%>
+
+</div>
+<div id="aside">
+
+</div>

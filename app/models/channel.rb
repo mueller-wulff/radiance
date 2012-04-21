@@ -1,6 +1,8 @@
 class Channel < ActiveRecord::Base
   before_create :create_token
+  belongs_to :group
   has_many :messages
+
   private
   def create_token
     # NOTE: if we create an md5 form the channel_string_id an attach it to all messages we don't even
