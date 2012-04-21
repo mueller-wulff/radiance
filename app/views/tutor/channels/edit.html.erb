@@ -1,6 +1,6 @@
 <div id="main">
 	<h1>Edit Discussion</h1>
-  <%= form_for(@channel, :url => tutor_group_channels_path, :method => "PUT") do |c| %> 
+  <%= form_for(@channel, :url => tutor_group_channel_path(@channel), :html => { :method => "put" }) do |c| %> 
     <%= errors_for(@channel) %>
 
   	<p class="input">

@@ -14,7 +14,8 @@ class Tutor::ChannelsController < ApplicationController
   end
 
   def update
-    @channel = Channel.update_attributes(params[:channel])
+    @channel = Channel.find(params[:id])
+    @channel.update_attributes(params[:channel])
     redirect_to edit_tutor_group_path(@channel.group) if @channel.valid?
   end
 
