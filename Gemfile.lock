@@ -167,6 +167,7 @@ GEM
     uglifier (1.0.4)
       execjs (>= 0.3.0)
       multi_json (>= 1.0.2)
+    will_paginate (3.0.3)
 
 PLATFORMS
   ruby
@@ -196,3 +197,4 @@ DEPENDENCIES
   sqlite3
   therubyracer
   uglifier
+  will_paginate

@@ -1,2 +1,4 @@
-<h1><%= @discussion.name %></h1>
-<%#= render_channel('') %>
+<div id='main'>
+  <h1><%= @discussion.name %></h1>
+  <%= render_channel("discussion-#{@discussion.id}") %>
+</div>

@@ -9,7 +9,11 @@
   </div>
 
   <form>
-    <input type="text" class='chat-input' placeholder="Type message...">
+    <% if channel.closed? %>
+      <input type="text" name="lname" disabled="disabled" placeholder="Discussion is closed"/>      
+    <%else%>
+      <input type="text" class='chat-input' placeholder="Type message...">
+    <%end%>
   </form>
 
 </div>

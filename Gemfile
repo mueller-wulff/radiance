@@ -10,6 +10,7 @@ group :assets do
   gem 'uglifier'
 end
 
+gem 'will_paginate'
 gem 'jquery-rails'
 gem 'sqlite3'
 gem 'execjs'

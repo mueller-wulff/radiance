@@ -9,7 +9,8 @@ class Tutor::ChannelsController < ApplicationController
   end
 
   def create
-    @channel = Channel.new(params[:channel])
+    @channel = Channel.create(params[:channel])
+    @channel.channel_string_id = "discussion-#{@channel.id}"
     redirect_to edit_tutor_group_path(@channel.group) if @channel.save
   end
 
