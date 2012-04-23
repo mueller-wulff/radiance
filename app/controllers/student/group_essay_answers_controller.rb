@@ -55,8 +55,15 @@ class Student::GroupEssayAnswersController < ApplicationController
   
   def versions
     @group_essay_answer = GroupEssayAnswer.find(params[:id])
-    @versions = @group_essay_answer.versions
+    @versions = @group_essay_answer.versions.where(:event => "update")
     render :layout => 'application'
+  end
+  
+  def revert_to
+    @group_essay_answer = GroupEssayAnswer.find(params[:id])
+    @group_essay_answer = Version.find(params[:group_essay_answer]["version"]["revert_to"]).reify
+    @group_essay_answer.save
+    redirect_to(student_stitch_unit_page_path(@page.stitch_unit, @page))
   end
 
   private

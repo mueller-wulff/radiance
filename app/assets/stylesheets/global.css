@@ -653,7 +653,13 @@ td.unit {
     font-size: 18px;
     color: #1A8BB2;
     line-height: 22px;
-    width: 600px;
+    width: 550px;
+}
+
+td.unit.less {
+    background: none;
+    font-size: 12px;
+    width: 50px;
 }
 
 td.page {
@@ -1047,7 +1053,49 @@ h1,
     background-repeat: no-repeat;
 }
 
+.icon-shuffle {    
+    width: 24px;
+    height: 20px;
+    display: block;
+    float: left;
+    margin-right: 6px;
+    cursor: pointer;
+    position: relative;
+    top: 4px;
+    visibility: hidden;
+}
+
+.icon-shuffle {
+    background-image: url(icon-shuffle.png);
+    background-repeat: no-repeat; 
+}
+
+.icon-coursebook {    
+    width: 24px;
+    height: 24px;
+    display: block;
+    float: left;
+    margin-right: 6px;
+    cursor: pointer;
+    position: relative;
+    top: 4px;
+    visibility: hidden;
+}
+
+.icon-coursebook {
+    background-image: url(icon-coursebook.png);
+    background-repeat: no-repeat; 
+}
+
 tr:hover .icon {
+    visibility: visible;
+}
+
+tr:hover .icon-shuffle {
+    visibility: visible;
+}
+
+tr:hover .icon-coursebook {
     visibility: visible;
 }
 
@@ -1189,14 +1237,14 @@ tr:hover .icon {
 
 /* @group editor */
 
-#main .editor h1, #main .editor h2, #main .editor h3, #main .editor h4, #main .editor h5, #main .editor h6, #main .editor p, #main .editor li {
+#main .editor h1, #main .editor h2, #main .editor h3, #main .editor h4, #main .editor h5, #main .editor h6, #main .editor p, #main .editor li, #error_explanation h2, #error_explanation li {
 	font-family: Arial, "Trebuchet MS", Sans, sans-serif;	
 	font-weight: bold;
 	color: #000;
 	margin: 10px 0;
 }
 
-#main .editor p, #main .editor li {
+#main .editor p, #main .editor li, #error_explanation li {
 	font-weight: normal;
 	font-size: 12px;
 }
@@ -1264,4 +1312,11 @@ img.center {
 	width: 654px !important;
 }
 
+#error_explanation h2 {
+    color: #F00;
+}
+
+#answer_comment {
+    margin-left: 5px;
+}
 /* @end */

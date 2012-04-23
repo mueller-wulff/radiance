@@ -2,7 +2,8 @@
   <table class="module_table">
     <thead>
       <tr class="unit_head">
-        <td class="unit" colspan="2"><%= stitch_unit.title %></td>
+        <td class="unit"><%= stitch_unit.title %></td>
+				<td class="unit less"><%= stitch_unit.weight if stitch_unit.weight %>%</td>
         <td class="functions">
           <% if current_user.role.editable(stitch_unit.stitch_module) %>
             <%= link_to image_tag("space.gif", :alt => "edit Unit", :class => "icon useredit"), edit_developer_stitch_module_stitch_unit_path(stitch_unit.stitch_module,stitch_unit), :class => "edit_unit" %>
