@@ -63,8 +63,4 @@ class StitchUnit < ActiveRecord::Base
     return false
   end
   
-  def assignment_page
-    self.pages.map {|p| return p if p.assignment == true}
-  end
-  
 end

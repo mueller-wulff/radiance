@@ -89,7 +89,6 @@ Stitched::Application.routes.draw do
       member do
         get 'overview'
         get 'assessment'
-        get 'assignment'
       end                
       resources :deadlines
       resources :default_assesments
