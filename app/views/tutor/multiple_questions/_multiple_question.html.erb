@@ -26,4 +26,7 @@
 	  <% end %>
 	<% end %>	
 <% end %>
+<p>
+	<label>Score: <%=text_field_tag "score-element", show_score(e, current_user.role), {:readonly => true, :class => "score" } %></label>
+</p>
 
