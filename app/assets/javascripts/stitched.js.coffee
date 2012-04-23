@@ -556,6 +556,14 @@ Stitched = ->
                 e.preventDefault()
              )
              return
+             
+     switchBackToEditMode = ->
+         if $('#error_explanation').html() != null
+             alert "error"
+             div = $('.module2')
+             url = $('.edit_stitch_unit').attr('action') 
+             switchToEditView(div, url)
+             return
           
      #Page View Functions
      loadCourseView = ->
@@ -617,6 +625,10 @@ Stitched = ->
      loadVersion = ->
          switchToOtherVersion()
          return
+         
+     loadValidation = ->
+         switchBackToEditMode()
+         return
      
      loadPageEditView: loadPageEditView,
      loadModuleEditView: loadModuleEditView,
@@ -630,7 +642,8 @@ Stitched = ->
      loadPageAnswerView: loadPageAnswerView,
      loadGradeView: loadGradeView,
      loadGradeSaveView: loadGradeSaveView,
-     loadVersion: loadVersion
+     loadVersion: loadVersion,
+     loadValidation: loadValidation
 
 root = exports ? this
 root.Stitched = Stitched()

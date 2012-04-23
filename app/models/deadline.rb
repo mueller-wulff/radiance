@@ -13,6 +13,7 @@ class Deadline < ActiveRecord::Base
   
   def check_group_deadline(tmp_date=nil)
     groupdeadline = Deadline.where(:deadlinable_id => self.group_id, :deadlinable_type => "Group").first
+    return true if groupdeadline.nil?
     if tmp_date == nil
       return false if groupdeadline.due_date < self.due_date
     else

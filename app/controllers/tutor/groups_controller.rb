@@ -49,7 +49,7 @@ class Tutor::GroupsController < ApplicationController
     @group.deadline = Deadline.new(params[:deadline])
     respond_to do |format|
       if @group.save
-        format.html { redirect_to(tutor_groups_url, :notice => 'Group was successfully created.') }
+        format.html { redirect_to(tutor_course_students_path(@group.course), :notice => 'Group was successfully created.') }
         format.xml  { render :xml => @group, :status => :created, :location => @group }
       else
         format.html { render :action => "new" }

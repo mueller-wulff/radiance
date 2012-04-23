@@ -194,6 +194,16 @@ module ApplicationHelper
       edit_tutor_course_deadline_path(course, page_deadline)
     end
   end
+  
+  def is_assignment_page_locked(page, student)
+    questions = page.contents.where(:element_type => "Question")
+    questions.each do |q|
+      question = Question.find(q.element_id)
+      answer = question.answers.where(:student_id => student.id).first
+      return true if answer && answer.locked == true
+    end
+    return false
+  end
 
   def render_channel(csid)
     channel = Channel.find_or_create_by_channel_string_id(csid)

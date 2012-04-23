@@ -12,7 +12,11 @@
     <%= hidden_field_tag "page", student_page_contents_path(@page)%>
   </div>
 	<div>
-		<%= button_to "Send Answers to Tutor", :action => "send_answers", :confirm => "Are you sure?", :disabled_with => "Sending..." %>
+		<% if is_assignment_page_locked(@page, @student) %>
+			Answers were sent to Tutor
+		<% else %>
+			<%= button_to "Send Answers to Tutor", :action => "send_answers", :confirm => "Are you sure?", :disabled_with => "Sending..." %>
+		<% end %>
 	</div>
 	<%= render 'page_bottom' %> 
 </div>
