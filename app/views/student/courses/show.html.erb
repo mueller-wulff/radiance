@@ -28,6 +28,23 @@
     </table>
   </div>
 
+  <h2>Discussions:</h2>
+  <div id="module_list_table">
+    <table  class="userlist" id="module_list">
+      <thead>
+        <tr  id="thead">
+          <td>Title</td>
+        </tr>
+      </thead>
+      <tbody>
+        <% @group.channels.each do |channel| %>
+          <tr id="module_<%= channel.id  %>"> 
+            <td><%= link_to channel.name, student_discussion_path(channel) %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
 </div>
 <div id="aside">
 

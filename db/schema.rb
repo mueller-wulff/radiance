@@ -43,7 +43,7 @@ ActiveRecord::Schema.define(:version => 20120420121425) do
     t.string   "assetable_type",    :limit => 30
     t.string   "type",              :limit => 25
     t.string   "guid",              :limit => 10
-    t.integer  "locale",            :limit => 2,  :default => 0
+    t.integer  "locale",            :limit => 1,  :default => 0
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -304,7 +304,7 @@ ActiveRecord::Schema.define(:version => 20120420121425) do
   add_index "versions", ["item_type", "item_id"], :name => "index_versions_on_item_type_and_item_id"
 
   create_table "youtubes", :force => true do |t|
-    t.text     "video_id"
+    t.text     "video_id",   :limit => 255
     t.datetime "created_at"
     t.datetime "updated_at"
   end

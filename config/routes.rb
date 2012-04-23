@@ -30,6 +30,7 @@ Stitched::Application.routes.draw do
 
   namespace :student do
     resources :students 
+    resources :discussions, :only => [:show]
     resources :courses do
       member do
         get 'show_coursebook'
