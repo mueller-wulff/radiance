@@ -39,7 +39,7 @@
     <tbody>
 			<% @channels.each do |channel| %>
 			  <tr>
-          <td><%= channel.name %>
+          <td><%= link_to "#{channel.name}", tutor_discussion_path(channel) %>
             <%- if channel.closed? %>
               &nbsp;<strong>(closed)</strong>
             <%- end %>

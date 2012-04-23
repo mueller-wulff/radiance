@@ -71,7 +71,7 @@ Stitched::Application.routes.draw do
   end
   
   namespace :tutor do    
-    
+    resources :discussions, :only => [:show]   
     resources :students do
       resources :profiles
     end
