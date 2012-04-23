@@ -7,7 +7,13 @@
 			<%= label :name, "Name" %>  
       <%= c.text_field :name %>  
       <%= c.hidden_field :group_id %>
+    </p>  
+
+  	<p class="input">
+      <%= label :closed, "Closed?" %>
+      <span class="checkbox"> <%= c.check_box :closed, class:"checkbox"%> Discussion is closed </span>
 		</p>  
+
 		<p class="submit"> 
 		  <%= submit_tag "Update" %>  
 		</p>  
