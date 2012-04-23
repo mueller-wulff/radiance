@@ -39,7 +39,11 @@
     <tbody>
 			<% @channels.each do |channel| %>
 			  <tr>
-					<td><%= channel.name %></td>
+          <td><%= channel.name %>
+            <%- if channel.closed? %>
+              &nbsp;<strong>(closed)</strong>
+            <%- end %>
+          </td>
 			    <td>
             <%= link_to image_tag("space.gif", :title => "Edit", :class => "icon edit"), edit_tutor_group_channel_path(@group, channel) %>
             <%= link_to image_tag("space.gif", :title => "Delete", :class => "icon delete"),  tutor_group_channel_path(@group, channel),
