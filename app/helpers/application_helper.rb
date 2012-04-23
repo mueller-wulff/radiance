@@ -121,7 +121,7 @@ module ApplicationHelper
   def show_score(element, user)
     unless element.question_scores.empty?      
       score = QuestionScore.where(:tutor_id => user.id, :scoreable_type => element.content.element_type, :scoreable_id => element.id).first
-      return score.value
+      return score.value if score
     end
   end
 
@@ -139,7 +139,8 @@ module ApplicationHelper
         new_tutor_content_element_question_score_path(content, element)
       else
         question_score = QuestionScore.where(:tutor_id => current_user.role.id, :scoreable_type => content.element_type, :scoreable_id => element.id).first
-        edit_tutor_content_element_question_score_path(content, element, question_score)
+        edit_tutor_content_element_question_score_path(content, element, question_score) if question_score
+        new_tutor_content_element_question_score_path(content, element)
       end
     end
   end
