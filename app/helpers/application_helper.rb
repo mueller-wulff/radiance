@@ -74,7 +74,7 @@ module ApplicationHelper
         return deadline.due_date.strftime('%d.%m.%Y - %H:%M')
       end
     end
-    show_deadline_course(page.course, student, group)    
+    show_deadline_course(page.course, student, group)
   end
 
   def find_answer(content, student)
@@ -90,7 +90,7 @@ module ApplicationHelper
       group = student.find_tutor_of_course(content.page.course)
       if element.group_essay_answers.where(:group_id => group.id).empty?
         new_student_content_element_group_essay_answer_path(content, element)
-      else        
+      else
         answer = GroupEssayAnswer.where(:group_id => group.id, :group_essay_id => element.id).first
         edit_student_content_element_group_essay_answer_path(content, element, answer)
       end
@@ -105,13 +105,13 @@ module ApplicationHelper
       end
     elsif element.content.element_type == "GroupEssay"
       unless element.group_essay_answers.empty?
-       group = student.find_tutor_of_course(element.content.page.course) 
-       group_answer = GroupEssayAnswer.where(:group_id => group.id, :group_essay_id => element.id).first
-       return group_answer
+        group = student.find_tutor_of_course(element.content.page.course)
+        group_answer = GroupEssayAnswer.where(:group_id => group.id, :group_essay_id => element.id).first
+        return group_answer
       end
     end
   end
-  
+
   def show_whodunnit(group_answer)
     version = group_answer.versions.last
     user = Profile.find(version.whodunnit)
@@ -119,7 +119,7 @@ module ApplicationHelper
   end
 
   def show_score(element, user)
-    unless element.question_scores.empty?      
+    unless element.question_scores.empty?
       score = QuestionScore.where(:tutor_id => user.id, :scoreable_type => element.content.element_type, :scoreable_id => element.id).first
       return score.value if score
     end
@@ -132,7 +132,7 @@ module ApplicationHelper
         answer = Answer.where(:student_id => student.id, :question_id => element.id).first
         edit_tutor_content_element_student_answer_path(content, element, student, answer)
       elsif student && content.element_type == "GroupEssay"
-        group = student.find_tutor_of_course(element.content.page.course) 
+        group = student.find_tutor_of_course(element.content.page.course)
         group_answer = GroupEssayAnswer.where(:group_id => group.id, :group_essay_id => element.id).first
         edit_tutor_content_element_student_group_essay_answer_path(content, element, student, group_answer)
       elsif element.question_scores.empty?
@@ -151,11 +151,10 @@ module ApplicationHelper
     return 0
   end
 
-  def show_national_assesment(value=0)
-    unless value.nil?
-      default_assesment = DefaultAssesment.where("lower_treshold <= ? AND upper_treshold >= ?", value, value).first
-      return default_assesment.name
-    end
+  def show_national_assessment(value, course)
+    default_assessment = DefaultAssesment.where("lower_treshold <= ? AND upper_treshold >= ? AND course_id = ?", value, value, course.id).first
+    return default_assessment.name if default_assessment
+    return "Please set grading system"
   end
 
   def find_assignment_page(stitch_unit, group, student, tutor=nil)
@@ -176,16 +175,16 @@ module ApplicationHelper
       tutor_course_default_assesment_path(course, def_assesment)
     end
   end
-  
+
   def find_page_deadline(course, group, page)
     page_deadline = page.deadlines.where(:group_id => group.id).first
     if page_deadline.nil?
-      new_tutor_course_deadline_path(course, :group_id => group, :page => page, :group_deadline => group.deadline) 
+      new_tutor_course_deadline_path(course, :group_id => group, :page => page, :group_deadline => group.deadline)
     else
       edit_tutor_course_deadline_path(course, page_deadline)
     end
   end
-  
+
   def is_assignment_page_locked(page, student)
     questions = page.contents.where(:element_type => "Question")
     questions.each do |q|
@@ -194,6 +193,11 @@ module ApplicationHelper
       return true if answer && answer.locked == true
     end
     return false
+  end
+  
+  def show_deadline_title(deadline)
+    return deadline.deadlinable.title if deadline.deadlinable_type == "Group"
+    return deadline.deadlinable.stitch_unit.title if deadline.deadlinable_type == "Page"
   end
 
 end

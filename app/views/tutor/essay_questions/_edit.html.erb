@@ -6,7 +6,7 @@
 		<%=raw show_answer(@element, @student).txt %>
 		<p>
 			<%= fields_for :answer do |answer_field| -%>
-				Comment: <%= answer_field.text_area :comment, :size => "85x2" %>
+				Comment: <%= answer_field.text_area :comment, :size => "80x2" %>
 				Achievement: <%= answer_field.text_field :score %>
 			<% end %>
 			Score: <%= show_score(@element, current_user.role) %>

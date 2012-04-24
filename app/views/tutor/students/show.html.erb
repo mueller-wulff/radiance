@@ -1,8 +1,8 @@
 <div id="main">
 	<h1>
-		Coursebook for <%= @student.profile.login %>
+		Coursebook for <%= @student.profile.fullname %>
 	</h1>
-	<h2>Course <%= @group.course.short_title %> <% if @course_grade %><%= @course_grade.value unless @course_grade.value.nil? %> <%= show_national_assesment(@course_grade.value) unless @course_grade.value.nil? %><% end %>
+	<h2>Course <%= @group.course.short_title %> <% if @course_grade %><%= @course_grade.value unless @course_grade.value.nil? %> <%= show_national_assessment(@course_grade.value, @group.course) unless @course_grade.value.nil? %><% end %>
 	</h2>
 	<h3>Deadline <%= show_deadline_course(@group.course, @student) %></h3>
 	<table  class="userlist">
@@ -16,7 +16,7 @@
 			<% if stitch_module.has_assignment_page? %>				
 					<tr>
 						<td><strong><%= stitch_module.short_title %> current Grade: <%= show_grade(stitch_module, @student, current_user.role) unless stitch_module.grades.empty? %> </strong></td>
-						<td><%= show_national_assesment(show_grade(stitch_module, @student, current_user.role)) unless stitch_module.grades.empty? %></td>
+						<td><%= show_national_assessment(show_grade(stitch_module, @student, current_user.role), @group.course) unless stitch_module.grades.empty? %></td>
 						<td>&nbsp;</td>
 					</tr>
 				    

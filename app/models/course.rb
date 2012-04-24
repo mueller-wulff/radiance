@@ -73,7 +73,7 @@ class Course < ActiveRecord::Base
   end
   
   def all_assignment_pages
-    self.stitch_modules.map {|sm| sm.pages.where(:assignment => true).first }.compact
+    self.stitch_modules.map {|sm| sm.pages.where(:assignment => true) }.flatten
   end
   
 end
