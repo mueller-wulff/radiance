@@ -69,6 +69,10 @@ Stitched::Application.routes.draw do
     resources :grades
         
     resources :groups do
+      collection do
+        get 'new_working_group'
+        post 'create_working_group'
+      end
       resources :students do
         member do
           get 'shuffle'

@@ -34,10 +34,19 @@ class Tutor::GroupsController < ApplicationController
     end
   end
 
+  def new_working_group
+    @course_group = Group.find(params[:parent])
+    @working_group = @tutor.groups.new
+    respond_to do |format|
+      format.html # new.html.erb
+      format.xml  { render :xml => @group }
+    end
+  end
+
   # GET /groups/1/edit
   def edit
-    @group = @tutor.groups.find(params[:id])
-    @students = @group.students.all
+    @course_group = @tutor.groups.find(params[:id])
+    @working_groups = @tutor.groups.where(:parent_id => @course_group)
   end
 
   # POST /groups
@@ -52,6 +61,24 @@ class Tutor::GroupsController < ApplicationController
         format.xml  { render :xml => @group, :status => :created, :location => @group }
       else
         format.html { render :action => "new" }
+        format.xml  { render :xml => @group.errors, :status => :unprocessable_entity }
+      end
+    end
+  end
+
+  def create_working_group
+    @course_group = Group.find(params[:parent])
+    @working_group = @tutor.groups.new(params[:group])
+    @working_group.parent_id = @course_group.id
+    @working_group.course = @course_group.course
+    @working_group.deadline = @course_deadline
+    respond_to do |format|
+      if @working_group.save
+        params[:working_group]['student_ids'].map {|s| Student.find(s).shuffle_group(@course_group, @working_group ) } if params[:working_group]['student_ids']
+        format.html { redirect_to(edit_tutor_group_path(@course_group), :notice => 'Group was successfully created.') }
+        format.xml  { render :xml => @group, :status => :created, :location => @group }
+      else
+        format.html { render :action => "new_working_group" }
         format.xml  { render :xml => @group.errors, :status => :unprocessable_entity }
       end
     end
@@ -84,11 +111,11 @@ class Tutor::GroupsController < ApplicationController
       format.xml  { head :ok }
     end
   end
-    
+
   private
-  
-  def grab_tutor
-    @tutor = current_user.role
-  end
-    
+
+    def grab_tutor
+      @tutor = current_user.role
+    end
+
 end

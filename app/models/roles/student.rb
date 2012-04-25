@@ -45,7 +45,8 @@ class Student < Role
   
   def shuffle_group(old_group, new_group)
     self.groups.delete(old_group)
-    self.groups << new_group    
+    self.groups << new_group 
+    send_new_group(new_group)   
   end
   
   def send_new_group(group)

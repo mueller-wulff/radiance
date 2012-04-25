@@ -564,6 +564,19 @@ Stitched = ->
              url = $('.edit_stitch_unit').attr('action') 
              switchToEditView(div, url)
              return
+             
+     checkDueDate = ->
+         group_deadline = new Date($('#group_due_date').val() )
+         $('[id^="deadline_due_date"]').live 'change', (e) ->   
+             year = $('#deadline_due_date_1i').val()
+             month = $('#deadline_due_date_2i').val()
+             day = $('#deadline_due_date_3i').val()
+             new_deadline = new Date(year, month-1, day )
+             if new_deadline > group_deadline
+                 $('#error_explanation').html('<h2>New deadline is greater than group deadline ' + group_deadline + '</h2>')
+             else
+                 $('#error_explanation').html('')
+             return
           
      #Page View Functions
      loadCourseView = ->
@@ -629,6 +642,10 @@ Stitched = ->
      loadValidation = ->
          switchBackToEditMode()
          return
+         
+     loadCheckDueDate = ->
+         checkDueDate()
+         return
      
      loadPageEditView: loadPageEditView,
      loadModuleEditView: loadModuleEditView,
@@ -643,7 +660,8 @@ Stitched = ->
      loadGradeView: loadGradeView,
      loadGradeSaveView: loadGradeSaveView,
      loadVersion: loadVersion,
-     loadValidation: loadValidation
+     loadValidation: loadValidation,
+     loadCheckDueDate: loadCheckDueDate
 
 root = exports ? this
 root.Stitched = Stitched()
