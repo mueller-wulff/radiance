@@ -40,6 +40,7 @@ class Tutor::GradesController < ApplicationController
     # end
     respond_to do |format|
       if @grade.save
+        AnswerLog.find_and_destroy(@student, @group.tutor, @stitch_unit.assignment_page)
         @grade.update_module_grade(@stitch_unit, @student, @group.tutor)
         format.html { redirect_to(tutor_group_student_path(@group, @student, :format => 'html') ) }
       else

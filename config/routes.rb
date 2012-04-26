@@ -60,7 +60,7 @@ Stitched::Application.routes.draw do
         
   end
   
-  namespace :tutor do    
+  namespace :tutor do        
     
     resources :students do
       resources :profiles
@@ -89,6 +89,7 @@ Stitched::Application.routes.draw do
     resources :notes
     resources :responses
     resources :courses do
+      get "answer_logs"  => 'answer_logs#index'
       resources :students
       member do
         get 'overview'

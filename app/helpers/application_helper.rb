@@ -199,5 +199,16 @@ module ApplicationHelper
     return deadline.deadlinable.title if deadline.deadlinable_type == "Group"
     return deadline.deadlinable.stitch_unit.title if deadline.deadlinable_type == "Page"
   end
+  
+  def generate_log(log, tutor, course)
+    student = Student.find(log.student_id)
+    page = Page.find(log.page_id)
+    html = '<tr>'
+    html << content_tag('td', "#{student.profile.fullname}")
+    html << content_tag('td', "#{page.stitch_module.short_title}")
+    html << content_tag('td', (link_to "#{page.stitch_unit.title}", show_answers_tutor_group_student_page_url(student.course_group(course, tutor), student, page ) ) )
+    html << '</tr>'
+    html.html_safe
+  end
 
 end

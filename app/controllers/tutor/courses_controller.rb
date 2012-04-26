@@ -19,7 +19,7 @@ class Tutor::CoursesController < ApplicationController
   
   def overview
     @course = Course.find(params[:id])
-
+    @answer_log_size = @course.answer_logs.where(:tutor_id => current_user.role.id).size
     respond_to do |format|
       format.html # show.html.erb
     end

@@ -11,7 +11,16 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120424115528) do
+ActiveRecord::Schema.define(:version => 20120426080504) do
+
+  create_table "answer_logs", :force => true do |t|
+    t.integer  "tutor_id"
+    t.integer  "student_id"
+    t.integer  "page_id"
+    t.integer  "course_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "answers", :id => false, :force => true do |t|
     t.integer  "id",          :null => false

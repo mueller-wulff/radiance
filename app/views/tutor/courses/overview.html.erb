@@ -19,6 +19,10 @@
 					<td>To set scores for the assignments</td>
         </tr>
 				<tr> 
+        	<td><%= link_to "Delivered Assignment", tutor_course_answer_logs_path(@course) %> (<%= @answer_log_size %>)</td>
+					<td>See answered assignments</td>
+        </tr>
+				<tr> 
         	<td><%= link_to "Deadlines", tutor_course_deadlines_path(@course) %></td>
 					<td>To set deadlines for the course and it's assignments</td>
         </tr>
