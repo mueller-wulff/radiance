@@ -68,12 +68,12 @@ class Course < ActiveRecord::Base
     end
   end
   
-  def students
-    return self.groups.map{|g| g.students.where(:activated => true)}.flatten
+  def students(tutor)
+    return self.groups.map{|g| g.students.where(:activated => true) if g.tutor == tutor }.flatten.compact
   end
   
   def all_assignment_pages
-    self.stitch_modules.map {|sm| sm.pages.where(:assignment => true).first }.compact
+    self.stitch_modules.map {|sm| sm.pages.where(:assignment => true) }.flatten
   end
   
 end

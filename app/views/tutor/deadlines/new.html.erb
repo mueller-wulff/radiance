@@ -1,5 +1,5 @@
 <div id="main">
-  <h1>New Deadline </h1>
+  <h1>New Deadline for <%= @page.stitch_unit.title %></h1>
   <%= form_for(@deadline, :url => tutor_course_deadlines_path(@course)) do |f| %>
     <p class="checkbox">
 			<%= label :due_date, "Deadline" %><br />

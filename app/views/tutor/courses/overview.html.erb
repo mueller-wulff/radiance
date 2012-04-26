@@ -15,6 +15,10 @@
 					<td>To organize the students of the course</td>
         </tr>
 				<tr> 
+        	<td><%= link_to "Assignment", assignment_tutor_course_path(@course) %></td>
+					<td>To set scores for the assignments</td>
+        </tr>
+				<tr> 
         	<td><%= link_to "Deadlines", tutor_course_deadlines_path(@course) %></td>
 					<td>To set deadlines for the course and it's assignments</td>
         </tr>

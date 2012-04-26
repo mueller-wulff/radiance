@@ -16,9 +16,9 @@
 				<tr>
 					<td><%= link_to student.profile.fullname, tutor_group_student_path(student.groups.where(:course_id => @course.id).first, student) %></td>
 					<% @stitch_modules.each do |stitch_module| %>
-						<td><%= show_national_assesment(show_grade(stitch_module, student, current_user.role) ) %></td>
+						<td><%= show_national_assessment(show_grade(stitch_module, student, current_user.role), @course ) %></td>
 					<% end %>	
-					<td><%= show_national_assesment(show_grade(@course, student, current_user.role) ) %></td>
+					<td><%= show_national_assessment(show_grade(@course, student, current_user.role), @course ) %></td>
 				</tr>
 			<% end %>
 		</tbody>

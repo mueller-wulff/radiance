@@ -31,11 +31,11 @@
 						<td><%= student.profile.login %></td>
 						<td><%= student.profile.name %></td>
 						<td><%= student.profile.lastname %></td>
-						<td><%= student.activated %></td>
+						<td><%= student.activated ? "working" : "inactive" %></td>
 				    <td>
 	          	<%= link_to image_tag("space.gif", :title => "Coursebook", :class => "icon-coursebook"), tutor_group_student_path(group, student) %>
 							<%= link_to image_tag("space.gif", :title => "shuffle Student in another Group", :class => "icon-shuffle"), shuffle_tutor_group_student_path(group, student) %>
-							<%= link_to image_tag("space.gif", :title => "remove Student", :class => "icon delete"), tutor_student_path(student) if student.deletable? %>
+							<%= link_to image_tag("space.gif", :title => "remove Student", :class => "icon delete"), tutor_student_path(student, :course_id => @course), :method => :delete if student.deletable? %>
 						</td>
 				  </tr>
 				<% end %>

@@ -1,7 +1,7 @@
 class Tutor::StudentsController < ApplicationController
   before_filter :require_user
   before_filter :grab_tutor, :except => [:edit, :update,]
-  before_filter :grab_group_id, :except => [:edit, :update, :index]
+  before_filter :grab_group_id, :except => [:edit, :update, :index, :destroy]
   # GET /students
   # GET /students.xml
   def index
@@ -65,10 +65,11 @@ class Tutor::StudentsController < ApplicationController
   # DELETE /students/1.xml
   def destroy
     @student = Student.find(params[:id])
+    @course = Course.find(params[:course_id])
     @student.destroy
 
     respond_to do |format|
-      format.html { redirect_to(students_url) }
+      format.html { redirect_to(tutor_course_students_path(@course)) }
       format.xml  { head :ok }
     end
   end
@@ -84,7 +85,7 @@ class Tutor::StudentsController < ApplicationController
     respond_to do |format|
       if @student.save        
         @student.send_new_group(new_group)
-        format.html { redirect_to(edit_tutor_group_path(@tutor, @group), :notice => 'Student was successfully shuffled.') }
+        format.html { redirect_to(tutor_course_students_path(@group.course), :notice => 'Student was successfully shuffled.') }
       else
         format.html { render :action => "shuffle" }
       end
