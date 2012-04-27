@@ -1,7 +1,8 @@
 class Profile < ActiveRecord::Base
  # validates :login, :presence => true, :uniqueness => true, :length => {:minimum => 3, :maximum => 8}
   belongs_to :role, :polymorphic => true
-  
+  has_many :messages
+
   validates :name, :presence => true, :unless => :inactive_student
   validates :lastname, :presence => true, :unless => :inactive_student
   validates :role_type, :presence => true
@@ -55,6 +56,10 @@ class Profile < ActiveRecord::Base
     if Notifier.send_password(self).deliver
       self.update_attribute(:tmp_passwd, nil)
     end
+  end
+
+  def full_name
+    self.name + " " + self.lastname
   end
 
 end

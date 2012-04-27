@@ -1,4 +1,14 @@
 module ApplicationHelper
+  def errors_for(instance_of_model)
+   if instance_of_model.errors.any? 
+     content_tag(:div,
+      content_tag(:h2, pluralize(instance_of_model.errors.count, "error") + "prohibited this profile from being saved:") +
+      content_tag(:ul, instance_of_model.post.errors.full_messages.map do |msg|
+        raw(content_tag(:li, msg))
+      end.join(''), :id => "error_explanation"))
+    end
+  end
+
   def filter_local_links(html)
 
     #replace local page links
@@ -198,6 +208,33 @@ module ApplicationHelper
   def show_deadline_title(deadline)
     return deadline.deadlinable.title if deadline.deadlinable_type == "Group"
     return deadline.deadlinable.stitch_unit.title if deadline.deadlinable_type == "Page"
+  end
+
+  def render_channel(csid)
+    channel = Channel.find_or_create_by_channel_string_id(csid)
+    render :partial => 'chat/channel', :locals => { :channel => channel }
+  end
+
+  # we can talk to the whole group
+  # to the group's tutor or student
+  def roster_elements()
+    roster = current_user.role.groups.map { |r| { type:'group', name:"#{r.title}", channel_id:Channel.find_or_create_by_channel_string_id("all@group-#{r.id}").token }  }
+    
+    current_user.role.groups.each do |group|
+      roster << { type:"tutor", name:"(T) #{group.tutor.profile.name} #{group.tutor.profile.lastname}", channel_id:build_face2face_channel(group.tutor.profile.id, current_user.id).token } if group.tutor.profile != current_user      
+      roster += group.students.map do |s| 
+        if s.profile != current_user
+          { type:"student", name:"#{s.profile.name} #{s.profile.lastname}", channel_id:build_face2face_channel(s.profile.id, current_user.id).token }
+        else
+          nil
+        end
+      end.compact
+    end
+    roster
+  end
+
+  def build_face2face_channel(profile_id1, profile_id2)
+    Channel.find_or_create_by_channel_string_id("f2fchat-#{[profile_id1, profile_id2].sort.join('-')}")
   end
 
 end

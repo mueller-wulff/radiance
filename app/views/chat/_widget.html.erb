@@ -1,0 +1,19 @@
+<div id="chat">
+
+  <%= render :partial => "chat/templates" %>
+
+</div>
+
+<script type="application/javascript">
+  jQuery(function() {
+      window.messagesList.fetch({
+          success: function(){
+          $('#chat-form').bind('submit', function(){
+              $.post('/chat/messages', { body: $('#chat-msg').val()} );
+              $('#chat-msg').val('');
+              return false;
+            });
+          }
+      });
+  });
+</script>

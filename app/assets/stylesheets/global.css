@@ -975,7 +975,17 @@ h1,
 
 #aside h3 {
     color: #ABC8E2;
+}
 
+.checkbox{
+  border: 1px solid #ABC8E2;
+  padding: 10px;
+  width: 620px;
+  display:block;
+}
+
+.checkbox input {
+  float:left;
 }
 
 #aside,
@@ -1309,5 +1319,4 @@ img.center {
 #answer_comment {
     margin-left: 5px;
 }
-
 /* @end */

@@ -10,9 +10,12 @@ group :assets do
   gem 'uglifier'
 end
 
+gem 'will_paginate'
 gem 'jquery-rails'
-
+gem 'sqlite3'
 gem 'execjs'
+gem 'awesome_print'
+gem 'juggernaut'
 
 gem 'therubyracer'
 
@@ -51,11 +54,16 @@ gem 'paper_trail', '~> 2'
 # Bundle gems for the local environment. Make sure to
 # put test-only gems in this group so their generators
 # and rake tasks are available in development mode:
- group :development, :test do
-   gem 'rspec-rails'
-   gem 'pg'
-   gem 'autotest-rails'
- end
+group :development, :test do
+  gem 'rspec-rails'
+  gem 'pg'
+  gem 'autotest-rails'
+end
+
+group :test do
+  gem 'guard'
+  gem 'guard-rspec'
+end
 
 group :production do
   gem 'mysql2'

@@ -12,6 +12,7 @@ class Student::CoursesController < ApplicationController
 
   def show
     @course = Course.find(params[:id])
+    @group = @student.find_tutor_of_course(@course)
     respond_to do |format|
       format.html # show.html.erb
     end
