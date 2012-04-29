@@ -114,7 +114,9 @@ jQuery(function($){
       $('.channel').hide();
       $('#tab' + channelId).addClass('active');
       $('#' + channelId).show();
-      Chat.findChannel(channelId).scrollToBottom();
+      if (Chat.findChannel(channelId)){
+          Chat.findChannel(channelId).scrollToBottom();
+      }
     },
     findChannel: function(channelId) {
       console.log('findChannel'+this.channels.length);
