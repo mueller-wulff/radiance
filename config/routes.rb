@@ -69,7 +69,7 @@ Stitched::Application.routes.draw do
     end
         
   end
-  
+
   namespace :tutor do    
     resources :discussions, :only => [:show]   
     resources :students do
@@ -80,6 +80,10 @@ Stitched::Application.routes.draw do
         
     resources :groups do
       resources :channels#, :path => "chat/channels"
+      collection do
+        get 'new_working_group'
+        post 'create_working_group'
+      end
       resources :students do
         member do
           get 'shuffle'
@@ -96,6 +100,7 @@ Stitched::Application.routes.draw do
     resources :notes
     resources :responses
     resources :courses do
+      get "answer_logs"  => 'answer_logs#index'
       resources :students
       member do
         get 'overview'

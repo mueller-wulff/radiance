@@ -6,6 +6,10 @@ class Group < ActiveRecord::Base
   belongs_to :course
   has_one :deadline, :as => :deadlinable
   has_many :group_essay_answers
+  
+  belongs_to :parent_group, 
+    :class_name => "Group",
+    :foreign_key => 'parent_id'
       
   validates_associated :course, :tutor
   validates :tutor_id, :presence => true
@@ -28,6 +32,14 @@ class Group < ActiveRecord::Base
     group_id = student.groups.map {|g| g if g.course_id == page.course.id}
     group = Group.find(group_id[0])
     return group
+  end
+  
+  def all_students
+    students = []
+    students << self.students
+    working_groups = Group.where(:parent_id => self.id)
+    working_groups.map {|g| students << g.students}
+    students.flatten
   end
     
 end

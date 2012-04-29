@@ -3,7 +3,7 @@ class Tutor::DeadlinesController < ApplicationController
 
   def index
     @pages = @course.all_assignment_pages
-    @groups = @course.groups.where(:tutor_id => @tutor.id)
+    @groups = @course.groups.where(:tutor_id => @tutor.id, :parent_id => nil)
   end
 
   def new
@@ -15,18 +15,19 @@ class Tutor::DeadlinesController < ApplicationController
 
   def edit
     @deadline = Deadline.find(params[:id])
+    @group_deadline = Deadline.where(:deadlinable_id => @deadline.group_id, :deadlinable_type => "Group").first
   end
 
   def create
     @deadline = Deadline.new(params[:deadline])
-    @page = Page.find(params[:deadlinable])
+    @page = Page.find(params[:page])
     @deadline.deadlinable = @page
     @deadline.group_id = params[:group_id]
     respond_to do |format|
       if @deadline.save
         format.html {redirect_to(tutor_course_deadlines_path(@course) ) }
       else
-        format.html { render :action => "new", :params => [:group_id => params[:group_id], :page => params[:page], :group_deadline => params[:group_deadline]] }
+        format.html { redirect_to(new_tutor_course_deadline_path(@course, :group_id => params[:group_id], :page => params[:page], :group_deadline => params[:group_deadline] ) ) }
       end
     end
   end

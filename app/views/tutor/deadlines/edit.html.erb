@@ -3,8 +3,9 @@
   <%= form_for(@deadline, :url => tutor_course_deadline_path(@course, @deadline)) do |f| %>
     <p class="checkbox">
 			<%= label :due_date, "Deadline" %><br />
-			<%= datetime_select "deadline", :due_date, :default => @deadline.due_date %> 
+			<%= datetime_select "deadline", :due_date, :default => @deadline.due_date %><div id="error_explanation"></div> 
 		</p>
+		<%= hidden_field_tag :group_due_date, @group_deadline.due_date %>
 		<p class="submit"> 
 		  <%= submit_tag "Submit" %>  
 		</p>
@@ -15,3 +16,8 @@
 <div id="aside">
 
 </div>
+<script type="text/javascript">
+	$(document).ready(function(){
+    Stitched.loadCheckDueDate();
+  });
+</script>
