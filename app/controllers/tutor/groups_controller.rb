@@ -47,8 +47,8 @@ class Tutor::GroupsController < ApplicationController
   def edit
     @course_group = @tutor.groups.find(params[:id])
     @working_groups = @tutor.groups.where(:parent_id => @course_group)
-    @channels = @group.channels
-    @students = @group.students.all
+    @channels = @course_group.channels
+    @students = @course_group.students.all
   end
 
   # POST /groups
