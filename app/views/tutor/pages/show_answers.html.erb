@@ -12,8 +12,9 @@
   </div>
 	<% unless @grade %>
 		<%= button_to "Enter in Coursebook", tutor_grades_path(:student => @student, :stitch_unit => @page.stitch_unit, :group => @group), :method => :post, :form_class => 'new_grade_form', :id => "new_grade" %>
-	<% end %>	
-	<%= render 'page_bottom' %> 
+	<% end %>	<br />
+	<%= render 'page_bottom' %> <br />
+	<%= link_to "Back to Coursebook", tutor_group_student_path(@group, @student) %>
 </div>
 <div id="aside">
 

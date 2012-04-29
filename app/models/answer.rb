@@ -23,6 +23,12 @@ class Answer < ActiveRecord::Base
     questions.each do |q|
       question = Question.find(q.element_id)
       answer = question.answers.where(:student_id => student.id).first
+      if answer.nil?
+        answer = Answer.new
+        answer.student = student
+        answer.question = question
+        answer.txt = "No Answer given"
+      end
       answer.locked = true
       answer.save
     end
