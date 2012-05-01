@@ -234,7 +234,7 @@ module ApplicationHelper
     current_user.role.groups.each do |group|
       if current_user.role.class == Student
         course_group = group.meta_group
-        roster << { type:'group', name:"#{course_group.title}(CG)", channel_id:Channel.find_or_create_by_channel_string_id("all@group-#{course_group.id}").token }  
+        roster << { type:'group', name:"#{course_group.title}", channel_id:Channel.find_or_create_by_channel_string_id("all@group-#{course_group.id}").token } if course_group
       end
       roster << { type:"tutor", name:"(T) #{group.tutor.profile.name} #{group.tutor.profile.lastname}", channel_id:build_face2face_channel(group.tutor.profile.id, current_user.id).token } if group.tutor.profile != current_user      
       roster += group.students.map do |s| 

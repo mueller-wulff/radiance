@@ -43,7 +43,7 @@ class Group < ActiveRecord::Base
   end
   
   def meta_group
-    group = Group.find(self.parent_id)
+    group = Group.find(self.parent_id) if self.parent_id
   end
     
 end
