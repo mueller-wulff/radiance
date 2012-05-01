@@ -1,10 +1,11 @@
 <div id="main">
-	<h1>Listing groups</h1>
+	<h1>Listing groups for discussion</h1>
 	<table  class="userlist">
   	<thead>
   		<tr>
 				<td>Name</td>
 				<td>Course</td>
+				<td>Type</td>
         <td>&nbsp;</td>
       </tr>
     </thead>
@@ -13,17 +14,15 @@
 			  <tr>
 					<td><%= group.title %></td>
 					<td><%= group.course.short_title %></td>
+					<td>
+						<%= group.parent_id ? "Working Group" : "Course Group" %>
+					</td>
 			    <td>
-						<%= link_to image_tag("space.gif", :alt => "edit Group", :class => "icon useredit"), edit_tutor_group_path(group) %>
+						<%= link_to image_tag("space.gif", :alt => "Group Discussions", :class => "icon useredit"), discussion_tutor_group_path(group) %>
           	<%= link_to image_tag("space.gif", :alt => "delete Group", :class => "icon delete"), tutor_group_path(group), :confirm => 'Are you sure, you want to delete this Group?', :method => :delete %>
 					</td>
 			  </tr>
 			<% end %>
-			<tr>
-      	<td><%= link_to 'New Group', new_tutor_group_path %></td>
-        <td></td>
-				<td></td>
-      </tr>
 		</tbody>
 	</table>
 </div>

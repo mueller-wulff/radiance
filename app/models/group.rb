@@ -41,5 +41,9 @@ class Group < ActiveRecord::Base
     working_groups.map {|g| students << g.students}
     students.flatten
   end
+  
+  def meta_group
+    group = Group.find(self.parent_id)
+  end
     
 end

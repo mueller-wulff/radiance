@@ -22,6 +22,12 @@ class Tutor::GroupsController < ApplicationController
       format.xml  { render :xml => @group }
     end
   end
+  
+  def discussion
+    @group = @tutor.groups.find(params[:id])
+    @channels = @group.channels
+    @students = @group.students.all
+  end
 
   # GET /groups/new
   # GET /groups/new.xml
@@ -46,9 +52,7 @@ class Tutor::GroupsController < ApplicationController
   # GET /groups/1/edit
   def edit
     @course_group = @tutor.groups.find(params[:id])
-    @working_groups = @tutor.groups.where(:parent_id => @course_group)
-    @channels = @course_group.channels
-    @students = @course_group.students.all
+    @working_groups = @tutor.groups.where(:parent_id => @course_group)    
   end
 
   # POST /groups

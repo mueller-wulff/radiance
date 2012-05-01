@@ -84,6 +84,7 @@ Stitched::Application.routes.draw do
         get 'new_working_group'
         post 'create_working_group'
       end
+      get 'discussion', :on => :member
       resources :students do
         member do
           get 'shuffle'

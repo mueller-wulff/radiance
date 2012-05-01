@@ -11,18 +11,18 @@ class Tutor::ChannelsController < ApplicationController
   def create
     @channel = Channel.create(params[:channel])
     @channel.channel_string_id = "discussion-#{@channel.id}"
-    redirect_to edit_tutor_group_path(@channel.group) if @channel.save
+    redirect_to discussion_tutor_group_path(@channel.group) if @channel.save
   end
 
   def update
     @channel = Channel.find(params[:id])
     @channel.update_attributes(params[:channel])
-    redirect_to edit_tutor_group_path(@channel.group) if @channel.valid?
+    redirect_to discussion_tutor_group_path(@channel.group) if @channel.valid?
   end
 
   def destroy
     @channel = Channel.find(params[:id])
     @channel.destroy
-    redirect_to edit_tutor_group_path(@channel.group)  
+    redirect_to discussion_tutor_group_path(@channel.group)  
   end
 end

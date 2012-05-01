@@ -15,7 +15,7 @@
     <% elsif current_user.role.class == Tutor %>
 			<li> <%= link_to  'Courses', tutor_courses_path, :id => 'courses'%> </li>
       <li> <%= link_to 'Messaging', chat_messages_path %> </li>
-      <li> <%= link_to  'Groups', tutor_groups_path, :id => 'groups'%> </li>  
+      <li> <%= link_to  'Discussions', tutor_groups_path, :id => 'groups'%> </li>  
       <li> <%= link_to 'FAQ', tutor_faqs_path, :id => 'faq', :target => "_blank" %> </li>    
     <% elsif current_user.role.class == Student %>
 			<li><%= link_to 'Profile', edit_student_student_path(current_user.role_id), :id => 'students' %>

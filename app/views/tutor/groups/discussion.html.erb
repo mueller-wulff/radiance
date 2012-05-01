@@ -1,0 +1,35 @@
+<div id="main">
+	<h2>Discussions</h2>
+	<table class="userlist">
+  	<thead>
+  		<tr>
+				<td>Name</td>
+        <td>Number of Posts</td>
+        <td>&nbsp;</td>
+      </tr>
+    </thead>
+    <tbody>
+			<% @channels.each do |channel| %>
+			  <tr>
+          <td><%= link_to "#{channel.name}", tutor_discussion_path(channel) %>
+            <%- if channel.closed? %>
+              &nbsp;<strong>(closed)</strong>
+            <%- end %>
+          </td>
+			    <td>
+            <%= link_to image_tag("space.gif", :title => "Edit", :class => "icon edit"), edit_tutor_group_channel_path(@group, channel) %>
+            <%= link_to image_tag("space.gif", :title => "Delete", :class => "icon delete"),  tutor_group_channel_path(@group, channel),
+            :confirm => 'Are you sure?', :method => :delete%>
+					</td>
+			  </tr>
+			<% end %>
+			<tr>
+      	<td><%= link_to 'New Discussion', new_tutor_group_channel_path(@group) %></td>
+        <td></td>
+				<td></td>
+      </tr>
+		</tbody>
+	</table>
+	<%= link_to 'Back', tutor_groups_path(@group) %>
+</div>
+<div id="aside"></div>
