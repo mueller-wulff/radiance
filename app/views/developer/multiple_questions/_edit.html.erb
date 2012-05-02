@@ -1,15 +1,15 @@
 <%=  f.fields_for :element do |element_field| %>
   <p class="input">   
-    <label for="Input">Question Text</label>
+    <label for="Input"><%= t(:question, :scope => :question) %> <%= t(:text, :scope => :general) %></label>
     <%= element_field.text_area :txt, :size => "10x2" %>
   </p>
   <p class="input">   
-    <label for="Input">Answers</label>
+    <label for="Input"><%= t(:answers, :scope => :answers) %></label>
     <%= element_field.text_area :multianswers, :size => "20x4" %>
-    <small>*every line is an answer</small>
+    <small>*<%= t(:every_line, :scope => :answer) %></small>
   </p>
   <p class="radio">
-    <%= element_field.radio_button :multi, true, :checked => true %> Multiple Answers
-    <%= element_field.radio_button :multi, false %> Single Answer
+    <%= element_field.radio_button :multi, true, :checked => true %> <%= t(:multiple, :scope => :answer) %> <%= t(:answers, :scope => :answer) %>
+    <%= element_field.radio_button :multi, false %> <%= t(:single, :scope => :answer) %> <%= t(:answer, :scope => :answer) %>
   </p>
 <% end %>

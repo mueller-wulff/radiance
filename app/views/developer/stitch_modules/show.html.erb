@@ -20,29 +20,29 @@
 </div>
 <% if current_user.role.editable(@stitch_module) %>
   <div id="aside" class="moving">
-    <h3>Edit Menu</h3>
+    <h3><%= t(:edit, :scope => :general) %> <%= t(:menu, :scope => :general) %></h3>
     <ul class="editmenu">
 
       <li class="newunit newElement"><img class="newunit" src="/images/space.gif" alt="new Unit" />
-        new Unit
+        <%= t(:new, :scope => :general) %> <%= t(:unit, :scope => :stitch_unit) %>
         <%=  hidden_field_tag "url", developer_stitch_module_stitch_units_path(@stitch_module)%>
       </li>
 
 
       <li id="create_page"class="newPage"><img class="newpage" src="/images/space.gif" alt="new Page" />
-        new Page
+        <%= t(:new, :scope => :general) %> <%= t(:page, :scope => :page) %>
       </li>
       <hr/>
-      <h3>Help</h3>
-      <p>- Click on a Unit to select it.<p/>
-      <p>- Click on a selected Unit to open/close.<p/>
-      <p>- Drag a Unit to change its Position.</p>
-      <p>- Drag a Page to change its Position.</p>
+      <h3><%= t(:help, :scope => :general) %></h3>
+      <p>- <%= t(:select_unit, :scope => :stitch_unit) %>.<p/>
+      <p>- <%= t(:open_unit, :scope => :stitch_unit) %>.<p/>
+      <p>- <%= t(:drag_unit, :scope => :stitch_unit) %>.</p>
+      <p>- <%= t(:drag_page, :scope => :stitch_unit) %>.</p>
     </ul>		
   </div>
 <% else %>
   <div id="aside">
-    <h3>Preview Mode</h3>
+    <h3><%= t(:preview_mode, :scope => :page) %></h3>
   </div>
 <% end %>
 

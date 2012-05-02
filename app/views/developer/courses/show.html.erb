@@ -9,22 +9,22 @@
 
   <hr>
 
-  <h2>Modules:</h2>
+  <h2><%= t(:modules, :scope => :stitch_module) %>:</h2>
   <div id="module_list_table">
     <table  class="userlist" id="module_list">
       <thead>
         <tr  id="thead">
-          <td>Title</td>
-          <td>Complete</td>
-          <td>editable?</td>
+          <td><%= t(:title, :scope => :general) %></td>
+          <td><%= t(:complete, :scope => :stitch_module) %></td>
+          <td><%= t(:editable, :scope => :general) %>?</td>
         </tr>
       </thead>
       <tbody>
         <% @course.stitch_modules.each do |sm| %>
           <tr id="module_<%= sm.id  %>"> 
             <td><%= link_to sm.title, developer_stitch_module_path(sm)%></td>
-            <td><%= "Yes" if sm.complete %><%= "No" unless sm.complete %></td>
-            <td><%= "Yes" if current_user.role.stitch_modules.include?(sm) %><%= "No" unless current_user.role.stitch_modules.include?(sm) %></td>
+            <td><%= sm.complete ? t(:yes, :scope => :general) : t(:no, :scope => :general) %></td>
+            <td><%= current_user.role.stitch_modules.include?(sm) ? t(:yes, :scope => :general) : t(:no, :scope => :general) %></td>
           </tr>
         <% end %>
       </tbody>

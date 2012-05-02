@@ -1,10 +1,10 @@
 <table  class="userlist">
   <thead>
     <tr>
-      <td>Course</td>
-      <td>Short Title</td>
-      <td>Title</td>
-      <td>Complete</td>
+      <td><%= t(:course, :scope => :course) %></td>
+      <td><%= t(:short_title, :scope => :general) %></td>
+      <td><%= t(:title, :scope => :general) %></td>
+      <td><%= t(:complete, :scope => :stitch_module) %></td>
     </tr>
   </thead>
   <tbody>
@@ -13,7 +13,7 @@
         <td><%= link_to sm.course.short_title, developer_course_path(sm.course) %></td>
         <td><%= link_to sm.short_title, developer_stitch_module_path(sm) %></td>
         <td><%= sm.title %></td>
-        <td><%= "Yes" if sm.complete %><%= "No" unless sm.complete %></td>
+        <td><%= sm.complete ? t(:yes, :scope => :general) : t(:no, :scope => :general) %></td>
       </tr>
     <% end %>
   </tbody>

@@ -11,19 +11,19 @@
 <% end %>
 <%= f.fields_for :profile do |g| %>
   <p class="input">
-    <%= label :login, "Login" %>  
+    <%= label :login, t(:login, :scope => :profile) %>  
     <%= g.text_field :login %>  
   </p>  
   <p class="input">
-    <%= label :name, "Name" %>  
+    <%= label :name, t(:name, :scope => :profile) %>  
     <%= g.text_field :name %>  
   </p>  
   <p class="input">  
-    <%= label :lastname, "Lastname" %>  
+    <%= label :lastname, t(:lastname, :scope => :profile) %>  
     <%= g.text_field :lastname %>  
   </p>  
   <p class="input">
-    <%= label :email, "Email" %>  
+    <%= label :email, t(:email, :scope => :profile) %>  
     <%= g.text_field  :email %>  
   </p> 
 <% end %>
@@ -36,5 +36,5 @@
 	</ol>
 </p>
 <p class="submit"> 
-  <%= submit_tag "Submit" %>  
+  <%= submit_tag t(:submit, :scope => :general) %>  
 </p>

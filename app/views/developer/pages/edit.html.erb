@@ -1,13 +1,13 @@
 <div id="main">	
   <%= render 'layouts/breadcrumb' %>
 
-  <h1 id="page_title"><%= render 'page_title' %><small><%= link_to "Preview Page", developer_stitch_unit_page_path(@page.stitch_unit,@page), :id => "preview_link" %></small>  <small> Assignment? <%= check_box_tag 'page_assignment', @page.id, @page.assignment, {'data-href' => make_assignment_developer_stitch_unit_page_path(@page.stitch_unit,@page) ,:class => 'assignment_check'} %></small></h1>
+  <h1 id="page_title"><%= render 'page_title' %><small><%= link_to t(:preview_page, :scope => :page), developer_stitch_unit_page_path(@page.stitch_unit,@page), :id => "preview_link" %></small>  <small> <%= t(:assignment, :scope => :page) %>? <%= check_box_tag 'page_assignment', @page.id, @page.assignment, {'data-href' => make_assignment_developer_stitch_unit_page_path(@page.stitch_unit,@page) ,:class => 'assignment_check'} %></small></h1>
 
   <br/>
   <div class="editView" id="contentElements">
     <%= render :partial => 'developer/contents/content', :collection => @page.contents %>
     <% if @page.contents == [] %>
-      <p id="empty_warning">This is an empty Page. To fill it with content, just click an element on the right hand panel.</p>
+      <p id="empty_warning"><%= t(:empty_page_warning, :scope => :page) %></p>
     <% end %>
     <%= hidden_field_tag "page", developer_page_contents_path(@page)%>
     <%= hidden_field_tag "contents_order_url", developer_page_contents_order_path(@page)%>
@@ -16,46 +16,46 @@
 </div>
 <div id="aside" class="moving">
   <div id="newContentElements">
-    <h3>Add Content Element</h3>
+    <h3><%= t(:add_content_element, :scope => :page) %></h3>
     <ul class="editmenu">
       <%=  hidden_field_tag "url", developer_page_contents_path(@page)%>
       <li class="text newContentElement"><img class="text" src="/images/space.gif" alt="Text" />
-        Text
+        <%= t(:text, :scope => :general) %>
         <%=  hidden_field_tag "klass", "RichText"%>
       </li>
       <h4>Visualisation and Audio</h4>
       <li class="video newContentElement"><img class="video" src="/images/space.gif" alt="Video" />
-        Video
+        <%= t(:video, :scope => :page) %>
         <%=  hidden_field_tag "klass", "Youtube"%>
       </li>
       <li class="text newContentElement"><img class="text" src="/images/space.gif" alt="Slideshare" />
-        Slideshare
+        <%= t(:slideshare, :scope => :page) %>
         <%=  hidden_field_tag "klass", "Slideshare"%>
       </li>
-      <h4>Questions</h4>
+      <h4><%= t(:questions, :scope => :question) %></h4>
       <li class="question newContentElement"><img class="question" src="/images/space.gif" alt="Question" />
-        Short Question
+        <%= t(:short, :scope => :question) %> <%= t(:question, :scope => :question) %>
         <%=  hidden_field_tag "klass", "SimpleQuestion"%>
       </li>
       <li class="question newContentElement"><img class="question" src="/images/space.gif" alt="Question" />
-        Essay Question
+        Essay <%= t(:question, :scope => :question) %>
         <%=  hidden_field_tag "klass", "EssayQuestion"%>
       </li>
       <li class="question newContentElement"><img class="question" src="/images/space.gif" alt="Question" />
-        Multiple Choice Question
+        <%= t(:multiple_choice, :scope => :question) %> <%= t(:question, :scope => :question) %>
         <%=  hidden_field_tag "klass", "MultipleQuestion"%>
       </li>
-			<h4>Group Assignments</h4>
+			<h4><%= t(:group, :scope => :group) %> <%= t(:assignments, :scope => :page) %></h4>
 			<li class="question newContentElement"><img class="question" src="/images/space.gif" alt="Question" />
-        Group Essay
+        <%= t(:group, :scope => :group) %> <%= t(:essay, :scope => :question) %>
 				<%=  hidden_field_tag "klass", "GroupEssay"%>
       </li>
 			<li class="question newContentElement"><img class="question" src="/images/space.gif" alt="Question" />
-        Discussion
+        <%= t(:discussion, :scope => :chat) %>
 				<%=  hidden_field_tag "klass", "DiscussionLink"%>
       </li>
     </ul>
-    <p>Click on an Icon to add to Page.</p>
+    <p><%= t(:add_to_page, :scope => :page) %></p>
 
   </div>
 </div>

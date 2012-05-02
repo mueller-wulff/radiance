@@ -1,7 +1,7 @@
 <%=  f.fields_for :element do |element_field| %>
   <p class="input">
-    <label for="Input">Enter Youtube Video ID:</label>
+    <label for="Input"><%= t(:enter_link, :scope => :youtube) %>:</label>
     <%= element_field.text_area :video_id %>
   </p>
-  <p><small>just copy and paste complete embed code</small></p>
+  <p><small><%= t(:embed_code, :scope => :youtube) %></small></p>
 <% end %>
