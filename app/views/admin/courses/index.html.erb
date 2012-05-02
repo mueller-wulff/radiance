@@ -1,23 +1,23 @@
 <div id="main">
   <ul class="dropdown unit">
-    <li><a href="#">Selection</a></li>
-    <li class="active"><a href="#">All Courses</a></li>
-    <li><a href="#">Published</a></li>
-    <li><a href="#">Unpublished</a></li>
-    <li><a href="#">Deprecated</a></li>
+    <li><a href="#"><%= t(:selection, :scope => :course) %></a></li>
+    <li class="active"><a href="#"><%= t(:all, :scope => :general) %> <%= t(:courses, :scope => :course) %></a></li>
+    <li><a href="#"><%= t(:published, :scope => :course) %></a></li>
+    <li><a href="#"><%= t(:unpublished, :scope => :course) %></a></li>
+    <li><a href="#"><%= t(:deprecated, :scope => :course) %></a></li>
   </ul>	
 
-  <h2><%= link_to "Create new Course", new_admin_course_path %></h2>
+  <h2><%= link_to t(:create, :scope => :general) + " " + t(:course, :scope => :course), new_admin_course_path %></h2>
   <hr>
 
-  <h1>Published courses</h1>
+  <h1><%= t(:published, :scope => :course) %> <%= t(:courses, :scope => :course) %></h1>
   <%= render 'list', :courses => @published %>
 
-  <h1>Deprecated courses</h1>
+  <h1><%= t(:deprecated, :scope => :course) %> <%= t(:courses, :scope => :course) %>s</h1>
   <%= render 'list', :courses => @deprecated %>
 
 
-  <h1>Unpublished courses</h1>
+  <h1><%= t(:unpublished, :scope => :course) %> <%= t(:courses, :scope => :course) %></h1>
   <%= render 'list', :courses => @unpublished %>
 
 </div>

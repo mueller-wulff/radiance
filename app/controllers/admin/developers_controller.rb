@@ -35,7 +35,7 @@ class Admin::DevelopersController < ApplicationController
     @profile = @developer.profile
     respond_to do |format|
       if @developer.save
-        format.html { redirect_to(admin_developers_path, :notice => 'Developer was successfully created.') }
+        format.html { redirect_to(admin_developers_path, :notice => t(:developer, :scope => :developer)+" "+t(:successfully_created, :scope => :general)) }
       else
         format.html { render :action => "new" }
       end
@@ -51,7 +51,7 @@ class Admin::DevelopersController < ApplicationController
     @courses = Course.all
     respond_to do |format|
       if @developer.update_attributes(params[:developer])
-        format.html { redirect_to(admin_developers_path, :notice => 'Developer was successfully updated.') }
+        format.html { redirect_to(admin_developers_path, :notice => t(:developer, :scope => :developer)+" "+t(:successfully_updated, :scope => :general)) }
       else
         format.html { render :action => "edit" }
       end

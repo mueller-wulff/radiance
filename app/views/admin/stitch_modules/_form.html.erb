@@ -11,17 +11,17 @@
 <% end %>
 
 <p class="input">
-  <%= f.label :title %><br />
+  <%= f.label :title, t(:title, :scope => :general) %><br />
   <%= f.text_field :title %>
 </p>
 <p class="input">
-  <%= f.label :short_title %><br />
+  <%= f.label :short_title, t(:short_title, :scope => :general) %><br />
   <%= f.text_field :short_title %>
 </p>
 <p class="input">
-  <%= f.label :description %><br />
+  <%= f.label :description, t(:description, :scope => :general) %><br />
   <%= f.text_area :description %>
 </p>
 <p class="actions">
-  <%= f.submit %>
+  <%= f.submit t(:submit, :scope => :general) %>
 </p>

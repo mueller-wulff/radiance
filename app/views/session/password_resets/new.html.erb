@@ -1,11 +1,11 @@
-<h1>Forgot Password</h1>
+<h1><%= t(:forgot_pw, :scope => :session) %></h1>
 
-Fill out the form below and instructions to reset your password will be emailed to you:<br />
+<%= t(:pw_instruction, :scope => :session) %>:<br />
 <br />
 
 <% form_tag('/password_resets') do %>
-  <label>Email:</label><br />
+  <label><%= t(:email, :scope => profile) %>:</label><br />
   <%= text_field_tag "email" %><br />
   <br />
-  <%= submit_tag "Reset my password" %>
+  <%= submit_tag t(:reset_pw, :scope => :session) %>
 <% end %>

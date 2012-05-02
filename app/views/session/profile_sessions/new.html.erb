@@ -1,5 +1,5 @@
 <div id="main">
-  <% "Log in" %>  
+  <%= t(:login, :scope => :session) %>  
 
   <%= form_for (@profile_session) do |form| %>  
     <% if @profile_session.errors.any? %>
@@ -14,15 +14,15 @@
       </div>
     <% end %>
     <p class="input"> 
-      <%= form.label :login, "Login" %>  
+      <%= form.label :login, t(:login, :scope => :profile) %>  
       <%= form.text_field :login %>  
     </p>  
     <p class="input"> 
-      <%= form.label :password, "Password" %>  
+      <%= form.label :password, t(:password, :scope => :profile) %>  
       <%= form.password_field :password %>  
     </p>  
     <p class="submit">  
-      <%= form.submit "Submit" %>  
+      <%= form.submit t(:submit, :scope => :general) %>  
     </p>  
   <% end %>  
 </div>

@@ -30,7 +30,7 @@ class Admin::StitchModulesController < ApplicationController
 
     respond_to do |format|
       if @stitch_module.save
-        format.html { redirect_to(admin_course_path(@course), :notice => 'Stitch module was successfully created.') }
+        format.html { redirect_to(admin_course_path(@course), :notice => t(:stitch_module, :scope => :stitch_module)+" "+t(:successfully_created, :scope => :general)) }
       else
         format.html { render :action => "new" }
       end
@@ -44,7 +44,7 @@ class Admin::StitchModulesController < ApplicationController
 
     respond_to do |format|
       if @stitch_module.update_attributes(params[:stitch_module])
-        format.html { redirect_to(admin_course_path(@course), :notice => 'Stitch module was successfully updated.') }
+        format.html { redirect_to(admin_course_path(@course), :notice => t(:stitch_module, :scope => :stitch_module)+" "+t(:successfully_updated, :scope => :general)) }
       else
         format.html { render :action => "edit" }
       end

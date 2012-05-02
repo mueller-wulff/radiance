@@ -4,7 +4,7 @@
 
   <% if @show_edit_link == true %> 
     <div class='clear'>
-    <%= link_to "Edit this discussion", edit_tutor_group_channel_path(@discussion.group, @discussion) %>
+    <%= link_to t(:edit, :scope => :general)+ " "+ t(:discussion, :scope => :chat), edit_tutor_group_channel_path(@discussion.group, @discussion) %>
     </div>
   <% end %>
 </div>

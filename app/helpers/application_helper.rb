@@ -243,9 +243,9 @@ module ApplicationHelper
         else
           nil
         end
-      end.compact
+      end
     end
-    roster
+    roster.compact
   end
 
   def build_face2face_channel(profile_id1, profile_id2)
