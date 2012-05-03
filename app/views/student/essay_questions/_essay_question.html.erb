@@ -5,9 +5,9 @@
  	<% if @student.give_answer?(@student, e) %>
   	<%=raw show_answer(e, current_user.role).txt %>
 		<p>
-			Assesment: <%= show_answer(e, current_user.role).score %>/<%= show_score(e, @tutor) %>
+			<%= t(:assessment, :scope => :student) %>: <%= show_answer(e, current_user.role).score %>/<%= show_score(e, @tutor) %>
 			<br />
-			Comment of tutor: <%= show_answer(e, current_user.role).comment %>
+			<%= t(:comment, :scope => :student) %>: <%= show_answer(e, current_user.role).comment %>
 		</p>
 	<% end %>
 </p>

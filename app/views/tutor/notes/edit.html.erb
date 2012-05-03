@@ -1,6 +1,6 @@
-<h1>Editing note</h1>
+<h1><%= t(:editing, :scope => :general) %> <%= t(:note, :scope => :general) %></h1>
 
 <%= render 'form' %>
 
-<%= link_to 'Show', @note %> |
-<%= link_to 'Back', notes_path %>
+<%= link_to t(:show, :scope => :general), @note %> |
+<%= link_to t(:back, :scope => :general), notes_path %>

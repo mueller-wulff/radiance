@@ -1,6 +1,6 @@
 <div id="main">
 
-  <h1>My courses</h1>
+  <h1><%= t(:my, :scope => :general) %> <%= t(:course, :scope => :course) %></h1>
   <%= render 'list', :courses => @courses %>
 
 </div>

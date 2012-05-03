@@ -1,7 +1,7 @@
 <div id="main">
   <h1 id="page_title"><%= @course.title %></h1>
   
-  <h2>Overview - What do you want to do?</h2>
+  <h2><%= t(:overview, :scope => :tutor) %></h2>
     <table  class="userlist" id="module_list">
       <thead>
         <tr id="thead">
@@ -11,35 +11,35 @@
       </thead>
       <tbody>
       	<tr> 
-        	<td><%= link_to "Students", tutor_course_students_path(@course) %></td>
-					<td>To organize the students of the course</td>
+        	<td><%= link_to t(:students, :scope => :student), tutor_course_students_path(@course) %></td>
+					<td><%= t(:overview_student, :scope => :tutor) %></td>
         </tr>
 				<tr> 
-        	<td><%= link_to "Assignment", assignment_tutor_course_path(@course) %></td>
-					<td>To set scores for the assignments</td>
+        	<td><%= link_to t(:assignment, :scope => :page), assignment_tutor_course_path(@course) %></td>
+					<td><%= t(:overview_assignment) %></td>
         </tr>
 				<tr> 
-        	<td><%= link_to "Delivered Assignment", tutor_course_answer_logs_path(@course) %> (<%= @answer_log_size %>)</td>
-					<td>See answered assignments</td>
+        	<td><%= link_to t(:delivered, :scope => :tutor)+" "+t(:assignments, :scope => :page), tutor_course_answer_logs_path(@course) %> (<%= @answer_log_size %>)</td>
+					<td><%= t(:overview_delivered, :scope => :tutor) %></td>
         </tr>
 				<tr> 
-        	<td><%= link_to "Deadlines", tutor_course_deadlines_path(@course) %></td>
-					<td>To set deadlines for the course and it's assignments</td>
+        	<td><%= link_to t(:deadlines, :scope => :course), tutor_course_deadlines_path(@course) %></td>
+					<td><%= t(:overview_deadline, :scope => :tutor) %></td>
         </tr>
 				<tr> 
-        	<td><%= link_to "Assessment", assessment_tutor_course_path(@course) %></td>
-					<td>To monitor the students' progress</td>
+        	<td><%= link_to t(:assessment, :scope => :student), assessment_tutor_course_path(@course) %></td>
+					<td><%= t(:overview_assessment, :scope => :tutor) %></td>
         </tr>
 				<tr> 
-        	<td><%= link_to "Course Content", tutor_course_path(@course) %></td>
-					<td>To browse the course's content. 
+        	<td><%= link_to t(:course, :scope => :course)+" "+t(:content, :scope => :general), tutor_course_path(@course) %></td>
+					<td><%= t(:overview_course, :scope => :tutor) %> 
 						<br />
-						<strong> Important information for tutors can be found in the module "Introduction to the course".</strong>						
+						<strong><%= t(:overview_advice, :scope => :tutor) %></strong>						
 					</td>
         </tr>
       </tbody>
     </table>		
-	<%= link_to 'Back', tutor_courses_path %>
+	<%= link_to t(:back, :scope => :general), tutor_courses_path %>
 </div>
 <div id="aside">
 

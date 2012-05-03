@@ -3,7 +3,7 @@
 
   <h1 id="page_title"><%= render 'page_title' %></h1>
 	<% if @page.assignment %>
-		<h2>Deadline: <div id="deadline"><%= show_deadline_page(@page, @student) %></div></h2>
+		<h2><%= t(:deadline, :scope => :course) %>: <div id="deadline"><%= show_deadline_page(@page, @student) %></div></h2>
 	<% end %>
 	
   <br/>
@@ -13,9 +13,9 @@
   </div>
 	<div>
 		<% if is_assignment_page_locked(@page, @student) %>
-			Answers were sent to Tutor
+			<%= t(:answer_sent, :scope => :student) %>
 		<% else %>
-			<%= button_to "Send Answers to Tutor", :action => "send_answers", :confirm => "Are you sure?", :disabled_with => "Sending..." %>
+			<%= button_to t(:send_answer, :scope => :student), :action => "send_answers" %>
 		<% end %>
 	</div>
 	<%= render 'page_bottom' %> 

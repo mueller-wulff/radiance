@@ -1,16 +1,16 @@
 <p class="input">
   <% unless e.txt == "" %>
-    <label for="Input">Group Essay: <%=raw e.txt.gsub("\n","<br />") %></label>
+    <label for="Input"><%= t(:group, :scope => :group) %> <%= t(:essay, :scope => :question) %>: <%=raw e.txt.gsub("\n","<br />") %></label>
   <% end %>
 	<% if e.group_essay_answers.empty? %>
   	<textarea name="Textarea" id="Textarea" cols="65" rows="10"></textarea>
 	<% else %>
 		<%=raw show_answer(e, current_user.role).txt %>
-		<p>Version: last edited <%=raw show_answer(e, current_user.role).updated_at.strftime('%d.%m.%Y - %H:%M') %> by <%= show_whodunnit(show_answer(e, current_user.role)) %></p>
+		<p><%= t(:version, :scope => :version) %>: <%= t(:last_edited, :scope => :version) %> <%=raw show_answer(e, current_user.role).updated_at.strftime('%d.%m.%Y - %H:%M') %> <%= t(:by, :scope => :general) %> <%= show_whodunnit(show_answer(e, current_user.role)) %></p>
 		<p>
-			Assesment: <%= show_answer(e, current_user.role).score %>/<%#= show_score(e, @tutor) %>
+			<%= t(:assessment, :scope => :student) %>: <%= show_answer(e, current_user.role).score %>/<%#= show_score(e, @tutor) %>
 			<br />
-			Comment of tutor: <%= show_answer(e, current_user.role).comment %>
+			<%= t(:comment, :scope => :student) %>: <%= show_answer(e, current_user.role).comment %>
 		</p>
 	<% end %>
 </p>
