@@ -1,3 +1,3 @@
-Hello Student <%= @student.profile.fullname %>,
+<%= I18n.t(:welcome_student, :scope => :mailer) %> <%= @student.profile.fullname %>,
 
-You are in a new group <%= @group.title %> in the course <%= @group.course.short_title %>.
+<%= I18n.t(:new_group, :scope => :mailer) %> <%= @group.title %> <%= I18n.t(:in_course, :scope => :mailer) %> <%= @group.course.short_title %>.

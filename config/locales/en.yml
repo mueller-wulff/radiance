@@ -130,6 +130,7 @@ en:
       managing: "Managing"
       enroll: "Enroll"
       shuffle: "Shuffle"
+      set_grading_system: "Please set grading system"
   student:
       student: "Student"
       students: "Students"
@@ -228,4 +229,22 @@ en:
   note:
       note: "Note"
       notes: "Notes"
+  mailer:
+      pw_reset_instruction: "Password Reset Instructions" 
+      welcome: "Welcome to STITCHed"
+      new_group: "New Group"
+      assignement_finished: "Assignment finished"
+      hello_student: "Hello Student"
+      new_group: "You are in a new group"
+      in_course: "in the course"
+      pw_reset_text_1: "A request to reset your password has been made. If you did not make this request, simply ignore this email. If you did make this request just click the link below"
+      pw_reset_text_2: "If the above URL does not work try copying and pasting it into your browser. If you continue to have problem please feel free to contact us."
+      hello_tutor: "Hello Tutor"
+      student: "the student"
+      answered: "answered the assignment of"
+      visit: "Visit"
+      registered: "You have been registered as"
+      login: "Your login is"
+      password: "Your password is"
+      go_to: "Please go to"
       

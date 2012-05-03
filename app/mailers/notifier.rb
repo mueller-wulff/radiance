@@ -1,7 +1,7 @@
 class Notifier < ActionMailer::Base
   
   def password_reset_instructions(user)  
-    subject       "Password Reset Instructions"  
+    subject       I18n.t(:pw_reset_instruction, :scope => :mailer) 
     recipients    user.email  
     sent_on       Time.now  
     from          "accounts@stitched.com"
@@ -9,7 +9,7 @@ class Notifier < ActionMailer::Base
   end 
   
   def send_password(user)
-    subject       "Welcome to STITCHed"  
+    subject       I18n.t(:welcome, :scope => :mailer)  
     recipients    user.email  
     sent_on       Time.now  
     from          "accounts@stitched.com"
@@ -17,7 +17,7 @@ class Notifier < ActionMailer::Base
   end
   
   def new_group(student, group)
-    subject       "New Group"  
+    subject       I18n.t(:new_group, :scope => :mailer)  
     recipients    student.profile.email  
     sent_on       Time.now  
     from          "accounts@stitched.com"
@@ -26,7 +26,7 @@ class Notifier < ActionMailer::Base
   end  
   
   def send_answers(group, student, page)
-    subject     "Assignment finished"
+    subject     I18n.t(:assignment_finished, :scope => :mailer)
     recipients  group.tutor.profile.email
     sent_on     Time.now
     from        "accounts@stitched.com"
