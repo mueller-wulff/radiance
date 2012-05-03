@@ -1053,7 +1053,7 @@ h1,
     background-repeat: no-repeat;
 }
 
-.icon-shuffle {    
+.icon-shuffle, .icon-coursebook, .icon-discussion {    
     width: 24px;
     height: 20px;
     display: block;
@@ -1070,20 +1070,13 @@ h1,
     background-repeat: no-repeat; 
 }
 
-.icon-coursebook {    
-    width: 24px;
-    height: 24px;
-    display: block;
-    float: left;
-    margin-right: 6px;
-    cursor: pointer;
-    position: relative;
-    top: 4px;
-    visibility: hidden;
-}
-
 .icon-coursebook {
     background-image: url(icon-coursebook.png);
+    background-repeat: no-repeat; 
+}
+
+.icon-discussion {
+    background-image: url(icon-discussion.png);
     background-repeat: no-repeat; 
 }
 
@@ -1096,6 +1089,10 @@ tr:hover .icon-shuffle {
 }
 
 tr:hover .icon-coursebook {
+    visibility: visible;
+}
+
+tr:hover .icon-discussion {
     visibility: visible;
 }
 

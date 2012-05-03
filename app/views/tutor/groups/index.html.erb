@@ -18,7 +18,7 @@
 						<%= group.parent_id ? t(:working_group, :scope => :group) : t(:course, :scope => :course)+" "+t(:group, :scope => :group) %>
 					</td>
 			    <td>
-						<%= link_to image_tag("space.gif", :title => t(:group, :scope => :group)+ " "+t(:discussions, :scope => :chat), :class => "icon useredit"), discussion_tutor_group_path(group) %>
+						<%= link_to image_tag("space.gif", :title => t(:group, :scope => :group)+ " "+t(:discussions, :scope => :chat), :class => "icon-discussion"), discussion_tutor_group_path(group) %>
           	<%= link_to image_tag("space.gif", :title => t(:delete, :scope => :general)+ " "+ t(:group, :scope => :group), :class => "icon delete"), tutor_group_path(group), :confirm => t(:confirm, :scope => :general)+" "+t(:delete, :scope => :general)+" "+t(:this, :scope => :general)+" "+t(:group, :scope => :group)+"?", :method => :delete %>
 					</td>
 			  </tr>

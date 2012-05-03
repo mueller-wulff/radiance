@@ -16,6 +16,7 @@
               &nbsp;<strong>(<%= t(:closed, :scope => :chat) %>)</strong>
             <%- end %>
           </td>
+					<td>&nbsp;</td>
 			    <td>
             <%= link_to image_tag("space.gif", :title => t(:edit, :scope => :general), :class => "icon edit"), edit_tutor_group_channel_path(@group, channel) %>
             <%= link_to image_tag("space.gif", :title => t(:delete, :scope => :general), :class => "icon delete"),  tutor_group_channel_path(@group, channel),

@@ -30,6 +30,10 @@
         	<td><%= link_to t(:assessment, :scope => :student), assessment_tutor_course_path(@course) %></td>
 					<td><%= t(:overview_assessment, :scope => :tutor) %></td>
         </tr>
+				<tr>
+					<td><%= link_to t(:messaging, :scope => :navigation), chat_messages_path %></td>
+					<td><%= t(:overview_message, :scope => :tutor) %></td>
+				</tr>
 				<tr> 
         	<td><%= link_to t(:course, :scope => :course)+" "+t(:content, :scope => :general), tutor_course_path(@course) %></td>
 					<td><%= t(:overview_course, :scope => :tutor) %> 
