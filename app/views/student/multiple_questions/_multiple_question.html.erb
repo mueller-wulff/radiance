@@ -18,6 +18,6 @@
 		<br />
 		<%=raw show_answer(e, current_user.role).txt.gsub("\n","<br />") %>
 		<br />
-		Assesment: <%= show_answer(e, current_user.role).score %>/<%= show_score(e, @tutor) %>
+		<%= t(:assessment, :scope => :student) %>: <%= show_answer(e, current_user.role).score %>/<%= show_score(e, @tutor) %>
 	<% end %>
 </p>

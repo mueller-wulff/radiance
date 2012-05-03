@@ -1,5 +1,5 @@
 <div id="main">
-	<h1>Editing Profile</h1>
+	<h1><%= t(:editing, :scope => :general) %> <%= t(:profile, :scope => :profile) %></h1>
 	<%= form_for(@student, :url => student_student_path) do |f| %> 
 	  <% if @profile.errors.any? %>
 	    <div id="error_explanation">
@@ -14,24 +14,24 @@
 	  <% end %>  
 		<%= f.fields_for :profile do |g| %>
 		  <p class="input">
-		    <%= label :login, "Login" %>  
+		    <%= label :login, t(:login, :scope => :profile) %>  
 		    <%= g.text_field :login %>  
 		  </p>  
 		  <p class="input">
-		    <%= label :name, "Name" %>  
+		    <%= label :name, t(:name, :scope => :profile) %>  
 		    <%= g.text_field :name %>  
 		  </p>  
 		  <p class="input">  
-		    <%= label :lastname, "Lastname" %>  
+		    <%= label :lastname, t(:lastname, :scope => :profile) %>  
 		    <%= g.text_field :lastname %>  
 		  </p>
 			<p class="input">  
-		    <%= label_tag "Avatar" %>
+		    <%= label_tag t(:avatar, :scope => :profile) %>
 				<%= image_tag avatar_url(@student) %>
-		    Please create your avatar at <%= link_to "Gravatar", "http://en.gravatar.com", :target => '_blank' %> 
+		    <%= t(:create_avatar, :scope => :profile) %> <%= link_to "Gravatar", "http://en.gravatar.com", :target => '_blank' %> 
 		  </p>
 			<p class="submit"> 
-			  <%= submit_tag "Save" %>  
+			  <%= submit_tag t(:submit, :scope => :general) %>  
 			</p>
 		<% end %>
 	<% end %> 

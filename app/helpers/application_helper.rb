@@ -164,7 +164,7 @@ module ApplicationHelper
   def show_national_assessment(value, course)
     default_assessment = DefaultAssesment.where("lower_treshold <= ? AND upper_treshold >= ? AND course_id = ?", value, value, course.id).first
     return default_assessment.name if default_assessment
-    return "Please set grading system"
+    return I18n.t(:set_grading_system, :scope => :tutor)
   end
 
   def find_assignment_page(stitch_unit, group, student, tutor=nil)
@@ -243,9 +243,9 @@ module ApplicationHelper
         else
           nil
         end
-      end.compact
+      end
     end
-    roster
+    roster.compact
   end
 
   def build_face2face_channel(profile_id1, profile_id2)

@@ -1,13 +1,13 @@
 <div id="main">
 	<h1>
-		Delivered Assignments for course <%= @course.short_title %>
+		<%= t(:delivered_answers, :scope => :tutor) %> <%= @course.short_title %>
 	</h1>
 	<table  class="userlist">
 		<thead>
 			<tr>
-	      <td>Student</td>
-	      <td>Module</td>
-	      <td>Unit</td>
+	      <td><%= t(:student, :scope => :student) %></td>
+	      <td><%= t(:module, :scope => :stitch_module) %></td>
+	      <td><%= t(:unit, :scope => :stitch_unit) %></td>
 	    </tr>
 		</thead>
 		<% @answer_logs.each do |log| %>
@@ -16,7 +16,7 @@
 		  </tbody>				
 		<% end %>	
 		</table>
-	<%= link_to 'Back', :back %>
+	<%= link_to t(:back, :scope => :general), :back %>
 </div>
 <div id="aside">
 

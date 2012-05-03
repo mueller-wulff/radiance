@@ -1,9 +1,9 @@
-<h1>Listing responses</h1>
+<h1><%= t(:listing, :scope => :general) %> <%= t(:responses, :scope => :response) %></h1>
 
 <table>
   <tr>
-    <th>Attempt</th>
-    <th>Answer</th>
+    <th><%= t(:attempt, :scope => :response) %></th>
+    <th><%= t(:answer, :scope => :answer) %></th>
     <th></th>
     <th></th>
     <th></th>
@@ -13,13 +13,13 @@
   <tr>
     <td><%= response.attempt %></td>
     <td><%= response.answer %></td>
-    <td><%= link_to 'Show', response %></td>
-    <td><%= link_to 'Edit', edit_response_path(response) %></td>
-    <td><%= link_to 'Destroy', response, :confirm => 'Are you sure?', :method => :delete %></td>
+    <td><%= link_to t(:show, :scope => :general), response %></td>
+    <td><%= link_to t(:edit, :scope => :general), edit_response_path(response) %></td>
+    <td><%= link_to t(:destroy, :scope => :general), response, :confirm => t(:confirm_short, :scope => :general), :method => :delete %></td>
   </tr>
 <% end %>
 </table>
 
 <br />
 
-<%= link_to 'New Response', new_response_path %>
+<%= link_to t(:new, :scope => :general)+" "+t(:response, :scope => :response), new_response_path %>

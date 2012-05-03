@@ -1,11 +1,11 @@
 <div id="main">
-	<h1>Course Group <%= @course_group.title %></h1>
-	<h2>Deadline: <%= @course_group.deadline.due_date.strftime('%d.%m.%Y - %H:%M') unless @course_group.deadline.nil? %></h2>
+	<h1><%= t(:course, :scope => :course) %> <%= t(:group, :scope => :group) %> <%= @course_group.title %></h1>
+	<h2><%= t(:deadline, :scope => :course) %>: <%= @course_group.deadline.due_date.strftime('%d.%m.%Y - %H:%M') unless @course_group.deadline.nil? %></h2>
 	<table  class="userlist">
   	<thead>
   		<tr>
-				<td>Avatar</td>
-        <td>Name</td>
+				<td><%= t(:avatar, :scope => :profile) %></td>
+        <td><%= t(:name, :scope => :profile) %></td>
         <td>&nbsp;</td>
       </tr>
     </thead>
@@ -21,19 +21,19 @@
 						<td><%= image_tag avatar_url(student) %></td>
 						<td><%= student.profile.fullname %></td>
 				    <td>
-	          	<%= link_to image_tag("space.gif", :title => "shuffle Student in another Group", :class => "icon-shuffle"), shuffle_tutor_group_student_path(w_group, student) %>
+	          	<%= link_to image_tag("space.gif", :title => t(:shuffle_student, :scope => :tutor), :class => "icon-shuffle"), shuffle_tutor_group_student_path(w_group, student) %>
 						</td>
 				  </tr>
 				<% end %>
 			<% end %>
 			<tr>
-      	<td><%= link_to 'New Working Group', new_working_group_tutor_groups_path(:parent => @course_group) %></td>
+      	<td><%= link_to t(:new, :scope => :general)+" "+t(:working_group, :scope => :group), new_working_group_tutor_groups_path(:parent => @course_group) %></td>
         <td></td>
 				<td></td>
       </tr>
 		</tbody>
 	</table>
-	<%= link_to 'Back', tutor_course_students_path(@course_group.course) %>
+	<%= link_to t(:back, :scope => :general), tutor_course_students_path(@course_group.course) %>
 </div>
 <div id="aside">
 

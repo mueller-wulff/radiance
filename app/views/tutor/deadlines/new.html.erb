@@ -1,8 +1,8 @@
 <div id="main">
-  <h1>New Deadline for <%= @page.stitch_unit.title %></h1>
+  <h1><%= t(:new, :scope => :general) %> <%= t(:deadline, :scope => :course) %> <%= t(:for, :scope => :general) %> <%= @page.stitch_unit.title %></h1>
   <%= form_for(@deadline, :url => tutor_course_deadlines_path(@course)) do |f| %>
     <p class="checkbox">
-			<%= label :due_date, "Deadline" %><br />
+			<%= label :due_date, t(:deadline, :scope => :course) %><br />
 			<%= datetime_select "deadline", :due_date, :default => @group_deadline.due_date %><div id="error_explanation"></div>
 		</p>
 		<%= hidden_field_tag :page, @page.id %>
@@ -10,10 +10,10 @@
 		<%= hidden_field_tag :group_deadline, @group_deadline.id %>
 		<%= hidden_field_tag :group_due_date, @group_deadline.due_date %>
 		<p class="submit"> 
-		  <%= submit_tag "Submit" %>  
+		  <%= submit_tag t(:submit, :scope => :general) %>  
 		</p>
   <% end %>
-  <%= link_to 'Back', tutor_course_deadlines_path(@course) %>
+  <%= link_to t(:back, :scope => :general), tutor_course_deadlines_path(@course) %>
 
 </div>
 <div id="aside">

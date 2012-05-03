@@ -1,5 +1,5 @@
 <div class="channel" id="<%= channel.token %>" style='display: none'>
-  <p>Messages</p>
+  <p><%= t(:messages, :scope => :chat) %></p>
   <div class="container">
     <div class="messages">
       <% channel.messages.each do |msg| %>

@@ -1,20 +1,20 @@
 <div id="main">
 	<h1>
-		Coursebook for <%= @course.short_title %>
+		<%= t(:coursebook, :scope => :student) %> <%= :for, :scope => :general %> <%= @course.short_title %>
 	</h1>
-	<% if @course_grade %><h2>Grade <%= @course_grade.value unless @course_grade.value.nil? %> <%= show_national_assessment(@course_grade.value, @course) unless @course_grade.value.nil? %></h2><% end %>
-	<h3>Deadline <%= show_deadline_course(@course, @student) %></h3>
+	<% if @course_grade %><h2><%= t(:grade, :scope => :student) %> <%= @course_grade.value unless @course_grade.value.nil? %> <%= show_national_assessment(@course_grade.value, @course) unless @course_grade.value.nil? %></h2><% end %>
+	<h3><%= t(:deadline, :scope => :course) %> <%= show_deadline_course(@course, @student) %></h3>
 	<table  class="userlist">
 		<thead>
 	    <tr>
-	      <td>Title</td>
-	      <td>Current Grade</td>
-	      <td>Weight</td>
+	      <td><%= t(:title, :scope => :general) %></td>
+	      <td><%= t(:current, :scope => :general) %> <%= t(:grade, :scope => :student) %></td>
+	      <td><%= t(:weight, :scope => :stitch_unit) %></td>
 	    </tr>
 			<% @stitch_modules.each do |stitch_module| %>
 				<% if stitch_module.has_assignment_page? %>
 					<tr>
-						<td><strong><%= stitch_module.short_title %> current Grade: <%= show_grade(stitch_module, @student, @tutor) %></strong></td>
+						<td><strong><%= stitch_module.short_title %> <%= t(:current, :scope => :general) %> <%= t(:grade, :scope => :student) %>: <%= show_grade(stitch_module, @student, @tutor) %></strong></td>
 						<td><%= show_national_assessment(show_grade(stitch_module, @student, @tutor), @course) %></td>
 						<td>&nbsp;</td>						
 					</tr>			  

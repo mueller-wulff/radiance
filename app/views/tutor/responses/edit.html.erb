@@ -1,6 +1,6 @@
-<h1>Editing response</h1>
+<h1><%= t(:editing, :scope => :general) %> <%= t(:response, :scope => :response) %></h1>
 
 <%= render 'form' %>
 
-<%= link_to 'Show', @response %> |
-<%= link_to 'Back', responses_path %>
+<%= link_to t(:show, :scope => :general), @response %> |
+<%= link_to t(:back, :scope => :general), responses_path %>

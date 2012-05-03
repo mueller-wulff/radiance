@@ -1,12 +1,12 @@
 <div id="main">
-	<h1>Listing tutors</h1>
+	<h1><%= t(:listings, :scope => :general) %> <%= t(:tutors, :scope => :tutor) %></h1>
 
 	<table  class="userlist">
   	<thead>
   		<tr>
-        <td>Name</td>
-        <td>Lastname</td>
-        <td>E-Mail</td>
+        <td><%= t(:name, :scope => :profile) %></td>
+        <td><%= t(:lastname, :scope => :profile) %></td>
+        <td><%= t(:email, :scope => :profile) %></td>
         <td>&nbsp;</td>
       </tr>
     </thead>
@@ -17,8 +17,8 @@
           <td><%= tutor.profile.lastname %></td>
           <td><%= tutor.profile.email %></td>
           <td>
-            <%= link_to image_tag("space.gif", :alt => "edit Tutor", :class => "icon useredit"), edit_developer_tutor_path(tutor) %>
-            <%= link_to image_tag("space.gif", :alt => "delete Tutor", :class => "icon delete"), developer_tutor_path(tutor), :confirm => 'Are you sure, you want to delete this Tutor?', :method => :delete %>
+            <%= link_to image_tag("space.gif", :title => t(:edit, :scope => :general)+ " "+ t(:tutor, :scope => :tutor), :class => "icon useredit"), edit_developer_tutor_path(tutor) %>
+            <%= link_to image_tag("space.gif", :title => t(:delete, :scope => :general)+ " "+ t(:tutor, :scope => :tutor), :class => "icon delete"), developer_tutor_path(tutor), :confirm => t(:confirm, :scope => :general)+" "+t(:delete, :scope => :general)+" "+t(:this, :scope => :general)+" "+t(:tutor, :scope => :tutor)+"?", :method => :delete %>
           </td>
         </tr>
 			<% end %>

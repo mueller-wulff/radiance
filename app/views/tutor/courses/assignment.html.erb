@@ -1,12 +1,12 @@
 <div id="main">
 	<h1>
-		Assignments for course <%= @course.short_title %>
+		<%= t(:assignments, :scope => :page) %> <%= t(:for, :scope => :general) %> <%= t(:course, :scope => :course) %> <%= @course.short_title %>
 	</h1>
 	<table  class="userlist">
 		<thead>
 			<tr>
-	      <td>Title</td>
-	      <td>Weight</td>
+	      <td><%= t(:title, :scope => :general) %></td>
+	      <td><%= t(:weight, :scope => :stitch_unit) %></td>
 	    </tr>
 		<% @stitch_modules.each do |stitch_module| %>
 			<% if stitch_module.has_assignment_page? %>				
@@ -28,7 +28,7 @@
 			<% end %>					
 		<% end %>	
 		</table>
-	<%= link_to 'Back', overview_tutor_course_path(@course) %>
+	<%= link_to t(:back, :scope => :general), overview_tutor_course_path(@course) %>
 </div>
 <div id="aside">
 

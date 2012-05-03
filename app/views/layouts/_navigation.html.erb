@@ -1,29 +1,31 @@
 <ul id="nav">
   <% if current_user %>
     <% if current_user.role.class == Developer &&  current_user.role.admin %>
-     <li> <%= link_to 'Dashboard', root_url, :id => 'dashboard'%> </li>
-     <li> <%= link_to 'Courses', admin_courses_path, :id => 'courses'%> </li>
-     <li> <%= link_to 'Developers', admin_developers_path, :id => 'editors'%> </li>
-		 <li> <%= link_to 'Tutors',  developer_tutors_path, :id => 'tutors'%> </li>
-		 <li> <%= link_to 'FAQ', developer_faqs_path, :id => 'faq', :target => "_blank" %> </li>
+     <li> <%= link_to t(:dashboard, :scope => :navigation), root_url, :id => 'dashboard'%> </li>
+     <li> <%= link_to t(:courses, :scope => :course), admin_courses_path, :id => 'courses'%> </li>
+     <li> <%= link_to t(:developers, :scope => :developer), admin_developers_path, :id => 'editors'%> </li>
+		 <li> <%= link_to t(:tutors, :scope => :tutor),  developer_tutors_path, :id => 'tutors'%> </li>
+		 <li> <%= link_to t(:faq, :scope => :navigation), developer_faqs_path, :id => 'faq', :target => "_blank" %> </li>
     <% elsif current_user.role.class == Developer %>
-    	<li> <%= link_to 'Dashboard', root_url, :id => 'dashboard'%> </li>
-    	<li> <%= link_to 'Courses', developer_courses_path, :id => 'courses'%> </li>
-    	<li> <%= link_to 'Modules', developer_stitch_modules_path, :id => 'courses'%> </li>
-	    <li> <%= link_to 'Tutors',  developer_tutors_path, :id => 'tutors'%> </li>
-			<li> <%= link_to 'FAQ', developer_faqs_path, :id => 'faq', :target => "_blank" %> </li>
+    	<li> <%= link_to t(:dashboard, :scope => :navigation), root_url, :id => 'dashboard'%> </li>
+    	<li> <%= link_to t(:courses, :scope => :course), developer_courses_path, :id => 'courses'%> </li>
+    	<li> <%= link_to t(:modules, :scope => :stitch_modules), developer_stitch_modules_path, :id => 'courses'%> </li>
+	    <li> <%= link_to t(:tutors, :scope => :tutor),  developer_tutors_path, :id => 'tutors'%> </li>
+			<li> <%= link_to t(:faq, :scope => :navigation), developer_faqs_path, :id => 'faq', :target => "_blank" %> </li>
     <% elsif current_user.role.class == Tutor %>
-			<li> <%= link_to  'Courses', tutor_courses_path, :id => 'courses'%> </li>
-      <li> <%= link_to 'Messaging', chat_messages_path %> </li>
-      <li> <%= link_to  'Discussions', tutor_groups_path, :id => 'groups'%> </li>  
-      <li> <%= link_to 'FAQ', tutor_faqs_path, :id => 'faq', :target => "_blank" %> </li>    
+			<li> <%= link_to t(:dashboard, :scope => :navigation), root_url, :id => 'dashboard'%> </li>
+			<li> <%= link_to t(:courses, :scope => :course), tutor_courses_path, :id => 'courses'%> </li>
+      <li> <%= link_to t(:messaging, :scope => :navigation), chat_messages_path %> </li>
+      <li> <%= link_to t(:discussions, :scope => :chat), tutor_groups_path, :id => 'groups'%> </li>  
+      <li> <%= link_to t(:faq, :scope => :navigation), tutor_faqs_path, :id => 'faq', :target => "_blank" %> </li>    
     <% elsif current_user.role.class == Student %>
-			<li><%= link_to 'Profile', edit_student_student_path(current_user.role_id), :id => 'students' %>
-			<li> <%= link_to 'Courses', student_courses_path, :id => 'courses'%> </li>
-      <li> <%= link_to 'Messaging', chat_messages_path %> </li>     
-      <li> <%= link_to 'FAQ', student_faqs_path, :id => 'faq', :target => "_blank" %> </li>  
+			<li> <%= link_to t(:dashboard, :scope => :navigation), root_url, :id => 'dashboard'%> </li>
+			<li> <%= link_to t(:profile, :scope => :profile), edit_student_student_path(current_user.role_id), :id => 'students' %>
+			<li> <%= link_to t(:courses, :scope => :course), student_courses_path, :id => 'courses'%> </li>
+      <li> <%= link_to t(:messaging, :scope => :navigation), chat_messages_path %> </li>     
+      <li> <%= link_to t(:faq, :scope => :navigation), student_faqs_path, :id => 'faq', :target => "_blank" %> </li>  
     <% end %>    
   <% else %>
-  	<li> <%= link_to  'Welcome', login_path, :id => 'login'%> </li>
+  	<li> <%= link_to  t(:welcome, :scope => :navigation), login_path, :id => 'login'%> </li>
   <% end %>
 </ul>

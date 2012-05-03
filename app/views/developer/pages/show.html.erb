@@ -3,7 +3,7 @@
 
   <h1 id="page_title"><%= render 'page_title' %> 
     <% if current_user.role.editable(@stitch_unit.stitch_module) %>
-      <small><%= link_to "Edit Page", edit_developer_stitch_unit_page_path(@page.stitch_unit,@page) %></small>
+      <small><%= link_to t(:edit, :scope => :general)+" "+t(:page, :scope => :page), edit_developer_stitch_unit_page_path(@page.stitch_unit,@page) %></small>
     <% end %>
   </h1>
 

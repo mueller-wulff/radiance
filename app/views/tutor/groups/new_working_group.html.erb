@@ -1,5 +1,5 @@
 <div id="main">
-	<h1>New Working Group for Course Group <%= @course_group.title %></h1>
+	<h1><%= t(:new, :scope => :general) %> <%= t(:working_group, :scope => :group) %> <%= t(:for, :scope => :general) %> <%= t(:course, :scope => :course) %> <%= t(:group, :scope => :group) %> <%= @course_group.title %></h1>
 	<%= form_for(@working_group, :url => create_working_group_tutor_groups_path(:parent => @course_group)) do |f| %>
 	  <% if @working_group.errors.any? %>
 	    <div id="error_explanation">
@@ -14,11 +14,11 @@
 	  <% end %>
 
 	  <p class="input">
-	    <%= f.label :title, 'Name' %><br />
+	    <%= f.label :title, t(:name, :scope => :profile) %><br />
 	    <%= f.text_field :title %>
 	  </p> 
 		<p class="select">
-			<%= f.label :students %>
+			<%= f.label :students, t(:students, :scope => :student) %>
 			<ol>		
 				<% @course_group.students.each do |student| %>
 					<li><%= check_box_tag("working_group[student_ids][]", student.id, @working_group.students.include?(student)) %> <%= student.profile.fullname %></li>
@@ -26,10 +26,10 @@
 			</ol>
 		</p>
 	  <p class="submit"> 
-	    <%= submit_tag "Submit" %>  
+	    <%= submit_tag t(:submit, :scope => :general) %>  
 	  </p>  
 	<% end %>
-	<%= link_to 'Back', edit_tutor_group_path(@course_group) %>
+	<%= link_to t(:back, :scope => :general), edit_tutor_group_path(@course_group) %>
 </div>
 <div id="aside">
 

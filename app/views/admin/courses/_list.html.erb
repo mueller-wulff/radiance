@@ -1,9 +1,9 @@
 <table  class="userlist">
   <thead>
     <tr>
-      <td>Short Title</td>
-      <td>Title</td>
-      <td>Language</td>
+      <td><%= t(:short_title, :scope => :general) %></td>
+      <td><%= t(:title, :scope => :general) %></td>
+      <td><%= t(:language, :scope => :general) %></td>
       <td>&nbsp;</td>
     </tr>
   </thead>
@@ -15,9 +15,9 @@
         <td><%= course.language %></td>
         <td>
           <% unless course.published  %>
-            <%= link_to image_tag("space.gif", :alt => "edit Course", :class => "icon useredit"), edit_admin_course_path(course) %>
+            <%= link_to image_tag("space.gif", :title => t(:edit, :scope => :general)+ " "+ t(:course, :scope => :course), :class => "icon useredit"), edit_admin_course_path(course) %>
             <% if course.deletable? %>
-              <%= link_to image_tag("space.gif", :alt => "delete Course", :class => "icon delete"), admin_course_path(course), :confirm => 'Are you sure, you want to delete this Course?', :method => :delete %>
+              <%= link_to image_tag("space.gif", :title => t(:delete, :scope => :general)+ " "+ t(:course, :scope => :course), :class => "icon delete"), admin_course_path(course), :confirm => t(:confirm, :scope => :general)+" "+t(:delete, :scope => :general)+" "+t(:this, :scope => :general)+" "+t(:course, :scope => :course)+"?", :method => :delete %>
             <% end %>
           <% end %>
         </td>

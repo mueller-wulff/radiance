@@ -1,13 +1,13 @@
 <div id="main">
 
-  <h1>Default Assesment of Course <%= @course.short_title %></h1>
+  <h1><%= t(:default, :scope => :default_assessment) %> <%= t(:assessment, :scope => :student) %> <%= t(:of, :scope => :general) %> <%= t(:course, :scope => :course) %> <%= @course.short_title %></h1>
 	<table  class="userlist">
 	  <thead>
 	    <tr>
-	      <td>Mark</td>
-	      <td>Name</td>
-	      <td>Lower Treshold</td>
-				<td>Upper Treshold</td>
+	      <td><%= t(:mark, :scope => :default_assessment) %></td>
+	      <td><%= t(:name, :scope => :profile) %></td>
+	      <td><%= t(:lower_treshold, :scope => :default_assessment) %></td>
+				<td><%= t(:upper_treshold, :scope => :default_assessment) %></td>
 	    </tr>
 	  </thead>
 	  <tbody>
@@ -21,7 +21,7 @@
 	    <% end %>
 	  </tbody>
 	</table>
-	<%= link_to 'Back', :back %>
+	<%= link_to t(:back, :scope => :general), :back %>
 	
 </div>
 <div id="aside">

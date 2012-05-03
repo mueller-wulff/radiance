@@ -3,19 +3,19 @@
 
   <p id="notice"><%= notice %></p>
   <h1 id="page_title"><%= @course.title %></h1>
-	<h2>Deadline: <%= show_deadline_course(@course, current_user.role) %>
+	<h2><%= t(:deadline, :scope => :course) %>: <%= show_deadline_course(@course, current_user.role) %>
   <p>
     <%=simple_format @course.description %>
   </p>
 
   <hr>
 
-  <h2>Modules:</h2>
+  <h2><%= t(:modules, :scope => :stitch_module) %>:</h2>
   <div id="module_list_table">
     <table  class="userlist" id="module_list">
       <thead>
         <tr  id="thead">
-          <td>Title</td>
+          <td><%= t(:title, :scope => :general) %></td>
         </tr>
       </thead>
       <tbody>
@@ -28,12 +28,12 @@
     </table>
   </div>
 
-  <h2>Discussions:</h2>
+  <h2><%= t(:discussions, :scope => :chat) %>:</h2>
   <div id="module_list_table">
     <table  class="userlist" id="module_list">
       <thead>
         <tr  id="thead">
-          <td>Title</td>
+          <td><%= t(:title, :scope => :general) %></td>
         </tr>
       </thead>
       <tbody>

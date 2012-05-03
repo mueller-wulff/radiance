@@ -1,10 +1,10 @@
 <div id="main">
-	<h2>Discussions</h2>
+	<h2><%= t(:discussions, :scope => :chat) %></h2>
 	<table class="userlist">
   	<thead>
   		<tr>
-				<td>Name</td>
-        <td>Number of Posts</td>
+				<td><%= t(:name, :scope => :profile) %></td>
+        <td><%= t(:number_of_posts, :scope => :chat) %></td>
         <td>&nbsp;</td>
       </tr>
     </thead>
@@ -13,23 +13,23 @@
 			  <tr>
           <td><%= link_to "#{channel.name}", tutor_discussion_path(channel) %>
             <%- if channel.closed? %>
-              &nbsp;<strong>(closed)</strong>
+              &nbsp;<strong>(<%= t(:closed, :scope => :chat) %>)</strong>
             <%- end %>
           </td>
 			    <td>
-            <%= link_to image_tag("space.gif", :title => "Edit", :class => "icon edit"), edit_tutor_group_channel_path(@group, channel) %>
-            <%= link_to image_tag("space.gif", :title => "Delete", :class => "icon delete"),  tutor_group_channel_path(@group, channel),
-            :confirm => 'Are you sure?', :method => :delete%>
+            <%= link_to image_tag("space.gif", :title => t(:edit, :scope => :general), :class => "icon edit"), edit_tutor_group_channel_path(@group, channel) %>
+            <%= link_to image_tag("space.gif", :title => t(:delete, :scope => :general), :class => "icon delete"),  tutor_group_channel_path(@group, channel),
+            :confirm => t(:confirm_short, :scope => :general), :method => :delete%>
 					</td>
 			  </tr>
 			<% end %>
 			<tr>
-      	<td><%= link_to 'New Discussion', new_tutor_group_channel_path(@group) %></td>
+      	<td><%= link_to t(:new, :scope => :general)+" "+t(:discussion, :scope => :chat), new_tutor_group_channel_path(@group) %></td>
         <td></td>
 				<td></td>
       </tr>
 		</tbody>
 	</table>
-	<%= link_to 'Back', tutor_groups_path(@group) %>
+	<%= link_to t(:back, :scope => :general), tutor_groups_path(@group) %>
 </div>
 <div id="aside"></div>

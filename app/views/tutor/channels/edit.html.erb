@@ -1,24 +1,24 @@
 <div id="main">
-	<h1>Edit Discussion</h1>
+	<h1><%= t(:edit, :scope => :general) %> <%= t(:discussion, :scope => :chat) %></h1>
   <%= form_for(@channel, :url => tutor_group_channel_path(@channel), :html => { :method => "put" }) do |c| %> 
     <%= errors_for(@channel) %>
 
   	<p class="input">
-			<%= label :name, "Name" %>  
+			<%= label :name, t(:name, :scope => :profile) %>  
       <%= c.text_field :name %>  
       <%= c.hidden_field :group_id %>
     </p>  
 
   	<p class="input">
-      <%= label :closed, "Closed?" %>
-      <span class="checkbox"> <%= c.check_box :closed, class:"checkbox"%> Discussion is closed </span>
+      <%= label :closed, t(:closed, :scope => :chat)+"?" %>
+      <span class="checkbox"> <%= c.check_box :closed, class:"checkbox"%> <%= t(:discussion, :scope => :chat) %> <%= t(:is, :scope => :general) %> <%= t(:closed, :scope => :chat) %> </span>
 		</p>  
 
 		<p class="submit"> 
-		  <%= submit_tag "Update" %>  
+		  <%= submit_tag t(:update, :scope => :general) %>  
 		</p>  
 	<% end %> 
-	<%= link_to 'Back', discussion_tutor_group_path(@channel.group)%>
+	<%= link_to t(:back, :scope => :general), discussion_tutor_group_path(@channel.group)%>
 
 </div>
 <div id="aside">
