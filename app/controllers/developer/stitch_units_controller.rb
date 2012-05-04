@@ -59,7 +59,7 @@ class Developer::StitchUnitsController < ApplicationController
       if @unit.update_attributes(params[:stitch_unit])
         format.html { render :action => "show" }
       else
-        format.html { head :error }
+        format.html { render :action => "edit" }
       end
     end
   end

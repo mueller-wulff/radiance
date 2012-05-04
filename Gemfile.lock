@@ -48,6 +48,7 @@ GEM
     ckeditor (3.6.3)
       mime-types (~> 1.16)
       orm_adapter (~> 0.0.5)
+    client_side_validations (3.1.4)
     cocaine (0.2.0)
     coffee-rails (3.1.1)
       coffee-script (>= 2.2.0)
@@ -165,6 +166,7 @@ DEPENDENCIES
   authlogic!
   autotest-rails
   ckeditor (~> 3.6.0)
+  client_side_validations
   coffee-rails (~> 3.1.0)
   execjs
   jquery-rails

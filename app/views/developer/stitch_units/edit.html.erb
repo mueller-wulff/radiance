@@ -4,16 +4,16 @@
       <td class="unit" colspan="2">
         <%= form_for(@unit, :url => developer_stitch_module_stitch_unit_path(@stitch_module, @unit)) do |f| %>
 					<% if @unit.errors.any? %>
-					  <div id="error_explanation">
-					    <h2><%= pluralize(@unit.errors.count, "error") %> prohibited this unit from being saved:</h2>
+					    <div id="error_explanation">
+					      <h2><%= pluralize(@unit.errors.count, "error") %> prohibited this StitchUnit from being saved:</h2>
 
-					    <ul>
+					      <ul>
 					      <% @unit.errors.full_messages.each do |msg| %>
 					        <li><%= msg %></li>
 					      <% end %>
-					    </ul>
-					  </div>
-					<% end %>
+					      </ul>
+					    </div>
+						<% end %>
           <%= f.text_field :title  %>
 					Weight: <%= f.text_field :weight %>%
         <% end %>
