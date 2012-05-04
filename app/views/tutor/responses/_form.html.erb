@@ -12,14 +12,14 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :attempt %><br />
+    <%= f.label :attempt, t(:attempt, :scope => :response) %><br />
     <%= f.text_field :attempt %>
   </div>
   <div class="field">
-    <%= f.label :answer %><br />
+    <%= f.label :answer, t(:answer, :scope => :answer) %><br />
     <%= f.text_field :answer %>
   </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit t(:submit, :scope => :general) %>
   </div>
 <% end %>

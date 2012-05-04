@@ -1,15 +1,15 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <b>Attempt:</b>
+  <b><%= t(:attempt, :scope => :response) %>:</b>
   <%= @response.attempt %>
 </p>
 
 <p>
-  <b>Answer:</b>
+  <b><%= t(:answer, :scope => :answer) %>:</b>
   <%= @response.answer %>
 </p>
 
 
-<%= link_to 'Edit', edit_response_path(@response) %> |
-<%= link_to 'Back', responses_path %>
+<%= link_to t(:edit, :scope => :general), edit_response_path(@response) %> |
+<%= link_to t(:back, :scope => :general), responses_path %>

@@ -1,5 +1,5 @@
 <div id="main">
-	<h1>Enroll student</h1>
+	<h1><%= t(:enroll, :scope => :tutor) %> <%= t(:student, :scope => :student) %></h1>
 	<%= form_for(@student, :url => tutor_group_students_path) do |f| %> 
 	  <% if @profile.errors.any? %>
 	    <div id="error_explanation">
@@ -14,15 +14,15 @@
 	  <% end %>  
 		<%= f.fields_for :profile do |g| %>
 			<p class="input">
-				<%= label :email, "Email" %>  
+				<%= label :email, t(:email, :scope => :profile) %>  
 			  <%= g.text_field :email %>  
 			</p>  
 			<p class="submit"> 
-			  <%= submit_tag "Enroll" %>  
+			  <%= submit_tag t(:enroll, :scope => :tutor) %>  
 			</p>  
 		<% end %>
 	<% end %> 
-	<%= link_to 'Back', edit_tutor_group_path(@tutor, @group) %>
+	<%= link_to t(:back, :scope => :general), tutor_course_students_path(@group.course) %>
 
 </div>
 <div id="aside">

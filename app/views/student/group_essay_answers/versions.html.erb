@@ -1,14 +1,20 @@
 <div id="main">
 	<div class="showView" id="contentElements">
-		<% @versions.each do |version| %>
-			<p>
-				<%= radio_button_tag "revert_to", version.index %>
-				<%= Profile.find(version.whodunnit).login %>
-				<%= version.created_at %>
-			</p>
-			<p>
-				<%= raw version.reify.txt if version.object %>
-			</p>
+		<%= form_for @group_essay_answer, :url => revert_to_student_content_element_group_essay_answer_path(@content, @element, @group_essay_answer) do |f| %>
+			<%= f.fields_for :version do |v| %>
+				<% @versions.each do |version| %>
+					<p>
+						<%= v.radio_button "revert_to", version.id %>
+						<%= Profile.find(version.whodunnit).login %>
+						<%= version.created_at %>
+					</p>
+					<p>
+						<%#= text_area_tag "txt", version.reify.txt, :escape => false if version.object %>
+						<%= raw version.reify.txt %>
+					</p>
+				<% end %>
+				<%= v.submit t(:revert, :scope => :version)+" "+t(:version, :scope => :version) %>
+			<% end %>
 		<% end %>
 	</div>
 </div>

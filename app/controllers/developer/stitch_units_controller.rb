@@ -14,7 +14,6 @@ class Developer::StitchUnitsController < ApplicationController
   # GET /stitch_units/1.xml
   def show
     @unit = @stitch_module.stitch_units.find(params[:id])
-
     respond_to do |format|
       format.html # show.html.erb
     end

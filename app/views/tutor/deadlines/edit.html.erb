@@ -1,17 +1,23 @@
 <div id="main">
-  <h1>Editing Deadline for group <%= @deadline.deadlinable.title %></h1>
+  <h1><%= t(:editing, :scope => :general) %> <%= t(:deadline, :scope => :course) %> <%= t(:for, :scope => :general) %> <%= show_deadline_title(@deadline) %></h1>
   <%= form_for(@deadline, :url => tutor_course_deadline_path(@course, @deadline)) do |f| %>
     <p class="checkbox">
-			<%= label :due_date, "Deadline" %><br />
-			<%= datetime_select "deadline", :due_date, :default => @deadline.due_date %> 
+			<%= label :due_date, t(:deadline, :scope => :course) %><br />
+			<%= datetime_select "deadline", :due_date, :default => @deadline.due_date %><div id="error_explanation"></div> 
 		</p>
+		<%= hidden_field_tag :group_due_date, @group_deadline.due_date %>
 		<p class="submit"> 
-		  <%= submit_tag "Submit" %>  
+		  <%= submit_tag t(:submit, :scope => :general) %>  
 		</p>
   <% end %>
-  <%= link_to 'Back', tutor_course_deadlines_path(@course) %>
+  <%= link_to t(:back, :scope => :general), tutor_course_deadlines_path(@course) %>
 
 </div>
 <div id="aside">
 
 </div>
+<script type="text/javascript">
+	$(document).ready(function(){
+    Stitched.loadCheckDueDate();
+  });
+</script>

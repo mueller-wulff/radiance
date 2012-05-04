@@ -1,5 +1,5 @@
-Hello Tutor <%= @tutor.profile.login %>,
+<%= I18n.t(:hello_tutor, :scope => :mailer) %> <%= @tutor.profile.fullname %>,
 
-the student <%= @student.profile.login %> answered the assignment of "<%= @page.stitch_unit.title %>"
+<%= I18n.t(:student, :scope => :mailer) %> <%= @student.profile.fullname %> <%= I18n.t(:answered, :scope => :mailer) %> "<%= @page.stitch_unit.title %>"
 
-Visit: <%= @url %>
+<%= I18n.t(:visit, :scope => :mailer) %>: <%= @url %>

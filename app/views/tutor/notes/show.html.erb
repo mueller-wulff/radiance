@@ -1,15 +1,15 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <b>Text:</b>
+  <b><%= t(:text, :scope => :general) %>:</b>
   <%= @note.text %>
 </p>
 
 <p>
-  <b>Private:</b>
+  <b><%= t(:private, :scope => :general) %>:</b>
   <%= @note.private %>
 </p>
 
 
-<%= link_to 'Edit', edit_note_path(@note) %> |
-<%= link_to 'Back', notes_path %>
+<%= link_to t(:edit, :scope => :general), edit_note_path(@note) %> |
+<%= link_to t(:back, :scope => :general), notes_path %>

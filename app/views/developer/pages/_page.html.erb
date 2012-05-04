@@ -3,9 +3,9 @@
   <td class="gewichtung">&nbsp;</td>
   <td class="functions">
     <% if current_user.role.editable(page.stitch_unit.stitch_module) %>
-      <%= link_to image_tag("space.gif", :alt => "edit Page", :class => "icon useredit"), ajax_edit_developer_stitch_unit_page_path(page.stitch_unit,page), :class => "edit_page" %>
-      <%= link_to image_tag("space.gif", :alt => "copy Page", :class => "icon duplicate"), developer_stitch_module_page_copy_path(page.stitch_unit.stitch_module), :class => "copy_page" %>
-      <%= link_to image_tag("space.gif", :alt => "delete Page", :class => "icon delete"), developer_stitch_unit_page_path(page.stitch_unit,page), :method => :delete, :confirm => "Are You Sure you want to delete this Page and all it's Content", :remote => true, :class => "delete_page" %>
+      <%= link_to image_tag("space.gif", :title => t(:edit, :scope => :general)+ " "+ t(:page, :scope => :page), :class => "icon useredit"), ajax_edit_developer_stitch_unit_page_path(page.stitch_unit,page), :class => "edit_page" %>
+      <%= link_to image_tag("space.gif", :title => t(:copy, :scope => :general)+ " "+ t(:page, :scope => :page), :class => "icon duplicate"), developer_stitch_module_page_copy_path(page.stitch_unit.stitch_module), :class => "copy_page" %>
+      <%= link_to image_tag("space.gif", :title => t(:delete, :scope => :general)+ " "+ t(:page, :scope => :page), :class => "icon delete"), developer_stitch_unit_page_path(page.stitch_unit,page), :method => :delete, :confirm => t(:confirm, :scope => :general)+" "+t(:delete, :scope => :general)+" "+t(:this, :scope => :general)+" "+t(:page, :scope => :page)+" "+t(:delete_page, :scope => :page)+"?", :remote => true, :class => "delete_page" %>
     <% else %>
       <%= image_tag("space.gif") %><%= image_tag("space.gif") %>
     <% end %>  

@@ -1,6 +1,6 @@
 <%=  f.fields_for :element do |element_field| %>
   <p class="input">   
-    <label for="Input">Discussion Title</label>
+    <label for="Input"><%= t(:discussion, :scope => :chat) %> <%= t(:title, :scope => :general) %></label>
     <%= element_field.text_area :title, :size => "10x2" %>
  </p>
 <% end %>

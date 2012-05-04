@@ -1,0 +1,10 @@
+<div id='chat' %>
+  <div id='chat_channels'>
+    <% roster_elements.each do |ch| %>
+      <%= render_channel(Channel.find_by_token(ch[:channel_id]).channel_string_id) %>
+    <%end%>
+  </div>
+
+  <%= render partial:"chat/roster" %>
+
+</div>

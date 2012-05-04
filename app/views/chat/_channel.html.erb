@@ -1,0 +1,19 @@
+<div class="channel" id="<%= channel.token %>" style='display: none'>
+  <p><%= t(:messages, :scope => :chat) %></p>
+  <div class="container">
+    <div class="messages">
+      <% channel.messages.each do |msg| %>
+        <%= render :partial => 'chat/message', :locals => { :message => msg } %>
+      <% end %>
+    </div>
+  </div>
+
+  <form>
+    <% if channel.closed? %>
+      <input type="text" name="lname" disabled="disabled" placeholder="Discussion is closed"/>      
+    <%else%>
+      <input type="text" class='chat-input' placeholder="Type message...">
+    <%end%>
+  </form>
+<%= link_to t(:back, :scope => :general), :back %>
+</div>

@@ -1,0 +1,16 @@
+<div id="roster">
+  <p><%= t(:roster, :scope => :chat) %></p>
+
+  <div class="container">
+    <% roster_elements.each do |el| %>
+      <div class="tab" id="tab<%=el[:channel_id]%>">
+        <a href="#" data-channel-id="<%=el[:channel_id]%>">
+          <div class="element <%=el[:type]%>" id="<%=el[:channel_id]%>">
+            <span id="badge-<%=el[:channel_id]%>" class="badge badge-info" style="display: none;">0</span>
+            <%=el[:name]%>
+          </div>
+        </a>
+      </div>
+    <%end%>
+  </div>
+</div>

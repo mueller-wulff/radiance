@@ -1,0 +1,10 @@
+<div id='main'>
+  <h1><%= @discussion.name %></h1>
+  <%= render_channel("discussion-#{@discussion.id}") %>
+
+  <% if @show_edit_link == true %> 
+    <div class='clear'>
+    <%= link_to t(:edit, :scope => :general)+ " "+ t(:discussion, :scope => :chat), edit_tutor_group_channel_path(@discussion.group, @discussion) %>
+    </div>
+  <% end %>
+</div>

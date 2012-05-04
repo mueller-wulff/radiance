@@ -1,5 +1,14 @@
 Stitched::Application.routes.draw do  
+
+  get "/chat/channel_for/:id" => "chat/messages#channel_for"
+
+  # Chatting routes
+  namespace :chat do
+    resources :messages
   
+    post "/chat/message" => "chat#message"
+  end
+
   scope :module => 'static' do
     resources :faqs do
       collection do
@@ -21,6 +30,7 @@ Stitched::Application.routes.draw do
 
   namespace :student do
     resources :students 
+    resources :discussions, :only => [:show]
     resources :courses do
       member do
         get 'show_coursebook'
@@ -53,14 +63,15 @@ Stitched::Application.routes.draw do
         resources :answers
         resources :group_essay_answers do
           get 'versions', :on => :member
+          put 'revert_to', :on => :member
         end
       end
     end
         
   end
-  
+
   namespace :tutor do    
-    
+    resources :discussions, :only => [:show]   
     resources :students do
       resources :profiles
     end
@@ -68,6 +79,12 @@ Stitched::Application.routes.draw do
     resources :grades
         
     resources :groups do
+      resources :channels#, :path => "chat/channels"
+      collection do
+        get 'new_working_group'
+        post 'create_working_group'
+      end
+      get 'discussion', :on => :member
       resources :students do
         member do
           get 'shuffle'
@@ -84,10 +101,12 @@ Stitched::Application.routes.draw do
     resources :notes
     resources :responses
     resources :courses do
+      get "answer_logs"  => 'answer_logs#index'
       resources :students
       member do
         get 'overview'
         get 'assessment'
+        get 'assignment'
       end                
       resources :deadlines
       resources :default_assesments

@@ -1,47 +1,49 @@
 <div id="main">
-	<h1>Managing Students</h1>
+	<h1><%= t(:managing, :scope => :tutor) %> <%= t(:students, :scope => :student) %></h1>
 
 	<table  class="userlist">
   	<thead>
   		<tr>
-				<td>Avatar</td>
-        <td>E-Mail</td>
-				<td>Login</td>
-				<td>Name</td>
-				<td>Lastname</td>
-        <td>Active?</td>
+				<td><%= t(:avatar, :scope => :profile) %></td>
+        <td><%= t(:email, :scope => :profile) %></td>
+				<td><%= t(:login, :scope => :profile) %></td>
+				<td><%= t(:name, :scope => :profile) %></td>
+				<td><%= t(:lastname, :scope => :profile) %></td>
+        <td><%= t(:active, :scope => :profile) %>?</td>
         <td>&nbsp;</td>
       </tr>
     </thead>
     <tbody>
-			<% @groups.each do |group| %>
+			<% @course_groups.each do |c_group| %>
 				<tr>
-					<td><strong><%= group.title %></strong></td>
-					<td><%= link_to 'Enroll Student', new_tutor_group_student_path(group) %></td>
+					<td><strong><%= c_group.title %></strong></td>
+					<td><%= link_to t(:enroll, :scope => :tutor)+" "+t(:student, :scope => :student), new_tutor_group_student_path(c_group) %></td>
 					<td></td>
 					<td></td>
 					<td></td>
 					<td></td>
-					<td></td>
+					<td>
+						<%= link_to image_tag("space.gif", :title => t(:manage, :scope => :general)+" "+t(:working_groups, :scope => :group), :class => "icon edit"), edit_tutor_group_path(c_group) %>
+					</td>
 				</tr>
-				<% group.students.each do |student| %>
+				<% c_group.all_students.each do |student| %>
 			  	<tr>
 						<td><%= image_tag avatar_url(student) %></td>
 						<td><%= student.profile.email %></td>
 						<td><%= student.profile.login %></td>
 						<td><%= student.profile.name %></td>
 						<td><%= student.profile.lastname %></td>
-						<td><%= student.activated %></td>
+						<td><%= student.activated ? "working" : "inactive" %></td>
 				    <td>
-	          	<%= link_to image_tag("space.gif", :title => "rate Assignment", :class => "icon edit"), tutor_group_student_path(group, student) %>
-							<%= link_to image_tag("space.gif", :title => "shuffle Student in another Group", :class => "icon duplicate"), shuffle_tutor_group_student_path(group, student) %>
+	          	<%= link_to image_tag("space.gif", :title => t(:coursebook, :scope => :student), :class => "icon-coursebook"), tutor_group_student_path(c_group, student) %>
+							<%= link_to image_tag("space.gif", :title => t(:remove, :scope => :general)+" "+t(:student, :scope => :student), :class => "icon delete"), tutor_student_path(student, :course_id => @course), :method => :delete if student.deletable? %>
 						</td>
 				  </tr>
-				<% end %>
+				<% end %>				
 			<% end %>
 			<tr>
 				<td></td>
-				<td><%= link_to "New Group for Course", new_tutor_group_path(:course => @course) %></td>
+				<td><%= link_to t(:new, :scope => :general)+" "+t(:course, :scope => :course)+" "+t(:group, :scope => :group), new_tutor_group_path(:course => @course) %></td>
 				<td></td>
 				<td></td>
 				<td></td>
@@ -50,7 +52,7 @@
 			</tr>
 		</tbody>
 	</table>
-	<%= link_to 'Back', overview_tutor_course_path(@course) %>
+	<%= link_to t(:back, :scope => :general), overview_tutor_course_path(@course) %>
 </div>
 <div id="aside">
 

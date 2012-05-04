@@ -8,14 +8,14 @@
     <% elsif @stitch_module %>
       <li><%= link_to @stitch_module.course.short_title,  admin_course_path(@stitch_module.course) %></li>
       <% if  @stitch_module.new_record? %>
-        <li>new Module</li>
+        <li><%= t(:new, :scope => :general) %> <%= t(:module, :scope => :stitch_module) %></li>
       <% else %>
         <li><%= @stitch_module.short_title %></li>
       <% end %>
     <% else %>
-      <li><%= link_to "All Courses", admin_courses_path %></li>
+      <li><%= link_to t(:all, :scope => :general)+" "+t(:courses, :scope => :course), admin_courses_path %></li>
       <% if  @course.new_record? %>
-        <li>new Course</li>
+        <li><%= t(:new, :scope => :general) %> <%= t(:course, :scope => :course) %></li>
       <% else %>
         <li><%= @course.short_title %></li>
       <% end %>
@@ -29,14 +29,14 @@
     <% elsif @stitch_module %>
       <li><%= link_to @stitch_module.course.short_title,  developer_course_path(@stitch_module.course) %></li>
       <% if  @stitch_module.new_record? %>
-        <li>new Module</li>
+        <li><%= t(:new, :scope => :general) %> <%= t(:module, :scope => :stitch_module) %></li>
       <% else %>
         <li><%= @stitch_module.short_title %></li>
       <% end %>
     <% else %>
-      <li><%= link_to "All Courses", developer_courses_path %></li>
+      <li><%= link_to t(:all, :scope => :general)+" "+t(:courses, :scope => :course), developer_courses_path %></li>
       <% if  @course.new_record? %>
-        <li>new Course</li>
+        <li><%= t(:new, :scope => :general) %> <%= t(:course, :scope => :course) %></li>
       <% else %>
         <li><%= @course.short_title %></li>
       <% end %>
@@ -52,7 +52,7 @@
       <li><%= link_to @stitch_module.course.short_title,  tutor_course_path(@stitch_module.course) %></li>
       <li><%= @stitch_module.short_title %></li>
     <% else %>
-      <li><%= link_to "All Courses", tutor_courses_path %></li>
+      <li><%= link_to t(:all, :scope => :general)+" "+t(:courses, :scope => :course), tutor_courses_path %></li>
       <li><%= @course.short_title %></li>
     <% end %>
 
@@ -66,7 +66,7 @@
       <li><%= link_to @stitch_module.course.short_title,  student_course_path(@stitch_module.course) %></li>
       <li><%= @stitch_module.short_title %></li>
     <% else %>
-      <li><%= link_to "All Courses", student_courses_path %></li>
+      <li><%= link_to t(:all, :scope => :general)+" "+t(:courses, :scope => :course), student_courses_path %></li>
       <li><%= @course.short_title %></li>
     <% end %>
 

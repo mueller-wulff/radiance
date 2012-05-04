@@ -3,14 +3,12 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <title>STITCHed</title>
-
-
-   
-
-	<%= javascript_include_tag "application" %>
-	<%= javascript_include_tag "ckeditor" %>
-	<%= stylesheet_link_tag "application" %>
-  <%= csrf_meta_tag %>
+    <%= javascript_include_tag "application" %>
+	  <%= javascript_include_tag "ckeditor" %>
+	  <%#= javascript_include_tag "http://localhost:8080/application.js" %>
+	  <%= javascript_include_tag "http://stitch.rapidrabbit.de:8080/application.js" %>
+	  <%= stylesheet_link_tag "application" %>
+    <%= csrf_meta_tag %>
   </head>
 
   <body>
@@ -19,20 +17,19 @@
         <h2>radiance 0.2.1 alpha</h2>
         <ul>
           <% if current_user %>  
-            <li>logged in as: <%= current_user.login %></li>
-            <li><%= link_to "logout", logout_path %></li>  
+            <li><%= t(:logged_in_as, :scope => :general) %>: <%= current_user.login %></li>
+            <li><%= link_to t(:logout_link, :scope => :general), logout_path %></li>  
           <% else %>  
-            <li><%= link_to "login", login_path %></li> 
+            <li><%= link_to t(:login_link, :scope => :general), login_path %></li> 
           <% end %> 
         </ul>
         <ul class="path"> 
 					<% if current_user %>
-          	<li>Welcome</li> 
+          	<li><%= t(:welcome, :scope => :navigation) %></li> 
 		        <li><%= current_user.role.class %></li> 
 					<% end %>
         </ul>
       </div> 
-
 
       <%= render 'layouts/navigation' %>
 

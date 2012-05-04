@@ -19,7 +19,7 @@ class Tutor::CoursesController < ApplicationController
   
   def overview
     @course = Course.find(params[:id])
-
+    @answer_log_size = @course.answer_logs.where(:tutor_id => current_user.role.id).size
     respond_to do |format|
       format.html # show.html.erb
     end
@@ -27,9 +27,17 @@ class Tutor::CoursesController < ApplicationController
   
   def assessment
     @course = Course.find(params[:id])
-    @students = @course.students
+    @students = @course.students(current_user.role)
     @stitch_modules = @course.stitch_modules
 
+    respond_to do |format|
+      format.html # show.html.erb
+    end
+  end
+  
+  def assignment
+    @course = Course.find(params[:id])
+    @stitch_modules = @course.stitch_modules
     respond_to do |format|
       format.html # show.html.erb
     end

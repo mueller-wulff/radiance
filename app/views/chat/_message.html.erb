@@ -1,0 +1,10 @@
+<div class="message">
+  <div class="header">
+    <div class="sender"><%= message.profile.name %></div>
+    <div class="time"><%= I18n.l(message.created_at, :format => :short) %></div>
+    <div class="clear"></div>
+  </div>
+  <div class="message-body">
+    <%= message.body %>
+  </div>
+</div>

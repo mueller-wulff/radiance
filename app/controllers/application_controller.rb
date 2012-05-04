@@ -1,6 +1,11 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
   helper_method :current_user_session, :current_user
+  before_filter :set_locale
+  
+  def set_locale
+    I18n.locale = params[:locale] if params.include?('locale')
+  end
 
   private
   
@@ -23,7 +28,7 @@ class ApplicationController < ActionController::Base
   def require_user
     unless current_user
       store_location
-      flash[:notice] = "You must be logged in to access this page"
+      flash[:notice] = t(:must_login, :scope => :general)
       redirect_to login_url
       return false
     end
@@ -32,7 +37,7 @@ class ApplicationController < ActionController::Base
   def require_no_user
     if current_user
       store_location
-      flash[:notice] = "You must be logged out to access this page"
+      flash[:notice] = t(:must_logout, :scope => :general)
       redirect_to login_url
       return false
     end
@@ -42,7 +47,7 @@ class ApplicationController < ActionController::Base
     unless current_user && current_user.role.class == Tutor
       #TODO check tutor rights!
       store_location
-      flash[:notice] = "You must be logged in to access this page"
+      flash[:notice] = t(:must_login, :scope => :general)
       redirect_to login_url
       return false
     end
@@ -52,7 +57,7 @@ class ApplicationController < ActionController::Base
     unless current_user && current_user.role.class == Student
       #TODO check tutor rights!
       store_location
-      flash[:notice] = "You must be logged in to access this page"
+      flash[:notice] = t(:must_login, :scope => :general)
       redirect_to login_url
       return false
     end
@@ -62,7 +67,7 @@ class ApplicationController < ActionController::Base
     unless current_user && current_user.role.class == Developer
       #TODO check developer rights!
       store_location
-      flash[:notice] = "You must be admin in order to access this page" #admin or developer?
+      flash[:notice] = t(:must_be_admin, :scope => :general) #admin or developer?
       redirect_to login_url
       return false
     end
@@ -71,7 +76,7 @@ class ApplicationController < ActionController::Base
   def require_admin
     unless current_user && current_user.role.class == Developer && current_user.role.admin
       store_location
-      flash[:notice] = "You must be admin in order to access this page"
+      flash[:notice] = t(:must_be_admin, :scope => :general)
       redirect_to login_url
       return false
     end

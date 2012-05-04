@@ -1,11 +1,10 @@
 <div id="main">
-  <h1>!!!Your current Browser is not supported!!!</h1>
-  <p>In order to use this amazing piece of software you need to use a browser
-    that isn't a complete piece of crap, like the one you are using right now.</p>
-  <p>But don't worry there are many free faster and more secure browsers out there. </p>
-  <p><%= link_to "Get Firefox", 'http://www.firefox.com'%></p>
-  <p><%= link_to "Get Chrome", 'http://www.google.com/chrome/'%></p>
-  <p><%= link_to "Get Safari", 'http://www.apple.com/safari/download/'%></p>
+  <h1>!!!<%= t(:not_supported, :scope => :browser) %>!!!</h1>
+  <p><%= t(:crap_browser, :scope => :browser) %></p>
+  <p><%= t(:more_browser, :scope => :browser) %> </p>
+  <p><%= link_to t(:get, :scope => :general)+ " Firefox", 'http://www.firefox.com'%></p>
+  <p><%= link_to t(:get, :scope => :general)+ " Chrome", 'http://www.google.com/chrome/'%></p>
+  <p><%= link_to t(:get, :scope => :general)+ " Safari", 'http://www.apple.com/safari/download/'%></p>
 </div>
 <div id="aside">
 

@@ -5,15 +5,15 @@
 	<% if @student && @student.give_answer?(@student, e) %>
 		<%=raw show_answer(e, @student).txt %>
 		<p>
-			<label>Comment: <%=show_answer(e, @student).comment %></label>
+			<label><%= t(:comment, :scope => :tutor) %>: <%=show_answer(e, @student).comment %></label>
 		</p>
 		<p>
-			<label>Achievement: <%=text_field_tag "achievement-element", show_answer(e, @student).score, {:readonly => true, :class => "achievement" }%></label>
-		</p>
-		<p>
-			<label>Score: <%=text_field_tag "score-element", show_score(e, current_user.role), {:readonly => true, :class => "score" } %></label>
+			<label><%= t(:achievement, :scope => :tutor) %>: <%=text_field_tag "achievement-element", show_answer(e, @student).score, {:readonly => true, :class => "achievement" }%></label>
 		</p>
 	<% else %>
   	<textarea name="Textarea" id="Textarea" cols="65" rows="10"></textarea>		
 	<% end %>
+</p>	
+<p>
+	<label><%= t(:score, :scope => :tutor) %>: <%=text_field_tag "score-element", show_score(e, current_user.role), {:readonly => true, :class => "score" } %></label>
 </p>

@@ -1,9 +1,9 @@
 <table  class="userlist">
   <thead>
     <tr>
-      <td>Short Title</td>
-      <td>Title</td>
-      <td>Language</td>
+      <td><%= t(:short_title, :scope => :general) %></td>
+      <td><%= t(:title, :scope => :general) %></td>
+      <td><%= t(:language, :scope => :general) %></td>
 			<td>&nbsp;</td>
     </tr>
   </thead>
@@ -13,7 +13,7 @@
         <td><%= link_to course.short_title, student_course_path(course) %></td>
         <td><%= course.title %></td>
         <td><%= course.language %></td>
-				<td><%= link_to image_tag("space.gif", :title => "show Coursebook", :class => "icon duplicate"), show_coursebook_student_course_path(course) %>
+				<td><%= link_to image_tag("space.gif", :title => t(:show, :scope => :general)+" "+t(:coursebook, :scope => :student), :class => "icon-coursebook"), show_coursebook_student_course_path(course) %>
       </tr>
     <% end %>
   </tbody>

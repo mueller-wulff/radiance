@@ -1,9 +1,9 @@
 <%= form_for @group_essay_answer, :url => student_content_element_group_essay_answer_path(@content, @element, @group_essay_answer) do |f| %>
 	<%= render "student/#{@element.class.name.pluralize.underscore}/edit", :content => @content, :element => @element, :f => f %>	
 	<p>
-		<%= link_to "Previous version", {:previous => @group_essay_answer.previous_version}, :id => "previous", :class => "version" %>
-		<%= link_to "Current version", {:next => @group_essay_answer.next_version}, :id => "next", :class => "version" %> 
-		<%= link_to "All versions", versions_student_content_element_group_essay_answer_path(@content, @element, @group_essay_answer) %> 
+		<%= link_to t(:previous, :scope => :version)+" "+t(:version, :scope => :version), {:previous => @group_essay_answer.previous_version}, :id => "previous", :class => "version" %>
+		<%= link_to t(:current, :scope => :general)+" "+t(:version, :scope => :version), {:next => @group_essay_answer.next_version}, :id => "next", :class => "version" %> 
+		<%= link_to t(:all, :scope => :general)+" "+t(:versions, :scope => :version), versions_student_content_element_group_essay_answer_path(@content, @element, @group_essay_answer) %> 
 	<p>
 <% end %>
 <div class="save">

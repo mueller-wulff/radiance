@@ -12,14 +12,14 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :text %><br />
+    <%= f.label :text, t(:text, :scope => :general) %><br />
     <%= f.text_field :text %>
   </div>
   <div class="field">
-    <%= f.label :private %><br />
+    <%= f.label :private, t(:private, :scope => :general) %><br />
     <%= f.check_box :private %>
   </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit t(:submit, :scope => :general) %>
   </div>
 <% end %>

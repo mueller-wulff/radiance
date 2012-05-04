@@ -1,6 +1,6 @@
 <td class="page">
   <%= form_for(@page, :url => developer_stitch_unit_page_path(@stitch_unit,@page)) do |f| %>
-    <%= f.text_field :title %>
+    <%= f.text_field :title, t(:title, :scope => :general) %>
   <% end %>
 </td>
 <td class="gewichtung">&nbsp;</td>

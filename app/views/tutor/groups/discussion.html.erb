@@ -1,0 +1,36 @@
+<div id="main">
+	<h2><%= t(:discussions, :scope => :chat) %></h2>
+	<table class="userlist">
+  	<thead>
+  		<tr>
+				<td><%= t(:name, :scope => :profile) %></td>
+        <td><%= t(:number_of_posts, :scope => :chat) %></td>
+        <td>&nbsp;</td>
+      </tr>
+    </thead>
+    <tbody>
+			<% @channels.each do |channel| %>
+			  <tr>
+          <td><%= link_to "#{channel.name}", tutor_discussion_path(channel) %>
+            <%- if channel.closed? %>
+              &nbsp;<strong>(<%= t(:closed, :scope => :chat) %>)</strong>
+            <%- end %>
+          </td>
+					<td>&nbsp;</td>
+			    <td>
+            <%= link_to image_tag("space.gif", :title => t(:edit, :scope => :general), :class => "icon edit"), edit_tutor_group_channel_path(@group, channel) %>
+            <%= link_to image_tag("space.gif", :title => t(:delete, :scope => :general), :class => "icon delete"),  tutor_group_channel_path(@group, channel),
+            :confirm => t(:confirm_short, :scope => :general), :method => :delete%>
+					</td>
+			  </tr>
+			<% end %>
+			<tr>
+      	<td><%= link_to t(:new, :scope => :general)+" "+t(:discussion, :scope => :chat), new_tutor_group_channel_path(@group) %></td>
+        <td></td>
+				<td></td>
+      </tr>
+		</tbody>
+	</table>
+	<%= link_to t(:back, :scope => :general), tutor_groups_path %>
+</div>
+<div id="aside"></div>

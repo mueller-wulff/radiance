@@ -45,7 +45,8 @@ class Student < Role
   
   def shuffle_group(old_group, new_group)
     self.groups.delete(old_group)
-    self.groups << new_group    
+    self.groups << new_group 
+    send_new_group(new_group)   
   end
   
   def send_new_group(group)
@@ -59,10 +60,6 @@ class Student < Role
   def give_answer?(student, element)
     return true if Answer.where(:student_id => student.id, :question_id => element.id).first
     return false
-  end
-  
-  def course_group(course, tutor)
-    self.groups.where(:course_id => course.id, :tutor_id => tutor.id).first
   end
   
 end

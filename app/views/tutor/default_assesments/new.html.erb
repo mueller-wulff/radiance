@@ -1,44 +1,44 @@
 <div id="main">
-	<h1>Set the grading System for Course <%= @course.short_title %></h1>
+	<h1><%= t(:set, :scope => :default_assessment) %> <%= @course.short_title %></h1>
 	<p>
-		Please change the grading system according to your national convention.<br />
-		The underlying assessment system is based on percentages. Therefore you are asked to describe your national grading system by:<br />
-		- the name of the respective grade and<br />
-		- the upper and lower threshold values in percent.<br /><br />
+		<%= t(:set_text_1, :scope => :default_assessment) %><br />
+		<%= t(:set_text_2, :scope => :default_assessment) %>:<br />
+		- <%= t(:set_text_3, :scope => :default_assessment) %><br />
+		- <%= t(:set_text_4, :scope => :default_assessment) %>.<br /><br />
 
-		The following table shows a German grading denomination as example:<br />
+		<%= t(:set_text_5, :scope => :default_assessment) %>:<br />
 	</p>
 	<table>
 		<thead>
 			<tr>
-				<td>Name</td>
-				<td>Lower threshold value (from ... %)</td>
-				<td>Upper threshold value (to ... %)</td>
+				<td><%= t(:name, :scope => :profile) %></td>
+				<td><%= t(:lower_value, :scope => :default_assessment) %></td>
+				<td><%= t(:upper_value, :scope => :default_assessment) %></td>
 			</tr>
 		</thead>
 		<tbody>
 			<tr>
-				<td>insufficient (failed) (5)</td>
+				<td><%= t(:insufficient, :scope => :default_assessment) %> (5)</td>
 				<td>0</td>
 				<td>49</td>
 			</tr>
 			<tr>
-				<td>sufficient (4)</td>
+				<td><%= t(:sufficient, :scope => :default_assessment) %> (4)</td>
 				<td>50</td>
 				<td>65</td>
 			</tr>
 			<tr>
-				<td>satisfactory (3)</td>
+				<td><%= t(:satisfactory, :scope => :default_assessment) %> (3)</td>
 				<td>66</td>
 				<td>81</td>
 			</tr>
 			<tr>
-				<td>good (2)</td>
+				<td><%= t(:good, :scope => :default_assessment) %> (2)</td>
 				<td>82</td>
 				<td>97</td>
 			</tr>
 			<tr>
-				<td>very good, excellent (1)</td>
+				<td><%= t(:excellent, :scope => :default_assessment) %> (1)</td>
 				<td>98</td>
 				<td>100</td>
 			</tr>
@@ -50,15 +50,15 @@
 				<p class='input'>
 	    		<%= f.label :mark, "#{index+1}"  %>
 					<%= f.hidden_field :mark, :value => "#{index+1}"  %>
-		     	<label>Name</label> <%= f.text_field :name  %>
-				  <label>Lower Threshold</label> <%= f.text_field :lower_treshold %>
-					<label>Upper Threshold</label> <%= f.text_field :upper_treshold %>
+		     	<label><%= t(:name, :scope => :profile) %></label> <%= f.text_field :name  %>
+				  <label><%= t(:lower_treshold, :scope => :default_assessment) %></label> <%= f.text_field :lower_treshold %>
+					<label><%= t(:upper_treshold, :scope => :default_assessment) %></label> <%= f.text_field :upper_treshold %>
 				</p>
 	   	<% end %>
 	 	<% end %>
-	  <%= submit_tag 'Save' %>
+	  <%= submit_tag t(:submit, :scope => :general) %>
 	<% end %>
-	<%= link_to 'Back', :back %>
+	<%= link_to t(:back, :scope => :general), :back %>
 
 </div>
 <div id="aside">

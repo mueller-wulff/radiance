@@ -1,0 +1,23 @@
+<div id="main">
+	<h1>
+		<%= t(:delivered_answers, :scope => :tutor) %> <%= @course.short_title %>
+	</h1>
+	<table  class="userlist">
+		<thead>
+			<tr>
+	      <td><%= t(:student, :scope => :student) %></td>
+	      <td><%= t(:module, :scope => :stitch_module) %></td>
+	      <td><%= t(:unit, :scope => :stitch_unit) %></td>
+	    </tr>
+		</thead>
+		<% @answer_logs.each do |log| %>
+			<tbody>
+	        <%= generate_log(log, @tutor, @course) %>
+		  </tbody>				
+		<% end %>	
+		</table>
+	<%= link_to t(:back, :scope => :general), :back %>
+</div>
+<div id="aside">
+
+</div>

@@ -11,7 +11,16 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120330112038) do
+ActiveRecord::Schema.define(:version => 20120426080504) do
+
+  create_table "answer_logs", :force => true do |t|
+    t.integer  "tutor_id"
+    t.integer  "student_id"
+    t.integer  "page_id"
+    t.integer  "course_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "answers", :id => false, :force => true do |t|
     t.integer  "id",          :null => false
@@ -23,6 +32,17 @@ ActiveRecord::Schema.define(:version => 20120330112038) do
     t.datetime "updated_at"
     t.integer  "score"
     t.text     "comment"
+  end
+
+  create_table "channels", :force => true do |t|
+    t.string   "name"
+    t.integer  "course_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "token"
+    t.string   "channel_string_id"
+    t.integer  "group_id"
+    t.boolean  "closed"
   end
 
   create_table "ckeditor_assets", :id => false, :force => true do |t|
@@ -163,6 +183,15 @@ ActiveRecord::Schema.define(:version => 20120330112038) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.boolean  "active",     :default => true
+    t.integer  "parent_id"
+  end
+
+  create_table "messages", :force => true do |t|
+    t.text     "body"
+    t.integer  "channel_id"
+    t.integer  "profile_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "notes", :id => false, :force => true do |t|

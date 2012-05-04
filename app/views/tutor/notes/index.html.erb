@@ -1,9 +1,9 @@
-<h1>Listing notes</h1>
+<h1><%= t(:listing, :scope => :general) %> <%= t(:notes, :scope => :note) %></h1>
 
 <table>
   <tr>
-    <th>Text</th>
-    <th>Private</th>
+    <th><%= t(:text, :scope => :general) %></th>
+    <th><%= t(:private, :scope => :general) %></th>
     <th></th>
     <th></th>
     <th></th>
@@ -13,13 +13,13 @@
   <tr>
     <td><%= note.text %></td>
     <td><%= note.private %></td>
-    <td><%= link_to 'Show', note %></td>
-    <td><%= link_to 'Edit', edit_note_path(note) %></td>
-    <td><%= link_to 'Destroy', note, :confirm => 'Are you sure?', :method => :delete %></td>
+    <td><%= link_to t(:show, :scope => :general), note %></td>
+    <td><%= link_to t(:edit, :scope => :general), edit_note_path(note) %></td>
+    <td><%= link_to t(:destroy, :scope => :general), note, :confirm => t(:confirm_short, :scope => :general), :method => :delete %></td>
   </tr>
 <% end %>
 </table>
 
 <br />
 
-<%= link_to 'New Note', new_note_path %>
+<%= link_to t(:new, :scope => :general)+" "+t(:note, :scope => :note), new_note_path %>

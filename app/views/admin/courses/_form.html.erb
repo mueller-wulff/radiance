@@ -12,21 +12,31 @@
 <% end %>
 
 <p class="input">
-  <%= f.label :title %><br />
+  <%= f.label :title, t(:title, :scope => :general) %><br />
   <%= f.text_field :title %>
 </p>
 <p class="input">
-  <%= f.label :short_title %><br />
+  <%= f.label :short_title, t(:short_title, :scope => :general) %><br />
   <%= f.text_field :short_title %>
 </p>
 <p class="input">
-  <%= f.label :language %><br />
+  <%= f.label :language, t(:language, :scope => :general) %><br />
   <%= f.text_field :language %>
 </p>
 <p class="input">
-  <%= f.label :description %><br />
+  <%= f.label :description, t(:description, :scope => :general) %><br />
   <%= f.text_area :description %>
 </p>
+<% if @course.publishable? %>
+	<p class="select">
+		<%= f.check_box :published %> <%= t(:publish, :scope => :course) %> <%= t(:course, :scope => :course) %>
+	</p>
+<% end %>
+<% if @course.deprecatable? %>
+	<p class="select">
+		<%= f.check_box :deprecated %> <%= t(:mark_deprecated, :scope => :course) %>
+	</p>
+<% end %>
 <p class="submit">
-  <%= f.submit %>
+  <%= f.submit t(:submit, :scope => :general) %>
 </p>
