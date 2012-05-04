@@ -12,7 +12,8 @@ class Student::CoursesController < ApplicationController
 
   def show
     @course = Course.find(params[:id])
-    @group = @student.find_tutor_of_course(@course)
+    @meta_group = @student.groups.where(:course_id => @course.id).first.meta_group
+    @working_group = @student.groups.where(:course_id => @course.id).first
     respond_to do |format|
       format.html # show.html.erb
     end

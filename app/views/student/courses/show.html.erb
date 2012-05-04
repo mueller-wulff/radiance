@@ -37,7 +37,12 @@
         </tr>
       </thead>
       <tbody>
-        <% @group.channels.each do |channel| %>
+        <% @meta_group.channels.each do |channel| %>
+          <tr id="module_<%= channel.id  %>"> 
+            <td><%= link_to channel.name, student_discussion_path(channel) %></td>
+          </tr>
+        <% end %>
+				<% @working_group.channels.each do |channel| %>
           <tr id="module_<%= channel.id  %>"> 
             <td><%= link_to channel.name, student_discussion_path(channel) %></td>
           </tr>

@@ -27,6 +27,16 @@
   <%= f.label :description, t(:description, :scope => :general) %><br />
   <%= f.text_area :description %>
 </p>
+<% if @course.publishable? %>
+	<p class="select">
+		<%= f.check_box :published %> <%= t(:publish, :scope => :course) %> <%= t(:course, :scope => :course) %>
+	</p>
+<% end %>
+<% if @course.deprecatable? %>
+	<p class="select">
+		<%= f.check_box :deprecated %> <%= t(:mark_deprecated, :scope => :course) %>
+	</p>
+<% end %>
 <p class="submit">
   <%= f.submit t(:submit, :scope => :general) %>
 </p>

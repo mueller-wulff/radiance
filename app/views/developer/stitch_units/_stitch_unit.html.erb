@@ -6,9 +6,9 @@
 				<td class="unit less"><%= stitch_unit.weight if stitch_unit.weight %>%</td>
         <td class="functions">
           <% if current_user.role.editable(stitch_unit.stitch_module) %>
-            <%= link_to image_tag("space.gif", :title => t(:edit, :scope => :general)+ " "+ t(:unit, :scope => :unit), :class => "icon useredit"), edit_developer_stitch_module_stitch_unit_path(stitch_unit.stitch_module,stitch_unit), :class => "edit_unit" %>
-            <%= link_to image_tag("space.gif", :title => t(:copy, :scope => :general)+ " "+ t(:unit, :scope => :unit), :class => "icon duplicate"), developer_course_stitch_unit_copy_path(stitch_unit.stitch_module.course), :class => "copy_unit" %>
-            <%= link_to image_tag("space.gif", :title => t(:delete, :scope => :general)+ " "+ t(:unit, :scope => :unit), :class => "icon delete"), developer_stitch_module_stitch_unit_path(stitch_unit.stitch_module,stitch_unit), :method => :delete, :confirm => t(:confirm, :scope => :general)+" "+t(:delete, :scope => :general)+" "+t(:this, :scope => :general)+" "+t(:unit, :scope => :unit)+ " "+ t(:delete_unit, :scope => :stitch_unit)+"?", :remote => true, :class => "delete_unit" %>
+            <%= link_to image_tag("space.gif", :title => t(:edit, :scope => :general)+ " "+ t(:unit, :scope => :stitch_unit), :class => "icon useredit"), edit_developer_stitch_module_stitch_unit_path(stitch_unit.stitch_module,stitch_unit), :class => "edit_unit" %>
+            <%= link_to image_tag("space.gif", :title => t(:copy, :scope => :course)+ " "+ t(:unit, :scope => :stitch_unit), :class => "icon duplicate"), developer_course_stitch_unit_copy_path(stitch_unit.stitch_module.course), :class => "copy_unit" %>
+            <%= link_to image_tag("space.gif", :title => t(:delete, :scope => :general)+ " "+ t(:unit, :scope => :stitch_unit), :class => "icon delete"), developer_stitch_module_stitch_unit_path(stitch_unit.stitch_module,stitch_unit), :method => :delete, :confirm => t(:confirm, :scope => :general)+" "+t(:delete, :scope => :general)+" "+t(:this, :scope => :general)+" "+t(:unit, :scope => :stitch_unit)+ " "+ t(:delete_unit, :scope => :stitch_unit)+"?", :remote => true, :class => "delete_unit" %>
           <% else %>
             <%= image_tag("space.gif") %><%= image_tag("space.gif") %>
           <% end %>

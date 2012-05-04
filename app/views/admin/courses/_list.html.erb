@@ -14,7 +14,9 @@
         <td><%= course.title %></td>
         <td><%= course.language %></td>
         <td>
-          <% unless course.published  %>
+          <% if course.published  %>
+						<%= link_to image_tag("space.gif", :title => t(:clone, :scope => :course)+ " "+ t(:course, :scope => :course), :class => "icon duplicate"), edit_admin_course_path(course) %>
+					<% else %>
             <%= link_to image_tag("space.gif", :title => t(:edit, :scope => :general)+ " "+ t(:course, :scope => :course), :class => "icon useredit"), edit_admin_course_path(course) %>
             <% if course.deletable? %>
               <%= link_to image_tag("space.gif", :title => t(:delete, :scope => :general)+ " "+ t(:course, :scope => :course), :class => "icon delete"), admin_course_path(course), :confirm => t(:confirm, :scope => :general)+" "+t(:delete, :scope => :general)+" "+t(:this, :scope => :general)+" "+t(:course, :scope => :course)+"?", :method => :delete %>
