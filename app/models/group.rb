@@ -29,7 +29,7 @@ class Group < ActiveRecord::Base
   end
   
   def self.find_group(page, student)
-    group_id = student.groups.map {|g| g if g.course_id == page.course.id}
+    group_id = student.groups.map {|g| g if g.course_id == page.course.id}.compact
     group = Group.find(group_id[0])
     return group
   end
@@ -43,7 +43,8 @@ class Group < ActiveRecord::Base
   end
   
   def meta_group
-    group = Group.find(self.parent_id) if self.parent_id
+    return group = Group.find(self.parent_id) if self.parent_id
+    return self
   end
     
 end
