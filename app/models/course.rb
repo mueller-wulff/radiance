@@ -77,4 +77,11 @@ class Course < ActiveRecord::Base
     self.stitch_modules.map {|sm| sm.pages.where(:assignment => true) }.flatten
   end
   
+  def clone
+    clone_course = self.dup :include => {:stitch_modules => {:stitch_units => {:pages  => :contents } } }
+    clone_course.parent_id = self.id
+    clone_course.published = false
+    clone_course.save!
+  end
+  
 end
