@@ -62,7 +62,7 @@ module ApplicationHelper
 
   def show_deadline_course(course, student=nil, group=nil)
     if student
-      deadline_group = student.groups.map {|g| g if g.course_id == course.id}
+      deadline_group = student.groups.map {|g| g if g.course_id == course.id}.compact.first.meta_group
       deadline = Deadline.where(:deadlinable_id => deadline_group).first
     elsif group
       deadline = Deadline.where(:deadlinable_id => group.id).first
@@ -75,8 +75,8 @@ module ApplicationHelper
   def show_deadline_page(page, student=nil, group=nil)
     unless page.deadlines.empty?
       if student
-        deadline_group = student.groups.map {|g| g if g.course_id == page.course.id}
-        deadline = Deadline.where(:group_id => deadline_group[0], :deadlinable_id => page.id).first
+        deadline_group = student.groups.map {|g| g if g.course_id == page.course.id}.compact.first.meta_group
+        deadline = Deadline.where(:group_id => deadline_group, :deadlinable_id => page.id).first
       elsif group
         deadline = Deadline.where(:group_id => group.id, :deadlinable_id => page.id).first
       end
