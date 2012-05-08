@@ -79,6 +79,7 @@ en:
       deadlines: "Deadlines"
       duedate: "Duedate"
       clone: "clone"
+      successfully_cloned: "was successfully cloned."
   stitch_module:
       module: "Module"
       modules: "Modules"

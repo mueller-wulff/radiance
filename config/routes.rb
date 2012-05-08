@@ -189,6 +189,8 @@ Stitched::Application.routes.draw do
       member do
         post 'deprecate'
         post 'publish'
+        get 'clone'
+        put 'update_clone'
       end
       resources :stitch_modules
       resource :stitch_modules_order

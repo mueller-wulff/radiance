@@ -1,0 +1,28 @@
+<div id="main">
+  <%= render 'layouts/breadcrumb' %>
+  <h1><%= t(:clone, :scope => :course) %> <%= t(:course, :scope => :course) %> <%= @course.short_title %></h1>
+  <%= form_for(@course, :url => update_clone_admin_course_path(@course) ) do |f| %>
+    <p class="input">
+		  <%= f.label :title, t(:title, :scope => :general) %><br />
+		  <%= f.text_field :title %>
+		</p>
+		<p class="input">
+		  <%= f.label :short_title, t(:short_title, :scope => :general) %><br />
+		  <%= f.text_field :short_title %>
+		</p>
+		<p class="input">
+		  <%= f.label :language, t(:language, :scope => :general) %><br />
+		  <%= f.text_field :language %>
+		</p>
+		<p class="input">
+		  <%= f.label :description, t(:description, :scope => :general) %><br />
+		  <%= f.text_area :description %>
+		</p>
+		<p class="submit">
+		  <%= f.submit t(:submit, :scope => :general) %>
+		</p>
+  <% end %>
+</div>
+<div id="aside">
+
+</div>

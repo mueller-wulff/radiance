@@ -189,7 +189,7 @@ DEPENDENCIES
   awesome_print
   ckeditor (~> 3.6.0)
   coffee-rails (~> 3.1.0)
-  deep_cloneable (~> 1.4.0)
+  deep_cloneable
   execjs
   guard
   guard-rspec
