@@ -44,6 +44,7 @@ class Student::GroupEssayAnswersController < ApplicationController
 
   def update
     @group_essay_answer = GroupEssayAnswer.find(params[:id])
+    Juggernaut.publish("channelGroupEssay", "Some data")
     respond_to do |format|
       if @group_essay_answer.update_attributes(params[:group_essay_answer])
         format.html { redirect_to(student_page_content_path(@page, @content) ) }
