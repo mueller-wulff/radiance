@@ -12,10 +12,12 @@
     <%= hidden_field_tag "page", student_page_contents_path(@page)%>
   </div>
 	<div>
-		<% if is_assignment_page_locked(@page, @student) %>
-			<%= t(:answer_sent, :scope => :student) %>
-		<% else %>
-			<%= button_to t(:send_answer, :scope => :student), :action => "send_answers" %>
+		<% if @page.assignment %>
+			<% if is_assignment_page_locked(@page, @student) %>
+				<%= t(:answer_sent, :scope => :student) %>
+			<% else %>
+				<%= button_to t(:send_answer, :scope => :student), :action => "send_answers" %>
+			<% end %>
 		<% end %>
 	</div>
 	<%= render 'page_bottom' %> 
