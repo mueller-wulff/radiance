@@ -8,14 +8,18 @@
 		<thead>
 	    <tr>
 	      <td><%= t(:title, :scope => :general) %></td>
+				<td><%= t(:deadline, :scope => :course) %></td>
 	      <td><%= t(:current, :scope => :general) %> <%= t(:grade, :scope => :student) %></td>
 	      <td><%= t(:weight, :scope => :stitch_unit) %></td>
+				<td><%= t(:answer_sent, :scope => :tutor) %></td>
 	    </tr>
 			<% @stitch_modules.each do |stitch_module| %>
 				<% if stitch_module.has_assignment_page? %>
 					<tr>
 						<td><strong><%= stitch_module.short_title %> <%= t(:current, :scope => :general) %> <%= t(:grade, :scope => :student) %>: <%= show_grade(stitch_module, @student, @tutor) %></strong></td>
-						<td><%= show_national_assessment(show_grade(stitch_module, @student, @tutor), @course) %></td>
+						<td><%= show_national_assessment(show_grade(stitch_module, @student, @tutor), @course, @student) %></td>
+						<td>&nbsp;</td>						
+						<td>&nbsp;</td>						
 						<td>&nbsp;</td>						
 					</tr>			  
 				</thead>
@@ -24,8 +28,10 @@
 						<% if stitch_unit.has_assignment_page? %>
 			      	<tr>
 				        <td><%= link_to stitch_unit.title, find_assignment_page(stitch_unit, @group, @student)  %></td>
+								<td><%= show_deadline_page(stitch_unit.assignment_page, @student, @group) %></td>
 				        <td><%= show_grade(stitch_unit, @student, @tutor) %></td>
 				        <td><%= stitch_unit.weight %>%</td>
+				        <td><%= is_assignment_page_locked(stitch_unit.assignment_page, @student) ? t(:yes, :scope => :general) : t(:no, :scope => :general) %></td>
 				      </tr>
 						<% end %>
 			    <% end %>

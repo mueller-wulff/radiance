@@ -79,6 +79,7 @@ en:
       deadlines: "Deadlines"
       duedate: "Duedate"
       clone: "clone"
+      waiting_assessment: "waiting for assessment"
   stitch_module:
       module: "Module"
       modules: "Modules"
@@ -133,6 +134,7 @@ en:
       enroll: "Enroll"
       shuffle: "Shuffle"
       set_grading_system: "Please set grading system"
+      no_grading_system: "The Tutor doesn't set a grading system"
   student:
       student: "Student"
       students: "Students"
@@ -144,6 +146,7 @@ en:
       comment: "Comment of tutor"
       answer_sent: "Answers were sent to Tutor"
       send_answer: "Send Answers to Tutor"
+      answer_sent: "Answer sent?"
       active: "Active"
   session:
       change_pw: "Change My Password"

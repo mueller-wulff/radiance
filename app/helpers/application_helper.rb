@@ -158,13 +158,16 @@ module ApplicationHelper
   def show_grade(gradable, student, tutor)
     grade = Grade.where(:student_id => student.id, :tutor_id => tutor.id, :gradable_id => gradable.id, :gradable_type => gradable.class.name).first
     return grade.value if grade
-    return 0
+    return I18n.t(:waiting_assessment, :scope => :course)
   end
 
-  def show_national_assessment(value, course)
-    default_assessment = DefaultAssesment.where("lower_treshold <= ? AND upper_treshold >= ? AND course_id = ?", value, value, course.id).first
-    return default_assessment.name if default_assessment
-    return I18n.t(:set_grading_system, :scope => :tutor)
+  def show_national_assessment(value, course, student=nil)
+    if value.is_a? Numeric
+      default_assessment = DefaultAssesment.where("lower_treshold <= ? AND upper_treshold >= ? AND course_id = ?", value, value, course.id).first
+      return default_assessment.name if default_assessment
+    end
+    return I18n.t(:set_grading_system, :scope => :tutor) unless student
+    return I18n.t(:no_grading_system, :scope => :tutor) 
   end
 
   def find_assignment_page(stitch_unit, group, student, tutor=nil)
