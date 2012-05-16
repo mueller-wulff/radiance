@@ -14,7 +14,9 @@
 				<tr>
 					<td><strong><%= w_group.title %></strong></td>
 					<td>&nbsp;</td>
-					<td>&nbsp;</td>
+					<td>
+						<%= link_to image_tag("space.gif", :title => t(:group, :scope => :group)+ " "+t(:discussions, :scope => :chat), :class => "icon-discussion"), discussion_tutor_group_path(w_group) %>
+					</td>
 				</tr>
 				<% w_group.students.each do |student| %>
 			  	<tr>
