@@ -44,6 +44,7 @@ class Group < ActiveRecord::Base
   
   def meta_group
     return group = Group.find(self.parent_id) if self.parent_id
+    return self
   end
   
   def meta_group?
