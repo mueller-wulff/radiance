@@ -157,8 +157,8 @@ en:
       login: "Log in"
   browser:
       not_supported: "Your current Browser is not supported"
-      crap_browser: "In order to use this amazing piece of software you need to use a browser that isn't a complete piece of crap, like the one you are using right now."
-      more_browser: "But don't worry there are many free faster and more secure browsers out there."
+      wrong_browser: "This Software doesn't support your current browser."
+      more_browser: "Please select one of browsers below to be able to use this software."
   question:
       question: "Question"
       questions: "Questions"

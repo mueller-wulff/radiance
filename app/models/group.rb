@@ -20,7 +20,7 @@ class Group < ActiveRecord::Base
   #before_save :enforce_logic
   
   def deletable?
-    if enrollments == []
+    if enrollments == [] && all_students == []
       return true
     else   
       errors.add(:base, "cannot delete non empty groups")
