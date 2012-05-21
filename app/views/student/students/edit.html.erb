@@ -25,6 +25,14 @@
 		    <%= label :lastname, t(:lastname, :scope => :profile) %>  
 		    <%= g.text_field :lastname %>  
 		  </p>
+		  <p class="input">  
+		    <%= label :password, t(:new, :scope => :general)+ " "+ t(:password, :scope => :profile) %>  
+		    <%= g.password_field :password %>  
+		  </p>
+			<p class="input">  
+		    <%= label :password_confirmation, t(:password_confirmation, :scope => :profile) %>  
+		    <%= g.password_field :password_confirmation %>  
+		  </p>
 			<p class="input">  
 		    <%= label_tag t(:avatar, :scope => :profile) %>
 				<%= image_tag avatar_url(@student) %>

@@ -1,6 +1,15 @@
-<div style="float:left;">
+<div class="previous_page">
 	<%=  render 'previous_page' %>
 </div>
-<div style="float:right;">
+<div class="backtotop"><a href="javascript:void(0)" class="backtotop"><%= t(:back_to_top, :scope => :general) %></a></div>
+<div class="next_page">
 	<%=  render 'next_page' %>
 </div>
+
+<script type="text/javascript">
+  $(document).ready(function(){
+	jQuery('.backtotop').click(function(){
+		jQuery('html, body').animate({scrollTop:0}, 'slow');
+	});
+  });
+</script>

@@ -65,6 +65,7 @@ en:
       management: "Management"
       manage: "manage"
       of: "of"
+      back_to_top: "Back to top"
   course:
       course: "Course" 
       courses: "Courses"   
@@ -252,4 +253,7 @@ en:
       login: "Your login is"
       password: "Your password is"
       go_to: "Please go to"
+  faq:
+      welcome: "Welcome to the FAQ Section"
+      description: "Here you can find answers to all your questions. if something is missing please send us an email so we can update this page."
       
