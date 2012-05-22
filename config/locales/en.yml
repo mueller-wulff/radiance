@@ -135,7 +135,7 @@ en:
       enroll: "Enroll"
       shuffle: "Shuffle"
       set_grading_system: "Please set grading system"
-      no_grading_system: "The Tutor doesn't set a grading system"
+      no_grading_system: "The Tutor hasn't set a grading system"
   student:
       student: "Student"
       students: "Students"
@@ -149,6 +149,7 @@ en:
       send_answer: "Send Answers to Tutor"
       answer_sent: "Answer sent?"
       active: "Active"
+      worked_on: "To be worked on"
   session:
       change_pw: "Change My Password"
       update_pw: "Update my password and log me in"

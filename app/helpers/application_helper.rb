@@ -158,6 +158,10 @@ module ApplicationHelper
   def show_grade(gradable, student, tutor)
     grade = Grade.where(:student_id => student.id, :tutor_id => tutor.id, :gradable_id => gradable.id, :gradable_type => gradable.class.name).first
     return grade.value if grade
+    if gradable.class.name == "StitchUnit"
+      page = gradable.assignment_page
+      return I18n.t(:worked_on, :scope => :student) unless is_assignment_page_locked(page, student) 
+    end
     return I18n.t(:waiting_assessment, :scope => :course)
   end
 

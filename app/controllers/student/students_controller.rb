@@ -1,6 +1,11 @@
 class Student::StudentsController < ApplicationController
   before_filter :require_student
   
+  def index
+    @course = Course.find(params[:course_id])
+    @group = current_user.role.find_tutor_of_course(@course)
+    @students = @group.all_students
+  end
   # GET /students/1
   # GET /students/1.xml
   def show
