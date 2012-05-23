@@ -24,6 +24,7 @@
 					<td></td>
 					<td>
 						<%= link_to image_tag("space.gif", :title => t(:manage, :scope => :general)+" "+t(:working_groups, :scope => :group), :class => "icon edit"), edit_tutor_group_path(c_group) %>
+						<%= link_to image_tag("space.gif", :title => t(:delete, :scope => :general)+" "+t(:group, :scope => :group), :class => "icon delete"), tutor_group_path(c_group), :method => :delete if c_group.deletable? %>
 					</td>
 				</tr>
 				<% c_group.all_students.each do |student| %>

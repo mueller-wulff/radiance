@@ -65,6 +65,7 @@ en:
       management: "Management"
       manage: "manage"
       of: "of"
+      back_to_top: "Back to top"
   course:
       course: "Course" 
       courses: "Courses"   
@@ -79,7 +80,11 @@ en:
       deadlines: "Deadlines"
       duedate: "Duedate"
       clone: "clone"
+<<<<<<< HEAD
       successfully_cloned: "was successfully cloned."
+=======
+      waiting_assessment: "waiting for assessment"
+>>>>>>> master
   stitch_module:
       module: "Module"
       modules: "Modules"
@@ -134,6 +139,7 @@ en:
       enroll: "Enroll"
       shuffle: "Shuffle"
       set_grading_system: "Please set grading system"
+      no_grading_system: "The Tutor hasn't set a grading system"
   student:
       student: "Student"
       students: "Students"
@@ -145,7 +151,9 @@ en:
       comment: "Comment of tutor"
       answer_sent: "Answers were sent to Tutor"
       send_answer: "Send Answers to Tutor"
+      answer_sent: "Answer sent?"
       active: "Active"
+      worked_on: "To be worked on"
   session:
       change_pw: "Change My Password"
       update_pw: "Update my password and log me in"
@@ -155,8 +163,8 @@ en:
       login: "Log in"
   browser:
       not_supported: "Your current Browser is not supported"
-      crap_browser: "In order to use this amazing piece of software you need to use a browser that isn't a complete piece of crap, like the one you are using right now."
-      more_browser: "But don't worry there are many free faster and more secure browsers out there."
+      wrong_browser: "This Software doesn't support your current browser."
+      more_browser: "Please select one of browsers below to be able to use this software."
   question:
       question: "Question"
       questions: "Questions"
@@ -250,4 +258,7 @@ en:
       login: "Your login is"
       password: "Your password is"
       go_to: "Please go to"
+  faq:
+      welcome: "Welcome to the FAQ Section"
+      description: "Here you can find answers to all your questions. if something is missing please send us an email so we can update this page."
       

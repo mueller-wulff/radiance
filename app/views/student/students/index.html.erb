@@ -1,0 +1,28 @@
+<div id="main">
+
+  <h1><%= t(:all, :scope => :general) %> <%= t(:students, :scope => :student) %></h1>
+  <table  class="userlist">
+	  <thead>
+	    <tr>
+	      <td><%= t(:name, :scope => :profile) %></td>
+	      <td><%= t(:lastname, :scope => :profile) %></td>
+	    </tr>
+			<tr>
+        <td><%= @group.meta_group? ? t(:working_group, :scope => :group) : t(:course, :scope => :course) + " " + t(:group, :scope => :group) %></td>
+        <td><%= @group.title %></td>
+      </tr>
+	  </thead>
+	  <tbody>			
+	    <% @students.each do |student| %>
+	      <tr>
+	        <td><%= student.profile.name %></td>
+	        <td><%= student.profile.lastname %></td>
+	      </tr>
+	    <% end %>
+	  </tbody>
+	</table>
+
+</div>
+<div id="aside">
+
+</div>

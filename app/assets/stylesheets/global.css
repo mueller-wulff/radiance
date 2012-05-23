@@ -1317,3 +1317,17 @@ img.center {
     margin-left: 5px;
 }
 /* @end */
+
+div.backtotop {
+    display: inline;
+    padding-left: 250px;
+    font-size: 12px;
+}
+
+div.previous_page {
+    float: left;
+}
+
+div.next_page {
+    float: right;
+}

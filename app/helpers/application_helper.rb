@@ -1,10 +1,10 @@
 module ApplicationHelper
   def errors_for(instance_of_model)
-   if instance_of_model.errors.any? 
-     content_tag(:div,
-      content_tag(:h2, pluralize(instance_of_model.errors.count, "error") + "prohibited this profile from being saved:") +
-      content_tag(:ul, instance_of_model.post.errors.full_messages.map do |msg|
-        raw(content_tag(:li, msg))
+    if instance_of_model.errors.any?
+      content_tag(:div,
+                  content_tag(:h2, pluralize(instance_of_model.errors.count, "error") + "prohibited this profile from being saved:") +
+                  content_tag(:ul, instance_of_model.post.errors.full_messages.map do |msg|
+                                raw(content_tag(:li, msg))
       end.join(''), :id => "error_explanation"))
     end
   end
@@ -158,13 +158,20 @@ module ApplicationHelper
   def show_grade(gradable, student, tutor)
     grade = Grade.where(:student_id => student.id, :tutor_id => tutor.id, :gradable_id => gradable.id, :gradable_type => gradable.class.name).first
     return grade.value if grade
-    return 0
+    if gradable.class.name == "StitchUnit"
+      page = gradable.assignment_page
+      return I18n.t(:worked_on, :scope => :student) unless is_assignment_page_locked(page, student) 
+    end
+    return I18n.t(:waiting_assessment, :scope => :course)
   end
 
-  def show_national_assessment(value, course)
-    default_assessment = DefaultAssesment.where("lower_treshold <= ? AND upper_treshold >= ? AND course_id = ?", value, value, course.id).first
-    return default_assessment.name if default_assessment
-    return I18n.t(:set_grading_system, :scope => :tutor)
+  def show_national_assessment(value, course, student=nil)
+    if value.is_a? Numeric
+      default_assessment = DefaultAssesment.where("lower_treshold <= ? AND upper_treshold >= ? AND course_id = ?", value, value, course.id).first
+      return default_assessment.name if default_assessment
+    end
+    return I18n.t(:set_grading_system, :scope => :tutor) unless student
+    return I18n.t(:no_grading_system, :scope => :tutor) 
   end
 
   def find_assignment_page(stitch_unit, group, student, tutor=nil)
@@ -204,12 +211,12 @@ module ApplicationHelper
     end
     return false
   end
-  
+
   def show_deadline_title(deadline)
     return deadline.deadlinable.title if deadline.deadlinable_type == "Group"
     return deadline.deadlinable.stitch_unit.title if deadline.deadlinable_type == "Page"
   end
-  
+
   def generate_log(log, tutor, course)
     student = Student.find(log.student_id)
     page = Page.find(log.page_id)
@@ -230,14 +237,14 @@ module ApplicationHelper
   # to the group's tutor or student
   def roster_elements()
     roster = current_user.role.groups.map { |r| { type:'group', name:"#{r.title}", channel_id:Channel.find_or_create_by_channel_string_id("all@group-#{r.id}").token }  }
-    
+
     current_user.role.groups.each do |group|
-      if current_user.role.class == Student
+      if current_user.role.class == Student && group.meta_group?
         course_group = group.meta_group
-        roster << { type:'group', name:"#{course_group.title}", channel_id:Channel.find_or_create_by_channel_string_id("all@group-#{course_group.id}").token } if course_group
+        roster << { type:'group', name:"#{course_group.title}", channel_id:Channel.find_or_create_by_channel_string_id("all@group-#{course_group.id}").token } 
       end
-      roster << { type:"tutor", name:"(T) #{group.tutor.profile.name} #{group.tutor.profile.lastname}", channel_id:build_face2face_channel(group.tutor.profile.id, current_user.id).token } if group.tutor.profile != current_user      
-      roster += group.students.map do |s| 
+      roster << { type:"tutor", name:"(T) #{group.tutor.profile.name} #{group.tutor.profile.lastname}", channel_id:build_face2face_channel(group.tutor.profile.id, current_user.id).token } if group.tutor.profile != current_user
+      roster += group.students.map do |s|
         if s.profile != current_user
           { type:"student", name:"#{s.profile.name} #{s.profile.lastname}", channel_id:build_face2face_channel(s.profile.id, current_user.id).token }
         else
@@ -245,7 +252,7 @@ module ApplicationHelper
         end
       end
     end
-    roster.compact
+    roster.compact.uniq
   end
 
   def build_face2face_channel(profile_id1, profile_id2)
