@@ -41,9 +41,10 @@ Stitched = ->
      deleteContentElement = (id) ->
          progress_indicator = true
          $("#"+id).fadeOut('fast')
+         match_string = /\?\w+=\w+/
          $.ajax
              type: "DELETE"
-             url: $(PAGE_CONTENT_ELEMENTS).find('[name=page]').val()+"/"+id
+             url: $(PAGE_CONTENT_ELEMENTS).find('[name=page]').val().replace(matchstring,'')+"/"+id
              data: "format=js"
              success: (returnValue) ->
                  $("#"+id).remove()
