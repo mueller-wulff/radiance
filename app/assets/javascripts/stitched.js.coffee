@@ -577,14 +577,6 @@ Stitched = ->
              else
                  $('#error_explanation').html('')
              return
-             
-     checkLockForGroupEssay = ->
-         jug = new Juggernaut
-         jug.subscribe("channelGroupEssay", (data) ->
-             console.log "Got data " + data
-             return
-         )
-         return 
           
      #Page View Functions
      loadCourseView = ->
@@ -644,7 +636,6 @@ Stitched = ->
          return
          
      loadVersion = ->
-         checkLockForGroupEssay()
          switchToOtherVersion()
          return
          
