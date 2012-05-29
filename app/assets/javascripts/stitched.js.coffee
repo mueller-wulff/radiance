@@ -22,6 +22,7 @@ Stitched = ->
      pages = null
      units = null
      move_or_copy = false
+     idleTime = 0
      
      #Return a helper with preserved width of cells
      fixHelper = (e, ui) ->
@@ -41,9 +42,10 @@ Stitched = ->
      deleteContentElement = (id) ->
          progress_indicator = true
          $("#"+id).fadeOut('fast')
+         match_string = /\?\w+=\w+/
          $.ajax
              type: "DELETE"
-             url: $(PAGE_CONTENT_ELEMENTS).find('[name=page]').val()+"/"+id
+             url: $(PAGE_CONTENT_ELEMENTS).find('[name=page]').val().replace(match_string ,'')+"/"+id
              data: "format=js"
              success: (returnValue) ->
                  $("#"+id).remove()
@@ -578,13 +580,29 @@ Stitched = ->
                  $('#error_explanation').html('')
              return
              
-     checkLockForGroupEssay = ->
-         jug = new Juggernaut
-         jug.subscribe("channelGroupEssay", (data) ->
-             console.log "Got data " + data
-             return
+     checkLockForGroupEssay = -> 
+         data = "locked=false"
+         match_string = /\?\w+=\w+/
+         div = $('.edit_group_essay_answer').parent()
+         url = div.find('form').attr('action').replace(match_string, '')
+         editor = CKEDITOR.instances.group_essay_answer_txt         
+         idleInterval = setInterval( -> 
+             idleTime = idleTime + 1
+             if idleTime > 1 
+                 idleTime = 0
+                 closeAndSaveEditView(div)
+             return 
+         10000)
+         editor.on('key', ->
+             idleTime = 0
          )
-         return 
+         return
+         
+     timerIncrement = ->
+         idleTime = idleTime + 1
+         if idleTime > 1 
+             alert "idle"
+         return
           
      #Page View Functions
      loadCourseView = ->

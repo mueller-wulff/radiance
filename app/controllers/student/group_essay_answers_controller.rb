@@ -39,27 +39,31 @@ class Student::GroupEssayAnswersController < ApplicationController
     @group_essay_answer = GroupEssayAnswer.find(params[:id])
     @group_essay_answer = @group_essay_answer.previous_version if params[:previous]
     @group_essay_answer = @group_essay_answer.next_version if params[:next]
-   # @group_essay_answer.save unless @group_essay_answer.next_version == nil
+    if @group_essay_answer.locked == false
+      @group_essay_answer.update_attribute(:locked, true)
+    else
+      render :template => "student/contents/show"
+    end
   end
 
   def update
     @group_essay_answer = GroupEssayAnswer.find(params[:id])
-    Juggernaut.publish("channelGroupEssay", "Some data")
     respond_to do |format|
       if @group_essay_answer.update_attributes(params[:group_essay_answer])
+        @group_essay_answer.update_attribute(:locked, false)
         format.html { redirect_to(student_page_content_path(@page, @content) ) }
       else
         format.js { head :error}
       end
     end
   end
-  
+
   def versions
     @group_essay_answer = GroupEssayAnswer.find(params[:id])
     @versions = @group_essay_answer.versions.where(:event => "update")
     render :layout => 'application'
   end
-  
+
   def revert_to
     @group_essay_answer = GroupEssayAnswer.find(params[:id])
     @group_essay_answer = Version.find(params[:group_essay_answer]["version"]["revert_to"]).reify

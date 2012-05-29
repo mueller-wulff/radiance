@@ -80,11 +80,8 @@ en:
       deadlines: "Deadlines"
       duedate: "Duedate"
       clone: "clone"
-<<<<<<< HEAD
       successfully_cloned: "was successfully cloned."
-=======
       waiting_assessment: "waiting for assessment"
->>>>>>> master
   stitch_module:
       module: "Module"
       modules: "Modules"
