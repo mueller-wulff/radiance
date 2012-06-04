@@ -4,7 +4,6 @@
 //= require_directory .
 //
 
-
 $(function() {
   $('[data-remote][data-replace]')
     .data('type', 'html')

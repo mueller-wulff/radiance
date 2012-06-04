@@ -35,6 +35,8 @@ gem "RedCloth"
 
 gem 'paper_trail', '~> 2'
 
+gem 'deep_cloneable'
+
 # Use unicorn as the web server
 # gem 'unicorn'
 

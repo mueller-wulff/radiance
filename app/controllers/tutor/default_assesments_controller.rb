@@ -18,7 +18,7 @@ class Tutor::DefaultAssesmentsController < ApplicationController
         da.course = @course 
       end
       @default_assesments.each(&:save!)
-      redirect_to tutor_courses_path
+      redirect_to assessment_tutor_course_path(@course)
     else
       render :action => "new"
     end

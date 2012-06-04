@@ -24,7 +24,7 @@ class StitchUnit < ActiveRecord::Base
     stitch_module = self.stitch_module
     stitch_module.stitch_units.map {|s| weight += s.weight unless s == self || s.weight.nil? }
     if weight > 100
-      errors.add(:weight, "problem: total weight can not be more than 100%")
+      errors.add(:weight, " problem: total weight can not be more than 100%")
       return false
     end
     return true

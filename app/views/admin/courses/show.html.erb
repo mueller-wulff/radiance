@@ -12,7 +12,7 @@
   <% if @course.deprecatable? && !@course.deprecated %>
     <p><%= link_to t(:mark_deprecated, :scope => :course), deprecate_admin_course_path(@course) %></p>
   <% elsif @course.publishable? && !@course.published %>
-    <p><%= link_to t(:publish, :scope => :course)+" "+t(:course, :scope => :course), publish_admin_course_path(@course), :confirm => t(:confirm, :scope => :general)+" "+t(:publish, :scope => :course)+" "+t(:this, :scope => :general)+" "+t(:course, :scope => :course) %></p>
+    <p><%= link_to t(:publish, :scope => :course)+" "+t(:course, :scope => :course), edit_admin_course_path(@course) %></p>
     <p><%= link_to t(:create, :scope => :general)+" "+t(:module, :scope => :stitch_module), new_admin_course_stitch_module_path(@course)%></p>
   <% else %>
     <p><%= link_to t(:create, :scope => :general)+" "+t(:module, :scope => :stitch_module), new_admin_course_stitch_module_path(@course)%></p>

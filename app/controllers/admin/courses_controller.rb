@@ -36,6 +36,10 @@ class Admin::CoursesController < ApplicationController
   def edit
     @course = Course.find(params[:id])
   end
+  
+  def clone
+    @course = Course.find(params[:id])
+  end
 
   # POST /courses
   # POST /courses.xml
@@ -63,6 +67,12 @@ class Admin::CoursesController < ApplicationController
         format.html { render :action => "edit" }
       end
     end
+  end
+  
+  def update_clone
+    @course = Course.find(params[:id])
+    @course.clone_course(params[:course])
+    redirect_to(admin_courses_path, :notice => t(:course, :scope => :course)+" "+t(:successfully_cloned, :scope => :course))
   end
 
   # DELETE /courses/1
