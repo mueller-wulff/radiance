@@ -145,7 +145,7 @@ en:
       comment: "Comment of tutor"
       answer_sent: "Answers were sent to Tutor"
       send_answer: "Send Answers to Tutor"
-      answer_sent: "Answer sent?"
+      answer_sent: "Answer sent"
       active: "Active"
       worked_on: "To be worked on"
   session:

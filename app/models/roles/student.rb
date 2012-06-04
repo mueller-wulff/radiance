@@ -62,4 +62,8 @@ class Student < Role
     return false
   end
   
+  def course_group(course, tutor)
+    return Group.where(:course_id => course.id, :tutor_id => tutor.id, :parent_id => nil).first
+  end
+  
 end

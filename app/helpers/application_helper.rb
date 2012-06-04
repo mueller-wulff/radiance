@@ -170,6 +170,7 @@ module ApplicationHelper
       default_assessment = DefaultAssesment.where("lower_treshold <= ? AND upper_treshold >= ? AND course_id = ?", value, value, course.id).first
       return default_assessment.name if default_assessment
     end
+    return I18n.t(:waiting_assessment, :scope => :course) unless DefaultAssesment.where(:course_id => course.id).empty?
     return I18n.t(:set_grading_system, :scope => :tutor) unless student
     return I18n.t(:no_grading_system, :scope => :tutor) 
   end

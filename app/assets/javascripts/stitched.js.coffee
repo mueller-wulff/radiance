@@ -588,22 +588,16 @@ Stitched = ->
          editor = CKEDITOR.instances.group_essay_answer_txt         
          idleInterval = setInterval( -> 
              idleTime = idleTime + 1
-             if idleTime > 1 
+             if idleTime > 9 
                  idleTime = 0
                  closeAndSaveEditView(div)
              return 
-         10000)
+         60000)
          editor.on('key', ->
              idleTime = 0
          )
          return
-         
-     timerIncrement = ->
-         idleTime = idleTime + 1
-         if idleTime > 1 
-             alert "idle"
-         return
-          
+
      #Page View Functions
      loadCourseView = ->
          makeSortableModules()
@@ -662,7 +656,6 @@ Stitched = ->
          return
          
      loadVersion = ->
-         checkLockForGroupEssay()
          switchToOtherVersion()
          return
          

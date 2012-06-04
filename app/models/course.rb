@@ -93,8 +93,14 @@ class Course < ActiveRecord::Base
         clone_unit = clone_module.stitch_units[j]
         su.pages.each do |page|
           clone_page = page.dup :include => :contents
-          clone_page.stitch_unit = clone_unit
+          clone_page.stitch_unit = clone_unit          
           clone_page.save
+          page.contents.each_with_index do |c, k|
+            clone_content = clone_page.contents[k]
+            clone_element = c.element.dup
+            clone_element.content = clone_content
+            clone_element.save
+          end
         end
       end
     end
