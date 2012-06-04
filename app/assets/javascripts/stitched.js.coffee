@@ -45,7 +45,7 @@ Stitched = ->
          match_string = /\?\w+=\w+/
          $.ajax
              type: "DELETE"
-             url: $(PAGE_CONTENT_ELEMENTS).find('[name=page]').val().replace(match_string ,'')+"/"+id
+             url: $(PAGE_CONTENT_ELEMENTS).find('[name=page]').val().replace(match_string,'')+"/"+id
              data: "format=js"
              success: (returnValue) ->
                  $("#"+id).remove()

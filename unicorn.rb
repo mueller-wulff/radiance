@@ -6,4 +6,4 @@ preload_app false
 
 timeout 30
 
-listen '/var/www/stitch/shared/unicorn.sock', :backlog => 2048
+listen ENV['HOME'] + '/app/shared/sockets/unicorn.sock', :backlog => 2048
