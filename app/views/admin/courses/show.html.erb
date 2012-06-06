@@ -14,7 +14,7 @@
   <% elsif @course.publishable? && !@course.published %>
     <p><%= link_to t(:publish, :scope => :course)+" "+t(:course, :scope => :course), edit_admin_course_path(@course) %></p>
     <p><%= link_to t(:create, :scope => :general)+" "+t(:module, :scope => :stitch_module), new_admin_course_stitch_module_path(@course)%></p>
-  <% else %>
+  <% elsif @course.editable? %>
     <p><%= link_to t(:create, :scope => :general)+" "+t(:module, :scope => :stitch_module), new_admin_course_stitch_module_path(@course)%></p>
   <% end %>
 

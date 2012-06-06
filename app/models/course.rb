@@ -59,6 +59,11 @@ class Course < ActiveRecord::Base
       return false
     end
   end
+  
+  def editable?
+    return false if self.published
+    return true
+  end
 
   def order_modules( order )
     transaction do

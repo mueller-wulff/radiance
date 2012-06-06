@@ -18,7 +18,7 @@
     <% end %>
   </div>
 </div>
-<% if current_user.role.editable(@stitch_module) %>
+<% if current_user.role.editable(@stitch_module) && @stitch_module.course.editable? %>
   <div id="aside" class="moving">
     <h3><%= t(:edit, :scope => :general) %> <%= t(:menu, :scope => :general) %></h3>
     <ul class="editmenu">
