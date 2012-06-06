@@ -1,6 +1,6 @@
 rails_env = ENV['RAILS_ENV'] || 'production'
 
-worker_processes (rails_env == 'production' ? 2 : 1)
+worker_processes (rails_env == 'production' ? 1 : 1)
 
 preload_app false
 
