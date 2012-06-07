@@ -253,6 +253,10 @@ en:
       password: "Your password is"
       go_to: "Please go to"
       deadline_reached : "Deadline reached"
+      deadline_reached_text: "is reached in 3 days. Please complete your assignments."
+      exact_due_date: "The due date is:"
+      info_tutor_subject: "Deadline expired"
+      info_tutor_text: "is expired. Please assess the assignments."
   faq:
       welcome: "Welcome to the FAQ Section"
       description: "Here you can find answers to all your questions. If something is missing please send us an email so we can update this page."

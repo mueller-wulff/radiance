@@ -37,8 +37,10 @@ class Answer < ActiveRecord::Base
   protected
   
   def set_locked_false
-    self.locked = false
-    self.save
+    unless self.txt == "No Answer given"
+      self.locked = false
+      self.save
+    end
   end
   
   def deadline_reached?(page, student)
