@@ -45,6 +45,7 @@ Stitched::Application.configure do
   config.i18n.fallbacks = true
   
   config.action_mailer.delivery_method = :sendmail
+  config.action_mailer.raise_delivery_errors = true
 
   # Send deprecation notices to registered listeners
   config.active_support.deprecation = :notify

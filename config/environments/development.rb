@@ -26,14 +26,14 @@ Stitched::Application.configure do
 
   # Don't care if the mailer can't send
   config.action_mailer.delivery_method = :smtp
-  config.action_mailer.smtp_settings = {
-  :address              => "mail.rapidrabbit.de",
-  :port                 => 25,
-  :domain               => 'rapidrabbit.de',
-  :user_name            => 'info@rapidrabbit.de',
-  :password             => 'pornopaule',
-  :authentication       => 'plain',
-  :enable_starttls_auto => false  }
+      config.action_mailer.smtp_settings = {
+      :address              => "mail.rapidrabbit.de",
+      :port                 => 25,
+      :domain               => 'rapidrabbit.de',
+      :user_name            => 'info@rapidrabbit.de',
+      :password             => 'pornopaule',
+      :authentication       => 'plain',
+      :enable_starttls_auto => false  }
   
   
   config.action_mailer.perform_deliveries = true
