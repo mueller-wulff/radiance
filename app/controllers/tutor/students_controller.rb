@@ -51,7 +51,7 @@ class Tutor::StudentsController < ApplicationController
       if @student.save
         @student.groups << @group
         @student.send_new_group(@group)
-        @student.create_coursebook(@tutor, @group.course)       
+        @student.create_coursebook(@tutor, @group.course)
         format.html { redirect_to(tutor_course_students_path(@group.course), :notice => 'Student was successfully enrolled.') }
         format.xml  { render :xml => @student, :status => :created, :location => @student }
       else

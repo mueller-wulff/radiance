@@ -54,7 +54,7 @@ class Student < Role
   end
     
   def create_coursebook(tutor, course)
-    Grade.create(:student => self, :tutor => tutor, :gradable => course, :value => 0.0)
+    self.grades.create(:tutor => tutor, :gradable => course, :value => 0.0)
   end
   
   def give_answer?(student, element)
