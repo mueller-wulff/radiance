@@ -252,6 +252,7 @@ en:
       login: "Your login is"
       password: "Your password is"
       go_to: "Please go to"
+      deadline_reached : "Deadline reached"
   faq:
       welcome: "Welcome to the FAQ Section"
       description: "Here you can find answers to all your questions. If something is missing please send us an email so we can update this page."

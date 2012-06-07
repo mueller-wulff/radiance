@@ -36,4 +36,10 @@ class Notifier < ActionMailer::Base
     @url        = show_answers_tutor_group_student_page_url(group, student, page)
   end
   
+  def send_deadline_reached(students, deadline, type)
+    @deadline = deadline
+    @type = type
+    mail(:to => students.map{|s| s.profile.email}, :subject => I18n.t(:deadline_reached, :scope => :mailer))
+  end
+  
 end
