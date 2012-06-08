@@ -5,7 +5,7 @@
 			<%= label :due_date, t(:deadline, :scope => :course) %><br />
 			<%= datetime_select "deadline", :due_date, :default => @deadline.due_date %><div id="error_explanation"></div> 
 		</p>
-		<%= hidden_field_tag :group_due_date, @group_deadline.due_date %>
+		<%= hidden_field_tag :group_due_date, @group_deadline.due_date  if @group_deadline%>
 		<p class="submit"> 
 		  <%= submit_tag t(:submit, :scope => :general) %>  
 		</p>

@@ -37,6 +37,8 @@ gem 'paper_trail', '~> 2'
 
 gem 'deep_cloneable'
 
+gem 'whenever', :require => false
+
 # Use unicorn as the web server
 # gem 'unicorn'
 
