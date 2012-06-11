@@ -1331,3 +1331,7 @@ div.previous_page {
 div.next_page {
     float: right;
 }
+
+div#flash_error {
+    color: red;
+}

@@ -1,17 +1,6 @@
 <div id="main">
 	<h1><%= t(:enroll, :scope => :tutor) %> <%= t(:student, :scope => :student) %></h1>
 	<%= form_for(@student, :url => tutor_group_students_path) do |f| %> 
-	  <% if @profile.errors.any? %>
-	    <div id="error_explanation">
-	      <h2><%= pluralize(@profile.errors.count, "error") %> prohibited this profile from being saved:</h2>
-
-	      <ul>
-	        <% @profile.errors.full_messages.each do |msg| %>
-	          <li><%= msg %></li>
-	        <% end %>
-	      </ul>
-	    </div>
-	  <% end %>  
 		<% if @student.errors.any? %>
 	    <div id="error_explanation">
 	      <h2><%= pluralize(@student.errors.count, "error") %> prohibited this student from being saved:</h2>
@@ -23,6 +12,9 @@
 	      </ul>
 	    </div>
 	  <% end %>
+		<% flash.each do |name, msg| %>
+		  <%= content_tag :div, msg, :id => "flash_#{name}" if msg.is_a?(String) %>
+		<% end %>
 		<%= f.fields_for :profile do |g| %>
 			<p class="input">
 				<%= label :email, t(:email, :scope => :profile) %>  

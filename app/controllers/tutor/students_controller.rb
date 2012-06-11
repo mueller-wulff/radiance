@@ -46,20 +46,29 @@ class Tutor::StudentsController < ApplicationController
     else
       @profile = Profile.find_by_email(params[:student]["profile_attributes"]["email"])
       @student = @profile.role
-      unless @profile.role.class == Student
-        flash[:error] = "email already in use" 
-      end
+      @enrollment = @student.enrollments.where(:group_id => @group.id).first
     end
     respond_to do |format|
-      if @student.save
-        @student.groups << @group
-        @student.send_new_group(@group)
-        @student.create_coursebook(@tutor, @group.course)
-        format.html { redirect_to(tutor_course_students_path(@group.course), :notice => 'Student was successfully enrolled.') }
-        format.xml  { render :xml => @student, :status => :created, :location => @student }
+      if @profile.role.class == Student
+        if @enrollment.nil?
+          if @student.save
+            @student.groups << @group
+            @student.send_new_group(@group)
+            @student.create_coursebook(@tutor, @group.course)
+            format.html { redirect_to(tutor_course_students_path(@group.course), :notice => 'Student was successfully enrolled.') }
+            format.xml  { render :xml => @student, :status => :created, :location => @student }
+          else
+            format.html { render :action => "new" }
+            format.xml  { render :xml => @student.errors, :status => :unprocessable_entity }
+          end
+        else
+          #because error message from enrollment does'nt shown
+          flash[:error] = "student already enrolled"
+          format.html { render :action => "new" }
+        end
       else
+        flash[:error] = "email already in use"
         format.html { render :action => "new" }
-        format.xml  { render :xml => @student.errors, :status => :unprocessable_entity }
       end
     end
   end
@@ -104,5 +113,5 @@ class Tutor::StudentsController < ApplicationController
     def grab_group_id
       @group = Group.find(params[:group_id])
     end
-
+    
 end
