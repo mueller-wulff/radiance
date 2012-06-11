@@ -22,6 +22,8 @@ class GroupEssayAnswer < ActiveRecord::Base
       end
       answer.locked = true
       answer.save
+      version = answer.versions.last
+      version.whodunnit = group.students.last.profile.id
     end
   end
   
