@@ -45,7 +45,10 @@ class Tutor::StudentsController < ApplicationController
       @profile.login = params[:student]["profile_attributes"]["email"]
     else
       @profile = Profile.find_by_email(params[:student]["profile_attributes"]["email"])
-      @student = @profile.role  
+      @student = @profile.role
+      unless @profile.role.class == Student
+        flash[:error] = "email already in use" 
+      end
     end
     respond_to do |format|
       if @student.save

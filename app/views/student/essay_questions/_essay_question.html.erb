@@ -9,6 +9,8 @@
 			<br />
 			<%= t(:comment, :scope => :student) %>: <%= show_answer(e, current_user.role).comment %>
 		</p>
+	<% else %>
+		<p><%= t(:score, :scope => :tutor) %>: <%= show_score(e, @tutor) %></p>
 	<% end %>
 </p>
 

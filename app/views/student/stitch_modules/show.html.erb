@@ -9,6 +9,9 @@
     <% @stitch_module.stitch_units.each do |sunit| %>
       <%= render sunit %>
     <% end %>
+	 	<% if @open_unit %>
+    	<%= hidden_field_tag "open_unit", @open_unit.id %>
+    <% end %>
   </div>
 </div>
 

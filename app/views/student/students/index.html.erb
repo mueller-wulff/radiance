@@ -8,6 +8,24 @@
 	      <td><%= t(:lastname, :scope => :profile) %></td>
 	    </tr>
 			<tr>
+        <td><%= t(:tutor, :scope => :tutor) %></td>
+        <td><%= @tutor.profile.fullname %></td>
+      </tr>
+			<% if @course_group %>
+				<tr>
+	        <td><%= t(:course, :scope => :course) + " " + t(:group, :scope => :group) %></td>
+	        <td><%= @course_group.title %></td>
+	      </tr>
+				<tbody>			
+			    <% @course_students.each do |student| %>
+			      <tr>
+			        <td><%= student.profile.name %></td>
+			        <td><%= student.profile.lastname %></td>
+			      </tr>
+			    <% end %>
+			  </tbody>
+			<% end %>
+			<tr>
         <td><%= @group.meta_group? ? t(:working_group, :scope => :group) : t(:course, :scope => :course) + " " + t(:group, :scope => :group) %></td>
         <td><%= @group.title %></td>
       </tr>

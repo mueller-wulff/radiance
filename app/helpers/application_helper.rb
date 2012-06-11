@@ -57,7 +57,7 @@ module ApplicationHelper
 
   def avatar_url(user)
     gravatar_id = Digest::MD5::hexdigest(user.profile.email).downcase
-    "http://gravatar.com/avatar/#{gravatar_id}.png?s=48&d=mm"
+    "http://gravatar.com/avatar/#{gravatar_id}.png"
   end
 
   def show_deadline_course(course, student=nil, group=nil)
@@ -242,7 +242,7 @@ module ApplicationHelper
     current_user.role.groups.each do |group|
       if current_user.role.class == Student && group.meta_group?
         course_group = group.meta_group
-        roster << { type:'group', name:"#{course_group.title}", channel_id:Channel.find_or_create_by_channel_string_id("all@group-#{course_group.id}").token } 
+        roster << { type:'group', name:"(CG) #{course_group.title}", channel_id:Channel.find_or_create_by_channel_string_id("all@group-#{course_group.id}").token } 
       end
       roster << { type:"tutor", name:"(T) #{group.tutor.profile.name} #{group.tutor.profile.lastname}", channel_id:build_face2face_channel(group.tutor.profile.id, current_user.id).token } if group.tutor.profile != current_user
       roster += group.students.map do |s|

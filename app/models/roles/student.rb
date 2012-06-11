@@ -10,6 +10,7 @@ class Student < Role
   
   before_destroy :deletable?
   #before_save :enforce_logic
+  before_save :check_profile
   
   def deletable?
     #can only be deleted if not yet activated
@@ -24,6 +25,13 @@ class Student < Role
     end
     if self.profile == nil
       errors.add(:base, "student must have a profile")
+      return false
+    end
+  end
+  
+  def check_profile
+    unless self.profile.role.class == Student
+      errors.add(:base, "email already in use")
       return false
     end
   end

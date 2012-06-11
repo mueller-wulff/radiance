@@ -4,7 +4,10 @@ class Student::StudentsController < ApplicationController
   def index
     @course = Course.find(params[:course_id])
     @group = current_user.role.find_tutor_of_course(@course)
+    @course_group = @group.meta_group if @group.parent_id
     @students = @group.all_students
+    @course_students = @course_group.all_students if @course_group
+    @tutor = @group.tutor
   end
   # GET /students/1
   # GET /students/1.xml
