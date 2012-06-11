@@ -4,6 +4,7 @@
   <% end %>
 	<% unless GroupEssayAnswer.answered_by_group?(current_user.role, e) %>
   	<textarea name="Textarea" id="Textarea" cols="65" rows="10"></textarea>
+		<p><%= t(:score, :scope => :tutor) %>: <%= show_score(e, @tutor) %></p>
 	<% else %>
 		<%=raw show_answer(e, current_user.role).txt %>
 		<p><%= t(:version, :scope => :version) %>: <%= t(:last_edited, :scope => :version) %> <%=raw show_answer(e, current_user.role).updated_at.strftime('%d.%m.%Y - %H:%M') %> <%= t(:by, :scope => :general) %> <%= show_whodunnit(show_answer(e, current_user.role)) %></p>

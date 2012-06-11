@@ -7,5 +7,7 @@
 	  <%= show_answer(e, @student).txt %>
 		<br />
 		<%= t(:assessment, :scope => :student) %>: <%= show_answer(e, @student).score %>/<%= show_score(e, @tutor) %>
+	<% else %>
+		<p><%= t(:score, :scope => :tutor) %>: <%= show_score(e, @tutor) %></p>
 	<% end %>
 </p>

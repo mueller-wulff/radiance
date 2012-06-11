@@ -146,6 +146,8 @@ Stitched::Application.routes.draw do
 
   #special route for open units in module show
   match 'developer/stitch_modules/:id(/open_unit/:stitch_unit_id)' => 'developer/stitch_modules#show', :as => "developer_stitch_module_open_unit"
+  match 'tutor/stitch_modules/:id(/open_unit/:stitch_unit_id)' => 'tutor/stitch_modules#show', :as => "tutor_stitch_module_open_unit"
+  match 'student/stitch_modules/:id(/open_unit/:stitch_unit_id)' => 'student/stitch_modules#show', :as => "student_stitch_module_open_unit"
 
   namespace :developer do
     resources :courses do
