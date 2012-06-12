@@ -597,7 +597,7 @@ Stitched = ->
              idleTime = 0
          )
          return
-
+         
      #Page View Functions
      loadCourseView = ->
          makeSortableModules()
