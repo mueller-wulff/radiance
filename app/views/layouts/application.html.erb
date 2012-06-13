@@ -29,8 +29,7 @@
           	<li><%= t(:welcome, :scope => :navigation) %></li> 
 		        <li><%= current_user.role.class %></li> 
 					<% end %>
-					<li><%= link_to_unless I18n.locale == :en, "English", locale: "en" %> |
-					<%= link_to_unless I18n.locale == :ro, "Romanian", locale: "ro" %> |</li>
+					<li><%= select_tag 'language', options_for_select([["English", "en"], ["Romanian", "ro" ] ]) %></li>
         </ul>				
       </div> 
 
@@ -38,5 +37,15 @@
 
       <%= yield %>
     </div>
+		<script type="text/javascript">
+			$(document).ready(function(){
+				$('#language').live('change', function(e) {
+				  var new_locale = ($('#language').val());
+				  url = window.location.href;
+					window.location.href = url.replace(/\?locale=\w+/, '\?locale='+new_locale);					
+				});
+				$('#language').val('<%= I18n.locale %>');
+		  });
+		</script>
   </body>
 </html>
