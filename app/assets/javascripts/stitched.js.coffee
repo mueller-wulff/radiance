@@ -597,7 +597,7 @@ Stitched = ->
              idleTime = 0
          )
          return
-
+     
      #Page View Functions
      loadCourseView = ->
          makeSortableModules()
@@ -666,7 +666,7 @@ Stitched = ->
      loadCheckDueDate = ->
          checkDueDate()
          return
-     
+           
      loadPageEditView: loadPageEditView,
      loadModuleEditView: loadModuleEditView,
      loadModulePreView: loadModulePreView,

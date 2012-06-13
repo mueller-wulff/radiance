@@ -62,8 +62,8 @@ class Tutor::StudentsController < ApplicationController
             format.xml  { render :xml => @student.errors, :status => :unprocessable_entity }
           end
         else
-          #because error message from enrollment does'nt shown
-          flash[:error] = "student already enrolled"
+          #because error message from enrollment doesn't shown
+          flash[:error] = "student already enrolled in this group"
           format.html { render :action => "new" }
         end
       else

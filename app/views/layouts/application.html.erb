@@ -9,7 +9,7 @@
 	  <%#= javascript_include_tag "http://radiance.dev:8080/application.js" %>
 	  <%= javascript_include_tag "http://stitch.rapidrabbit.de:8080/application.js" %>
 	  <%= stylesheet_link_tag "application" %>
-    <%= csrf_meta_tag %>
+    <%= csrf_meta_tag %>		
   </head>
 
   <body>
@@ -29,13 +29,24 @@
           	<li><%= t(:welcome, :scope => :navigation) %></li> 
 		        <li><%= current_user.role.class %></li> 
 					<% end %>
-        </ul>
+					<li><%= select_tag 'language', options_for_select([["English", "en"], ["Romanian", "ro" ] ]) %></li>
+        </ul>				
       </div> 
 
       <%= render 'layouts/navigation' %>
 			
       <%= yield %>
-			
+
     </div>
+		<script type="text/javascript">
+			$(document).ready(function(){
+				$('#language').live('change', function(e) {
+				  var new_locale = ($('#language').val());
+				  url = window.location.href;
+					window.location.href = url.replace(/\?locale=\w+/, '\?locale='+new_locale);					
+				});
+				$('#language').val('<%= I18n.locale %>');
+		  });
+		</script>
   </body>
 </html>
