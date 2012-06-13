@@ -42,7 +42,11 @@
 				$('#language').live('change', function(e) {
 				  var new_locale = ($('#language').val());
 				  url = window.location.href;
-					window.location.href = url.replace(/\?locale=\w+/, '\?locale='+new_locale);					
+					if(url.match(/\?locale=\w+/)) {
+						window.location.href = url.replace(/\?locale=\w+/, '\?locale='+new_locale);	
+					}	else {
+						window.location.href = url+'\?locale='+new_locale;
+					}								
 				});
 				$('#language').val('<%= I18n.locale %>');
 		  });
