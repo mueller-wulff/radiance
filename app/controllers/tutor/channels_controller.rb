@@ -1,6 +1,8 @@
 class Tutor::ChannelsController < ApplicationController
-
+  before_filter :grab_group
+  
   def new
+    @course = @group.course
     @channel = Channel.new(:group_id => params[:group_id])
   end
 
@@ -24,5 +26,11 @@ class Tutor::ChannelsController < ApplicationController
     @channel = Channel.find(params[:id])
     @channel.destroy
     redirect_to discussion_tutor_group_path(@channel.group)  
+  end
+  
+  protected
+  
+  def grab_group
+    @group = Group.find(params[:group_id])
   end
 end

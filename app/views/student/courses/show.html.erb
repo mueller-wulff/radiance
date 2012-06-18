@@ -27,29 +27,30 @@
       </tbody>
     </table>
   </div>
-
-  <h2><%= t(:discussions, :scope => :chat) %>:</h2>
-  <div id="module_list_table">
-    <table  class="userlist" id="module_list">
-      <thead>
-        <tr  id="thead">
-          <td><%= t(:title, :scope => :general) %></td>
-        </tr>
-      </thead>
-      <tbody>
-        <% @meta_group.channels.each do |channel| %>
-          <tr id="module_<%= channel.id  %>"> 
-            <td><%= link_to channel.name, student_discussion_path(channel) %></td>
-          </tr>
-        <% end %>
-				<% @working_group.channels.each do |channel| %>
-          <tr id="module_<%= channel.id  %>"> 
-            <td><%= link_to channel.name, student_discussion_path(channel) %></td>
-          </tr>
-        <% end %>
-      </tbody>
-    </table>
-  </div>
+	<% if @student.course_group(@course, @student.find_tutor_of_course(@course).tutor).active %>
+  	<h2><%= t(:discussions, :scope => :chat) %>:</h2>
+	  <div id="module_list_table">
+	    <table  class="userlist" id="module_list">
+	      <thead>
+	        <tr  id="thead">
+	          <td><%= t(:title, :scope => :general) %></td>
+	        </tr>
+	      </thead>
+	      <tbody>
+	        <% @meta_group.channels.each do |channel| %>
+	          <tr id="module_<%= channel.id  %>"> 
+	            <td><%= link_to channel.name, student_discussion_path(channel) %></td>
+	          </tr>
+	        <% end %>
+					<% @working_group.channels.each do |channel| %>
+	          <tr id="module_<%= channel.id  %>"> 
+	            <td><%= link_to channel.name, student_discussion_path(channel) %></td>
+	          </tr>
+	        <% end %>
+	      </tbody>
+	    </table>
+	  </div>
+	<% end %>
 </div>
 <div id="aside">
 

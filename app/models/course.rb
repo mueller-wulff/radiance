@@ -81,6 +81,15 @@ class Course < ActiveRecord::Base
   def all_assignment_pages
     self.stitch_modules.map {|sm| sm.pages.where(:assignment => true) }.flatten
   end
+  
+  def all_pages
+    self.stitch_modules.map {|sm| sm.pages}.flatten
+  end
+  
+  def all_discussion_links
+    contents = self.all_pages.map {|p| p.contents.where(:element_type => "DiscussionLink")}.flatten
+    discussion_links = contents.map {|c| c.element}
+  end
 
   def clone_course(params)
     clone_course = self.dup :include => {:stitch_modules => :stitch_units }

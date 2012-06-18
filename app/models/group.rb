@@ -19,6 +19,8 @@ class Group < ActiveRecord::Base
   before_destroy :deletable?
   #before_save :enforce_logic
   
+  scope :only_active, where(:active => true)
+  
   def deletable?
     if enrollments == [] && all_students == []
       return true
@@ -51,5 +53,6 @@ class Group < ActiveRecord::Base
     return true if self.parent_id
     return false    
   end
+
     
 end

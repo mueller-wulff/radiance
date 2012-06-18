@@ -3,9 +3,9 @@
   <%= form_for(@channel, :url => tutor_group_channels_path, :method => :post) do |c| %> 
     <%= errors_for(@channel) %>
 
-  	<p class="input">
-			<%= label :name, t(:name, :scope => :profile) %>  
-      <%= c.text_field :name %>  
+  	<p class="select">
+			<%= label :name, t(:discussion, :scope => :chat) + " " + t(:about, :scope => :general) %>  
+      <%= c.select :name, @course.all_discussion_links.collect {|dl| dl.title} %>  
       <%= c.hidden_field :group_id %>
 		</p>  
 		<p class="submit"> 

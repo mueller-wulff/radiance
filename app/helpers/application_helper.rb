@@ -94,7 +94,7 @@ module ApplicationHelper
         new_student_content_element_answer_path(content, element)
       else
         answer = Answer.where(:student_id => current_user.role.id, :question_id => element.id).first
-        edit_student_content_element_answer_path(content, element, answer)
+        edit_student_content_element_answer_path(content, element, answer) unless answer.locked
       end
     elsif content.element_type == "GroupEssay"
       group = student.find_tutor_of_course(content.page.course)
@@ -102,7 +102,7 @@ module ApplicationHelper
         new_student_content_element_group_essay_answer_path(content, element)
       else
         answer = GroupEssayAnswer.where(:group_id => group.id, :group_essay_id => element.id).first
-        edit_student_content_element_group_essay_answer_path(content, element, answer)
+        edit_student_content_element_group_essay_answer_path(content, element, answer) unless answer.locked
       end
     end
   end
@@ -237,9 +237,9 @@ module ApplicationHelper
   # we can talk to the whole group
   # to the group's tutor or student
   def roster_elements()
-    roster = current_user.role.groups.map { |r| { type:'group', name:"#{r.title}", channel_id:Channel.find_or_create_by_channel_string_id("all@group-#{r.id}").token }  }
+    roster = current_user.role.groups.only_active.map { |r| { type:'group', name:"#{r.title}", channel_id:Channel.find_or_create_by_channel_string_id("all@group-#{r.id}").token }  }
 
-    current_user.role.groups.each do |group|
+    current_user.role.groups.only_active.each do |group|
       if current_user.role.class == Student && group.meta_group?
         course_group = group.meta_group
         roster << { type:'group', name:"(CG) #{course_group.title}", channel_id:Channel.find_or_create_by_channel_string_id("all@group-#{course_group.id}").token } 

@@ -5,4 +5,8 @@ class DiscussionLink < Element
   def fill_with_default_title
     self.title ||= "Please give a title for the Discussion"
   end
+  
+  def find_course
+    return self.content.page.course
+  end
 end

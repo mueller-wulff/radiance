@@ -52,6 +52,15 @@ namespace :deadline do
       Notifier.send_info_to_tutor(tutor, type, group).deliver
     end
     
+    def set_group_inactive(deadline)
+      if deadline.deadlinable_type == "Group"
+        group = Group.find(deadline.deadlinable_id)
+        group.update_attribute(:active, false)
+        child_groups = Group.where(:parent_id => group.id)
+        child_groups.map {|g| g.update_attribute(:active, false) }
+      end
+    end
+    
     Deadline.all.each do |d|
       if (d.due_date - 3.days).today?
         send_information_mail(d)
@@ -59,6 +68,7 @@ namespace :deadline do
         lock_answers(d)
         submit_group_essay(d)
         send_info_to_tutor(d)
+        set_group_inactive(d)
       end
     end    
   end
