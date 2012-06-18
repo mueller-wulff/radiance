@@ -16,7 +16,7 @@
 			<% if is_assignment_page_locked(@page, @student) %>
 				<%= t(:answer_sent, :scope => :student) %>
 			<% else %>
-				<%= button_to t(:send_answer, :scope => :student), :action => "send_answers" %>
+				<%= button_to t(:send_answer, :scope => :student), :action => "send_answers" %> (<%= t(:answer_hint, :scope => :answer) %>)
 			<% end %>
 		<% end %>
 	</div>

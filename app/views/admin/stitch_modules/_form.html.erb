@@ -22,6 +22,10 @@
   <%= f.label :description, t(:description, :scope => :general) %><br />
   <%= f.text_area :description %>
 </p>
+<p class="input">
+  <%= f.label :ects, t(:ects, :scope => :stitch_module) %><br />
+  <%= f.text_field :ects %>
+</p>
 <% unless @stitch_module.new_record? %>
 	<p class='select'>
 		<%= f.check_box :complete %> <%= t(:complete, :scope => :stitch_module) %>?

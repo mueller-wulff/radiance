@@ -138,7 +138,7 @@ module ApplicationHelper
   def find_question_score(content, student=nil)
     element = content.element
     if content.element_type == "Question" || content.element_type == "GroupEssay"
-      if student && student.give_answer?(student, element) && content.element_type == "Question"
+      if student && student.give_answer?(element) && content.element_type == "Question"
         answer = Answer.where(:student_id => student.id, :question_id => element.id).first
         edit_tutor_content_element_student_answer_path(content, element, student, answer)
       elsif student && content.element_type == "GroupEssay"

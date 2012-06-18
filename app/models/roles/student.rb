@@ -62,11 +62,18 @@ class Student < Role
   end
     
   def create_coursebook(tutor, course)
-    self.grades.create(:tutor => tutor, :gradable => course, :value => 0.0)
+    value = course.stitch_modules.first.ects.to_f
+    self.grades.create(:tutor => tutor, :gradable => course, :value => value)
   end
   
-  def give_answer?(student, element)
-    return true if Answer.where(:student_id => student.id, :question_id => element.id).first
+  def give_answer?(element)
+    if element.content.element_type == "Question"
+      return true if Answer.where(:student_id => self.id, :question_id => element.id).first
+      return false
+    elsif element.content.element_type == "GroupEssay"
+      return true if GroupEssayAnswer.answered_by_group?(self, element)
+      return false
+    end
     return false
   end
   

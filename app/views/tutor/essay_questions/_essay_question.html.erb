@@ -2,7 +2,7 @@
   <% unless e.txt == "" %>
     <label for="Input"><%=raw e.txt.gsub("\n","<br />") %></label>
   <% end %>
-	<% if @student && @student.give_answer?(@student, e) %>
+	<% if @student && @student.give_answer?(e) %>
 		<%=raw show_answer(e, @student).txt %>
 		<p>
 			<label><%= t(:comment, :scope => :tutor) %>: <%=show_answer(e, @student).comment %></label>

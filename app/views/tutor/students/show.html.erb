@@ -12,12 +12,11 @@
 	      <td><%= t(:current, :scope => :general) %> <%= t(:grade, :scope => :student) %></td>
 	      <td><%= t(:weight, :scope => :stitch_unit) %></td>
 	    </tr>
-		<% @stitch_modules.each do |stitch_module| %>
-			<% if stitch_module.has_assignment_page? %>				
+		<% @stitch_modules.each do |stitch_module| %>		
 					<tr>
 						<td><strong><%= stitch_module.short_title %> current Grade: <%= show_grade(stitch_module, @student, current_user.role) unless stitch_module.grades.empty? %> </strong></td>
 						<td><%= show_national_assessment(show_grade(stitch_module, @student, current_user.role), @group.course) unless stitch_module.grades.empty? %></td>
-						<td>&nbsp;</td>
+						<td><%= stitch_module.ects %> (<%= t(:ects, :scope => :stitch_module) %>)</td>
 					</tr>
 				    
 				  </thead>
@@ -31,8 +30,7 @@
 					      </tr>
 							<% end %>
 				    <% end %>
-				  </tbody>
-			<% end %>					
+				  </tbody>		
 		<% end %>	
 		</table>
 	<%= link_to t(:back, :scope => :general), :back %>

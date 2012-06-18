@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120426080504) do
+ActiveRecord::Schema.define(:version => 20120618133834) do
 
   create_table "answer_logs", :force => true do |t|
     t.integer  "tutor_id"
@@ -297,6 +297,7 @@ ActiveRecord::Schema.define(:version => 20120426080504) do
     t.datetime "updated_at"
     t.string   "short_title"
     t.integer  "position"
+    t.integer  "ects",        :default => 0
   end
 
   create_table "stitch_units", :id => false, :force => true do |t|

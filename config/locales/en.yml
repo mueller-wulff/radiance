@@ -85,6 +85,7 @@ en:
       modules: "Modules"
       stitch_module: "Stitch Module"
       complete: "Complete"
+      ects: "ECTS"
   profile:
       profile: "Profile"
       email: "Email"
@@ -179,6 +180,7 @@ en:
       every_line: "every line is an answer"
       multiple: "Multiple"
       single: "Single"
+      answer_hint: "GroupEssays will be automatically submitted by deadline!"
   stitch_unit:
       unit: "Unit"
       units: "Units"
