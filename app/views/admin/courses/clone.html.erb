@@ -5,6 +5,7 @@
     <p class="input">
 		  <%= f.label :title, t(:title, :scope => :general) %><br />
 		  <%= f.text_field :title %>
+			<div id="notice"><%= t(:title_uniq, :scope => :course) %></div>
 		</p>
 		<p class="input">
 		  <%= f.label :short_title, t(:short_title, :scope => :general) %><br />
