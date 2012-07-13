@@ -71,8 +71,13 @@ class Admin::CoursesController < ApplicationController
   
   def update_clone
     @course = Course.find(params[:id])
-    @course.clone_course(params[:course])
-    redirect_to(admin_courses_path, :notice => t(:course, :scope => :course)+" "+t(:successfully_cloned, :scope => :course))
+    respond_to do |format|
+      if @course.clone_course(params[:course])  
+        format.html { redirect_to(admin_courses_path, :notice => t(:course, :scope => :course)+" "+t(:successfully_cloned, :scope => :course)) }
+      else
+        format.html { render :action => "clone" }
+      end
+    end
   end
 
   # DELETE /courses/1

@@ -2,6 +2,17 @@
   <%= render 'layouts/breadcrumb' %>
   <h1><%= t(:clone, :scope => :course) %> <%= t(:course, :scope => :course) %> <%= @course.short_title %></h1>
   <%= form_for(@course, :url => update_clone_admin_course_path(@course) ) do |f| %>
+		<% if @course.errors.any? %>
+		  <div id="error_explanation">
+		    <h2><%= pluralize(@course.errors.count, "error") %> prohibited this profile from being saved:</h2>
+
+		    <ul>
+		      <% @course.errors.full_messages.each do |msg| %>
+		        <li><%= msg %></li>
+		      <% end %>
+		    </ul>
+		  </div>
+		<% end %>
     <p class="input">
 		  <%= f.label :title, t(:title, :scope => :general) %><br />
 		  <%= f.text_field :title %>
@@ -10,6 +21,7 @@
 		<p class="input">
 		  <%= f.label :short_title, t(:short_title, :scope => :general) %><br />
 		  <%= f.text_field :short_title %>
+		<div id="notice"><%= t(:title_uniq, :scope => :course) %></div>
 		</p>
 		<p class="input">
 		  <%= f.label :language, t(:language, :scope => :general) %><br />
