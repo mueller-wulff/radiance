@@ -1,9 +1,9 @@
+require 'rake'
 namespace :course do
   task :repair_clone_courses, [:course_id] => :environment do |t, args|
     return if args.course_id.nil?
     course = Course.find(args.course_id)
     c_clones = Course.where(:parent_id => course.id)
-    puts "clones: #{c_clones.size}"
     stitch_modules = []
     if course.id == 1
       stitch_modules << StitchModule.find(4)
