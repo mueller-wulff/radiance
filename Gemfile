@@ -60,6 +60,7 @@ group :development, :test do
   gem 'rspec-rails'
   gem 'pg'
   gem 'autotest-rails'
+  gem 'mysql2'
 end
 
 group :test do

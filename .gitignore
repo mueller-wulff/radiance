@@ -8,3 +8,4 @@ radiance.tmproj
 db/*.sqlite3
 .rvmrc
 .powrc
+*.sql
