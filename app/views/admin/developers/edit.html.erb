@@ -15,7 +15,7 @@
 	<hr/>
 	<h2><%= t(:select, :scope => :general) %> <%= t(:modules, :scope => :stitch_module) %>:</h2>
 	<% @courses.each do |course| %>
-	<ol>
+	<ol class="accordion">
 		<strong><%= course.title %></strong><br/>
 
 		<% course.stitch_modules.each do |stitch_module| %>
@@ -35,3 +35,9 @@
 <div id="aside">
 
 </div>
+
+<script type="text/javascript">
+  $(document).ready(function(){
+    Stitched.loadModuleView();
+  });
+</script>

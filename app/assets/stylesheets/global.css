@@ -1335,3 +1335,8 @@ div.next_page {
 div#notice {
     color: red;
 }
+
+ol.accordion li {
+  display: none;  
+}
+

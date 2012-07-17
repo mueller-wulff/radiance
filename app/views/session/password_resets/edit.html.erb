@@ -1,11 +1,13 @@
-<h1><%= t(:change_pw, :scope => :session) %></h1>
+<div id="main">
+	<h1><%= t(:change_pw, :scope => :session) %></h1>
 
-<% form_for @profile, :url => password_reset_path, :method => :put do |f| %>
-  <%= f.label :password, t(:password, :scope => :profile) %><br />
-  <%= f.password_field :password %><br />
-  <br />
-  <%= f.label :password_confirmation, t(:password_confirmation, :scope => :profile) %><br />
-  <%= f.password_field :password_confirmation %><br />
-  <br />
-  <%= f.submit t(:update_pw, :scope => :session) %>
-<% end %>
+	<%= form_for @profile, :url => password_reset_path, :method => :put do |f| %>
+	  <%= f.label :password, t(:password, :scope => :profile) %><br />
+	  <%= f.password_field :password %><br />
+	  <br />
+	  <%= f.label :password_confirmation, t(:password_confirmation, :scope => :profile) %><br />
+	  <%= f.password_field :password_confirmation %><br />
+	  <br />
+	  <%= f.submit t(:update_pw, :scope => :session) %>
+	<% end %>
+</div>

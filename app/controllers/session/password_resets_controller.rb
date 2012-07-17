@@ -28,7 +28,7 @@ class Session::PasswordResetsController < ApplicationController
     @profile.password_confirmation = params[:profile][:password_confirmation]
     if @profile.save(:validate => false)
       flash[:notice] = "Password successfully updated"  
-      redirect_to edit_profile_url  
+      redirect_to root_url  
     else  
       render :action => :edit  
     end

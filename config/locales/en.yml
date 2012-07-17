@@ -96,6 +96,7 @@ en:
       password_confirmation: "Password Confirmation"
       avatar: "Avatar"
       create_avatar: "Please create your avatar at"
+      forget_pw: "Forgotten your password?"
   developer:
       developer: "Developer"
       developers: "Developers"

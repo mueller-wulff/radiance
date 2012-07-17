@@ -2,7 +2,7 @@ class Notifier < ActionMailer::Base
   default :from => "accounts@stitched.com"
   
   def password_reset_instructions(user)  
-    body          :edit_password_reset_url => edit_password_reset_url(user.perishable_token)  
+    @url = edit_password_reset_url(user.perishable_token)  
     mail(:to => user.email, :subject => I18n.t(:pw_reset_instruction, :scope => :mailer) )
   end 
   

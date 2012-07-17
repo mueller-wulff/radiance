@@ -504,6 +504,14 @@ Stitched = ->
              return false
          ).next().hide()
          return
+         
+     bindListAccordion = ->
+         $('.accordion').click( -> 
+             $(this).children('li').toggle('slow')
+             return false
+         ).children('li').hide()
+         return
+             
 
      linkCKLinks = ->
          $('a[_cke_saved_href]').each -> 
@@ -666,6 +674,9 @@ Stitched = ->
      loadCheckDueDate = ->
          checkDueDate()
          return
+        
+     loadModuleView = ->
+         bindListAccordion()
            
      loadPageEditView: loadPageEditView,
      loadModuleEditView: loadModuleEditView,
@@ -681,7 +692,8 @@ Stitched = ->
      loadGradeSaveView: loadGradeSaveView,
      loadVersion: loadVersion,
      loadValidation: loadValidation,
-     loadCheckDueDate: loadCheckDueDate
+     loadCheckDueDate: loadCheckDueDate,
+     loadModuleView: loadModuleView
 
 root = exports ? this
 root.Stitched = Stitched()
