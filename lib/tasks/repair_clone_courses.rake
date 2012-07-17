@@ -1,3 +1,4 @@
+require 'rake/dsl_definition'
 require 'rake'
 namespace :course do
   task :repair_clone_courses, [:course_id] => :environment do |t, args|

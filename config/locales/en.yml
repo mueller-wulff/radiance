@@ -79,7 +79,7 @@ en:
       clone: "clone"
       successfully_cloned: "was successfully cloned."
       waiting_assessment: "waiting for assessment"
-      title_uniq: "Don't forget to change the title, title must be uniq!"
+      title_uniq: "Don't forget to change the name, name must be unique!"
   stitch_module:
       module: "Module"
       modules: "Modules"
