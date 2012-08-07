@@ -51,10 +51,10 @@ namespace :db do
   end  
 end  
 
-namespace :clean_uo do
+namespace :clean_up do
   task :remove_releases, :role => :app do
     run "for dir in $(ls|sort -nr|tail -n +10); do rm -rf #{release_path}/$dir; done"
   end
 end
   
-after "deploy:finalize_update", "db:db_config"
+after "deploy:finalize_update", "db:db_config", "clean_up:remove_releases"
