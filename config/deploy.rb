@@ -50,5 +50,11 @@ namespace :db do
     run "cp -f /home/stitchapp/app/database.yml #{release_path}/config/database.yml"  
   end  
 end  
+
+namespace :clean_uo do
+  task :remove_releases, :role => :app do
+    run "for dir in $(ls|sort -nr|tail -n +10); do rm -rf #{release_path}/$dir; done"
+  end
+end
   
 after "deploy:finalize_update", "db:db_config"
