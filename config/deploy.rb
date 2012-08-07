@@ -53,7 +53,7 @@ end
 
 namespace :clean_up do
   task :remove_releases, :role => :app do
-    run "for dir in $(ls|sort -nr|tail -n +10); do rm -rf #{release_path}/$dir; done"
+    run "for dir in $(ls #{release_path}|sort -nr|tail -n +10); do rm -rf #{release_path}/$dir; done"
   end
 end
   
