@@ -274,7 +274,7 @@ h1.progress {
     color: #8ED105;
 }
 
-#main p {
+#main p, ul#dashboard {
     font-size: 12px;
     line-height: 19px;
     margin-bottom: 9px;
