@@ -4,6 +4,6 @@ worker_processes (rails_env == 'production' ? 1 : 1)
 
 preload_app false
 
-timeout 90
+timeout 600
 
 listen ENV['HOME'] + '/app/shared/sockets/unicorn.sock', :backlog => 2048

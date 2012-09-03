@@ -30,7 +30,7 @@ class Student < Role
   end
   
   def check_profile
-    unless self.profile.role.class == Student
+    unless self.profile.role_type == "Student"
       errors.add(:base, "email already in use")
       return false
     end
