@@ -24,7 +24,7 @@ namespace :passenger do
 
   task :restart do
     #invoke_command "touch #{current_path}/tmp/restart.txt"
-    invoke_command "uc.pl restart "
+    invoke_command "uc.pl stop; rm -rf #{release_path}/tmp/pids; uc.pl start -u #{user} -c #{release_path}/unicorn.rb "
   end
 
 end
