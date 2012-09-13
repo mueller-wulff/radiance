@@ -14,22 +14,20 @@
 
 	<hr/>
 	<h2><%= t(:select, :scope => :general) %> <%= t(:modules, :scope => :stitch_module) %>:</h2>
-	<% @courses.each do |course| %>
-	<ol class="accordion">
-		<strong><%= course.title %></strong><br/>
-
-		<% course.stitch_modules.each do |stitch_module| %>
-		<li><%= check_box_tag("developer[stitch_module_ids][]", stitch_module.id, @developer.stitch_modules.include?(stitch_module)) %> <%= stitch_module.short_title %></li>
-
-		<% end %>
-	</ol>
-	<% end %>
-
+	<div id="accordion">	
+		<% @courses.each do |course| %>
+			<h3><strong><%= course.title %></strong></h3>
+			<ul>
+				<% course.stitch_modules.each do |stitch_module| %>
+					<li><%= check_box_tag("developer[stitch_module_ids][]", stitch_module.id, @developer.stitch_modules.include?(stitch_module)) %> <%= stitch_module.short_title %></li>
+				<% end %>
+			</ul>
+		<% end %>		
+	</div>
 	<p class="submit"> 
 		<%= submit_tag t(:submit, :scope => :general) %>  
 	</p>
 	<% end %>
-
 	<%= link_to t(:back, :scope => :general), admin_developers_path %>
 </div>
 <div id="aside">

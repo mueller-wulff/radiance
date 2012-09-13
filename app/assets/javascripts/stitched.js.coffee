@@ -506,10 +506,10 @@ Stitched = ->
          return
          
      bindListAccordion = ->
-         $('.accordion').click( -> 
-             $(this).children('li').toggle('slow')
+         $('#accordion h3').click( -> 
+             $(this).next().toggle('slow')
              return false
-         ).children('li').hide()
+         ).next().hide()
          return
              
 
