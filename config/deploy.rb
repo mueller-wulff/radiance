@@ -20,11 +20,12 @@ role :web, "#{domain}"
 role :db, "#{domain}", :primary => true
 
 #passenger specific tasks
-namespace :passenger do
+namespace :unicorn do
 
   task :restart do
     #invoke_command "touch #{current_path}/tmp/restart.txt"
-    invoke_command "uc.pl stop; rm -rf #{release_path}/tmp/pids; uc.pl start -u #{user} -c #{release_path}/unicorn.rb "
+    invoke_command "uc.pl stop"
+    invoke_command "uc.pl start -c /home/#{user}/app/current/unicorn.rb --args '-D'"
   end
 
 end
@@ -33,7 +34,7 @@ end
 namespace :deploy do
 
   task :restart do
-    passenger.restart
+    unicorn.restart
   end
 
   task :start do

@@ -15,7 +15,7 @@ class Tutor::DeadlinesController < ApplicationController
 
   def edit
     @deadline = Deadline.find(params[:id])
-    @group_deadline = Deadline.where(:deadlinable_id => @deadline.group_id, :deadlinable_type => "Group").first
+    @deadline.group_id.nil? ? @group_deadline = @deadline : @group_deadline = Deadline.where(:deadlinable_id => @deadline.group_id, :deadlinable_type => "Group").first
   end
 
   def create
