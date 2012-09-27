@@ -97,6 +97,18 @@ class Page < ActiveRecord::Base
   def course
     self.stitch_unit.course
   end
+  
+  def total_page_score(tutor)
+    total_page_score = 0.0
+    questions = self.contents.where(:element_type => "Question")    
+    questions.map do |q| 
+      unless Question.find(q.element_id).question_scores.where(:tutor_id => tutor.id).first.nil? 
+        total_page_score += Question.find(q.element_id).question_scores.where(:tutor_id => tutor.id).first.value 
+        logger.debug("total_page_score_between #{total_page_score}")
+      end
+    end
+    return total_page_score
+  end
       
 end
 

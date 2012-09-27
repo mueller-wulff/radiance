@@ -545,10 +545,11 @@ Stitched = ->
          $('#new_grade').click (e) -> 
              grade = $('.grade').html().match(/[0-9]+/g) 
              parseGrade = parseFloat(grade.toString().replace(/\,/g, '.'))
-             url = $('.new_grade_form').attr('action') 
+             url = $('form').attr('action') 
              data = 'grade=' + parseGrade
-             sendDataToServer(data, url)  
-             return false
+             sendDataToServer(data, url) 
+             e.preventDefault() 
+             return 
          $('#edit_grade').click (e) ->
              url = $('.edit_grade_form').attr('action') 
              data = nil

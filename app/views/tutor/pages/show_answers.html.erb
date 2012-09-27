@@ -11,7 +11,10 @@
 	<div class="grade">		
   </div>
 	<% unless @grade %>
-		<%= button_to t(:enter_in_coursebook, :scope => :tutor), tutor_grades_path(:student => @student, :stitch_unit => @page.stitch_unit, :group => @group), :method => :post, :form_class => 'new_grade_form', :id => "new_grade" %>
+		<%= form_tag(tutor_grades_path(:student => @student, :stitch_unit => @page.stitch_unit, :group => @group, :format => 'html'), :id => "new_grade") do %>
+			<%= submit_tag t(:enter_in_coursebook, :scope => :tutor) %>
+		<% end -%>
+		<%#= button_to t(:enter_in_coursebook, :scope => :tutor), tutor_grades_path(:student => @student, :stitch_unit => @page.stitch_unit, :group => @group, :format => :html), :method => :post, :form_class => 'new_grade_form', :id => "new_grade" %>
 	<% end %>	<br />
 	<%= render 'page_bottom' %> <br />
 	<%= link_to t(:back, :scope => :general)+" "+t(:to, :scope => :general)+" "+t(:coursebook, :scope => :student), tutor_group_student_path(@group, @student) %>
