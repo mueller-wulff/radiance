@@ -1,0 +1,7 @@
+#nav, #top, #aside, .previous_page, .next_page, .backtotop, .edit_title_links {
+	display: none;
+}
+
+#main {
+    width: auto;
+}

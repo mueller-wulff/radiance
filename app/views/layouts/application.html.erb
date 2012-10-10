@@ -9,6 +9,8 @@
 	  <%#= javascript_include_tag "http://radiance.dev:8080/application.js" %>
 	  <%= javascript_include_tag "http://stitch.rapidrabbit.de:8080/application.js" %>
 	  <%= stylesheet_link_tag "application" %>
+    <%= stylesheet_link_tag "application", :media => "print" %>
+    <%= stylesheet_link_tag "print", :media => "print" %>
     <%= csrf_meta_tag %>		
   </head>
 

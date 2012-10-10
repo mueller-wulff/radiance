@@ -1,6 +1,8 @@
 /*
 *= require_self
-*= require_tree .
+*= require global.css
+*= require chat.css
+*= require fonts.css
 *= require smoothness/jquery-ui-1.8.9.custom
 */
 

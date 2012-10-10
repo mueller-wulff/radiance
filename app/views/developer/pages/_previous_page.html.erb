@@ -1,7 +1,7 @@
 <% if @page.previous_page %>
 	<% if controller.action_name == 'edit'%>
-		<%= link_to "<<", edit_developer_stitch_unit_page_path(@page.previous_page.stitch_unit, @page.previous_page ) %>
+		<%= link_to "<<", edit_developer_stitch_unit_page_path(@page.previous_page.stitch_unit, @page.previous_page ), :class => "previous_page" %>
 	<% else %>
-		<%= link_to "<<", developer_stitch_unit_page_path(@page.previous_page.stitch_unit, @page.previous_page ) %>
+		<%= link_to "<<", developer_stitch_unit_page_path(@page.previous_page.stitch_unit, @page.previous_page ), :class => "previous_page" %>
 	<% end %>
 <% end %>
