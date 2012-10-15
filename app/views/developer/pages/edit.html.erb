@@ -1,7 +1,7 @@
 <div id="main">	
   <%= render 'layouts/breadcrumb' %>
 
-  <h1 id="page_title"><%= render 'page_title' %><small><%= link_to t(:preview_page, :scope => :page), developer_stitch_unit_page_path(@page.stitch_unit,@page), :id => "preview_link" %></small>  <small> <%= t(:assignment, :scope => :page) %>? <%= check_box_tag 'page_assignment', @page.id, @page.assignment, {'data-href' => make_assignment_developer_stitch_unit_page_path(@page.stitch_unit,@page) ,:class => 'assignment_check'} %></small></h1>
+  <h1 id="page_title"><%= render 'page_title' %><small class="edit_title_links"><%= link_to t(:preview_page, :scope => :page), developer_stitch_unit_page_path(@page.stitch_unit,@page), :id => "preview_link" %></small>  <small class="edit_title_links"> <%= t(:assignment, :scope => :page) %>? <%= check_box_tag 'page_assignment', @page.id, @page.assignment, {'data-href' => make_assignment_developer_stitch_unit_page_path(@page.stitch_unit,@page) ,:class => 'assignment_check'} %></small></h1>
 
   <br/>
   <div class="editView" id="contentElements">
