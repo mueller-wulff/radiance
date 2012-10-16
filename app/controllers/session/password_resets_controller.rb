@@ -8,7 +8,7 @@ class Session::PasswordResetsController < ApplicationController
   
   def create
     @profile = Profile.find_by_email(params[:email])
-    if @profile
+    if @profile && !is_demo_tutor? && !is_demo_student?
       @profile.deliver_password_reset_instructions!
       flash[:notice] = "Instructions to reset your password have been emailed to you. " +  
         "Please check your email."  
