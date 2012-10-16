@@ -1,5 +1,6 @@
 class Tutor::DeadlinesController < ApplicationController
   before_filter :grab_course
+  before_filter :demo_tutor_not_allowed, :except => :index
 
   def index
     @pages = @course.all_assignment_pages

@@ -1,5 +1,7 @@
 class Tutor::ChannelsController < ApplicationController
-
+  before_filter :require_tutor
+  before_filter :demo_tutor_not_allowed
+  
   def new
     @channel = Channel.new(:group_id => params[:group_id])
   end

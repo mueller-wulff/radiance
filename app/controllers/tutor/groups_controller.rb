@@ -1,5 +1,6 @@
 class Tutor::GroupsController < ApplicationController
   before_filter :require_user
+  before_filter :demo_tutor_not_allowed, :except => [:index, :show]
   before_filter :grab_tutor
   # GET /groups
   # GET /groups.xml

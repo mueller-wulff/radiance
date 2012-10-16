@@ -14,7 +14,7 @@
 	      		<tr> 
 	        		<td><strong><%= group.title %></strong></td>
 							<td><%= group.deadline.due_date.strftime('%d.%m.%Y - %H:%M') unless group.deadline.nil? %></td>
-							<td><%= link_to image_tag("space.gif", :title => t(:edit, :scope => :general)+" "+t(:group, :scope => :group)+" "+t(:deadline, :scope => :course), :class => "icon edit"), edit_tutor_course_deadline_path(@course, group.deadline) if group.deadline %></td>
+							<td><%= link_to image_tag("space.gif", :title => t(:edit, :scope => :general)+" "+t(:group, :scope => :group)+" "+t(:deadline, :scope => :course), :class => "icon edit"), edit_tutor_course_deadline_path(@course, group.deadline) if group.deadline && !is_demo_tutor? %></td>
 		        </tr>
       </thead>
       <tbody>					
@@ -22,7 +22,7 @@
 	      		<tr> 
 	        		<td><%= link_to page.stitch_unit.title, tutor_stitch_unit_page_path(page.stitch_unit, page) %></td>
 							<td><%= show_deadline_page(page, nil, group)  %></td>
-							<td><%= link_to image_tag("space.gif", :title => t(:edit, :scope => :general)+" "+t(:page, :scope => :page)+" "+t(:deadline, :scope => :course), :class => "icon edit"), find_page_deadline(@course, group, page) %></td>
+							<td><%= link_to image_tag("space.gif", :title => t(:edit, :scope => :general)+" "+t(:page, :scope => :page)+" "+t(:deadline, :scope => :course), :class => "icon edit"), find_page_deadline(@course, group, page) unless is_demo_tutor? %></td>
 		        </tr>
 					<% end %>
 				<% end %>

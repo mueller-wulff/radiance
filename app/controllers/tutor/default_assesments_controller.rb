@@ -1,6 +1,7 @@
 class Tutor::DefaultAssesmentsController < ApplicationController
   before_filter :require_tutor
   before_filter :grab_course
+  before_filter :demo_tutor_not_allowed, :except => :show
   
   def show
     @default_assesments = DefaultAssesment.where(:course_id => @course.id, :tutor_id => @tutor.id).order("mark desc")
