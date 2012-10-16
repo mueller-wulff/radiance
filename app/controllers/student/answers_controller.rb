@@ -1,5 +1,6 @@
 class Student::AnswersController < ApplicationController
   before_filter :require_student
+  before_filter :demo_student_not_allowed
   before_filter :get_data
 
   layout nil

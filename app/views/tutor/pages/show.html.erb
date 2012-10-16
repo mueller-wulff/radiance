@@ -15,11 +15,10 @@
 <div id="aside">
 
 </div>
-<script type="text/javascript">
-	$(document).ready(function(){
-    Stitched.loadPageAnswerView();
-  });
-</script>
-
-
-
+<% unless is_demo_tutor? %>
+	<script type="text/javascript">
+		$(document).ready(function(){
+	    Stitched.loadPageAnswerView();
+	  });
+	</script>
+<% end %>

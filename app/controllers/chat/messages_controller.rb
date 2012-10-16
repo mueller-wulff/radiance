@@ -1,4 +1,6 @@
 class Chat::MessagesController < ApplicationController
+  before_filter :demo_student_not_allowed
+  before_filter :demo_tutor_not_allowed
   def create
     if params[:meta]
       Juggernaut.publish(params[:channel], { :meta => params[:meta], :profile_id => current_user.id, :profile_name => current_user.name })

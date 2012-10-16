@@ -1,5 +1,6 @@
 class Student::StudentsController < ApplicationController
   before_filter :require_student
+  before_filter :demo_student_not_allowed, :only => [:edit, :update]
   
   def index
     @course = Course.find(params[:course_id])

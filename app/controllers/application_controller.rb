@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
-  helper_method :current_user_session, :current_user
+  helper_method :current_user_session, :current_user, :is_demo_student?, :is_demo_tutor?
   before_filter :set_locale
 
   def set_locale
@@ -64,6 +64,38 @@ class ApplicationController < ActionController::Base
         store_location
         flash[:notice] = t(:must_login, :scope => :general)
         redirect_to login_url
+        return false
+      end
+    end
+    
+    def is_demo_student?
+      if current_user && current_user.role.class == Student && current_user.login == "demo-student@stitch-project.eu" #TODO modify
+        return true
+      end
+      return false
+    end
+    
+    def demo_student_not_allowed
+      if is_demo_student?
+        store_location
+        flash[:notice] = "Permission denied"
+        redirect_to root_url
+        return false
+      end
+    end
+    
+    def is_demo_tutor?
+      if current_user && current_user.role.class == Tutor && current_user.login == "demo-tutor@stitch-project.eu" #TODO modify
+        return true
+      end
+      return false
+    end
+    
+    def demo_tutor_not_allowed
+      if is_demo_tutor?
+        store_location
+        flash[:notice] = "Permission denied"
+        redirect_to root_url
         return false
       end
     end

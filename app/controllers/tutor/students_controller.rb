@@ -2,6 +2,7 @@ class Tutor::StudentsController < ApplicationController
   before_filter :require_user
   before_filter :grab_tutor, :except => [:edit, :update,]
   before_filter :grab_group_id, :except => [:edit, :update, :index, :destroy]
+  before_filter :demo_tutor_not_allowed, :except => [:index, :show]
   # GET /students
   # GET /students.xml
   def index
