@@ -1,5 +1,5 @@
 <%=  f.fields_for :element do |element_field| %>
   <p class="input">   
-    <label for="Input"><%= t(:embed, :scope => :question) %> <%= t(:link, :scope => :general) %></label>
+    <label for="Input"><%= t(:embed_link, :scope => :question) %></label>
     <%= element_field.text_area :slide_link, :size => "10x10" %> </p>
 <% end %>

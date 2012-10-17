@@ -1,5 +1,5 @@
 <div id="main">
-  <h1><%= t(:editing, :scope => :general) %> <%= t(:tutor, :scope => :tutor) %></h1>
+  <h1><%= t(:editing, :scope => :tutor) %></h1>
   <%= form_for(@tutor, :url => developer_tutor_path(@tutor)) do |f| %>
     <%= render 'form', :f => f %>  
   <% end %>

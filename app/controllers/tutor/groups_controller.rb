@@ -64,7 +64,7 @@ class Tutor::GroupsController < ApplicationController
     @group.deadline = Deadline.new(params[:deadline])
     respond_to do |format|
       if @group.save
-        format.html { redirect_to(tutor_course_students_path(@group.course), :notice => 'Group was successfully created.') }
+        format.html { redirect_to(tutor_course_students_path(@group.course), :notice => t(:created, :scope => :group)) }
         format.xml  { render :xml => @group, :status => :created, :location => @group }
       else
         format.html { render :action => "new" }
@@ -82,7 +82,7 @@ class Tutor::GroupsController < ApplicationController
     respond_to do |format|
       if @working_group.save
         params[:working_group]['student_ids'].map {|s| Student.find(s).shuffle_group(@course_group, @working_group ) } if params[:working_group]['student_ids']
-        format.html { redirect_to(edit_tutor_group_path(@course_group), :notice => 'Group was successfully created.') }
+        format.html { redirect_to(edit_tutor_group_path(@course_group), :notice => t(:created, :scope => :group)) }
         format.xml  { render :xml => @group, :status => :created, :location => @group }
       else
         format.html { render :action => "new_working_group" }
@@ -98,7 +98,7 @@ class Tutor::GroupsController < ApplicationController
 
     respond_to do |format|
       if @group.update_attributes(params[:group])
-        format.html { redirect_to(tutor_groups_url, :notice => 'Group was successfully updated.') }
+        format.html { redirect_to(tutor_groups_url, :notice => t(:updated, :scope => :group)) }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }

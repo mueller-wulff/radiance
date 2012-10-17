@@ -1,6 +1,6 @@
 <div id="main">
 
-  <h1><%= t(:all, :scope => :general) %> <%= t(:students, :scope => :student) %></h1>
+  <h1><%= t(:all, :scope => :student) %></h1>
   <table  class="userlist">
 	  <thead>
 	    <tr>
@@ -13,7 +13,7 @@
       </tr>
 			<% if @course_group %>
 				<tr>
-	        <td><%= t(:course, :scope => :course) + " " + t(:group, :scope => :group) %></td>
+	        <td><%= t(:course_group, :scope => :group) %></td>
 	        <td><%= @course_group.title %></td>
 	      </tr>
 				<tbody>			
@@ -26,7 +26,7 @@
 			  </tbody>
 			<% end %>
 			<tr>
-        <td><%= @group.meta_group? ? t(:working_group, :scope => :group) : t(:course, :scope => :course) + " " + t(:group, :scope => :group) %></td>
+        <td><%= @group.meta_group? ? t(:working_group, :scope => :group) : t(:course_group, :scope => :group) %></td>
         <td><%= @group.title %></td>
       </tr>
 	  </thead>

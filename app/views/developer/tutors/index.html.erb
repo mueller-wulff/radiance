@@ -1,5 +1,5 @@
 <div id="main">
-	<h1><%= t(:listings, :scope => :general) %> <%= t(:tutors, :scope => :tutor) %></h1>
+	<h1><%= t(:listings, :scope => :tutor) %></h1>
 
 	<table  class="userlist">
   	<thead>
@@ -17,13 +17,13 @@
           <td><%= tutor.profile.lastname %></td>
           <td><%= tutor.profile.email %></td>
           <td>
-            <%= link_to image_tag("space.gif", :title => t(:edit, :scope => :general)+ " "+ t(:tutor, :scope => :tutor), :class => "icon useredit"), edit_developer_tutor_path(tutor) %>
-            <%= link_to image_tag("space.gif", :title => t(:delete, :scope => :general)+ " "+ t(:tutor, :scope => :tutor), :class => "icon delete"), developer_tutor_path(tutor), :confirm => t(:confirm, :scope => :general)+" "+t(:delete, :scope => :general)+" "+t(:this, :scope => :general)+" "+t(:tutor, :scope => :tutor)+"?", :method => :delete %>
+            <%= link_to image_tag("space.gif", :title => t(:edit, :scope => :tutor), :class => "icon useredit"), edit_developer_tutor_path(tutor) %>
+            <%= link_to image_tag("space.gif", :title => t(:delete, :scope => :tutor), :class => "icon delete"), developer_tutor_path(tutor), :confirm => t(:confirm, :scope => :tutor), :method => :delete %>
           </td>
         </tr>
 			<% end %>
 				<tr>
-        	<td><%= link_to 'Create New Tutor', new_developer_tutor_path %></td>
+        	<td><%= link_to t(:create, :scope => :tutor), new_developer_tutor_path %></td>
 	        <td></td>
 	        <td></td>
 	        <td></td>

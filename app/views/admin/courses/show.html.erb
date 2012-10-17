@@ -12,10 +12,10 @@
   <% if @course.deprecatable? && !@course.deprecated %>
     <p><%= link_to t(:mark_deprecated, :scope => :course), deprecate_admin_course_path(@course) %></p>
   <% elsif @course.publishable? && !@course.published %>
-    <p><%= link_to t(:publish, :scope => :course)+" "+t(:course, :scope => :course), edit_admin_course_path(@course) %></p>
-    <p><%= link_to t(:create, :scope => :general)+" "+t(:module, :scope => :stitch_module), new_admin_course_stitch_module_path(@course)%></p>
+    <p><%= link_to t(:publish, :scope => :course), edit_admin_course_path(@course) %></p>
+    <p><%= link_to t(:create, :scope => :stitch_module), new_admin_course_stitch_module_path(@course)%></p>
   <% elsif @course.editable? %>
-    <p><%= link_to t(:create, :scope => :general)+" "+t(:module, :scope => :stitch_module), new_admin_course_stitch_module_path(@course)%></p>
+    <p><%= link_to t(:create, :scope => :stitch_module), new_admin_course_stitch_module_path(@course)%></p>
   <% end %>
 
 
@@ -37,9 +37,9 @@
             <td><%= sm.complete ? t(:yes, :scope => :general) : t(:no, :scope => :general) %></td>
             <td>
               <% unless @course.published  %>
-                <%= link_to image_tag("space.gif", :title => t(:edit, :scope => :general)+" "+ t(:module, :scope => :stitch_module), :class => "icon useredit"), edit_admin_course_stitch_module_path(@course, sm) %>
+                <%= link_to image_tag("space.gif", :title => t(:edit, :scope => :stitch_module), :class => "icon useredit"), edit_admin_course_stitch_module_path(@course, sm) %>
                 <% if sm.deletable? %>
-                  <%= link_to image_tag("space.gif", :title => t(:delete, :scope => :general)+" "+ t(:module, :scope => :stitch_module), :class => "icon delete"), admin_course_stitch_module_path(@course, sm), :confirm => t(:confirm, :scope => :general)+" "+t(:delete, :scope => :general)+" "+t(:this, :scope => :general)+" "+t(:module, :scope => :stitch_module)+"?", :method => :delete %>
+                  <%= link_to image_tag("space.gif", :title => t(:delete, :scope => :stitch_module), :class => "icon delete"), admin_course_stitch_module_path(@course, sm), :confirm => t(:confirm, :scope => :stitch_module), :method => :delete %>
                 <% end %>
               <% end %>
             </td>

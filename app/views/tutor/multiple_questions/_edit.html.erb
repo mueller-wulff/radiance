@@ -6,13 +6,13 @@
 		<%=raw show_answer(@element, @student).txt %>
 		<p>
 			<%= fields_for :answer do |answer_field| -%>
-				Achievement: <%= answer_field.text_field :score %>
+				<%= t(:achievement, :scope => :tutor) %>: <%= answer_field.text_field :score %>
 			<% end %>
-			Score: <%= show_score(@element, current_user.role) %>
+			<%= t(:score, :scope => :tutor) %>: <%= show_score(@element, current_user.role) %>
 		</p>
 	<% else %>
 	  <%= fields_for :question_score do |score_field| -%>
-			Score: <%= score_field.text_field :value %>
+			<%= t(:score, :scope => :tutor) %>: <%= score_field.text_field :value %>
 		<% end -%>
 	<% end %>
 </p>

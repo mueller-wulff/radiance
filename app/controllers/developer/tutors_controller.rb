@@ -48,7 +48,7 @@ class Developer::TutorsController < ApplicationController
     @courses = Course.all 
     respond_to do |format|
       if @tutor.save
-        format.html { redirect_to(developer_tutors_path, :notice => 'Tutor was successfully created.') }
+        format.html { redirect_to(developer_tutors_path, :notice => t(:created, :scope => :tutor)) }
         format.xml  { render :xml => @tutor, :status => :created, :location => @tutor }
       else
         format.html { render :action => "new" }
@@ -65,7 +65,7 @@ class Developer::TutorsController < ApplicationController
     @courses = Course.all
     respond_to do |format|
       if @tutor.update_attributes(params[:tutor])
-        format.html { redirect_to(developer_tutors_path, :notice => 'Tutor was successfully updated.') }
+        format.html { redirect_to(developer_tutors_path, :notice => t(:updated, :scope => :tutor)) }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }

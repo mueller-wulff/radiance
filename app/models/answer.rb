@@ -27,7 +27,7 @@ class Answer < ActiveRecord::Base
         answer = Answer.new
         answer.student = student
         answer.question = question
-        answer.txt = "No Answer given"
+        answer.txt = "No Answer given."
       end
       answer.locked = true
       answer.save

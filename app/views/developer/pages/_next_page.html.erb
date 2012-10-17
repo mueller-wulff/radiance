@@ -5,5 +5,5 @@
 		<%= link_to ">>", developer_stitch_unit_page_path(@page.next_page.stitch_unit, @page.next_page ), :class => "next_page" %>
 	<% end %>
 <% else %>
-	<p><%= link_to t(:back, :scope => :general)+" "+t(:to, :scope => :general)+" "+t(:course, :scope => :course), developer_course_path(@page.course) %></p>
+	<p><%= link_to t(:back_to_course, :scope => :course), developer_course_path(@page.course) %></p>
 <% end %>

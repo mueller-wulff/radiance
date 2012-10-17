@@ -1,6 +1,6 @@
 <p class="input">
   <% unless e.txt == "" %>
-    <label for="Input"><%= t(:group, :scope => :group) %> <%= t(:essay, :scope => :question) %>: <%=raw e.txt.gsub("\n","<br />") %></label>
+    <label for="Input"><%= t(:group_essay, :scope => :question) %>: <%=raw e.txt.gsub("\n","<br />") %></label>
   <% end %>
 	<% unless GroupEssayAnswer.answered_by_group?(current_user.role, e) %>
   	<textarea name="Textarea" id="Textarea" cols="65" rows="10"></textarea>

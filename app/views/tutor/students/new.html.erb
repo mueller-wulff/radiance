@@ -1,5 +1,5 @@
 <div id="main">
-	<h1><%= t(:enroll, :scope => :tutor) %> <%= t(:student, :scope => :student) %></h1>
+	<h1><%= t(:enroll, :scope => :tutor) %></h1>
 	<%= form_for(@student, :url => tutor_group_students_path) do |f| %> 
 	  <% if @profile.errors.any? %>
 	    <div id="error_explanation">

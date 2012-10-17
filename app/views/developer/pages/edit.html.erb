@@ -34,7 +34,7 @@
       </li>
       <h4><%= t(:questions, :scope => :question) %></h4>
       <li class="question newContentElement"><img class="question" src="/images/space.gif" alt="Question" />
-        <%= t(:short, :scope => :question) %> <%= t(:question, :scope => :question) %>
+        <%= t(:short_question, :scope => :question) %>
         <%=  hidden_field_tag "klass", "SimpleQuestion"%>
       </li>
       <li class="question newContentElement"><img class="question" src="/images/space.gif" alt="Question" />
@@ -42,12 +42,12 @@
         <%=  hidden_field_tag "klass", "EssayQuestion"%>
       </li>
       <li class="question newContentElement"><img class="question" src="/images/space.gif" alt="Question" />
-        <%= t(:multiple_choice, :scope => :question) %> <%= t(:question, :scope => :question) %>
+        <%= t(:multiple_choice, :scope => :question) %>
         <%=  hidden_field_tag "klass", "MultipleQuestion"%>
       </li>
-			<h4><%= t(:group, :scope => :group) %> <%= t(:assignments, :scope => :page) %></h4>
+			<h4><%= t(:group_assignments, :scope => :question) %></h4>
 			<li class="question newContentElement"><img class="question" src="/images/space.gif" alt="Question" />
-        <%= t(:group, :scope => :group) %> <%= t(:essay, :scope => :question) %>
+        <%= t(:group_essay, :scope => :question) %>
 				<%=  hidden_field_tag "klass", "GroupEssay"%>
       </li>
 			<li class="question newContentElement"><img class="question" src="/images/space.gif" alt="Question" />

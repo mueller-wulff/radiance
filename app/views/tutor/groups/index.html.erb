@@ -1,5 +1,5 @@
 <div id="main">
-	<h1><%= t(:listing, :scope => :general) %> <%= t(:groups, :scope => :group) %> <%= t(:for, :scope => :general) %> <%= t(:discussion, :scope => :chat) %></h1>
+	<h1><%= t(:list_groups_for_discussion, :scope => :chat) %></h1>
 	<table  class="userlist">
   	<thead>
   		<tr>
@@ -15,11 +15,11 @@
 					<td><%= group.title %></td>
 					<td><%= group.course.short_title %></td>
 					<td>
-						<%= group.parent_id ? t(:working_group, :scope => :group) : t(:course, :scope => :course)+" "+t(:group, :scope => :group) %>
+						<%= group.parent_id ? t(:working_group, :scope => :group) : t(:course_group, :scope => :group) %>
 					</td>
 			    <td>
-						<%= link_to image_tag("space.gif", :title => t(:group, :scope => :group)+ " "+t(:discussions, :scope => :chat), :class => "icon-discussion"), discussion_tutor_group_path(group) %>
-          	<%= link_to image_tag("space.gif", :title => t(:delete, :scope => :general)+ " "+ t(:group, :scope => :group), :class => "icon delete"), tutor_group_path(group), :confirm => t(:confirm, :scope => :general)+" "+t(:delete, :scope => :general)+" "+t(:this, :scope => :general)+" "+t(:group, :scope => :group)+"?", :method => :delete %>
+						<%= link_to image_tag("space.gif", :title => t(:group_discussions, :scope => :chat), :class => "icon-discussion"), discussion_tutor_group_path(group) %>
+          	<%= link_to image_tag("space.gif", :title => t(:delete, :scope => :group), :class => "icon delete"), tutor_group_path(group), :confirm => t(:confirm, :scope => :group), :method => :delete %>
 					</td>
 			  </tr>
 			<% end %>

@@ -1,5 +1,5 @@
 <div id="main">
-  <h1><%= t(:editing, :scope => :general) %> <%= t(:deadline, :scope => :course) %> <%= t(:for, :scope => :general) %> <%= show_deadline_title(@deadline) %></h1>
+  <h1><%= t(:editing_deadline_for, :scope => :course) %> <%= show_deadline_title(@deadline) %></h1>
   <%= form_for(@deadline, :url => tutor_course_deadline_path(@course, @deadline)) do |f| %>
     <p class="checkbox">
 			<%= label :due_date, t(:deadline, :scope => :course) %><br />
