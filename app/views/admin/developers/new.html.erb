@@ -1,5 +1,5 @@
 <div id="main">
-  <h1><%= t(:new, :scope => :general) %> <%= t(:developer, :scope => :developer) %></h1>
+  <h1><%= t(:new, :scope => :developer) %></h1>
   <%= form_for(@developer, :url => admin_developers_path) do |f| %>
     <%= render 'form', :f => f %>  
   <% end %>

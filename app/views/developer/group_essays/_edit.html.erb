@@ -1,6 +1,6 @@
 <%=  f.fields_for :element do |element_field| %>
   <p class="input">   
-    <label for="Input"><%= t(:group, :scope => :group) %> <%= t(:question, :scope => :question) %> <%= t(:text, :scope => :general) %></label>
+    <label for="Input"><%= t(:group_question_text, :scope => :question) %></label>
     <%= element_field.text_area :txt, :size => "20x3" %>
     <label for="Input"><%= t(:word_count, :scope => :question) %></label>
     <%= element_field.text_field :max_length %>

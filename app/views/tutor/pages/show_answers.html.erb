@@ -2,7 +2,7 @@
   <%= render 'layouts/breadcrumb' %>
 
   <h1 id="page_title"><%= render 'page_title' %></h1>
-	<h3><%= t(:assignment, :scope => :page) %> <%= t(:of, :scope => :general) %>: <%= @student.profile.fullname %></h3>
+	<h3><%= t(:assignment_of, :scope => :page) %>: <%= @student.profile.fullname %></h3>
 	<br/>
   <div class="showView" id="contentElements">
     <%= render :partial => 'tutor/contents/content', :collection => @page.contents %>
@@ -17,7 +17,7 @@
 		<%#= button_to t(:enter_in_coursebook, :scope => :tutor), tutor_grades_path(:student => @student, :stitch_unit => @page.stitch_unit, :group => @group, :format => :html), :method => :post, :form_class => 'new_grade_form', :id => "new_grade" %>
 	<% end %>	<br />
 	<%= render 'page_bottom' %> <br />
-	<%= link_to t(:back, :scope => :general)+" "+t(:to, :scope => :general)+" "+t(:coursebook, :scope => :student), tutor_group_student_path(@group, @student) %>
+	<%= link_to t(:back_to_coursebook, :scope => :student), tutor_group_student_path(@group, @student) %>
 </div>
 <div id="aside">
 

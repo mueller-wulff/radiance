@@ -10,7 +10,7 @@ class Session::ProfileSessionsController < ApplicationController
   def create
     @profile_session = ProfileSession.new(params[:profile_session])  
     if @profile_session.save  
-      flash[:notice] = "Successfully logged in." 
+      flash[:notice] = t(:logged_in, :scope => :session)
       if @profile_session.profile.inactive_student?
         redirect_to edit_student_student_path(@profile_session.profile.role_id) 
       else
@@ -25,7 +25,7 @@ class Session::ProfileSessionsController < ApplicationController
 #    @profile_session = ProfileSession.find  
 #    @profile_session.destroy  
     current_user_session.destroy
-    flash[:notice] = "Successfully logged out."  
+    flash[:notice] = t(:logged_out, :scope => :session)
     redirect_to login_url  
   end
 

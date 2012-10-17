@@ -1,7 +1,7 @@
 <div id="main">
 	<%= form_for(@student, :url => update_shuffle_tutor_group_student_path(@group, @student)) do |f| %>
 		<p class="select">
-			<%= t(:shuffle, :scope => :tutor) %> <%= t(:student, :scope => :student) %> <%= @student.profile.fullname %> from Group: <%= @group.title %> in Group: 
+			<%= t(:shuffle_student, :scope => :tutor) %> <%= @student.profile.fullname %>: 
 			<%= select_tag "metagroup", options_from_collection_for_select(@tutor.metagroup(@group).reject {|g| g == @group}, "id", "title") %>
 		</p>
 		<p class="submit"> 

@@ -34,7 +34,7 @@ class Student::StudentsController < ApplicationController
     @student.activate unless @student.activated
     respond_to do |format|
       if @student.update_attributes(params[:student]) 
-        format.html { redirect_to(root_url, :notice => 'Student was successfully updated.') }
+        format.html { redirect_to(root_url, :notice => t(:updated, :scope => :student )) }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }

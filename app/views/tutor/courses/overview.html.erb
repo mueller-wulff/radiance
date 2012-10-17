@@ -19,7 +19,7 @@
 					<td><%= t(:overview_assignment) %></td>
         </tr>
 				<tr> 
-        	<td><%= link_to t(:delivered, :scope => :tutor)+" "+t(:assignments, :scope => :page), tutor_course_answer_logs_path(@course) %> (<%= @answer_log_size %>)</td>
+        	<td><%= link_to t(:delivered_assignments, :scope => :tutor), tutor_course_answer_logs_path(@course) %> (<%= @answer_log_size %>)</td>
 					<td><%= t(:overview_delivered, :scope => :tutor) %></td>
         </tr>
 				<tr> 
@@ -35,7 +35,7 @@
 					<td><%= t(:overview_message, :scope => :tutor) %></td>
 				</tr>
 				<tr> 
-        	<td><%= link_to t(:course, :scope => :course)+" "+t(:content, :scope => :general), tutor_course_path(@course) %></td>
+        	<td><%= link_to t(:course_content, :scope => :course), tutor_course_path(@course) %></td>
 					<td><%= t(:overview_course, :scope => :tutor) %> 
 						<br />
 						<strong><%= t(:overview_advice, :scope => :tutor) %></strong>						

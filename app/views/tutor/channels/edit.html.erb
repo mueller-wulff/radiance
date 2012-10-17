@@ -1,5 +1,5 @@
 <div id="main">
-	<h1><%= t(:edit, :scope => :general) %> <%= t(:discussion, :scope => :chat) %></h1>
+	<h1><%= t(:edit, :scope => :chat) %></h1>
   <%= form_for(@channel, :url => tutor_group_channel_path(@channel), :html => { :method => "put" }) do |c| %> 
     <%= errors_for(@channel) %>
 
@@ -11,7 +11,7 @@
 
   	<p class="input">
       <%= label :closed, t(:closed, :scope => :chat)+"?" %>
-      <span class="checkbox"> <%= c.check_box :closed, class:"checkbox"%> <%= t(:discussion, :scope => :chat) %> <%= t(:is, :scope => :general) %> <%= t(:closed, :scope => :chat) %> </span>
+      <span class="checkbox"> <%= c.check_box :closed, class:"checkbox"%> <%= t(:discussion_is_closed, :scope => :chat) %> </span>
 		</p>  
 
 		<p class="submit"> 

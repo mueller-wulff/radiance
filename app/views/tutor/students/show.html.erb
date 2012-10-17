@@ -1,6 +1,6 @@
 <div id="main">
 	<h1>
-		<%= t(:coursebook, :scope => :student) %> <%= t(:for, :scope => :general) %> <%= @student.profile.fullname %>
+		<%= t(:coursebook_for, :scope => :student) %> <%= @student.profile.fullname %>
 	</h1>
 	<h2><%= t(:course, :scope => :course) %> <%= @group.course.short_title %> <% if @course_grade %><%= @course_grade.value unless @course_grade.value.nil? %> <%= show_national_assessment(@course_grade.value, @group.course) unless @course_grade.value.nil? %><% end %>
 	</h2>
@@ -9,7 +9,7 @@
 		<thead>
 			<tr>
 	      <td><%= t(:title, :scope => :general) %></td>
-	      <td><%= t(:current, :scope => :general) %> <%= t(:grade, :scope => :student) %></td>
+	      <td><%= t(:current_grade, :scope => :student) %></td>
 	      <td><%= t(:weight, :scope => :stitch_unit) %></td>
 	    </tr>
 		<% @stitch_modules.each do |stitch_module| %>

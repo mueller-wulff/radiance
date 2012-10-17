@@ -48,7 +48,7 @@ class Admin::CoursesController < ApplicationController
 
     respond_to do |format|
       if @course.save
-        format.html { redirect_to(admin_courses_path, :notice => t(:course, :scope => :course)+" "+t(:successfully_created, :scope => :general)) }
+        format.html { redirect_to(admin_courses_path, :notice => t(:course_created, :scope => :course)) }
       else
         format.html { render :action => "new" }
       end
@@ -62,7 +62,7 @@ class Admin::CoursesController < ApplicationController
 
     respond_to do |format|
       if @course.update_attributes(params[:course])
-        format.html { redirect_to(admin_courses_path, :notice => t(:course, :scope => :course)+" "+t(:successfully_updated, :scope => :general)) }
+        format.html { redirect_to(admin_courses_path, :notice => t(:course_updated, :scope => :course)) }
       else
         format.html { render :action => "edit" }
       end
@@ -73,7 +73,7 @@ class Admin::CoursesController < ApplicationController
     @course = Course.find(params[:id])
     respond_to do |format|
       if @course.clone_course(params[:course])  
-        format.html { redirect_to(admin_courses_path, :notice => t(:course, :scope => :course)+" "+t(:successfully_cloned, :scope => :course)) }
+        format.html { redirect_to(admin_courses_path, :notice => t(:course_cloned, :scope => :course)) }
       else
         format.html { render :action => "clone" }
       end

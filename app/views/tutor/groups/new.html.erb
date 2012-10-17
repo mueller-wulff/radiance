@@ -1,5 +1,5 @@
 <div id="main">
-	<h1><%= t(:new, :scope => :general) %> <%= t(:group, :scope => :group) %> <%= t(:for, :scope => :general) %> <%= t(:course, :scope => :course) %> <%= @course.short_title if @course %></h1>
+	<h1><%= t(:new_group_for_course, :scope => :group) %> <%= @course.short_title if @course %></h1>
 	<%= form_for([@group], :url => tutor_groups_path) do |f| %>
 	  <% if @group.errors.any? %>
 	    <div id="error_explanation">
@@ -31,7 +31,7 @@
 		<% end %>
 		<%= fields_for :deadline do |d| %>
 			<p class="input">
-		    <%= d.label :due_date, t(:course, :scope => :course)+" "+t(:deadline, :scope => :course) %><br />
+		    <%= d.label :due_date, t(:course_deadline, :scope => :course) %><br />
 		    <%= d.datetime_select :due_date, :default => Time.now + 6.month %>
 		  </p>
 		<% end %>

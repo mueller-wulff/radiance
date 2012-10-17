@@ -1,5 +1,5 @@
 <div id="main">
-	<h1><%= t(:managing, :scope => :tutor) %> <%= t(:students, :scope => :student) %></h1>
+	<h1><%= t(:managing, :scope => :tutor) %></h1>
 
 	<table  class="userlist">
   	<thead>
@@ -17,14 +17,14 @@
 			<% @course_groups.each do |c_group| %>
 				<tr>
 					<td><strong><%= c_group.title %></strong></td>
-					<td><%= link_to t(:enroll, :scope => :tutor)+" "+t(:student, :scope => :student), new_tutor_group_student_path(c_group) %></td>
+					<td><%= link_to t(:enroll, :scope => :tutor), new_tutor_group_student_path(c_group) %></td>
 					<td></td>
 					<td></td>
 					<td></td>
 					<td></td>
 					<td>
-						<%= link_to image_tag("space.gif", :title => t(:manage, :scope => :general)+" "+t(:working_groups, :scope => :group), :class => "icon edit"), edit_tutor_group_path(c_group) %>
-						<%= link_to image_tag("space.gif", :title => t(:delete, :scope => :general)+" "+t(:group, :scope => :group), :class => "icon delete"), tutor_group_path(c_group), :method => :delete if c_group.deletable? %>
+						<%= link_to image_tag("space.gif", :title => t(:manage_working_groups, :scope => :group), :class => "icon edit"), edit_tutor_group_path(c_group) %>
+						<%= link_to image_tag("space.gif", :title => t(:delete, :scope => :group), :class => "icon delete"), tutor_group_path(c_group), :method => :delete if c_group.deletable? %>
 					</td>
 				</tr>
 				<% c_group.all_students.each do |student| %>
@@ -37,14 +37,14 @@
 						<td><%= student.activated ? "working" : "inactive" %></td>
 				    <td>
 	          	<%= link_to image_tag("space.gif", :title => t(:coursebook, :scope => :student), :class => "icon-coursebook"), tutor_group_student_path(c_group, student) %>
-							<%= link_to image_tag("space.gif", :title => t(:remove, :scope => :general)+" "+t(:student, :scope => :student), :class => "icon delete"), tutor_student_path(student, :course_id => @course), :method => :delete if student.deletable? %>
+							<%= link_to image_tag("space.gif", :title => t(:delete, :scope => :student), :class => "icon delete"), tutor_student_path(student, :course_id => @course), :method => :delete if student.deletable? %>
 						</td>
 				  </tr>
 				<% end %>				
 			<% end %>
 			<tr>
 				<td></td>
-				<td><%= link_to t(:new, :scope => :general)+" "+t(:course, :scope => :course)+" "+t(:group, :scope => :group), new_tutor_group_path(:course => @course) %></td>
+				<td><%= link_to t(:new_course_group, :scope => :group), new_tutor_group_path(:course => @course) %></td>
 				<td></td>
 				<td></td>
 				<td></td>

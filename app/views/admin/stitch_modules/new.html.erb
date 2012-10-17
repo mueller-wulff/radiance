@@ -1,6 +1,6 @@
 <div id="main">
   <%= render 'layouts/breadcrumb' %>
-  <h1><%= t(:new, :scope => :general) %> <%= t(:module, :scope => :stitch_module) %> <%= t(:for, :scope => :general) %> <%= @course.short_title %></h1>
+  <h1><%= t(:new_for, :scope => :stitch_module) %> <%= @course.short_title %></h1>
   <%= form_for(@stitch_module, :url => admin_course_stitch_modules_path(@course)) do |f| %>
     <%= render 'form', :f => f %>
   <% end %>

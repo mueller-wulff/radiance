@@ -1,5 +1,5 @@
 <div id="main">
-	<h1><%= t(:new, :scope => :general) %> <%= t(:working_group, :scope => :group) %> <%= t(:for, :scope => :general) %> <%= t(:course, :scope => :course) %> <%= t(:group, :scope => :group) %> <%= @course_group.title %></h1>
+	<h1><%= t(:new_working_group_for_course_group, :scope => :group) %> <%= @course_group.title %></h1>
 	<%= form_for(@working_group, :url => create_working_group_tutor_groups_path(:parent => @course_group)) do |f| %>
 	  <% if @working_group.errors.any? %>
 	    <div id="error_explanation">

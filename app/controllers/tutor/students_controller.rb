@@ -55,7 +55,7 @@ class Tutor::StudentsController < ApplicationController
         @student.groups << @group
         @student.send_new_group(@group)
         @student.create_coursebook(@tutor, @group.course)
-        format.html { redirect_to(tutor_course_students_path(@group.course), :notice => 'Student was successfully enrolled.') }
+        format.html { redirect_to(tutor_course_students_path(@group.course), :notice => t(:enrolled, :scope => :student)) }
         format.xml  { render :xml => @student, :status => :created, :location => @student }
       else
         format.html { render :action => "new" }
@@ -88,7 +88,7 @@ class Tutor::StudentsController < ApplicationController
     respond_to do |format|
       if @student.save        
         @student.send_new_group(new_group)
-        format.html { redirect_to(edit_tutor_group_path(@group.parent_group), :notice => 'Student was successfully shuffled.') }
+        format.html { redirect_to(edit_tutor_group_path(@group.parent_group), :notice => t(:shuffled, :scope => :student) ) }
       else
         format.html { render :action => "shuffle" }
       end

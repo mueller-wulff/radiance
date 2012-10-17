@@ -10,11 +10,10 @@ class Session::PasswordResetsController < ApplicationController
     @profile = Profile.find_by_email(params[:email])
     if @profile
       @profile.deliver_password_reset_instructions!
-      flash[:notice] = "Instructions to reset your password have been emailed to you. " +  
-        "Please check your email."  
+      flash[:notice] = t(:instruction_sent, :scope => :session)  
       redirect_to login_url  
     else  
-      flash[:notice] = "No user was found with that email address"  
+      flash[:notice] = t(:no_user, :scope => :session)
       render :action => :new  
     end
   end
@@ -27,7 +26,7 @@ class Session::PasswordResetsController < ApplicationController
     @profile.password = params[:profile][:password]
     @profile.password_confirmation = params[:profile][:password_confirmation]
     if @profile.save(:validate => false)
-      flash[:notice] = "Password successfully updated"  
+      flash[:notice] = t(:updated_pw, :scope => :session)  
       redirect_to root_url  
     else  
       render :action => :edit  
@@ -38,10 +37,7 @@ class Session::PasswordResetsController < ApplicationController
   def load_profile_using_perishable_token  
     @profile = Profile.find_using_perishable_token(params[:id])  
     unless @profile  
-      flash[:notice] = "We're sorry, but we could not locate your account. " +  
-        "If you are having issues try copying and pasting the URL " +  
-        "from your email into your browser or restarting the " +  
-        "reset password process."  
+      flash[:notice] = t(:no_profile, :scope => :session)  
       redirect_to root_url  
     end 
   end

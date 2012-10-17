@@ -9,7 +9,7 @@
     <% elsif current_user.role.class == Developer %>
     	<li> <%= link_to t(:dashboard, :scope => :navigation), root_url, :id => 'dashboard'%> </li>
     	<li> <%= link_to t(:courses, :scope => :course), developer_courses_path, :id => 'courses'%> </li>
-    	<li> <%= link_to t(:modules, :scope => :stitch_modules), developer_stitch_modules_path, :id => 'courses'%> </li>
+    	<li> <%= link_to t(:modules, :scope => :stitch_module), developer_stitch_modules_path, :id => 'courses'%> </li>
 	    <li> <%= link_to t(:tutors, :scope => :tutor),  developer_tutors_path, :id => 'tutors'%> </li>
 			<li> <%= link_to t(:faq, :scope => :navigation), developer_faqs_path, :id => 'faq', :target => "_blank" %> </li>
     <% elsif current_user.role.class == Tutor %>

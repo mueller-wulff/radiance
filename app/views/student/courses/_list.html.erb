@@ -14,8 +14,8 @@
         <td><%= course.title %></td>
         <td><%= course.language %></td>
 				<td>
-					<%= link_to image_tag("space.gif", :title => t(:show, :scope => :general)+" "+t(:coursebook, :scope => :student), :class => "icon-coursebook"), show_coursebook_student_course_path(course) %>
-					<%= link_to image_tag("space.gif", :title => t(:show, :scope => :general)+" "+t(:students, :scope => :student), :class => "icon-discussion"), student_students_path(:course_id  => course.id) %>
+					<%= link_to image_tag("space.gif", :title => t(:show_coursebook, :scope => :student), :class => "icon-coursebook"), show_coursebook_student_course_path(course) %>
+					<%= link_to image_tag("space.gif", :title => t(:show_students, :scope => :student), :class => "icon-discussion"), student_students_path(:course_id  => course.id) %>
 				</td>
       </tr>
     <% end %>

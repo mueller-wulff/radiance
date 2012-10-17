@@ -1,6 +1,6 @@
 <div id="main">
   <%= render 'layouts/breadcrumb' %>
-  <h1><%= t(:new, :scope => :general) %> <%= t(:course, :scope => :course) %></h1>
+  <h1><%= t(:new, :scope => :course) %></h1>
   <%= form_for(@course, :url => admin_courses_path ) do |f| %>
     <%= render 'form', :f => f %>
   <% end %>

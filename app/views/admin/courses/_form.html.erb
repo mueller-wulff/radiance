@@ -29,7 +29,7 @@
 </p>
 <% if @course.publishable? %>
 	<p class="select">
-		<%= f.check_box :published %> <%= t(:publish, :scope => :course) %> <%= t(:course, :scope => :course) %>
+		<%= f.check_box :published %> <%= t(:publish, :scope => :course) %>
 	</p>
 <% end %>
 <% if @course.deprecatable? %>

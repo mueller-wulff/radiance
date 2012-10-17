@@ -1,4 +1,4 @@
-<h1><%= t(:listing, :scope => :general) %> <%= t(:notes, :scope => :note) %></h1>
+<h1><%= t(:listing, :scope => :note) %></h1>
 
 <table>
   <tr>
@@ -22,4 +22,4 @@
 
 <br />
 
-<%= link_to t(:new, :scope => :general)+" "+t(:note, :scope => :note), new_note_path %>
+<%= link_to t(:new, :scope => :note), new_note_path %>

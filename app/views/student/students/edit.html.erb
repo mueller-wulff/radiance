@@ -1,5 +1,5 @@
 <div id="main">
-	<h1><%= t(:editing, :scope => :general) %> <%= t(:profile, :scope => :profile) %></h1>
+	<h1><%= t(:editing, :scope => :profile) %></h1>
 	<%= form_for(@student, :url => student_student_path) do |f| %> 
 	  <% if @profile.errors.any? %>
 	    <div id="error_explanation">
@@ -26,7 +26,7 @@
 		    <%= g.text_field :lastname %>  
 		  </p>
 		  <p class="input">  
-		    <%= label :password, t(:new, :scope => :general)+ " "+ t(:password, :scope => :profile) %>  
+		    <%= label :password, t(:new_pw, :scope => :profile) %>  
 		    <%= g.password_field :password %>  
 		  </p>
 			<p class="input">  

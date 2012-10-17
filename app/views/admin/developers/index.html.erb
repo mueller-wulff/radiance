@@ -1,5 +1,5 @@
 <div id="main">
-  <h1><%= t(:listing, :scope => :general) %> <%= t(:developers, :scope => :developer) %></h1>
+  <h1><%= t(:listing, :scope => :developer) %></h1>
 
   <table  class="userlist">
     <thead>      
@@ -17,14 +17,14 @@
           <td><%= developer.profile.lastname %></td>
           <td><%= developer.profile.email %></td>
           <td>
-            <%= link_to image_tag("space.gif", :title => t(:edit, :scope => :general)+" "+t(:developer, :scope => :developer), :class => "icon useredit"), edit_admin_developer_path(developer) %>
-            <%= link_to image_tag("space.gif", :title => t(:delete, :scope => :general)+" "+t(:developer, :scope => :developer), :class => "icon delete"), admin_developer_path(developer), :confirm => t(:confirm, :scope => :general)+" "+t(:delete, :scope => :general)+" "+t(:this, :scope => :general)+" "+t(:developer, :scope => :developer)+"?", :method => :delete %>
+            <%= link_to image_tag("space.gif", :title => t(:edit, :scope => :developer), :class => "icon useredit"), edit_admin_developer_path(developer) %>
+            <%= link_to image_tag("space.gif", :title => t(:delete, :scope => :developer), :class => "icon delete"), admin_developer_path(developer), :confirm => t(:confirm, :scope => :developer), :method => :delete %>
           </td>
 
         </tr>
       <% end %>
       <tr>
-        <td><%= link_to t(:create, :scope => :general)+ " " + t(:developer, :scope => :developer), new_admin_developer_path %></td>
+        <td><%= link_to t(:create, :scope => :developer), new_admin_developer_path %></td>
         <td></td>
         <td></td>
         <td></td>

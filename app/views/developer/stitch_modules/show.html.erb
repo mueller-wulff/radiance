@@ -20,17 +20,17 @@
 </div>
 <% if current_user.role.editable(@stitch_module) && @stitch_module.course.editable? %>
   <div id="aside" class="moving">
-    <h3><%= t(:edit, :scope => :general) %> <%= t(:menu, :scope => :general) %></h3>
+    <h3><%= t(:edit_menu, :scope => :general) %></h3>
     <ul class="editmenu">
 
       <li class="newunit newElement"><img class="newunit" src="/images/space.gif" alt="new Unit" />
-        <%= t(:new, :scope => :general) %> <%= t(:unit, :scope => :stitch_unit) %>
+        <%= t(:new, :scope => :stitch_unit) %>
         <%=  hidden_field_tag "url", developer_stitch_module_stitch_units_path(@stitch_module)%>
       </li>
 
 
       <li id="create_page"class="newPage"><img class="newpage" src="/images/space.gif" alt="new Page" />
-        <%= t(:new, :scope => :general) %> <%= t(:page, :scope => :page) %>
+        <%= t(:new, :scope => :page) %>
       </li>
       <hr/>
       <h3><%= t(:help, :scope => :general) %></h3>

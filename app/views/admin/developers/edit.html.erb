@@ -1,19 +1,19 @@
 <div id="main">
-	<h1><%= t(:editing, :scope => :general) %> <%= t(:developer, :scope => :developer) %></h1>
+	<h1><%= t(:editing, :scope => :developer) %></h1>
 
 	<%= form_for(@developer, :url => admin_developer_path(@developer)) do |f| %>
 	<%= render 'form', :f => f %>  
 	<hr/>
 	<h2><%= t(:statistics, :scope => :developer) %></h2>
-	<label><%= t(:last, :scope => :general) %> <%= t(:login, :scope => :profile) %>: </label><p><%= @developer.profile.last_login_at.strftime("%H:%M %d.%m.%y") if @developer.profile.last_login_at %></p>
-	<label><%= t(:number_of, :scope => :developer) %> <%= t(:logins, :scope => :profile) %>: </label><p><%= @developer.profile.login_count.to_i %></p>
+	<label><%= t(:last, :scope => :profile) %>: </label><p><%= @developer.profile.last_login_at.strftime("%H:%M %d.%m.%y") if @developer.profile.last_login_at %></p>
+	<label><%= t(:number_of_logins, :scope => :profile) %>: </label><p><%= @developer.profile.login_count.to_i %></p>
 	<hr/>
 	<h2><%= t(:admin_rights, :scope => :developer) %></h2>
 	<%= label :admin, t(:admin, :scope => :developer) %>
 	<%= f.check_box :admin %>
 
 	<hr/>
-	<h2><%= t(:select, :scope => :general) %> <%= t(:modules, :scope => :stitch_module) %>:</h2>
+	<h2><%= t(:select, :scope => :stitch_module) %>:</h2>
 	<div id="accordion">	
 		<% @courses.each do |course| %>
 			<h3><strong><%= course.title %></strong></h3>
