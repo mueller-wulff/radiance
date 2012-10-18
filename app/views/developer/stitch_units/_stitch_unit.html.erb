@@ -10,7 +10,7 @@
             <%= link_to image_tag("space.gif", :title => t(:copy, :scope => :stitch_unit), :class => "icon duplicate"), developer_course_stitch_unit_copy_path(stitch_unit.stitch_module.course), :class => "copy_unit" %>
             <%= link_to image_tag("space.gif", :title => t(:delete, :scope => :stitch_unit), :class => "icon delete"), developer_stitch_module_stitch_unit_path(stitch_unit.stitch_module,stitch_unit), :method => :delete, :confirm => t(:confirm, :scope => :stitch_unit), :remote => true, :class => "delete_unit" %>
           <% else %>
-            <%= image_tag("space.gif") %><%= image_tag("space.gif") %>
+            <%= image_tag("space.gif") %><%= image_tag("space.gif") %><%= image_tag("space.gif") %>
           <% end %>
         </td>
       </tr>

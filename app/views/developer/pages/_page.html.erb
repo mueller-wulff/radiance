@@ -6,11 +6,11 @@
   <td class="gewichtung">&nbsp;</td>
   <td class="functions">
     <% if current_user.role.editable(page.stitch_unit.stitch_module) && page.course.editable? %>
-      <%= link_to image_tag("space.gif", :title => t(:edit, :scope => :page) ), ajax_edit_developer_stitch_unit_page_path(page.stitch_unit,page), :class => "edit_page" %>
+      <%= link_to image_tag("space.gif", :title => t(:edit, :scope => :page), :class => "icon useredit" ), ajax_edit_developer_stitch_unit_page_path(page.stitch_unit,page), :class => "edit_page" %>
       <%= link_to image_tag("space.gif", :title => t(:copy, :scope => :page), :class => "icon duplicate"), developer_stitch_module_page_copy_path(page.stitch_unit.stitch_module), :class => "copy_page" %>
-      <%= link_to image_tag("space.gif", :title => t(:delete, :scope => :page) ), developer_stitch_unit_page_path(page.stitch_unit,page), :method => :delete, :confirm => t(:confirm, :scope => :page), :remote => true, :class => "delete_page" %>
+      <%= link_to image_tag("space.gif", :title => t(:delete, :scope => :page), :class => "icon delete" ), developer_stitch_unit_page_path(page.stitch_unit,page), :method => :delete, :confirm => t(:confirm, :scope => :page), :remote => true, :class => "delete_page" %>
     <% else %>
-      <%= image_tag("space.gif") %><%= image_tag("space.gif") %>
+      <%= image_tag("space.gif") %><%= image_tag("space.gif") %><%= image_tag("space.gif") %>
     <% end %>  
   </td>
 </tr>
