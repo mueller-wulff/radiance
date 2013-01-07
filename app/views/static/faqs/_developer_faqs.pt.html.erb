@@ -1,0 +1,347 @@
+<%= raw textilize %q{
+
+  
+h2. I Estrutura: Curso, Módulo, e tudo o que esteja relacionado
+  
+h3. O que é um Curso?
+
+<div>
+		Geral:
+		Um Curso é o maior elemento funcional neste software. É definido pelo nível de educação e língua a que corresponde.
+		Assim, para cada língua e nível um novo Curso será criado, ou seja, o projecto STITCH vai produzir mais de 12 cursos.
+		Os Cursos podem ser clonados para tradução rápida ou criadas versões mais curtas dos mesmos.
+		Um curso pode conter um número ilimitado de módulos.
+		Os Cursos só podem ser criados, editados respeitando a sua estrutura ou excluídos por um administrador.
+		
+		Cada developer com os devidos direitos para modificar um módulo existente será capaz de ver todos os outros Módulos no Curso no modo de visualização.
+		Uma vez que um Curso é desenvolvido pelos developers, o mesmo será definido para "publicação" por um administrador.
+		Isto significa que nenhuma mudança pode ser feita a este Curso em particular. Alterar conteúdo requer a clonagem do Curso.
+		Em geral, não se deve preocupar com os Cursos, uma vez que cabe ao administrador esta responsabilidade.
+
+</div>
+
+h3. O que é um Módulo?
+
+<div>
+		O Módulo é o segundo nível da estrutura organizacional deste software. Pode armazenar um número infinito de Unidades e só podem ser
+		criados, editados ou eliminados por um administrador.
+		Os direitos dos developers observam-se a este nível. 
+		Assim, se tem permissão para editar um Módulo pode alterar ou excluir todas as Unidades e Páginas existentes. 
+		Antes de excluir um Módulo tem que eliminá-lo das Unidades.
+
+</div>	
+
+h3. O que é uma Unidade?
+
+<div>	
+		As Unidades são o terceiro nível da estrutura organizacional e têm como objectivo fazer o trabalho de um developer mais fácil.
+		Todos os seus métodos (criar / excluir / editar / copiar / mover) são totalmente do domínio do developer.
+		Podem ser facilmente copiados e podem, portanto, ser utilizados com o fim de reduzir o tempo necessário para criar um quadro ou estrutura dentro de um Módulo.
+		Uma Unidade pode conter um número infinito de Páginas que serão recursivamente copiadas / excluídas / movidas juntamente com a Unidade.
+</div>	
+
+h3. O que é uma Página?
+
+<div>	
+		As Páginas são os blocos básicos de construção apresentados neste software. Preenchem todas as Unidades, Módulos e Cursos com conteúdo e vida.
+		Uma Página pode conter tantos elementos de conteúdo como aqueles que pretende ter, mas deve sempre garantir uma boa experiência do utilizador, mantendo-o curto.
+		Assim como as Unidades, as Páginas são totalmente controladas por developers e podem ser criadas / movidas / copiadas / eliminadas sempre recursivamente. 
+		Assim, se copiar uma Página todo o conteúdo será também copiado.
+</div>	
+
+h3. O que é um developer?
+
+<div>
+		Se está a ler isto, é porque é um deles. 
+		O seu trabalho é o de encher os Módulos que pode encontrar em "Módulos" com as Unidades, Páginas e conteúdos. 
+		É por isso responsável por desenvolver o Módulo.
+		Também estão autorizados a ver todos os outros Módulos dos respectivos cursos a que estão atribuídos.
+	
+</div>
+
+h2. II A secção Módulos
+
+h3. Como chegar à secção Módulos?
+
+<div>		
+		Se clicar no curto título de um Módulo dentro da secção "Módulos" vai poder ver a secção de Módulos.
+		
+</div>		
+
+h3. O que é que eu lá vejo?
+
+<div>		
+		A secção “Módulos” contém uma visão geral das Unidades e Páginas deste Módulo específico.
+		No topo da página, pode ver o título do Módulo e a sua descrição.
+		À direita, pode ver os símbolos para a adição de novas Unidades e novas Páginas. 
+		As novas Páginas só podem ser criadas quando uma Unidade foi seleccionada.
+</div>
+
+h3. Como trabalhar com as Unidades?
+
+<div>	
+		- A fim de criar uma nova Unidade clique sobre a "Nova Unidade" à direita
+		- Para alterar o nome da Unidade passe o rato sobre a mesma e clique no ícone do lápis
+		- Digite o nome desejado e pressione Enter para salvar
+		- Para eliminar uma Unidade basta clicar no pequeno "x" e concordar com a questão
+		- Para (re-)arranjar uma Unidade de um Módulo simplesmente clique e arraste-a para a nova posição. Em seguida, solte-a.
+		- Para fazer uma cópia de uma Unidade, basta clicar no ícone de cópia ao lado do seu nome (no lado direito).
+</div>	
+
+h3. Como trabalhar com as Páginas?
+
+<div>	
+		- A fim de criar uma nova Página 
+			- clique numa Unidade para seleccioná-la
+			- Clique em "Nova Página" à direita 
+		- Para alterar o nome de uma Página passe o rato sobre a mesma e clique no ícone do lápis
+			- Digite o nome desejado e pressione Enter para salvá-lo
+		- Para apagar uma Página basta clicar no pequeno "x" e concordar com a questão
+		- Para (re-)arranjar uma Unidade simplesmente clique e arraste-a para a nova posição. Em seguida, solte-a.
+		- Para mover uma Página entre as Unidades abra as duas Unidades para onde deseja mover a página, clique e arraste a Página de uma Unidade para a outra
+		- Para copiar uma Página faça exactamente a mesma coisa que mover, mantendo pressionada a tecla "Alt", ou apenas pressione o ícone de cópia ao lado do botão de edição.
+</div>	
+
+h2. III A secção Página
+	
+h3. Como chegar à secção Página?
+
+<div>		
+		Seleccione uma Unidade para ver as Páginas correspondentes. Basta clicar no nome de uma Página, a fim de a poder visualizar.
+</div>	
+
+h3. O que é que eu lá vejo?
+
+<div>	
+		No topo da página encontra-se o título da Página e, se possível, um sistema de navegação para o ajudar a virar as Páginas.
+		À direita, pode ver uma lista de todos os diferentes elementos de conteúdos que pode adicionar a uma Página.
+</div>	
+
+h3. Como criar um elemento?
+
+<div>	
+		A fim de adicionar um elemento à página basta clicar no botão correspondente.
+</div>	
+
+h3. Como excluir um elemento?
+
+<div>		
+		Passe o rato por cima do elemento e clique no "X" no canto superior direito.
+</div>	
+
+h3. Como editar um elemento?
+
+<div>	
+		Basta clicar no mesmo ;)
+</div>	
+
+h3. Como guardar um elemento?
+
+<div>	
+		Clique no ícone de disquete no canto superior direito.
+</div>	
+
+h3. Como ordenar os elementos?
+
+<div>	
+		Basta clicar e arrastar qualquer elemento para a posição desejada.
+		
+</div>
+
+h2. IV Conteúdo dos elementos
+	
+h3. Como faço para usar o elemento RichText?
+
+<div>		
+		Por favor, consulte a secção V do FAQ.
+</div>	
+
+h3. Como faço para usar o elemento de vídeo?
+
+<div>	
+		Depois de criar um elemento novo de vídeo, basta clicar em editar (atenção: não clique no vídeo em si, mas sobre as áreas brancas à esquerda e à direita!).
+		Copie e cole o link completo embutido do youtube (pode encontrar este link por baixo de cada vídeo do youtube).
+		Clique em salvar e desfrute do seu novo vídeo.
+</div>	
+
+h3. Como faço para usar o elemento Slideshare?
+
+<div>	
+		Se quiser usar uma apresentação slideshare na sua Página, basta copiar e colar o link completo e incorporar no modo de edição.
+</div>	
+
+h3. Como faço para usar as perguntas?
+
+<div>	
+		Pode escolher entre três tipos de questões:
+			- Uma pergunta de resposta curta 
+			- Uma pergunta de desenvolvimento, onde o aluno será obrigado a digitar um texto completo
+			- Uma pergunta de escolha múltipla
+
+		Os elementos de resposta curta são praticamente auto-explicativos.
+		As questões de escolha múltipla precisam de informação um pouco mais detalhada:
+			- A pergunta que gostaria de colocar
+			- Uma nova linha para cada possível resposta 
+			- Se houver mais de uma resposta podem ser dadas várias opções
+	
+</div>
+
+h2. V O RichText 
+
+
+h3. O que pode ser apresentado num elemento de text
+
+<div>
+		Elementos de texto podem ter:
+			- Texto escrito, formatado de várias formas >> ver: O que eu tenho que manter em mente ao escrever e formatar o texto com a ferramenta?
+			- Textos copiados de documentos existentes >> ver: Como posso copiar e formatar texto a partir dos meus documentos do Word?
+			- Tabelas >> ver: O que tem que ser considerado aquando da inclusão de tabelas?
+			- Imagens, gráficos ou clip arts >> ver: Como podem ser adicionadas ilustrações?
+			- Links >> ver: Como pode ser inseridos links no meu elemento de texto?
+
+</div>
+
+h3. O que nunca deve ser esquecido?
+
+<div>
+		Certifique-se que salva as suas alterações usando o ícone "guardar" no canto direito em cima do elemento respectivo de texto.
+		
+</div>
+
+h3. O que eu tenho que manter em mente ao escrever e formatar o texto com a ferramenta?
+
+<div>
+		Trabalhar com a ferramenta de texto é semelhante, mas não idêntico, a trabalhar com o MS Word ou outros programas de processamento de texto.
+		Assim, tem que se habituar a algumas peculiaridades.
+
+		Observe as seguintes diferenças:
+			- A formatação pode ser feita com as opções "estilos de formatação" e "formato de parágrafo" na primeira linha de opções.
+			- "Estilos de formatação" dá-lhe opções para blocos diferentes ou estilos.
+			- "Formatar Parágrafo" é importante para os diferentes estilos de título que oferece.
+			- Opções escolhidas em "Estilos de formatação" ou "formato de parágrafo" aplica-se ao parágrafo completo.
+			- A opção "Negrito" aplica-se a palavras / frases seleccionadas num parágrafo.
+		Mas se quer destacar partes de um parágrafo diferente a "negrito", é necessário que copie o texto a partir de um documento do Word ou de outros documentos.
+
+</div>
+
+h3. Como posso copiar e formatar o texto a partir dos meus documentos do Word?
+
+<div>
+		A inserção de texto de documentos externos pode ser facilmente gerida utilizando as opções copiar / colar.
+
+		Ao copiar textos do MSWord, por favor, esteja ciente de que apenas algumas características do texto são copiadas.
+		Se tiver marcado partes do texto MSWord como "negrito" ou "itálico", estas propriedades permanecerão na cópia.
+
+		MAS, as seguintes propriedades de formatação serão perdidas:
+			- A fonte e o tamanho do texto serão alterados para o formato de texto regular.
+			- Se escolheu uma cor de texto diferente, ela não será copiada.
+			- Se tiver inserido gráficos (clip arts, fotos) não serão copiados e devem ser inseridos com o botão "Imagem" (ver: Como podem ser adicionadas ilustrações?).
+
+</div>
+
+h3. O que é que deve ser considerado aquando da inclusão de tabelas?
+
+<div>	
+		As tabelas podem ser criadas usando o ícone "Tabela" na segunda linha da ferramenta.
+		Aqui, pode-se definir o tamanho da tabela e dar números de linhas e colunas, a largura e outras propriedades explicadas em baixo.
+
+		As tabelas também podem ser copiadas do Word ou de outros documentos usando a opção Copiar / Colar.
+		Mas ...
+			- Algumas das propriedades de formatação serão perdidas
+			- A tabela parece um pouco diferente (e pode precisar de alguma formatação adicional)
+
+		Pode formatar a tabela ...
+			- Usando funções de formatação da ferramenta. "Estilos de formatação" aplica-se apenas para a(s) célula(s) seleccionada(s)
+			- Usando o menu "Tabela". Aqui tem a opção "Propriedades da Tabela", que lhe dá a possibilidade de definir:
+			- Colunas - Número de colunas necessárias
+			- Linhas - número de linhas necessárias
+			- Largura e altura da tabela - em pixels ou percentagem
+			- Cabeçalho – dá-lhe diferentes possibilidades para definir cabeçalhos, que serão formatados de uma forma especial (por exemplo, centrado)
+			- Tamanho da margem - define o tamanho da margem exterior da tabela (1 ou 2 é o recomendado)
+			- Alinhamento - define a posição da tabela
+			- Espaçamento da célula - define a largura das linhas de divisão de células (2 é o recomendado)
+			- Enchimento da célula - define o espaço entre o texto nas células e linhas de divisão (5-15 é o recomendado)
+			- Legenda - dá-lhe a possibilidade de dar um nome para a tabela
+			- Resumo - dá-lhe a possibilidade de escrever uma breve descrição, que não será apresentada
+			- "Avançados" - as propriedades da tabela são descritos no Guia do Usuário do developer.
+
+</div>
+
+h3. Como podem ser adicionadas ilustrações?
+
+<div>
+		Gráficos e outras ilustrações criadas com o PowerPoint podem ser copiadas a partir das respectivas apresentações, usando a opção copiar / colar. 
+
+		Se deseja inserir uma imagem ou um clip-art de um arquivo:
+			- Use o botão "Imagem" e siga o diálogo
+			- A URL da ilustração necessária é obrigatória
+			- As imagens têm de ser enviados para o servidor e podem ser lá inseridos 
+			- "Propriedades da imagem" ou "Informação da imagem" dá-lhe a possibilidade de formatar a sua imagem
+			- As medidas são dadas em pixels
+			- Margem: irá desenhar uma moldura preta ao redor da sua imagem, o número que colocar para alterar a largura do quadro ("1" é o suficiente para delinear)
+			- Espaço H: é o espaço horizontal em ambos os lados da sua imagem, que é mantido livre de texto ou de outro conteúdo >> "20" é recomendado
+			- Espaço V: é o espaço vertical acima e abaixo da sua imagem que é mantida livre de texto ou de outro conteúdo >> "20" é recomendado
+			- Alinhamento: escolher "direita" ou "esquerda" para as posições da sua imagem em cada lado do elemento de texto
+			- "Avançados" - Propriedades da imagem são descritos no Guia do Usuário do developer
+
+</div>
+
+h3. Como podem ser inseridos links no meu texto?
+
+<div>	
+		- Pode apresentar o link para a URL, inserir uma âncora no texto e e-mail.
+		- Se quiser fazer o link para outra parte do texto, tem que definir uma âncora primeiro.
+		- Copie a URL ou faça um e-mail para si mesmo se desejar definir um link.
+		- URL, âncora ou e-mail.
+		- Em seguida, clique no ícone "Link" na ​​segunda linha da sua barra de navegação.
+		- Em seguida, siga o diálogo.
+		- É importante definir um "alvo". Uma "Nova Janela" é recomendada.
+		- Opção "Avançados" descrita no Guia do Usuário do developer.
+
+
+</div>
+
+h3. Como são apresentados links para as outras Páginas que criou?
+
+<div>	
+		- Primeiro recebe o "ID" da Página que deseja efectuar o link.
+		- Encontre a Página e olhe para a URL, por exemplo, "Developer/stitch_units/131/pages/520/edit"
+		- O número atrás da "Página" é o "ID", por exemplo 520
+		- Vá para a Página onde o link deve estar e abra o RichText Editor
+		- Marque o texto que deseja efectuar o link à Página
+		- Em seguida, clique no ícone "Link" na ​​segunda linha da sua barra de navegação.
+		- Para o "Protocolo" escolha "outro"
+		- Insira o link interno na forma de "intern://page/PAGEID " por exemplo "intern://page/520"
+		- O software vai automaticamente substituir o link correspondente à sua função (por exemplo, aluno ou developer) e tipo de vista (por exemplo, mostrar ou editar)
+
+</div>
+
+h3. Como são apresentados links para a Bibliografia?
+
+<div>	
+Primeiro, certifique-se que a última Página do Módulo é a Bibliografia
+- Vá à Página do conteúdo, onde a curta referência bibliográfica deve estar e abra o respectivo texto.
+- Marque o texto que deseja referir na Bibliografia
+- Em seguida, clique no ícone "Link" na ​​primeira linha da sua barra de navegação.
+- Como "Protocolo" escolha "outro"
+- Digite o link interno como URL na forma de intern://biblio
+- Escolha "Alvo" e depois "Nova Janela"
+- Vá para a página de Bibliografia no final do Módulo
+- Edite o elemento de texto e digite a referência bibliográfica completa.
+
+Se a bibliografia do seu Módulo ficar muito longa, é necessário vincular a uma referência especial bibliográfica. Pode fazer isto usando âncoras.
+- Seleccione o texto na sua bibliografia que quer que seja a âncora
+- Clique na bandeirinha na primeira linha da sua barra de navegação e escolha um nome curto para a âncora (recomendamos que tome a primeira palavra da sua melhor referência bibliográfica, sem espaços)
+- Agora volte para a sua página de conteúdo e modifique o seu link para " intern://biblio/#anchorname "
+</div>
+
+h3. Como posso saber de mais opções da ferramenta?
+
+<div>
+		Primeiro, sinta-se encorajado em testar todas as opções oferecidas.
+		Certifique-se que salva as suas alterações usando o ícone "guardar" no canto direito em cima do respectivo texto.
+
+		Segundo, pode dar uma olhadela no "Guia do Usuário" para o developer:
+		"http://docs.cksource.com/CKDeveloper_3.x/Users_Guide":http://docs.cksource.com/CKDeveloper_3.x/Users_Guide
+</div>
+  }%>
