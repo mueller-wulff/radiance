@@ -152,6 +152,7 @@ Stitched::Application.routes.draw do
   namespace :developer do
     resources :courses do
       resource :stitch_unit_copy
+      resources :stitch_modules, :only => [:edit, :update]
     end
     
     resources :tutors do

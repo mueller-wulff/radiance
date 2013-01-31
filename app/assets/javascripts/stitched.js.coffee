@@ -92,8 +92,9 @@ Stitched = ->
                  if(typeof callback == 'function')
                      callback.call() 
                  return                            
-             error: (returnValue) -> 
-                 alert(returnValue)
+             error: (xhr, ajaxOptions, thrownError) -> 
+                 console.log(xhr.responseText)
+                 alert(thrownError)
                  return
          #save changes
          `for (instance in CKEDITOR.instances){
@@ -124,8 +125,9 @@ Stitched = ->
                  if(typeof callback == 'function')
                      callback.call()
                  return
-             error: (returnValue) ->
-                 alert(returnValue)
+             error: (xhr, ajaxOptions, thrownError) ->
+                 console.log(xhr.responseText)
+                 alert(thrownError)
                  return
          return
      

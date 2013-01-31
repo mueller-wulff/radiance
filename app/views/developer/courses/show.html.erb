@@ -17,6 +17,7 @@
           <td><%= t(:title, :scope => :general) %></td>
           <td><%= t(:complete, :scope => :stitch_module) %></td>
           <td><%= t(:editable, :scope => :general) %>?</td>
+          <td>&nbsp;</td>
         </tr>
       </thead>
       <tbody>
@@ -25,6 +26,11 @@
             <td><%= link_to sm.title, developer_stitch_module_path(sm)%></td>
             <td><%= sm.complete ? t(:yes, :scope => :general) : t(:no, :scope => :general) %></td>
             <td><%= current_user.role.stitch_modules.include?(sm) ? t(:yes, :scope => :general) : t(:no, :scope => :general) %></td>
+            <td>
+              <% unless @course.published  %>
+                <%= link_to image_tag("space.gif", :title => t(:edit, :scope => :stitch_module), :class => "icon useredit"), edit_developer_course_stitch_module_path(@course, sm) %>
+              <% end %>
+            </td>
           </tr>
         <% end %>
       </tbody>

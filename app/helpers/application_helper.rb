@@ -17,6 +17,7 @@ module ApplicationHelper
       target_page = Page.find_by_id(link.scan(/intern:\/\/page\/(\d*)/))
       if current_user.role.class == Developer
         if controller.action_name == 'edit'
+          logger.debug("page #{target_page}")
           target_link = edit_developer_stitch_unit_page_path(target_page.stitch_unit,target_page)
         else
           target_link = developer_stitch_unit_page_path(target_page.stitch_unit,target_page)
@@ -34,6 +35,7 @@ module ApplicationHelper
       target_page = @page.stitch_module.last_page
       if current_user.role.class == Developer
         if controller.action_name == 'edit'
+          logger.debug("biblio #{target_page}")
           target_link = edit_developer_stitch_unit_page_path(target_page.stitch_unit,target_page)
         else
           target_link = developer_stitch_unit_page_path(target_page.stitch_unit,target_page)

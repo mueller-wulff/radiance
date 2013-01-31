@@ -25,7 +25,7 @@ namespace :unicorn do
   task :restart do
     #invoke_command "touch #{current_path}/tmp/restart.txt"
     invoke_command "uc.pl stop"
-    invoke_command "uc.pl start -c /home/#{user}/app/current/unicorn.rb --args '-D'"
+    invoke_command "uc.pl start -c /home/#{user}/app/current/unicorn.rb"
   end
 
 end
