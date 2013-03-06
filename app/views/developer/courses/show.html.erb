@@ -27,7 +27,7 @@
             <td><%= sm.complete ? t(:yes, :scope => :general) : t(:no, :scope => :general) %></td>
             <td><%= current_user.role.stitch_modules.include?(sm) ? t(:yes, :scope => :general) : t(:no, :scope => :general) %></td>
             <td>
-              <% unless @course.published  %>
+              <% if current_user.role.stitch_modules.include?(sm) && !@course.published %>
                 <%= link_to image_tag("space.gif", :title => t(:edit, :scope => :stitch_module), :class => "icon useredit"), edit_developer_course_stitch_module_path(@course, sm) %>
               <% end %>
             </td>
