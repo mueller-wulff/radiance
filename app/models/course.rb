@@ -15,6 +15,8 @@ class Course < ActiveRecord::Base
   validates :short_title, :presence => true, :length => {:minimum => 3}, :uniqueness => true
   validates :language, :presence => true
 
+  default_scope order('language ASC')
+
   before_destroy :deletable?
   before_save :enforce_logic
 
