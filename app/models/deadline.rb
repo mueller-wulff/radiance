@@ -21,5 +21,10 @@ class Deadline < ActiveRecord::Base
     end
     return true
   end
+
+  def expired?
+    return true if self.due_date < Date.today
+    return false
+  end
     
 end

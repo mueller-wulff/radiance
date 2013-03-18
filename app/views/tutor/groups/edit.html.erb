@@ -1,6 +1,7 @@
 <div id="main">
 	<h1><%= t(:course_group, :scope => :group) %> <%= @course_group.title %></h1>
 	<h2><%= t(:deadline, :scope => :course) %>: <%= @course_group.deadline.due_date.strftime('%d.%m.%Y - %H:%M') unless @course_group.deadline.nil? %></h2>
+	<%= check_box_tag :active,1, @course_group.active %> <%= t(:active, :scope => :student) %>
 	<table  class="userlist">
   	<thead>
   		<tr>
@@ -30,7 +31,7 @@
 				<% end %>
 			<% end %>
 			<tr>
-      	<td><%= link_to t(:new_working_group, :scope => :group), new_working_group_tutor_groups_path(:parent => @course_group) %></td>
+      	<td><%= link_to t(:new_working_group, :scope => :group), new_working_group_tutor_groups_path(:parent => @course_group) unless @course_group.deadline.expired? %></td>
         <td></td>
 				<td></td>
       </tr>

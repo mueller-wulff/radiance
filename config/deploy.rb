@@ -1,6 +1,8 @@
 # =============================
 # = Allgemeine Einstellungen =
 # =============================
+set :whenever_command, "bundle exec whenever"
+require "whenever/capistrano"
 set :application, "stitch"
 set :domain, "main.vm.over9000.org"
 # für ein lokales Repo:
