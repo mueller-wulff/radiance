@@ -21,7 +21,7 @@ namespace :deadline do
         pages.each do |page|
           students.map {|student| Answer.lock_answers(student, page)}
         end
-      else
+      elsif !Group.where(:id => deadline.group_id).empty?
         students = Group.find(deadline.group_id).all_students
         page = Page.find(deadline.deadlinable_id)
         students.map {|student| Answer.lock_answers(student, page)}
@@ -29,14 +29,19 @@ namespace :deadline do
     end
     
     def submit_group_essay(deadline)
+      puts "submit_group_essay"
       if deadline.deadlinable_type == "Group"
         group = Group.find(deadline.deadlinable_id)
-        pages = group.course.all_assignment_pages
-        pages.map {|page| GroupEssayAnswer.submit_group_essay(group, page)}
+        unless group && group.students.empty?
+          pages = group.course.all_assignment_pages
+          pages.map {|page| GroupEssayAnswer.submit_group_essay(group, page)}
+        end
       else
         group = Group.find(deadline.group_id)
-        page = Page.find(deadline.deadlinable_id)
-        GroupEssayAnswer.submit_group_essay(group, page)
+        unless group && group.students.empty?
+          page = Page.find(deadline.deadlinable_id)
+          GroupEssayAnswer.submit_group_essay(group, page)
+        end
       end
     end
     
@@ -57,18 +62,25 @@ namespace :deadline do
         group = Group.find(deadline.deadlinable_id)
         group.update_attribute(:active, false)
         child_groups = Group.where(:parent_id => group.id)
-        child_groups.map {|g| g.update_attribute(:active, false) }
+        child_groups.map {|g| g.update_attribute(:active, false) } if child_groups
       end
     end
     
+    Deadline.all.map {|d| d.destroy if d.deadlinable.nil? }
+    Deadline.all.map {|d| d.destroy if d.group_id != nil && Group.where(:id => d.group_id).empty? }
     Deadline.all.each do |d|
       if (d.due_date - 3.days).today?
         send_information_mail(d)
       elsif (d.due_date + 1.day).today? || d.expired?
+        puts d.id
         lock_answers(d)
+        puts "locked answers"
         submit_group_essay(d)
+        puts "submitted group essay"
         send_info_to_tutor(d)
+        puts "send info to tutor"
         set_group_inactive(d)
+        puts "set group inactive"
       end
     end    
   end

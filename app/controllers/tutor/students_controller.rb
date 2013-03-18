@@ -7,7 +7,7 @@ class Tutor::StudentsController < ApplicationController
   # GET /students.xml
   def index
     @course = Course.find(params[:course_id]) if params[:course_id]
-    @course_groups = @course.groups.where(:tutor_id => @tutor.id, :parent_id => nil)
+    @course_groups = @course.groups.where(:tutor_id => @tutor.id, :parent_id => nil, :active => true)
 
     respond_to do |format|
       format.html # index.html.erb
