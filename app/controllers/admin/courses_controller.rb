@@ -80,6 +80,20 @@ class Admin::CoursesController < ApplicationController
     end
   end
 
+  def deprecate
+    @course = Course.find(params[:id])
+    @course.deprecated = true
+    @course.published = false
+
+    respond_to do |format|
+      if @course.save
+        format.html { redirect_to(admin_courses_path) }
+      else
+        format.html { redirect_to(admin_courses_path) }
+      end
+    end
+  end
+
   # DELETE /courses/1
   # DELETE /courses/1.xml
   def destroy

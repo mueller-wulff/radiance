@@ -18,7 +18,12 @@ class Course < ActiveRecord::Base
   default_scope order('language ASC')
 
   before_destroy :deletable?
-  before_save :enforce_logic
+  before_save :enforce_logic, :unless => :set_depricated?
+
+  def set_depricated?
+    return true if self.published == false && self.deprecated == true
+    return false
+  end
 
   def enforce_logic
     #only with modules which are all completed can a course be marked as complete
@@ -45,7 +50,7 @@ class Course < ActiveRecord::Base
   end
 
   def deprecatable?
-    if self.groups.map{|g| g.active}.uniq == [false] && self.published
+    if (self.groups.map{|g| g.active}.uniq == [false] || self.groups.empty?) && self.published
       return true
     else
       return false
