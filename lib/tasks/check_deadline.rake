@@ -72,15 +72,11 @@ namespace :deadline do
       if (d.due_date - 3.days).today?
         send_information_mail(d)
       elsif (d.due_date + 1.day).today? || d.expired?
-        puts d.id
         lock_answers(d)
-        puts "locked answers"
         submit_group_essay(d)
-        puts "submitted group essay"
         send_info_to_tutor(d)
-        puts "send info to tutor"
         set_group_inactive(d)
-        puts "set group inactive"
+        d.destroy if d.expired?
       end
     end    
   end

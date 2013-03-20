@@ -2,6 +2,7 @@
 # = Allgemeine Einstellungen =
 # =============================
 set :whenever_command, "bundle exec whenever"
+set :whenever_identifier, "stitch_deadline"
 require "whenever/capistrano"
 set :application, "stitch"
 set :domain, "main.vm.over9000.org"
