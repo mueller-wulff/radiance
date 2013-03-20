@@ -16,7 +16,7 @@
         <td>
           <% if course.published && !course.deprecated %>
 						<%= link_to image_tag("space.gif", :title => t(:clone, :scope => :course), :class => "icon duplicate"), clone_admin_course_path(course) %>
-            <%= link_to image_tag("space.gif", :title => t(:mark_deprecated, :scope => :course), :class => "icon delete"), deprecate_admin_course_path(course), :confirm => t(:confirm, :scope => :course), :method => :post if course.deprecatable? %>
+            <%= link_to image_tag("space.gif", :title => t(:mark_deprecated, :scope => :course), :class => "icon delete"), deprecate_admin_course_path(course), :confirm => t(:mark_deprecated, :scope => :course) + "?", :method => :post if course.deprecatable? %>
 					<% else %>
             <%= link_to image_tag("space.gif", :title => t(:edit, :scope => :course), :class => "icon useredit"), edit_admin_course_path(course) unless course.deprecated %>
             <% if course.deletable? %>
