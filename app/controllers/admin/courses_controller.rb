@@ -4,7 +4,7 @@ class Admin::CoursesController < ApplicationController
   # GET /courses.xml
   def index
     @published = Course.where(:published => true)
-    @unpublished = Course.where(:published => false)
+    @unpublished = Course.where(:published => false, :deprecated => false)
     @deprecated = Course.where(:deprecated => true)
     respond_to do |format|
       format.html # index.html.erb
