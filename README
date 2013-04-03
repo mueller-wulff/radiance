@@ -1,10 +1,24 @@
 == Welcome to Radiance
 
-Radiance is an open source e-learning software written in Rails.
+The Radiance software enables e-learning guided by a tutor to groups of students scattered around the world.
+
+The basic concept of the software consists of courses which can be entered in different languages. These courses are maintained by so called 'developers' whose work is coordinated by the administrator.
+
+A course consists of modules divided into units which in turn consist of pages. Pages, units and modules can be graded individually and can contain any amount of information and tasks for students. At the heart, all content is located and organized in pages. Content for a page can be anything you can imagine: text, pictures, video, slideshows, questions, essays, group works (wiki like essay). Therefore the limits of what and how to teach the students are set only by the imagination of the developers.
+
+Once a course is successfully entered, the administrator assigns tutors to it. The tutors are in charge of guiding students through the course. Group works and collaborative working will be easily established by the tutor through live chat with each other during the course.
+
+When a student has finished a course, the tutor will grade his work according to the guidelines established by the developers. Even after finishing, the student will always be able to log into the platform and look back at the courses he has taken and see all his grades and works.
+
+Summarizing, the Radiance software will not only enable the creation of unique and insightful content, but will also facilitate distribution throughout a wide range of students in a guided and effective way.
 
 == Getting Started
 
-This is a Rails project. Just clone this project, run "bundle install", setup your database and start the server with "rails s" on your console.
+This is a Rails 3.1.0 project. 
+After cloning this project to your machine:
+- run "bundle install" to install all necessary gems
+- setup your database with rake db:setup and rake db:migrate
+- start the server with "rails s" on your console.
 
 == Licence
 
