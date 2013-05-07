@@ -60,7 +60,7 @@ gem 'capistrano'
 # and rake tasks are available in development mode:
 group :development, :test do
   gem 'rspec-rails'
-  gem 'pg'
+  gem 'mysql2'
   gem 'autotest-rails'
   gem 'mysql2'
 end

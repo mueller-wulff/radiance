@@ -14,7 +14,7 @@ Summarizing, the Radiance software will not only enable the creation of unique a
 
 == Getting Started
 
-This is a Rails 3.1.0 project. 
+This is a Rails 3.1.0 project with Ruby 1.9.3. 
 After cloning this project to your machine:
 - run "bundle install" to install all necessary gems
 - setup your database with rake db:setup and rake db:migrate
